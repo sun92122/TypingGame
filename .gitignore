@@ -35,7 +35,6 @@ out
 # End of https://www.toptal.com/developers/gitignore/api/processing,visualstudiocode
 
 HW*.zip
-*.mp4
 temp/
 
-processing-4.3/
+processing-*/
