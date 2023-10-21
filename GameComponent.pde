@@ -64,8 +64,10 @@ class MenuButton {
     pushMatrix();
     translate(x, y);
     rectMode(CENTER);
+    strokeWeight(2);
+    stroke(0);
     fill(127);
-    rect(0, 0, w, h);
+    circle(0, 0, r);
     fill(0);
     textSize(30);
     textAlign(CENTER, CENTER);
@@ -81,7 +83,7 @@ class BackButton {
   float h = 50;
 
   BackButton() {}
-
+  
   BackButton(float x, float y) {
     this.x = x;
     this.y = y;
