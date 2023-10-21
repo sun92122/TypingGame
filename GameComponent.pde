@@ -74,6 +74,10 @@ class MenuButton {
     text("Menu", 0, 0);
     popMatrix();
   }
+  
+  boolean isHover() {
+    return dist(mouseX, mouseY, x, y) < r / 2;
+  }
 }
 
 class BackButton {
@@ -107,5 +111,9 @@ class BackButton {
     textAlign(CENTER, CENTER);
     text("Back", 0, 0);
     popMatrix();
+  }
+  
+  boolean isHover() {
+    return mouseX > x - w / 2 && mouseX < x + w / 2 && mouseY > y - h / 2 && mouseY < y + h / 2;
   }
 }
