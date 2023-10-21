@@ -1,3 +1,45 @@
+class MainMenuButton {
+  float x = width / 2;
+  float y = height / 2;
+  float w = 250;
+  float h = 50;
+  
+  String str = "Play";
+  
+  MainMenuButton(String str) {
+    this.str = str;
+  }
+  
+  MainMenuButton(String str, float y) {
+    this.str = str;
+    this.y = y;
+  }
+  
+  void display() {
+    pushMatrix();
+    translate(x, y);
+    textSize(30);
+    textAlign(CENTER, CENTER);
+    this.w = textWidth(str) + 20;
+    rectMode(CENTER);
+    noStroke();
+    if(isHover()) {
+      fill(225);
+      rect(0, 0, w + 70, h);
+      fill(0);
+      triangle( -w / 2 - 10, 0, -w / 2 - 30, -10, -w / 2 - 30, 10);
+      triangle(w / 2 + 10, 0, w / 2 + 30, -10, w / 2 + 30, 10);
+    }
+    fill(0);
+    text(str, 0, 0);
+    popMatrix();
+  }
+  
+  boolean isHover() {
+    return mouseX > x - w / 2 && mouseX < x + w / 2 && mouseY > y - h / 2 && mouseY < y + h / 2;
+  }
+}
+
 class MenuButton {
   float x = width - 75;
   float y = height - 75;
