@@ -53,11 +53,10 @@ class MenuButton {
     this.y = y;
   }
   
-  MenuButton(float x, float y, float w, float h) {
+  MenuButton(float x, float y, float r) {
     this.x = x;
     this.y = y;
-    this.w = w;
-    this.h = h;
+    this.r = r;
   }
   
   void display() {
@@ -71,7 +70,7 @@ class MenuButton {
     fill(0);
     textSize(30);
     textAlign(CENTER, CENTER);
-    text("Menu", 0, 0);
+    text("≡", 0, 0);
     popMatrix();
   }
   
