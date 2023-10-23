@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Audio",
+    "tip": "Adjust the volume of the game.",
+    "sub": [
+      {
+        "title": "Music",
+        "tip": "Adjust the volume of the music.",
+        "type": "slider",
+        "default": 50,
+        "min": 0,
+        "max": 100
+      },
+      {
+        "title": "Sound",
+        "tip": "Adjust the volume of the sound.",
+        "type": "slider",
+        "default": 50,
+        "min": 0,
+        "max": 100
+      }
+    ]
+  },
+  {
+    "name": "Video",
+    "tip": "Adjust the video settings of the game.",
+    "sub": [
+      {
+        "title": "Resolution",
+        "tip": "Adjust the resolution of the game.",
+        "type": "dropdown",
+        "default": 0,
+        "options": [
+          {
+            "name": "1280x720",
+            "value": 1
+          },
+          {
+            "name": "1600x900",
+            "value": 1.25
+          },
+          {
+            "name": "1920x1080",
+            "value": 1.5
+          },
+          {
+            "name": "2560x1440",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "title": "Fullscreen",
+        "tip": "Toggle fullscreen mode.",
+        "type": "toggle",
+        "default": false
+      }
+    ]
+  }
+]
