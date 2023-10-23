@@ -1,24 +1,27 @@
 String inputText = "";
 
-final int[] mainHeight = {640, 800, 1440, 2560};
-final int[] mainWidth = {1024, 1280, 2304, 4096};
-
 Game game;
 
+float unit = 1;
+
 void settings() {
-  size(1280, 800); // 16:10 1024x640 -> 1280x800
+  // 16:9 {1280, 720}, {1600, 900}, {1920, 1080}, {2560, 1440}
+  size(1280, 720); // default
+  // if(displayWidth > 2560 && displayHeight > 1440) {
+  //   size(2560, 1440);
+  // } else if(displayWidth > 1920 && displayHeight > 1080) {
+  //   size(1920, 1080);
+  // } else if(displayWidth > 1600 && displayHeight > 900) {
+  //   size(1600, 900);
+  // }
 }
 
 void setup() {
   surface.setTitle("Typing Game");
-  surface.setResizable(true);
+  surface.setResizable(false);
   surface.setLocation((displayWidth - width) / 2,(displayHeight - height) / 2);
   
   game = new Game();
-  
-  textFont(createFont("NotoSansTC-Regular.ttf", 36));
-  textAlign(CENTER, CENTER);
-  textSize(36);
 }
 
 void draw() {
@@ -27,13 +30,7 @@ void draw() {
 }
 
 void keyPressed() {
-  if(key == CODED) {
-    if(keyCode == DOWN) {
-      game.currentScene = (game.currentScene + 1) % game.scenes.length;
-    } else if(keyCode == UP) {
-      game.currentScene = (game.currentScene - 1 + game.scenes.length) % game.scenes.length;
-    }
-  }
+  game.keyPressed();
 }
 
 void keyTyped() {
@@ -50,4 +47,8 @@ void keyTyped() {
   } else {
     inputText += key;
   }
+}
+
+void mouseReleased() {
+  game.mouseReleased();
 }

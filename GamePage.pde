@@ -1,4 +1,19 @@
-class MenuPage {
+interface Page {
+  void draw();
+  void keyPressed();
+  void keyReleased();
+}
+
+class MenuPage implements Page {
+  MainMenuButton[] mainMenuButton = {
+    new MainMenuButton("Play", height / 2),
+      new MainMenuButton("Upgrade", height / 2 + 75),
+      new MainMenuButton("Setting", height / 2 + 150),
+      new MainMenuButton("Exit", height / 2 + 225)
+    };
+  
+  int currentButton = 0;
+  
   MenuPage() {}
   
   void draw() {
@@ -11,19 +26,47 @@ class MenuPage {
     text("Typing Game", width / 2, height / 2 - 100);
     
     // buttons // TODO: change to button class (Component.pde)
-    textSize(30);
-    textAlign(CENTER, CENTER);
-    text("Play", width / 2, height / 2);
-    text("Upgrade", width / 2, height / 2 + 50);
-    text("Setting", width / 2, height / 2 + 100);
-    text("Exit", width / 2, height / 2 + 150);
+    for(int i = 0; i < mainMenuButton.length; i++) {
+      if(mainMenuButton[i].isHover()) {
+        currentButton = i;
+      }
+      mainMenuButton[i].display(currentButton == i);
+    }
+  }
+  
+  void keyPressed() {
+    if(keyCode == UP) {
+      currentButton--;
+      if(currentButton < 0) {
+        currentButton = mainMenuButton.length - 1;
+      }
+    } else if(keyCode == DOWN) {
+      currentButton++;
+      if(currentButton >= mainMenuButton.length) {
+        currentButton = 0;
+      }
+    } else if(keyCode == ENTER) {
+      if(currentButton == 3) {
+        game.gameExit();
+      } else {
+        game.currentScene = currentButton + 1;
+      }
+    }
+  }
+  
+  void keyReleased() {}
+  
+  void mouseReleased() {
+    if(currentButton == 3) {
+      link("https://www.google.com/"); // TODO: change to exit
+      game.gameExit();
+    } else {
+      game.currentScene = currentButton + 1;
+    }
   }
 }
 
-class PlayPage {
-  MenuButton menuButton = new MenuButton();
-  BackButton backButton = new BackButton();
-  
+class PlayPage implements Page {
   PlayPage() {}
   
   void draw() {
@@ -40,9 +83,9 @@ class PlayPage {
     }
     popMatrix();
     
-    backButton.display();
+    game.backButton.display();
     
-    menuButton.display();
+    game.menuButton.display();
     
     // level choose text
     fill(0);
@@ -50,12 +93,19 @@ class PlayPage {
     textAlign(CENTER, CENTER);
     text("Level", width / 2, 50);
   }
+  
+  void keyPressed() {}
+  
+  void keyReleased() {}
+  
+  void mouseReleased() {
+    if(game.backButton.isHover()) {
+      game.currentScene = 0;
+    }
+  }
 }
 
-class UpgradePage {
-  MenuButton menuButton = new MenuButton();
-  BackButton backButton = new BackButton();
-  
+class UpgradePage implements Page {  
   UpgradePage() {}
   
   void draw() {
@@ -79,9 +129,9 @@ class UpgradePage {
     text("Skill 2: ?", 0, 400);
     popMatrix();
     
-    backButton.display();
+    game.backButton.display();
     
-    menuButton.display();
+    game.menuButton.display();
     
     // upgrade text
     fill(0);
@@ -89,12 +139,21 @@ class UpgradePage {
     textAlign(CENTER, CENTER);
     text("Upgrade", width / 2, 50);
   }
+  
+  void keyPressed() {}
+  
+  void keyReleased() {}
+  
+  void mouseReleased() {
+    if(game.backButton.isHover()) {
+      game.currentScene = 0;
+    }
+  }
 }
 
-class SettingPage {
-  MenuButton menuButton = new MenuButton();
-  BackButton backButton = new BackButton();
+class SettingPage implements Page {
   int setting = 0; // 0: video, 1: audio, 2: difficulty, 3: language, 4: about
+  Settings settings = new Settings();
   
   SettingPage() {}
   
@@ -103,15 +162,19 @@ class SettingPage {
     
     // left side main setting options
     pushMatrix();
-    translate(width / 4, 0);
+    translate(width / 16, 0);
     fill(0);
-    textSize(30);
-    textAlign(CENTER, CENTER);
-    text("Video", 0, 100);
-    text("Audio", 0, 200);
-    text("Difficulty", 0, 300);
-    text("Language", 0, 400);
-    text("About", 0, 500);
+    textFont(game.font.get("Cubic11"));
+    textSize(26);
+    textAlign(LEFT, CENTER);
+    for(int i = 0; i < settings.setting.size(); i++) {
+      if(i == setting) {
+        fill(#FFCC33);
+      } else {
+        fill(0);
+      }
+      text(settings.setting[i], 0, 100 * i + 100);
+    }
     popMatrix();
     
     // right side Set details
@@ -138,20 +201,27 @@ class SettingPage {
     }
     popMatrix();
     
-    backButton.display();
-    
-    menuButton.display();
-    
+    game.backButton.display();
+        
     // setting text
     fill(0);
     textSize(50);
     textAlign(CENTER, CENTER);
     text("Setting", width / 2, 50);
   }
+  
+  void keyPressed() {}
+  
+  void keyReleased() {}
+  
+  void mouseReleased() {
+    if(game.backButton.isHover()) {
+      game.currentScene = 0;
+    }
+  }
 }
 
-class PlayingPage {
-  MenuButton menuButton = new MenuButton();
+class PlayingPage implements Page {
   
   StringDict words = new StringDict(); // test
   StringDict words2 = new StringDict(); // test
@@ -222,6 +292,12 @@ class PlayingPage {
     text("test2", width / 2, 250);
     text("test3", width / 2, 300);
     
-    menuButton.display();
+    game.menuButton.display();
   }
+  
+  void keyPressed() {}
+  
+  void keyReleased() {}
+  
+  void mouseReleased() {}
 }
