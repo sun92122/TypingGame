@@ -2,6 +2,10 @@ interface Page {
   void draw();
   void keyPressed();
   void keyReleased();
+  void mouseClicked();
+  void mouseDragged();
+  void mousePressed();
+  void mouseReleased();
 }
 
 class MenuPage implements Page {
@@ -56,6 +60,12 @@ class MenuPage implements Page {
   
   void keyReleased() {}
   
+  void mouseClicked() {}
+  
+  void mouseDragged() {}
+  
+  void mousePressed() {}
+  
   void mouseReleased() {
     if(currentButton == 3) {
       link("https://www.google.com/"); // TODO: change to exit
@@ -98,6 +108,12 @@ class PlayPage implements Page {
   
   void keyReleased() {}
   
+  void mouseClicked() {}
+  
+  void mouseDragged() {}
+  
+  void mousePressed() {}
+  
   void mouseReleased() {
     if(game.backButton.isHover()) {
       game.currentScene = 0;
@@ -105,7 +121,7 @@ class PlayPage implements Page {
   }
 }
 
-class UpgradePage implements Page {  
+class UpgradePage implements Page {
   UpgradePage() {}
   
   void draw() {
@@ -144,6 +160,12 @@ class UpgradePage implements Page {
   
   void keyReleased() {}
   
+  void mouseClicked() {}
+  
+  void mouseDragged() {}
+  
+  void mousePressed() {}
+  
   void mouseReleased() {
     if(game.backButton.isHover()) {
       game.currentScene = 0;
@@ -155,54 +177,29 @@ class SettingPage implements Page {
   int setting = 0; // 0: video, 1: audio, 2: difficulty, 3: language, 4: about
   Settings settings = new Settings();
   
-  SettingPage() {}
+  IntDict settingMap;
+  SettingOption[] settingOption;
+  
+  SettingPage(Settings settings) {
+    this.settingMap = settings.settingMap;
+    
+    settingOption = new SettingOption[settings.settings.size()];
+    for(int i = 0; i < settingOption.length; i++) {
+      String name = settings.settings.getJSONObject(i).getString("name");
+      settingOption[i] = new SettingOption(
+        settings.settings.getJSONObject(i), 75 * i + 150);
+    }
+  }
   
   void draw() {
     background(255); // TODO: change setting background
     
-    // left side main setting options
-    pushMatrix();
-    translate(width / 16, 0);
-    fill(0);
-    textFont(game.font.get("Cubic11"));
-    textSize(26);
-    textAlign(LEFT, CENTER);
-    for(int i = 0; i < settings.setting.size(); i++) {
-      if(i == setting) {
-        fill(#FFCC33);
-      } else {
-        fill(0);
-      }
-      text(settings.setting[i], 0, 100 * i + 100);
+    for(int i = 0; i < settingOption.length; i++) {
+      settingOption[i].display(setting == i);
     }
-    popMatrix();
-    
-    // right side Set details
-    pushMatrix();
-    translate(width / 2 + width / 4, 0);
-    switch(setting) {
-      case 0:
-        text("Resolution: ?", 0, 100);
-        text("Fullscreen: ?", 0, 200);
-        break;
-      case 1:
-        text("Volume: ?", 0, 100);
-        text("Mute: ?", 0, 200);
-        break;
-      case 2:
-        text("Difficulty: ?", 0, 100);
-        break;
-      case 3:
-        text("Language: ?", 0, 100);
-        break;
-      case 4:
-        text("About: ?", 0, 100);
-        break;
-    }
-    popMatrix();
     
     game.backButton.display();
-        
+    
     // setting text
     fill(0);
     textSize(50);
@@ -210,13 +207,51 @@ class SettingPage implements Page {
     text("Setting", width / 2, 50);
   }
   
-  void keyPressed() {}
+  void keyPressed() {
+    if(keyCode == CODED) {
+      if(keyCode == UP) {
+        setting--;
+        if(setting < 0) {
+          setting = settingOption.length - 1;
+        }
+      } else if(keyCode == DOWN) {
+        setting++;
+        if(setting >= settingOption.length) {
+          setting = 0;
+        }
+      }
+    }
+  }
   
   void keyReleased() {}
+  
+  void mouseClicked() {
+    for(int i = 0; i < settingOption.length; i++) {
+      settingOption[i].mouseClicked();
+    }
+  }
+  
+  void mouseDragged() {
+    for(int i = 0; i < settingOption.length; i++) {
+      settingOption[i].mouseDragged();
+    }
+  }
+  
+  void mousePressed() {
+    for(int i = 0; i < settingOption.length; i++) {
+      settingOption[i].mousePressed();
+    }
+  }
   
   void mouseReleased() {
     if(game.backButton.isHover()) {
       game.currentScene = 0;
+    }
+    for(int i = 0; i < settingOption.length; i++) {
+      if(settingOption[i].isHover()) {
+        setting = i;
+      }
+      settingOption[i].mouseReleased();
     }
   }
 }
@@ -237,14 +272,11 @@ class PlayingPage implements Page {
   float fever = 0;
   
   PlayingPage() {
+    // info = new Info(player);
     words.set("test", "test");
     words.set("test2", "test2");
     words2.set("test3", "test3");
     healWords.set("heal", "heal");
-  }
-  
-  PlayingPage(Player player) {
-    // info = new Info(player);
   }
   
   void update() {}
@@ -298,6 +330,12 @@ class PlayingPage implements Page {
   void keyPressed() {}
   
   void keyReleased() {}
+  
+  void mouseClicked() {}
+  
+  void mouseDragged() {}
+  
+  void mousePressed() {}
   
   void mouseReleased() {}
 }

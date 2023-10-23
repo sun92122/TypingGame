@@ -7,6 +7,7 @@
         "title": "Music",
         "tip": "Adjust the volume of the music.",
         "type": "slider",
+        "valueType": "int",
         "default": 50,
         "min": 0,
         "max": 100
@@ -15,6 +16,7 @@
         "title": "Sound",
         "tip": "Adjust the volume of the sound.",
         "type": "slider",
+        "valueType": "int",
         "default": 50,
         "min": 0,
         "max": 100
@@ -29,6 +31,7 @@
         "title": "Resolution",
         "tip": "Adjust the resolution of the game.",
         "type": "dropdown",
+        "valueType": "float",
         "default": 0,
         "options": [
           {
@@ -53,6 +56,7 @@
         "title": "Fullscreen",
         "tip": "Toggle fullscreen mode.",
         "type": "toggle",
+        "valueType": "bool",
         "default": false
       }
     ]

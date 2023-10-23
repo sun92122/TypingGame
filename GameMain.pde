@@ -1,6 +1,6 @@
 class Game {
   // player
-  Player player;
+  // out of game, global
   
   // data
   Vocab vocab;
@@ -13,40 +13,56 @@ class Game {
   SettingPage settingPage;
   PlayingPage playingPage;
   
+  // controller
+  Load load = new Load();
+  Save save = new Save();
+  ExportData exportData = new ExportData();
+  ImportData importData = new ImportData();
+  
   // global components
   MenuButton menuButton = new MenuButton();
   BackButton backButton = new BackButton();
   
   // style
-  HashMap<String , PFont> fonts = new HashMap<String , PFont>();
+  HashMap<String, PFont> fonts = new HashMap<String, PFont>();
+  PFont[] fontList = {createFont("font/NotoSansTC-Regular.ttf", 32),
+      createFont("font/Cubic_11_1.013_R.ttf", 32),
+      createFont("font/PressStart2P-Regular.ttf", 32)};
+  String[] fontNameList = {
+    "NotoSansTC",
+    "Cubic11",
+    "PressStart2P"
+  };
   
+  // state variables
   int currentScene = 0; // 0: menu, 1: play, 2: upgrade, 3: setting, 4: playing
-  String[] scenes = {"menu", "play", "upgrade", "setting", "playing"}; // not used, just for reference
+  String[] scenes = {"menu", "play", "upgrade", "setting", "playing"};
+  float screenScale = 1;
   
-  Game() {
-    player = new Player();
-    
+  Game() { 
     vocab = new Vocab();
     settings = new Settings();
+    
+    load.loadSettings(settings);
     
     menuPage = new MenuPage();
     playPage = new PlayPage();
     upgradePage = new UpgradePage();
-    settingPage = new SettingPage();
+    settingPage = new SettingPage(settings);
     playingPage = new PlayingPage();
     
-    // font = createFont("font/NotoSansTC-Regular.ttf", 32);
-    // font = createFont("font/Cubic_11_1.013_R.ttf", 32);
-    // font = createFont("font/PressStart2P-Regular.ttf", 32);
-    fonts.put("NotoSansTC", createFont("font/NotoSansTC-Regular.ttf", 32));
-    fonts.put("Cubic11", createFont("font/Cubic_11_1.013_R.ttf", 32));
-    fonts.put("PressStart2P", createFont("font/PressStart2P-Regular.ttf", 32));
+    for(int i = 0; i < fontList.length; i++) {
+      fonts.put(fontNameList[i], fontList[i]);
+    }
     textFont(fonts.get("PressStart2P"));
   }
   
   void update() {}
   
   void draw() {
+    if(screenScale != 1) {
+      scale(screenScale);
+    }
     switch(currentScene) {
       case 0:
         menuPage.draw();
@@ -109,6 +125,66 @@ class Game {
         break;
       case 4:
         playingPage.keyReleased();
+        break;
+    }
+  }
+
+  void mouseClicked() {
+    switch(currentScene) {
+      case 0:
+        menuPage.mouseClicked();
+        break;
+      case 1:
+        playPage.mouseClicked();
+        break;
+      case 2:
+        upgradePage.mouseClicked();
+        break;
+      case 3:
+        settingPage.mouseClicked();
+        break;
+      case 4:
+        playingPage.mouseClicked();
+        break;
+    }
+  }
+
+  void mouseDragged() {
+    switch(currentScene) {
+      case 0:
+        menuPage.mouseDragged();
+        break;
+      case 1:
+        playPage.mouseDragged();
+        break;
+      case 2:
+        upgradePage.mouseDragged();
+        break;
+      case 3:
+        settingPage.mouseDragged();
+        break;
+      case 4:
+        playingPage.mouseDragged();
+        break;
+    }
+  }
+
+  void mousePressed() {
+    switch(currentScene) {
+      case 0:
+        menuPage.mousePressed();
+        break;
+      case 1:
+        playPage.mousePressed();
+        break;
+      case 2:
+        upgradePage.mousePressed();
+        break;
+      case 3:
+        settingPage.mousePressed();
+        break;
+      case 4:
+        playingPage.mousePressed();
         break;
     }
   }

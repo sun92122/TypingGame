@@ -32,6 +32,7 @@ class Settings {
   String settingPath = "data/settings/settings.json";
   
   JSONArray settings;
+  IntDict settingMap = new IntDict();
   
   Settings() {
     loadSetting();
@@ -40,6 +41,9 @@ class Settings {
   void loadSetting() {
     try {
       settings = loadJSONArray(settingPath);
+      for(int i = 0; i < settings.size(); i++) {
+        settingMap.set(settings.getJSONObject(i).getString("name"), i);
+      }
     } catch(Exception e) {
       println("Errow, settings file not found");
     }

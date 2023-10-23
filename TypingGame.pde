@@ -1,5 +1,6 @@
 String inputText = "";
 
+Player player;
 Game game;
 
 float unit = 1;
@@ -21,12 +22,16 @@ void setup() {
   surface.setResizable(false);
   surface.setLocation((displayWidth - width) / 2,(displayHeight - height) / 2);
   
+  player = new Player();
   game = new Game();
 }
 
 void draw() {
   game.update();
   game.draw();
+  if(frameCount % 60 == 0) {
+    println(frameRate);
+  }
 }
 
 void keyPressed() {
@@ -47,6 +52,18 @@ void keyTyped() {
   } else {
     inputText += key;
   }
+}
+
+void mouseClicked() {
+  game.mouseClicked();
+}
+
+void mouseDragged() {
+  game.mouseDragged();
+}
+
+void mousePressed() {
+  game.mousePressed();
 }
 
 void mouseReleased() {
