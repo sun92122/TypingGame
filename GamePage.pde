@@ -68,7 +68,6 @@ class MenuPage implements Page {
   
   void mouseReleased() {
     if(currentButton == 3) {
-      link("https://www.google.com/"); // TODO: change to exit
       game.gameExit();
     } else {
       game.currentScene = currentButton + 1;
