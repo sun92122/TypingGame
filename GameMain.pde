@@ -39,7 +39,7 @@ class Game {
   String[] scenes = {"menu", "play", "upgrade", "setting", "playing"};
   float screenScale = 1;
   
-  Game() { 
+  Game() {
     vocab = new Vocab();
     settings = new Settings();
     
@@ -55,6 +55,8 @@ class Game {
       fonts.put(fontNameList[i], fontList[i]);
     }
     textFont(fonts.get("PressStart2P"));
+
+    logPrint("Game initialized");
   }
   
   void update() {}

@@ -18,7 +18,9 @@ class MenuPage implements Page {
   
   int currentButton = 0;
   
-  MenuPage() {}
+  MenuPage() {
+    logPrint("MenuPage created.");
+  }
   
   void draw() {
     background(255); // TODO: change menu background
@@ -68,17 +70,19 @@ class MenuPage implements Page {
   
   void mouseReleased() {
     if(mainMenuButton[0].isHover()) {
-    if(currentButton == 3) {
-      game.gameExit();
-    } else {
-      game.currentScene = currentButton + 1;
+      if(currentButton == 3) {
+        game.gameExit();
+      } else {
+        game.currentScene = currentButton + 1;
       }
     }
   }
 }
 
 class PlayPage implements Page {
-  PlayPage() {}
+  PlayPage() {
+    logPrint("PlayPage created.");
+  }
   
   void draw() {
     background(255); // TODO: change play background
@@ -123,7 +127,9 @@ class PlayPage implements Page {
 }
 
 class UpgradePage implements Page {
-  UpgradePage() {}
+  UpgradePage() {
+    logPrint("UpgradePage created.");
+  }
   
   void draw() {
     background(255); // TODO: change upgrade background
@@ -190,6 +196,8 @@ class SettingPage implements Page {
       settingOption[i] = new SettingOption(
         settings.settings.getJSONObject(i), 75 * i + 150);
     }
+
+    logPrint("SettingPage created.");
   }
   
   void draw() {
@@ -278,6 +286,8 @@ class PlayingPage implements Page {
     words.set("test2", "test2");
     words2.set("test3", "test3");
     healWords.set("heal", "heal");
+
+    logPrint("PlayingPage created.");
   }
   
   void update() {}

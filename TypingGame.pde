@@ -58,3 +58,7 @@ void mousePressed() {
 void mouseReleased() {
   game.mouseReleased();
 }
+
+void logPrint(String text) {
+  println("[" + nf(millis(), 5) + "]: " + text);
+}
