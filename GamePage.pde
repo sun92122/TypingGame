@@ -67,10 +67,12 @@ class MenuPage implements Page {
   void mousePressed() {}
   
   void mouseReleased() {
+    if(mainMenuButton[0].isHover()) {
     if(currentButton == 3) {
       game.gameExit();
     } else {
       game.currentScene = currentButton + 1;
+      }
     }
   }
 }
