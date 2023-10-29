@@ -6,15 +6,7 @@ Game game;
 float unit = 1;
 
 void settings() {
-  // 16:9 {1280, 720}, {1600, 900}, {1920, 1080}, {2560, 1440}
   size(1280, 720); // default
-  // if(displayWidth > 2560 && displayHeight > 1440) {
-  //   size(2560, 1440);
-  // } else if(displayWidth > 1920 && displayHeight > 1080) {
-  //   size(1920, 1080);
-  // } else if(displayWidth > 1600 && displayHeight > 900) {
-  //   size(1600, 900);
-  // }
 }
 
 void setup() {
@@ -29,9 +21,6 @@ void setup() {
 void draw() {
   game.update();
   game.draw();
-  if(frameCount % 60 == 0) {
-    println(frameRate);
-  }
 }
 
 void keyPressed() {
