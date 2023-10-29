@@ -196,7 +196,7 @@ class SettingPage implements Page {
       settingOption[i] = new SettingOption(
         settings.settings.getJSONObject(i), 75 * i + 150);
     }
-
+    
     logPrint("SettingPage created.");
   }
   
@@ -286,7 +286,7 @@ class PlayingPage implements Page {
     words.set("test2", "test2");
     words2.set("test3", "test3");
     healWords.set("heal", "heal");
-
+    
     logPrint("PlayingPage created.");
   }
   

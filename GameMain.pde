@@ -55,7 +55,7 @@ class Game {
       fonts.put(fontNameList[i], fontList[i]);
     }
     textFont(fonts.get("PressStart2P"));
-
+    
     logPrint("Game initialized");
   }
   
@@ -130,7 +130,7 @@ class Game {
         break;
     }
   }
-
+  
   void mouseClicked() {
     switch(currentScene) {
       case 0:
@@ -150,7 +150,7 @@ class Game {
         break;
     }
   }
-
+  
   void mouseDragged() {
     switch(currentScene) {
       case 0:
@@ -170,7 +170,7 @@ class Game {
         break;
     }
   }
-
+  
   void mousePressed() {
     switch(currentScene) {
       case 0:

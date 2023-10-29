@@ -12,7 +12,7 @@ class Save {
 class Load {
   // Player player; // global
   JSONObject savedSettings;
-
+  
   Load() {}
   
   void loadPlayerFile(int id) {
