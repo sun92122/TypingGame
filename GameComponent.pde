@@ -433,7 +433,11 @@ class Slider {
     }
   }
   
-  void mousePressed() {}
+  void mousePressed() {
+    if(isHover()) {
+      isFocus = true;
+    }
+  }
   
   void mouseReleased() {
     isFocus = false;
