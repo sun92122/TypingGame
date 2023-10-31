@@ -69,7 +69,7 @@ class MenuPage implements Page {
   void mousePressed() {}
   
   void mouseReleased() {
-    if(mainMenuButton[0].isHover()) {
+    if(mainMenuButton[currentButton].isHover()) {
       if(currentButton == 3) {
         game.gameExit();
       } else {
@@ -80,7 +80,17 @@ class MenuPage implements Page {
 }
 
 class PlayPage implements Page {
-  PlayPage() {
+  LevelData levelData;
+  Level[] levels;
+  int levelCount;
+  
+  PlayPage(LevelData levelData) {
+    // this.levelData = levelData;
+    // this.levelCount = levelData.levelCount;
+    // for(int i = 0; i < levelCount; i++) {
+    //   levels[i] = new Level(i, levelData.levels.getJSONObject(i));
+    // }
+    
     logPrint("PlayPage created.");
   }
   

@@ -1,10 +1,12 @@
 class Game {
   // player
-  // out of game, global
+  // Player player;
+  // out of Game, global
   
   // data
   Vocab vocab;
   Settings settings;
+  LevelData levelData;
   
   // view
   MenuPage menuPage;
@@ -42,11 +44,12 @@ class Game {
   Game() {
     vocab = new Vocab();
     settings = new Settings();
+    levelData = new LevelData();
     
     load.loadSettings(settings);
     
     menuPage = new MenuPage();
-    playPage = new PlayPage();
+    playPage = new PlayPage(levelData);
     upgradePage = new UpgradePage();
     settingPage = new SettingPage(settings);
     playingPage = new PlayingPage();

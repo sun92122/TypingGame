@@ -29,7 +29,7 @@ class Vocab {
 }
 
 class Settings {
-  String settingPath = "data/settings/settings.json";
+  String settingPath = "data/setting/settings.json";
   
   JSONArray settings;
   IntDict settingMap = new IntDict();
@@ -48,8 +48,24 @@ class Settings {
       println("Errow, settings file not found");
     }
   }
-  
-  void saveSetting() {
-    saveJSONArray(settings, settingPath);
+}
+
+class LevelData {
+  String levelPath = "data/setting/levels.json";
+
+  JSONArray levels;
+  int levelCount;
+
+  LevelData() {
+    loadLevelData();
+  }
+
+  void loadLevelData() {
+    try {
+      levels = loadJSONArray(levelPath);
+      levelCount = levels.size();
+    } catch(Exception e) {
+      println("Error, levels file not found");
+    }
   }
 }

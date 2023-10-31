@@ -20,6 +20,7 @@ class MainMenuButton {
   void display(boolean isSelect) {
     pushMatrix();
     translate(x, y);
+    textFont(game.fonts.get("PressStart2P"));
     textSize(30);
     textAlign(CENTER, CENTER);
     w = textWidth(str) + 20;
@@ -113,6 +114,7 @@ class BackButton {
     fill(127);
     rect(0, 0, w, h);
     fill(0);
+    textFont(game.fonts.get("NotoSansTC"));
     textSize(30);
     textAlign(CENTER, CENTER);
     text("Back", 0, 0);
@@ -573,4 +575,65 @@ class Dropdown {
   float getValue() {
     return options.getJSONObject(index).getFloat("value");
   }
+}
+
+class Stars {
+  float x;
+  float y;
+  float r1;
+  float r2;
+  float rotateAngle;
+  int isLight = 0;
+  
+  float angle = TWO_PI / 5;
+  float halfAngle = angle / 2.0;
+  
+  Stars(float x, float y, float r1, float r2, float rotateAngle, int isLight) {
+    this.x = x;
+    this.y = y;
+    this.r1 = r1;
+    this.r2 = r2;
+    this.rotateAngle = rotateAngle;
+    this.isLight = isLight;
+  }
+  
+  void display() {
+    pushMatrix();
+    translate(x, y);
+    rotate(rotateAngle);
+    if(isLight == 1) {
+      fill(#FFD700);
+    } else {
+      fill(#C0C0C0);
+    }
+    beginShape();
+    for(float a = 0; a < TWO_PI; a += angle) {
+      float sx = x + cos(a) * r2;
+      float sy = y + sin(a) * r2;
+      vertex(sx, sy);
+      sx = x + cos(a + halfAngle) * r1;
+      sy = y + sin(a + halfAngle) * r1;
+      vertex(sx, sy);
+    }
+    endShape(CLOSE);
+    popMatrix();
+  }
+}
+
+class LevelIcon {
+  float x;
+  float y;
+  float w;
+  float h;
+  int level;
+  boolean isLock = true;
+
+  Stars[] stars = new Stars[3];
+  
+  // LevelIcon(float x, float y, float r1, float r2, int level) {
+  //   this.x = x;
+  //   this.y = y;
+  //   this.r = r;
+  //   this.level = level;
+  // } 
 }
