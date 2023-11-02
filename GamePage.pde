@@ -29,7 +29,8 @@ class MenuPage implements Page {
     fill(0);
     textSize(50);
     textAlign(CENTER, CENTER);
-    text("Typing Game", width / 2, height / 2 - 100);
+    textFont(game.fonts.get("PressStart2P"));
+    text("Typing Game", width / 2, height / 2 - 200);
     
     // buttons // TODO: change to button class (Component.pde)
     for(int i = 0; i < mainMenuButton.length; i++) {
@@ -83,13 +84,16 @@ class PlayPage implements Page {
   LevelData levelData;
   Level[] levels;
   int levelCount;
+
+  int pageIndex = 0;
   
   PlayPage(LevelData levelData) {
-    // this.levelData = levelData;
-    // this.levelCount = levelData.levelCount;
-    // for(int i = 0; i < levelCount; i++) {
-    //   levels[i] = new Level(i, levelData.levels.getJSONObject(i));
-    // }
+    this.levelData = levelData;
+    this.levelCount = levelData.levelCount;
+    this.levels = new Level[levelCount];
+    for(int i = 0; i < levelCount; i++) {
+      levels[i] = new Level(i, levelData.levels.getJSONObject(i));
+    }
     
     logPrint("PlayPage created.");
   }
@@ -99,14 +103,18 @@ class PlayPage implements Page {
     rectMode(CENTER);
     
     // level choose (grid buttons)
-    pushMatrix();
-    translate(width / 2, height / 2);
-    for(int i = -2; i <= 2; i++) {
-      for(int j = -1; j <= 1; j++) {
-        rect(200 * i, 200 * j, 150, 150); // TODO: change to button class (Component.pde)
-      }
+    // pushMatrix();
+    // translate(width / 2, height / 2);
+    // for(int i = -2; i <= 2; i++) {
+    //   for(int j = -1; j <= 1; j++) {
+    //     rect(200 * i, 200 * j, 150, 150); // TODO: change to button class (Component.pde)
+    //   }
+    // }
+    // popMatrix();
+    int pageStart = pageIndex * 15;
+    for (int i = 0; i < 15; i++) {
+      levels[i + pageStart].desplayLevelIcon();
     }
-    popMatrix();
     
     game.backButton.display();
     
@@ -116,6 +124,7 @@ class PlayPage implements Page {
     fill(0);
     textSize(50);
     textAlign(CENTER, CENTER);
+    textFont(game.fonts.get("NotoSansTC"));
     text("Level", width / 2, 50);
   }
   
@@ -149,6 +158,7 @@ class UpgradePage implements Page {
     translate(width / 4, 0);
     fill(0);
     textSize(30);
+    textFont(game.fonts.get("NotoSansTC"));
     textAlign(CENTER, CENTER);
     text("Player ?", 0, 100);
     rect(0, height / 2, 200, 200); // TODO: show player image
@@ -223,6 +233,7 @@ class SettingPage implements Page {
     fill(0);
     textSize(50);
     textAlign(CENTER, CENTER);
+    textFont(game.fonts.get("NotoSansTC"));
     text("Setting", width / 2, 50);
   }
   
@@ -321,6 +332,7 @@ class PlayingPage implements Page {
     
     // info.draw(); // TODO: draw info
     fill(0);
+    textFont(game.fonts.get("NotoSansTC"));
     textSize(20);
     textAlign(LEFT);
     text("HP: " + hp, 50, 50);

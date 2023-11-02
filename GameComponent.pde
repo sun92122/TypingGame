@@ -580,9 +580,9 @@ class Dropdown {
 class Stars {
   float x;
   float y;
-  float r1;
-  float r2;
-  float rotateAngle;
+  float r1 = 10;
+  float r2 = 20;
+  float rotateAngle = 0;
   int isLight = 0;
   
   float angle = TWO_PI / 5;
@@ -594,6 +594,12 @@ class Stars {
     this.r1 = r1;
     this.r2 = r2;
     this.rotateAngle = rotateAngle;
+    this.isLight = isLight;
+  }
+  
+  Stars(float x, float y, int isLight) {
+    this.x = x;
+    this.y = y;
     this.isLight = isLight;
   }
   
@@ -623,17 +629,53 @@ class Stars {
 class LevelIcon {
   float x;
   float y;
-  float w;
-  float h;
+  float w = 100;
+  float h = 100;
+  float r = 10;
   int level;
   boolean isLock = true;
-
+  
   Stars[] stars = new Stars[3];
   
-  // LevelIcon(float x, float y, float r1, float r2, int level) {
-  //   this.x = x;
-  //   this.y = y;
-  //   this.r = r;
-  //   this.level = level;
-  // } 
+  LevelIcon(float x, float y, int level) {
+    this.x = x;
+    this.y = y;
+    this.level = level;
+    // this.isLock = level > player.getLevel();
+    // test
+    if (level <= 7) {
+      this.isLock = false;
+    }
+    for(int i = 0; i < 3; i++) {
+      int tmp = 0;
+      if (!isLock) {
+        tmp = random(1) > 0.5 ? 1 : 0;
+      }
+      stars[i] = new Stars(20 * (i - 1), 25, tmp);
+    }
+  }
+  
+  void display() {
+    pushMatrix();
+    translate(x, y);
+    rectMode(CENTER);
+    strokeWeight(2);
+    stroke(0);
+    fill(225);
+    rect(0, 0, w, h, r);
+    fill(0);
+    textFont(game.fonts.get("NotoSansTC"));
+    textAlign(CENTER, CENTER);
+    if(isLock) {
+      textSize(20);
+      text("Lock", 0, 0);
+    } else {
+      textSize(30);
+      text(level, 0, 0);
+    }
+    for(int i = 0; i < 3; i++) {
+      stars[i].display();
+    }
+    popMatrix();
+  }
 }
