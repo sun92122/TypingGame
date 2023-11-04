@@ -1,0 +1,12 @@
+{
+  "setting": {
+    "Audio": {
+      "Music": 50,
+      "Sound": 50
+    },
+    "Video": {
+      "Resolution": 0,
+      "FullScreen": false
+    }
+  }
+}

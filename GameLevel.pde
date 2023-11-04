@@ -21,4 +21,11 @@ class Level {
   void desplayLevelIcon() {
     levelIcon.display();
   }
+
+  void drawBackground() {
+    background(255);
+    strokeWeight(1);
+    stroke(0);
+    line(0, height - 150, width, height - 150);
+  }
 }

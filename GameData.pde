@@ -69,3 +69,43 @@ class LevelData {
     }
   }
 }
+
+class CharacterData {
+  String characterPath = "data/setting/characters.json";
+
+  JSONArray characters;
+  int characterCount;
+
+  CharacterData() {
+    loadCharacterData();
+  }
+
+  void loadCharacterData() {
+    try {
+      characters = loadJSONArray(characterPath);
+      characterCount = characters.size();
+    } catch(Exception e) {
+      println("Error, characters file not found");
+    }
+  }
+}
+
+class MobData {
+  String mobPath = "data/setting/mobs.json";
+
+  JSONArray mobs;
+  int mobCount;
+
+  MobData() {
+    loadMobData();
+  }
+
+  void loadMobData() {
+    try {
+      mobs = loadJSONArray(mobPath);
+      mobCount = mobs.size();
+    } catch(Exception e) {
+      println("Error, mobs file not found");
+    }
+  }
+}

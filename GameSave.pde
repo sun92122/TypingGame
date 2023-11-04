@@ -5,7 +5,7 @@ class Save {
     JSONObject save = new JSONObject();
     // save.setString("name", player.name);
     save.setJSONObject("settings", player.settings);
-    saveJSONObject(save, "data/progress/player" + id + ".json");
+    saveJSONObject(save, "data/saves/player" + id + ".json");
   }
 }
 
@@ -17,7 +17,7 @@ class Load {
   
   void loadPlayerFile(int id) {
     try {
-      savedSettings = loadJSONObject("data/progress/player" + id + ".json");
+      savedSettings = loadJSONObject("data/saves/player" + id + ".json");
       // player.name = savedSettings.getString("name");
       player.settings = savedSettings.getJSONObject("settings");
     } catch(Exception e) {

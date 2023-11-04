@@ -84,7 +84,7 @@ class PlayPage implements Page {
   LevelData levelData;
   Level[] levels;
   int levelCount;
-
+  
   int pageIndex = 0;
   
   PlayPage(LevelData levelData) {
@@ -112,7 +112,7 @@ class PlayPage implements Page {
     // }
     // popMatrix();
     int pageStart = pageIndex * 15;
-    for (int i = 0; i < 15; i++) {
+    for(int i = 0; i < 15; i++) {
       levels[i + pageStart].desplayLevelIcon();
     }
     
@@ -141,6 +141,12 @@ class PlayPage implements Page {
   void mouseReleased() {
     if(game.backButton.isHover()) {
       game.currentScene = 0;
+    }
+    for(int i = 0; i < 15; i++) {
+      if(levels[i + pageIndex * 15].levelIcon.isHover()) {
+        game.currentScene = 4;
+        game.playingPage = new PlayingPage(levels[i + pageIndex * 15]);
+      }
     }
   }
 }
@@ -288,81 +294,105 @@ class SettingPage implements Page {
 
 class PlayingPage implements Page {
   
-  StringDict words = new StringDict(); // test
-  StringDict words2 = new StringDict(); // test
-  StringDict healWords = new StringDict(); // test
+  Level level;
+  Character character;
   
-  // Info info;
-  int score = 0;
-  int combo = 0;
-  int maxCombo = 0;
-  int hp = 100;
-  int money = 0;
-  float time = 0;
-  float fever = 0;
+  // game info
+  float countDown = 3.5f;
+  float timer = 0;
+  ArrayList<Mob> mobs = new ArrayList<Mob>();
   
-  PlayingPage() {
-    // info = new Info(player);
-    words.set("test", "test");
-    words.set("test2", "test2");
-    words2.set("test3", "test3");
-    healWords.set("heal", "heal");
-    
-    logPrint("PlayingPage created.");
+  // player info
+  
+  // status
+  boolean isStart = false;
+  int state = 2; // 0: pause, 1: playing, 2: entering, 3: ending
+  
+  PlayingPage(Level level) {
+    this.level = level;
+    this.character = game.characters.get(player.character);
   }
   
-  void update() {}
+  void update() {
+    character.update();
+    if(state == 1) {
+      // level.update();
+    }
+  }
   
   void draw() {
-    background(255); // TODO: change background
-    fill(#CCFF33);
-    rectMode(CENTER);
-    rect(width / 2, height - 100, width, 200);
+    if(!isStart) {
+      isStart = true;
+      // level.start();
+      character.update(1);
+    }
+    if(state != 0) {
+      update();
+    }
     
+    level.drawBackground();
     
     // show player image // TODO
-    fill(0);
-    rectMode(CENTER);
-    rect(200, height - 200, 100, 100);
+    if(countDown > 0) {
+      fill(0);
+      textSize(100);
+      textAlign(CENTER, CENTER);
+      textFont(game.fonts.get("NotoSansTC"));
+      text(nfc(countDown, 0), width / 2, height / 2);
+      
+      character.display(
+        constrain(200 * (1.2 - countDown / 2.5), 0, 200), height - 150);
+      countDown -= 1 / frameRate;
+      if(countDown <= 0) {
+        state = 1;
+        character.update(0);
+      }
+    } else {
+      character.display(200, height - 150);
+    }
     
     // mobs // TODO
-    fill(0);
-    rectMode(CENTER);
-    rect(width - 200, height - 200, 100, 100);
+    
     
     // info.draw(); // TODO: draw info
     fill(0);
     textFont(game.fonts.get("NotoSansTC"));
     textSize(20);
     textAlign(LEFT);
-    text("HP: " + hp, 50, 50);
-    text("money: " + money, 50, 100);
-    text("score: " + score, width - 250, 50);
-    text("time: " + nfc(time, 2), width - 250, 100);
+    // text("HP: " + hp, 50, 50);
+    // text("money: " + money, 50, 100);
+    // text("score: " + score, width - 250, 50);
+    // text("time: " + nfc(time, 2), width - 250, 100);
     // fever
-    fill(#FFCC33);
-    rectMode(CORNER);
-    rect(width / 2 - 150, height - 100, 300, 30);
-    fill(#FF0000);
-    rect(width / 2 - 150, height - 100, 3 * fever, 30);
-    fill(0);
-    textAlign(CENTER);
-    textSize(20);
-    text("fever", width / 2, height - 85);
+    // fill(#FFCC33);
+    // rectMode(CORNER);
+    // rect(width / 2 - 150, height - 100, 300, 30);
+    // fill(#FF0000);
+    // rect(width / 2 - 150, height - 100, 3 * fever, 30);
+    // fill(0);
+    // textAlign(CENTER);
+    // textSize(20);
+    // text("fever", width / 2, height - 85);
     
     // TODO: draw words
-    fill(0);
-    textSize(20);
-    text("test", width / 2, 200);
-    text("test2", width / 2, 250);
-    text("test3", width / 2, 300);
+    // fill(0);
+    // textSize(20);
+    // text("test", width / 2, 200);
+    // text("test2", width / 2, 250);
+    // text("test3", width / 2, 300);
     
     game.menuButton.display();
   }
   
   void keyPressed() {}
   
-  void keyReleased() {}
+  void keyReleased() {
+    if(isDebugMode) {
+      if(key == ' ') {
+        state = 3;
+      }
+    }
+  }
   
   void mouseClicked() {}
   

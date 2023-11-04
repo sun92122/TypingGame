@@ -7,6 +7,8 @@ class Game {
   Vocab vocab;
   Settings settings;
   LevelData levelData;
+  CharacterData characterData;
+  MobData mobData;
   
   // view
   MenuPage menuPage;
@@ -25,15 +27,23 @@ class Game {
   MenuButton menuButton = new MenuButton();
   BackButton backButton = new BackButton();
   
-  // style
+  // character
+  HashMap<String, Character> characters = new HashMap<String, Character>();
+  String[] characterNameList = {
+    "Potato"
+  };
+  
+  // font
   HashMap<String, PFont> fonts = new HashMap<String, PFont>();
-  PFont[] fontList = {createFont("font/NotoSansTC-Regular.ttf", 32),
-      createFont("font/Cubic_11_1.013_R.ttf", 32),
-      createFont("font/PressStart2P-Regular.ttf", 32)};
   String[] fontNameList = {
     "NotoSansTC",
     "Cubic11",
     "PressStart2P"
+  };
+  String[] fontPathList = {
+    "font/NotoSansTC-Regular.ttf",
+    "font/Cubic_11_1.013_R.ttf",
+    "font/PressStart2P-Regular.ttf"
   };
   
   // state variables
@@ -45,6 +55,8 @@ class Game {
     vocab = new Vocab();
     settings = new Settings();
     levelData = new LevelData();
+    characterData = new CharacterData();
+    mobData = new MobData();
     
     load.loadSettings(settings);
     
@@ -52,10 +64,16 @@ class Game {
     playPage = new PlayPage(levelData);
     upgradePage = new UpgradePage();
     settingPage = new SettingPage(settings);
-    playingPage = new PlayingPage();
     
-    for(int i = 0; i < fontList.length; i++) {
-      fonts.put(fontNameList[i], fontList[i]);
+    // load characters
+    for(int i = 0; i < characterNameList.length; i++) {
+      characters.put(characterNameList[i],
+        new Character(characterData.characters.getJSONObject(i)));
+    }
+    
+    // load fonts
+    for(int i = 0; i < fontNameList.length; i++) {
+      fonts.put(fontNameList[i], createFont(fontPathList[i], 32));
     }
     textFont(fonts.get("PressStart2P"));
     

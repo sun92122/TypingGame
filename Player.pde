@@ -12,6 +12,8 @@ class Player {
   * }
   */
   JSONObject settings;
+
+  String character = "Potato";
   
   Player() {
     this.name = "";
