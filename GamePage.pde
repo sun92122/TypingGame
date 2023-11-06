@@ -306,7 +306,7 @@ class PlayingPage implements Page {
   
   // status
   boolean isStart = false;
-  int state = 2; // 0: pause, 1: playing, 2: entering, 3: ending
+  int state = 2; // 0: pause, 1: entering, 2: playing, 3: ending
   
   PlayingPage(Level level) {
     this.level = level;
@@ -315,8 +315,12 @@ class PlayingPage implements Page {
   
   void update() {
     character.update();
-    if(state == 1) {
+    if(state == 2) {
       // level.update();
+    }
+    if(state == 3) {
+      // level.end();
+      // level background shift?
     }
   }
   
@@ -333,22 +337,19 @@ class PlayingPage implements Page {
     level.drawBackground();
     
     // show player image // TODO
-    if(countDown > 0) {
-      fill(0);
-      textSize(100);
-      textAlign(CENTER, CENTER);
-      textFont(game.fonts.get("NotoSansTC"));
-      text(nfc(countDown, 0), width / 2, height / 2);
-      
-      character.display(
-        constrain(200 * (1.2 - countDown / 2.5), 0, 200), height - 150);
-      countDown -= 1 / frameRate;
-      if(countDown <= 0) {
-        state = 1;
-        character.update(0);
-      }
-    } else {
-      character.display(200, height - 150);
+    switch(state) {
+      case 0:
+        drawPause();
+        break;
+      case 1:
+        drawEnter();
+        break;
+      case 2:
+        drawPlaying();
+        break;
+      case 3:
+        drawEnding();
+        break;
     }
     
     // mobs // TODO
@@ -382,6 +383,36 @@ class PlayingPage implements Page {
     // text("test3", width / 2, 300);
     
     game.menuButton.display();
+  }
+  
+  void drawPause() {}
+  
+  void drawEnter() {
+    fill(0);
+    textSize(100);
+    textAlign(CENTER, CENTER);
+    textFont(game.fonts.get("NotoSansTC"));
+    text(nfc(countDown, 0), width / 2, height / 2);
+    
+    character.display(
+      constrain(200 * (1.2 - countDown / 2.5), 0, 200), height - 150);
+    countDown -= 1 / frameRate;
+    if(countDown <= 0) {
+      state = 1;
+      character.update(0);
+    }
+  }
+
+  void drawPlaying() {
+    character.display(200, height - 150);
+  }
+
+  void drawEnding() {
+    fill(0);
+    textSize(100);
+    textAlign(CENTER, CENTER);
+    textFont(game.fonts.get("NotoSansTC"));
+    text("Ending", width / 2, height / 2);
   }
   
   void keyPressed() {}

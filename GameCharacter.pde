@@ -9,6 +9,8 @@ class Character {
   String[] stateNames = {"idle", "moving", "attacking", "dead"};
   int stateChangeTime = 0;
   int currentImageIndex = 0;
+
+  Character() {}
   
   Character(JSONObject data) {
     this.data = data;
