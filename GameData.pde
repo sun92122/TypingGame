@@ -52,14 +52,14 @@ class Settings {
 
 class LevelData {
   String levelPath = "data/setting/levels.json";
-
+  
   JSONArray levels;
   int levelCount;
-
+  
   LevelData() {
     loadLevelData();
   }
-
+  
   void loadLevelData() {
     try {
       levels = loadJSONArray(levelPath);
@@ -72,14 +72,14 @@ class LevelData {
 
 class CharacterData {
   String characterPath = "data/setting/characters.json";
-
+  
   JSONArray characters;
   int characterCount;
-
+  
   CharacterData() {
     loadCharacterData();
   }
-
+  
   void loadCharacterData() {
     try {
       characters = loadJSONArray(characterPath);
@@ -92,14 +92,14 @@ class CharacterData {
 
 class MobData {
   String mobPath = "data/setting/mobs.json";
-
+  
   JSONArray mobs;
   int mobCount;
-
+  
   MobData() {
     loadMobData();
   }
-
+  
   void loadMobData() {
     try {
       mobs = loadJSONArray(mobPath);

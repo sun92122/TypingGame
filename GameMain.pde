@@ -30,8 +30,12 @@ class Game {
   // character
   HashMap<String, Character> characters = new HashMap<String, Character>();
   String[] characterNameList = {
-    "Potato"
+    "Potato",
+    "Test"
   };
+
+  // mob
+  HashMap<String, Mob> mobs = new HashMap<String, Mob>();
   
   // font
   HashMap<String, PFont> fonts = new HashMap<String, PFont>();
@@ -66,9 +70,22 @@ class Game {
     settingPage = new SettingPage(settings);
     
     // load characters
-    for(int i = 0; i < characterNameList.length; i++) {
+    characters.put(characterNameList[0],
+      new CharacterPotato(characterData.characters.getJSONObject(0)));
+    for(int i = 1; i < characterNameList.length; i++) {
       characters.put(characterNameList[i],
         new Character(characterData.characters.getJSONObject(i)));
+    }
+
+    // load mobs
+    Mob mobTemp;
+    mobTemp = new MobDynamicSB(mobData.mobs.getJSONObject(0));
+    mobs.put(mobTemp.name, mobTemp);
+    mobTemp = new MobCodeBird(mobData.mobs.getJSONObject(1));
+    mobs.put(mobTemp.name, mobTemp);
+    for(int i = 2; i < mobData.mobs.size(); i++) {
+      mobTemp = new Mob(mobData.mobs.getJSONObject(i));
+      mobs.put(mobTemp.name, mobTemp);
     }
     
     // load fonts

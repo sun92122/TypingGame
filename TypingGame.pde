@@ -5,7 +5,7 @@ Game game;
 
 float unit = 1;
 
-boolean isDebugMode = false;
+boolean isDebugMode = true;
 
 void settings() {
   size(1280, 720); // default
@@ -26,12 +26,25 @@ void setup() {
 }
 
 void draw() {
-  try {
+  if(true) {
+    try {
+      game.update();
+      game.draw();
+    } catch(Exception e) {
+      println("Error: " + e);
+      exit();
+    }
+  } else {
     game.update();
     game.draw();
-  } catch(Exception e) {
-    println("Error: " + e);
-    exit();
+  }
+  
+  if(isDebugMode) {
+    fill(#FF0000);
+    textAlign(LEFT, TOP);
+    text("FPS: " + nf(frameRate, 2, 2), 10, 20);
+    textAlign(CENTER, CENTER);
+    text("Debug Mode", width / 2, 20);
   }
 }
 

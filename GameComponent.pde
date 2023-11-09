@@ -637,15 +637,13 @@ class LevelIcon {
   
   Stars[] stars = new Stars[3];
   
-  LevelIcon(float x, float y, int level) {
+  LevelIcon(float x, float y, int level, boolean isLock) {
     this.x = x;
     this.y = y;
     this.level = level;
+    this.isLock = isLock;
     // this.isLock = level > player.getLevel();
     // test
-    if (level <= 7) {
-      this.isLock = false;
-    }
     for(int i = 0; i < 3; i++) {
       int tmp = 0;
       if (!isLock) {

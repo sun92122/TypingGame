@@ -103,16 +103,11 @@ class PlayPage implements Page {
     rectMode(CENTER);
     
     // level choose (grid buttons)
-    // pushMatrix();
-    // translate(width / 2, height / 2);
-    // for(int i = -2; i <= 2; i++) {
-    //   for(int j = -1; j <= 1; j++) {
-    //     rect(200 * i, 200 * j, 150, 150); // TODO: change to button class (Component.pde)
-    //   }
-    // }
-    // popMatrix();
     int pageStart = pageIndex * 15;
     for(int i = 0; i < 15; i++) {
+      if(i + pageStart >= levelCount) {
+        break;
+      }
       levels[i + pageStart].desplayLevelIcon();
     }
     
@@ -127,7 +122,7 @@ class PlayPage implements Page {
     textFont(game.fonts.get("NotoSansTC"));
     text("Level", width / 2, 50);
   }
-  
+
   void keyPressed() {}
   
   void keyReleased() {}
@@ -143,7 +138,11 @@ class PlayPage implements Page {
       game.currentScene = 0;
     }
     for(int i = 0; i < 15; i++) {
-      if(levels[i + pageIndex * 15].levelIcon.isHover()) {
+      if(i + pageIndex * 15 >= levelCount) {
+        break;
+      }
+      if(levels[i + pageIndex * 15].levelIcon.isHover() && 
+        levels[i + pageIndex * 15].isUnlock) {
         game.currentScene = 4;
         game.playingPage = new PlayingPage(levels[i + pageIndex * 15]);
       }
@@ -299,26 +298,43 @@ class PlayingPage implements Page {
   
   // game info
   float countDown = 3.5f;
-  float timer = 0;
+  int timer = 9999000; // count down to 0
   ArrayList<Mob> mobs = new ArrayList<Mob>();
   
   // player info
   
   // status
   boolean isStart = false;
-  int state = 2; // 0: pause, 1: entering, 2: playing, 3: ending
+  int state = 1; // 0: pause, 1: entering, 2: playing, 3: ending
+  final int PAUSE = 0;
+  final int ENTERING = 1;
+  final int PLAYING = 2;
+  final int ENDING = 3;
   
   PlayingPage(Level level) {
     this.level = level;
     this.character = game.characters.get(player.character);
+    
+    this.timer = level.data.getInt("timelimit");
   }
   
   void update() {
     character.update();
-    if(state == 2) {
+    if(state == PLAYING) {
+      timer = max(0, timer - round(1000 / frameRate));
+      for(int i = 0; i < mobs.size(); i++) {
+        mobs.get(i).update();
+      }
+      while(level.enemies.getRow(0).getInt("time") >= timer) {
+        TableRow row = level.enemies.getRow(0);
+        Mob mob = game.mobs.get(row.getString("mob")).copy(row.getInt("moblevel"));
+        mob.setLocation(width, height - 150);
+        mobs.add(mob);
+        level.enemies.removeRow(0);
+      }
       // level.update();
     }
-    if(state == 3) {
+    if(state == ENDING) {
       // level.end();
       // level background shift?
     }
@@ -330,7 +346,7 @@ class PlayingPage implements Page {
       // level.start();
       character.update(1);
     }
-    if(state != 0) {
+    if(state != PAUSE) {
       update();
     }
     
@@ -338,21 +354,24 @@ class PlayingPage implements Page {
     
     // show player image // TODO
     switch(state) {
-      case 0:
+      case PAUSE:
         drawPause();
         break;
-      case 1:
+      case ENTERING:
         drawEnter();
         break;
-      case 2:
+      case PLAYING:
         drawPlaying();
         break;
-      case 3:
+      case ENDING:
         drawEnding();
         break;
     }
     
     // mobs // TODO
+    for(int i = 0; i < mobs.size(); i++) {
+      mobs.get(i).display();
+    }
     
     
     // info.draw(); // TODO: draw info
@@ -363,7 +382,7 @@ class PlayingPage implements Page {
     // text("HP: " + hp, 50, 50);
     // text("money: " + money, 50, 100);
     // text("score: " + score, width - 250, 50);
-    // text("time: " + nfc(time, 2), width - 250, 100);
+    text("time: " + nf(floor(timer / 1000), 5), width - 250, 100);
     // fever
     // fill(#FFCC33);
     // rectMode(CORNER);
@@ -389,24 +408,24 @@ class PlayingPage implements Page {
   
   void drawEnter() {
     fill(0);
-    textSize(100);
+    textSize(250);
     textAlign(CENTER, CENTER);
     textFont(game.fonts.get("NotoSansTC"));
-    text(nfc(countDown, 0), width / 2, height / 2);
+    text("0" + nfc(countDown, 2), width / 2, height / 2);
     
     character.display(
-      constrain(200 * (1.2 - countDown / 2.5), 0, 200), height - 150);
+      constrain(300 * (1.2 - countDown / 2.5) + 60, 0, 300), height - 150);
     countDown -= 1 / frameRate;
     if(countDown <= 0) {
-      state = 1;
+      state = PLAYING;
       character.update(0);
     }
   }
-
+  
   void drawPlaying() {
-    character.display(200, height - 150);
+    character.display(300, height - 150);
   }
-
+  
   void drawEnding() {
     fill(0);
     textSize(100);
@@ -420,7 +439,7 @@ class PlayingPage implements Page {
   void keyReleased() {
     if(isDebugMode) {
       if(key == ' ') {
-        state = 3;
+        state = ENDING;
       }
     }
   }

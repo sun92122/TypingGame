@@ -1,50 +1,233 @@
 [
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      },
+      {
+        "mob": "Bird",
+        "moblevel": 1,
+        "time": 9997000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "Bird",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   },
   {
-    "test": 0
-  },
-  {
-    "test": 0
-  },
-  {
-    "test": 0
+    "title": "Tutorial",
+    "description": "This is a tutorial level.",
+    "timelimit": 9999000,
+    "map": "",
+    "music": "",
+    "enemies": [
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 9998000,
+        "interval": 60000,
+        "count": 5
+      }
+    ]
   }
 ]

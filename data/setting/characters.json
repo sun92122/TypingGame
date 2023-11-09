@@ -4,6 +4,51 @@
     "pictures": {
       "idle": [
         {
+          "duration": 100000
+        }
+      ],
+      "moving": [
+        {
+          "duration": 500
+        },
+        {
+          "duration": 500
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 300
+        },
+        {
+          "duration": 300
+        },
+        {
+          "duration": 300
+        }
+      ],
+      "dead": [
+        {
+          "duration": 100000
+        }
+      ],
+      "typing": [
+        {
+          "duration": 100
+        },
+        {
+          "duration": 100
+        },
+        {
+          "duration": 100
+        }
+      ]
+    }
+  },
+  {
+    "name": "Test",
+    "pictures": {
+      "idle": [
+        {
           "path": "images/characters/potato/idle0.png",
           "duration": 1000
         },
@@ -56,6 +101,12 @@
         {
           "path": "images/characters/potato/dead0.png",
           "duration": 100
+        }
+      ],
+      "typing": [
+        {
+          "path": "images/characters/potato/idle0.png",
+          "duration": 1000
         }
       ]
     }
