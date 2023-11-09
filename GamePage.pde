@@ -306,7 +306,7 @@ class PlayingPage implements Page {
 
   
   // player info
-  int hp = 200;
+  int hp = 100;
   int max_hp = 200;
   int money = 100;
   
@@ -368,27 +368,46 @@ class PlayingPage implements Page {
     textAlign(LEFT);
 
     // HP
-    text("HP:", 10, 50);
+    text("HP:", 30, 50);
     stroke(0);
     strokeWeight(2);
     noFill();
     rectMode(CORNER);
-    rect(80, 25, max_hp+5, 30);
+    rect(100, 25, max_hp+5, 30);
     noStroke();
     fill(192, 0, 0);
-    rect(82.5, 28, hp, 24.5);
-
+    if(hp > max_hp){
+      rect(102.5, 28, max_hp, 24.5);
+      hp = max_hp;
+    }else if(hp < 0){
+      hp = 0;
+    }else{
+      rect(102.5, 28, hp, 24.5);
+    }
+    // testing the change in hp
+    if (mousePressed && (mouseButton == LEFT)) {
+      hp -= 5;
+    } else if (mousePressed && (mouseButton == RIGHT)) {
+      hp += 5;
+    }
+    
     // money
     fill(0);
-    text("$", 17.5, 100);
-    text(":", 48, 100);
-    text(money, 80, 100);
+    text("$", 37.5, 100);
+    text(":", 68, 100);
+    text(money, 100, 100);
 
     // score
-    text("score: " + score, width - 250, 50);
+    textAlign(LEFT);
+    text("score: ", width - 250, 50);
+    textAlign(RIGHT);
+    text(score, width - 30, 50);
 
     // time
-    text("time: " + nfc(time, 2), width - 250, 100);
+    textAlign(LEFT);
+    text("time: ", width - 250, 100);
+    textAlign(RIGHT);
+    text(nfc(time, 2), width - 30, 100);
 
     // fever
     fill(#FFCC33);
@@ -396,6 +415,7 @@ class PlayingPage implements Page {
     fill(#FF0000);
     rect(width / 2 - 150, height - 100, 3 * fever, 30);
     fill(0);
+    textFont(game.fonts.get("Filepile"));
     textAlign(CENTER);
     textSize(30);
     text("fever", width / 2, height - 85);
@@ -409,7 +429,7 @@ class PlayingPage implements Page {
     
     game.menuButton.display();
   }
-  
+
   void drawPause() {}
   
   void drawEnter() {
