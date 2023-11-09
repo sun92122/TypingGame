@@ -299,10 +299,16 @@ class PlayingPage implements Page {
   
   // game info
   float countDown = 3.5f;
-  float timer = 0;
+  float time = 0;
+  int score = 0;
+  int fever = 50;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
+
   
   // player info
+  int hp = 200;
+  int max_hp = 200;
+  int money = 100;
   
   // status
   boolean isStart = false;
@@ -357,23 +363,42 @@ class PlayingPage implements Page {
     
     // info.draw(); // TODO: draw info
     fill(0);
-    textFont(game.fonts.get("NotoSansTC"));
-    textSize(20);
+    textFont(game.fonts.get("Cubic11"));
+    textSize(30);
     textAlign(LEFT);
-    // text("HP: " + hp, 50, 50);
-    // text("money: " + money, 50, 100);
-    // text("score: " + score, width - 250, 50);
-    // text("time: " + nfc(time, 2), width - 250, 100);
+
+    // HP
+    text("HP:", 10, 50);
+    stroke(0);
+    strokeWeight(2);
+    noFill();
+    rectMode(CORNER);
+    rect(80, 25, max_hp+5, 30);
+    noStroke();
+    fill(192, 0, 0);
+    rect(82.5, 28, hp, 24.5);
+
+    // money
+    fill(0);
+    text("$", 17.5, 100);
+    text(":", 48, 100);
+    text(money, 80, 100);
+
+    // score
+    text("score: " + score, width - 250, 50);
+
+    // time
+    text("time: " + nfc(time, 2), width - 250, 100);
+
     // fever
-    // fill(#FFCC33);
-    // rectMode(CORNER);
-    // rect(width / 2 - 150, height - 100, 300, 30);
-    // fill(#FF0000);
-    // rect(width / 2 - 150, height - 100, 3 * fever, 30);
-    // fill(0);
-    // textAlign(CENTER);
-    // textSize(20);
-    // text("fever", width / 2, height - 85);
+    fill(#FFCC33);
+    rect(width / 2 - 150, height - 100, 300, 30);
+    fill(#FF0000);
+    rect(width / 2 - 150, height - 100, 3 * fever, 30);
+    fill(0);
+    textAlign(CENTER);
+    textSize(30);
+    text("fever", width / 2, height - 85);
     
     // TODO: draw words
     // fill(0);
