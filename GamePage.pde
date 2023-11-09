@@ -298,7 +298,7 @@ class PlayingPage implements Page {
   
   // game info
   float countDown = 3.5f;
-  int time = 9999000; // count down to 0
+  int timer = 9999000; // count down to 0
   int score = 0;
   int fever = 50;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
