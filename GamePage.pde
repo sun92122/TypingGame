@@ -301,8 +301,13 @@ class PlayingPage implements Page {
   float countDown = 3.5f;
   int timer = 9999000; // count down to 0
   int score = 0;
-  int fever = 50;
+  int fever = 100;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
+  int hueOffset = 400;
+  int saturation = 130;
+  int feverSatDirection = 1;
+  float feverTextSize = 30;
+  int feverTextDirection = 1;
   
   // player info
   int hp = 100;
@@ -405,11 +410,13 @@ class PlayingPage implements Page {
     } else{
       rect(102.5, 28, hp, 24.5);
     }
-    // testing the change in hp
+    // testing the change in hp & fever
     if(mousePressed && (mouseButton == LEFT)) {
-      hp -= 5;
+      hp -= 1;
+      fever -= 1;
     } else if(mousePressed && (mouseButton == RIGHT)) {
-      hp += 5;
+      hp += 1;
+      fever += 1;
     }
     
     // money
@@ -426,30 +433,86 @@ class PlayingPage implements Page {
     
     // time
     textAlign(LEFT);
-    // text("HP: " + hp, 50, 50);
-    // text("money: " + money, 50, 100);
-    // text("score: " + score, width - 250, 50);
-    // text("time: " + nfc(time, 2), width - 250, 100);
-    // fever
-    fill(#FFCC33);
-    rect(width / 2 - 150, height - 100, 300, 30);
-    fill(#FF0000);
-    rect(width / 2 - 150, height - 100, 3 * fever, 30);
-    fill(0);
-    textFont(game.fonts.get("Filepile"));
-    textAlign(CENTER);
-    textSize(30);
-    text("fever", width / 2, height - 85);
+    text("time: " + nfc(timer / 1000.0, 2), width - 250, 100);
     
-    // TODO: draw words
-    // fill(0);
-    // textSize(20);
-    // text("test", width / 2, 200);
-    // text("test2", width / 2, 250);
-    // text("test3", width / 2, 300);
+    // fever
+    noFill();
+    stroke(0);
+    strokeWeight(2);
+    rect(width / 2 - 250, height - 80, 500, 30);
+    colorMode(HSB, 400, 255, 255);
+    if(fever >= 100) {
+      fever = 100;
+      // 更新色帶的水平位置
+      hueOffset -= 5;  // 使色帶向左移動
+      if(hueOffset < 0) {
+        hueOffset = 400;  // 超過最大色調值時重置偏移量
+      }
+      
+      for(int j = 0; j <= 30; j++) {
+        for(int i = 0; i <= 500; i++) {
+          // 計算當前點的色調
+          float currentHue = (i + hueOffset) % 400;
+          float adjustedHue = adjustHue(currentHue);
+          stroke(adjustedHue, saturation, 255);  // 使用更新的亮度值
+          strokeWeight(1);
+          point(width / 2 - 250 + i, height - 80 + j);
+        }
+      }
+      // 更新飽和度
+      saturation += 3 * feverSatDirection;
+      if(saturation > 200) {  // 調整飽和度上限
+        saturation = 200;
+        feverSatDirection = -1;
+      } else if(saturation <= 130) {
+        saturation = 130;
+        feverSatDirection = 1;
+      }
+    } else if(fever > 0) {
+      for(float i = 0; i <= 494 * fever / 100; i += 1) {
+        for(int j = 0; j <= 24; j += 1) {
+          stroke(i / 494 * 400, 200, 255);
+          strokeWeight(1);
+          point(width / 2 - 246.5 + i, height - 76.5 + j);
+        }
+      }
+    } else{
+      fever = 0;
+    }
+    
+    //fever text
+    colorMode(RGB, 255, 255, 255);
+    if(fever >= 100) {
+      textFont(game.fonts.get("Filepile"));
+      textAlign(CENTER);
+      if(feverTextSize > 35) {
+        feverTextSize = 35;
+        feverTextDirection = -1;
+      } else if(feverTextSize < 30) {
+        feverTextSize = 30;
+        feverTextDirection = 1;
+      }
+      feverTextSize += 0.3 * feverTextDirection;
+      textSize(feverTextSize);
+      fill(0);
+      text("FEVER!!", width / 2, height - 90);
+    }
     
     game.menuButton.display();
   }
+  
+  float adjustHue(float hue) {
+    // 將 360 度的色調範圍分為數個區段，並對每個區段進行調整
+    if(hue < 60) {  // 紅色到黃色的區域
+      return map(hue, 0, 60, 0, 50);
+    } else if(hue < 120) {  // 黃色到綠色的區域
+      return map(hue, 60, 120, 50, 150);
+    } else if(hue < 240) {  // 綠色到藍色的區域
+      return map(hue, 120, 240, 150, 240);
+    } else {  // 藍色到紫色的區域
+      return map(hue, 240, 400, 240, 400);
+    }
+  }  
   
   void drawPause() {}
   

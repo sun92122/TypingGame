@@ -92,10 +92,7 @@ class Background {
     }
     image(picture, x , y , w , h);
     
-    if(isDebugMode) {
-      fill(#FF0000);
-      circle(x, y, 5);
-    }
+    debugPoint(x, y);
   }
   
   void update(char direction) {

@@ -43,10 +43,7 @@ class Character {
     float imageWidth = currentImage.width * imageHeight / currentImage.height;
     image(currentImage, x - imageWidth, y - imageHeight, imageWidth, imageHeight);
     
-    if(isDebugMode) {
-      fill(#FF0000);
-      circle(x, y, 5);
-    }
+    debugPoint(x, y);
   }
   
   void update_() {
@@ -100,10 +97,7 @@ class CharacterCode extends Character {
     PShape currentShape = currentShapes.get(currentImageIndex);
     shape(currentShape, x, y);
     
-    if(isDebugMode) {
-      fill(#FF0000);
-      circle(x, y, 5);
-    }
+    debugPoint(x, y);
   }
   
   void update_() {

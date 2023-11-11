@@ -11,10 +11,7 @@ class MobDynamicSB extends MobDynamic {
   void display() {
     displayMobSB(state, x, y);
     
-    if(isDebugMode) {
-      fill(#FF0000);
-      circle(x, y, 5);
-    }
+    debugPoint(x, y);
   }
   
   Mob copy(int interval) {

@@ -41,6 +41,7 @@ void draw() {
   
   if(isDebugMode) {
     fill(#FF0000);
+    textFont(game.fonts.get("NotoSansTC"));
     textAlign(LEFT, TOP);
     text("FPS: " + nf(frameRate, 2, 2), 10, 20);
     textAlign(CENTER, CENTER);
@@ -86,4 +87,15 @@ void mouseReleased() {
 
 void logPrint(String text) {
   println("[" + nf(millis(), 5) + "]: " + text);
+}
+
+void debugPoint(float x, float y) {
+  if(!isDebugMode) {
+    return;
+  }
+  stroke(#FF0000);
+  strokeWeight(5);
+  point(x, y);
+  strokeWeight(1);
+  stroke(#000000);
 }

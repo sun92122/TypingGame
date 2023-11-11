@@ -50,10 +50,7 @@ class Mob extends Character {
     float imageWidth = currentImage.width * unit;
     image(currentImage, x, y - imageHeight, imageWidth, imageHeight);
     
-    if(isDebugMode) {
-      fill(#FF0000);
-      circle(x, y, 5);
-    }
+    debugPoint(x, y);
   }
   
   void update_() {}
@@ -133,10 +130,7 @@ class MobCode extends Mob {
     PShape currentShape = currentShapes.get(currentImageIndex);
     shape(currentShape, x, y);
     
-    if(isDebugMode) {
-      fill(#FF0000);
-      circle(x, y, 5);
-    }
+    debugPoint(x, y);
   }
   
   void update_() {

@@ -31,13 +31,12 @@ class Game {
   // character
   HashMap<String, Character> characters = new HashMap<String, Character>();
   String[] characterNameList = {
-    "Potato",
-    "Test"
+    "Potato"
   };
   
   // mob
   HashMap<String, Mob> mobs = new HashMap<String, Mob>();
-
+  
   // background
   HashMap<String, Background> backgrounds = new HashMap<String, Background>();
   
@@ -94,7 +93,7 @@ class Game {
       mobTemp = new Mob(mobData.mobs.getJSONObject(i));
       mobs.put(mobTemp.name, mobTemp);
     }
-
+    
     // load backgrounds
     Background backgroundTemp;
     backgroundTemp = new Background(backgroundData, 0);
