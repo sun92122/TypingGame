@@ -9,6 +9,7 @@ class Game {
   LevelData levelData;
   CharacterData characterData;
   MobData mobData;
+  BackgroundData backgroundData;
   
   // view
   MenuPage menuPage;
@@ -33,9 +34,12 @@ class Game {
     "Potato",
     "Test"
   };
-
+  
   // mob
   HashMap<String, Mob> mobs = new HashMap<String, Mob>();
+
+  // background
+  HashMap<String, Background> backgrounds = new HashMap<String, Background>();
   
   // font
   HashMap<String, PFont> fonts = new HashMap<String, PFont>();
@@ -63,6 +67,7 @@ class Game {
     levelData = new LevelData();
     characterData = new CharacterData();
     mobData = new MobData();
+    backgroundData = new BackgroundData();
     
     load.loadSettings(settings);
     
@@ -78,16 +83,26 @@ class Game {
       characters.put(characterNameList[i],
         new Character(characterData.characters.getJSONObject(i)));
     }
-
+    
     // load mobs
     Mob mobTemp;
     mobTemp = new MobDynamicSB(mobData.mobs.getJSONObject(0));
     mobs.put(mobTemp.name, mobTemp);
     mobTemp = new MobCodeBird(mobData.mobs.getJSONObject(1));
     mobs.put(mobTemp.name, mobTemp);
-    for(int i = 2; i < mobData.mobs.size(); i++) {
+    for(int i = 2; i < mobData.mobCount; i++) {
       mobTemp = new Mob(mobData.mobs.getJSONObject(i));
       mobs.put(mobTemp.name, mobTemp);
+    }
+
+    // load backgrounds
+    Background backgroundTemp;
+    backgroundTemp = new Background(backgroundData, 0);
+    backgrounds.put(backgroundTemp.name, backgroundTemp);
+    backgrounds.put("", backgroundTemp);
+    for(int i = 1; i < backgroundData.mapsCount; i++) {
+      backgroundTemp = new Background(backgroundData, i);
+      backgrounds.put(backgroundTemp.name, backgroundTemp);
     }
     
     // load fonts

@@ -1,0 +1,139 @@
+{
+  "pictures": [
+    {
+      "name": "volcano",
+      "path": "images/background/volcanic/volcano.png"
+    },
+    {
+      "name": "grass",
+      "path": "images/background/volcanic/grass1.png"
+    },
+    {
+      "name": "cloud",
+      "path": "images/background/volcanic/cloud1.png"
+    },
+    {
+      "name": "bg1",
+      "path": "images/background/volcanic/00056.png"
+    },
+    {
+      "name": "bg2",
+      "path": "images/background/volcanic/00062.png"
+    },
+    {
+      "name": "road",
+      "path": "images/background/volcanic/00388.png"
+    }
+  ],
+  "maps": [
+    {
+      "name": "volcanic",
+      "pictures": [
+        "volcano",
+        "grass",
+        "cloud",
+        "bg1",
+        "bg2",
+        "road"
+      ],
+      "behind": [
+        {
+          "mode": "repeat",
+          "picture": "bg1",
+          "width": 150,
+          "height": 150,
+          "startx": 0,
+          "starty": 325,
+          "endx": 2560,
+          "endy": 325
+        },
+        {
+          "mode": "repeat",
+          "picture": "bg2",
+          "width": 150,
+          "height": 150,
+          "startx": 0,
+          "starty": -150,
+          "endx": 2560,
+          "endy": -150
+        },
+        {
+          "mode": "repeat",
+          "picture": "road",
+          "width": 300,
+          "height": 150,
+          "startx": 0,
+          "starty": 475,
+          "endx": 2560,
+          "endy": 475
+        },
+        {
+          "mode": "once",
+          "picture": "volcano",
+          "width": 150,
+          "height": 90,
+          "startx": 1000,
+          "starty": 250,
+          "velocity": 0.05
+        },
+        {
+          "mode": "interval",
+          "picture": "cloud",
+          "width": 150,
+          "height": 80,
+          "startx": 750,
+          "starty": 50,
+          "velocity": 0.1,
+          "interval": 300,
+          "count": 3
+        },
+        {
+          "mode": "interval",
+          "picture": "cloud",
+          "width": 150,
+          "height": 80,
+          "startx": 3000,
+          "starty": 50,
+          "velocity": 0.1,
+          "interval": 300,
+          "count": 3
+        },
+        {
+          "mode": "interval",
+          "picture": "grass",
+          "width": 100,
+          "height": 52,
+          "startx": 250,
+          "starty": 400,
+          "velocity": 0.15,
+          "interval": 1000,
+          "count": 15
+        },
+        {
+          "mode": "interval",
+          "picture": "grass",
+          "width": 80,
+          "height": 36,
+          "startx": 750,
+          "starty": 350,
+          "velocity": 0.1,
+          "interval": 1000,
+          "count": 15
+        }
+      ],
+      "infront": [
+        {
+          "mode": "interval",
+          "picture": "grass",
+          "width": 150,
+          "height": 80,
+          "startx": 500,
+          "starty": 490,
+          "velocity": 0.3,
+          "interval": 1000,
+          "count": 15
+        }
+      ]
+    }
+  ]
+}

@@ -7,6 +7,8 @@ class Level {
   boolean isUnlock = true;
   int page;
   
+  int timeLimit;
+  String map;
   Table enemies = new Table();
   
   Level(int levelNumber, JSONObject data) {
@@ -24,6 +26,9 @@ class Level {
       isUnlock = false;
     }
     this.levelIcon = new LevelIcon(x, y, levelNumber, !isUnlock);
+
+    this.timeLimit = data.getInt("timelimit");
+    this.map = data.getString("background");
     
     this.enemies.addColumn("time");
     this.enemies.addColumn("mob");
@@ -58,12 +63,5 @@ class Level {
   
   void desplayLevelIcon() {
     levelIcon.display();
-  }
-  
-  void drawBackground() {
-    background(255);
-    strokeWeight(1);
-    stroke(0);
-    line(0, height - 150, width, height - 150);
   }
 }

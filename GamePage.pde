@@ -295,6 +295,7 @@ class PlayingPage implements Page {
   
   Level level;
   Character character;
+  Background background;
   
   // game info
   float countDown = 3.5f;
@@ -302,7 +303,6 @@ class PlayingPage implements Page {
   int score = 0;
   int fever = 50;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
-  
   
   // player info
   int hp = 100;
@@ -320,8 +320,9 @@ class PlayingPage implements Page {
   PlayingPage(Level level) {
     this.level = level;
     this.character = game.characters.get(player.character);
+    this.background = game.backgrounds.get(level.map);
     
-    this.timer = level.data.getInt("timelimit");
+    this.timer = level.timeLimit;
   }
   
   void update() {
@@ -356,7 +357,7 @@ class PlayingPage implements Page {
       update();
     }
     
-    level.drawBackground();
+    background.drawBehind();
     
     // show player image // TODO
     switch(state) {
@@ -379,6 +380,7 @@ class PlayingPage implements Page {
       mobs.get(i).display();
     }
     
+    background.drawInFront();
     
     // info.draw(); // TODO: draw info
     fill(0);

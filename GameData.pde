@@ -109,3 +109,34 @@ class MobData {
     }
   }
 }
+
+class BackgroundData {
+  String backgroundPath = "data/setting/backgrounds.json";
+  
+  JSONObject backgroundData;
+  HashMap<String, PImage> pictures = new HashMap<String, PImage>();
+  JSONArray maps;
+  int mapsCount;
+  
+  BackgroundData() {
+    loadBackgroundData();
+  }
+  
+  void loadBackgroundData() {
+    try {
+      backgroundData = loadJSONObject(backgroundPath);
+      maps = backgroundData.getJSONArray("maps");
+      mapsCount = maps.size();
+      JSONArray picturesData = backgroundData.getJSONArray("pictures");
+      for(int i = 0; i < picturesData.size(); i++) {
+        JSONObject pictureData = picturesData.getJSONObject(i);
+        String name = pictureData.getString("name");
+        PImage picture = loadImage(pictureData.getString("path"));
+        pictures.put(name, picture);
+      }
+    } catch(Exception e) {
+      println("Error, backgrounds file not found");
+      println(e);
+    }
+  }
+}
