@@ -78,6 +78,7 @@ class Game {
     // load characters
     characters.put(characterNameList[0],
       new CharacterPotato(characterData.characters.getJSONObject(0)));
+    menuPage.character = characters.get(characterNameList[0]); // set menu character
     for(int i = 1; i < characterNameList.length; i++) {
       characters.put(characterNameList[i],
         new Character(characterData.characters.getJSONObject(i)));
@@ -99,6 +100,7 @@ class Game {
     backgroundTemp = new Background(backgroundData, 0);
     backgrounds.put(backgroundTemp.name, backgroundTemp);
     backgrounds.put("", backgroundTemp);
+    menuPage.background = backgroundTemp; // set menu background
     for(int i = 1; i < backgroundData.mapsCount; i++) {
       backgroundTemp = new Background(backgroundData, i);
       backgrounds.put(backgroundTemp.name, backgroundTemp);

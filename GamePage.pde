@@ -17,13 +17,28 @@ class MenuPage implements Page {
     };
   
   int currentButton = 0;
+  Background background;
+  Character character;
+  float characterX = 0;
+  float characterY = height - 150;
   
   MenuPage() {
     logPrint("MenuPage created.");
   }
   
   void draw() {
-    background(255); // TODO: change menu background
+    background.drawBehind();
+    character.display(characterX, characterY);
+    background.drawInFront();
+    fill(#FFFFFF, 125);
+    rectMode(CORNER);
+    rect(0, 0, width, height);
+    
+    if(!keyPressed) { 
+      background.update();
+      characterX += 10 / frameRate;
+    }
+    character.update();
     
     // title
     fill(0);
@@ -38,6 +53,18 @@ class MenuPage implements Page {
         currentButton = i;
       }
       mainMenuButton[i].display(currentButton == i);
+    }
+
+    if(isDebugMode) {
+      fill(#FF0000);
+      textSize(10);
+      textAlign(LEFT, TOP);
+      textFont(game.fonts.get("NotoSansTC"));
+      text("LEFT: +characterX", 10, 50);
+      text("RIGHT: -characterX", 10, 75);
+      text("UP: -currentButton", 10, 100);
+      text("DOWN: +currentButton", 10, 125);
+      text("ENTER: change scene", 10, 150);
     }
   }
   
@@ -58,6 +85,13 @@ class MenuPage implements Page {
       } else {
         game.currentScene = currentButton + 1;
       }
+    }
+    if(keyCode == LEFT) {
+      characterX -= 1;
+      background.update('L');
+    } else if(keyCode == RIGHT) {
+      characterX += 1;
+      background.update('R');
     }
   }
   
