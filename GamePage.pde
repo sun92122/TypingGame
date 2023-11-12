@@ -436,7 +436,7 @@ class PlayingPage implements Page {
     text("time: " + nfc(timer / 1000.0, 2), width - 250, 100);
     
     // fever
-    noFill();
+    fill(255);
     stroke(0);
     strokeWeight(2);
     rect(width / 2 - 250, height - 80, 500, 30);
