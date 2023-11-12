@@ -114,7 +114,7 @@ class BackgroundData {
   String backgroundPath = "data/setting/backgrounds.json";
   
   JSONObject backgroundData;
-  HashMap<String, PImage> pictures = new HashMap<String, PImage>();
+  HashMap<String, PShape> pictures = new HashMap<String, PShape>();
   JSONArray maps;
   int mapsCount;
   
@@ -131,7 +131,7 @@ class BackgroundData {
       for(int i = 0; i < picturesData.size(); i++) {
         JSONObject pictureData = picturesData.getJSONObject(i);
         String name = pictureData.getString("name");
-        PImage picture = loadImage(pictureData.getString("path"));
+        PShape picture = loadShape(pictureData.getString("path"));
         pictures.put(name, picture);
       }
     } catch(Exception e) {

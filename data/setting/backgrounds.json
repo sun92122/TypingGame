@@ -2,27 +2,27 @@
   "pictures": [
     {
       "name": "volcano",
-      "path": "images/background/volcanic/volcano.png"
+      "path": "images/background/volcanic/volcano.svg"
     },
     {
       "name": "grass",
-      "path": "images/background/volcanic/grass1.png"
+      "path": "images/background/volcanic/grass1.svg"
     },
     {
       "name": "cloud",
-      "path": "images/background/volcanic/cloud1.png"
+      "path": "images/background/volcanic/cloud1.svg"
     },
     {
       "name": "bg1",
-      "path": "images/background/volcanic/00056.png"
+      "path": "images/background/volcanic/00056.svg"
     },
     {
       "name": "bg2",
-      "path": "images/background/volcanic/00062.png"
+      "path": "images/background/volcanic/00062.svg"
     },
     {
       "name": "road",
-      "path": "images/background/volcanic/00388.png"
+      "path": "images/background/volcanic/00388.svg"
     }
   ],
   "maps": [
@@ -61,7 +61,7 @@
           "mode": "repeat",
           "picture": "road",
           "width": 300,
-          "height": 150,
+          "height": 20,
           "startx": 0,
           "starty": 475,
           "endx": 2560,

@@ -95,19 +95,19 @@ void displayMobSB(int state, float x, float y) {
 }
 
 void displayMobSBIdle(float x, float y) {
-  MobSBData.currentRotation += 5;
+  MobSBData.currentRotation += 300 / frameRate;
   pushMatrix();
   translate(x + 170 * MobSBData.scale, y - 250 * MobSBData.scale);
   shape(MobSBData.face);
   for(int i = 0; i < MobSBData.satellitesNum; i++) {
     pushMatrix();
     rotate(radians(360 / MobSBData.satellitesNum * i - MobSBData.currentRotation));
-    translate(20 * sin(MobSBData.currentRotation * 5) * MobSBData.scale, 0);
+    translate(20 * sin(radians(MobSBData.currentRotation * 3)) * MobSBData.scale, 0);
     shape(MobSBData.outShape);
     popMatrix();
     pushMatrix();
     rotate(radians(360 / MobSBData.satellitesNum * i + MobSBData.currentRotation));
-    translate(10 * sin(MobSBData.currentRotation * 4.99) * MobSBData.scale, 0);
+    translate(10 * sin(radians(MobSBData.currentRotation * 2.99)) * MobSBData.scale, 0);
     shape(MobSBData.inShape);
     popMatrix();
   }

@@ -2,7 +2,7 @@ class Background {
   String name;
   JSONObject data;
   
-  HashMap<String, PImage> images = new HashMap<String, PImage>();
+  HashMap<String, PShape> images = new HashMap<String, PShape>();
   
   float xShift = 0;
   // float yShift = 0;
@@ -35,7 +35,7 @@ class Background {
       JSONObject imageData = imagesData.getJSONObject(i);
       String mode = imageData.getString("mode");
       String pictureName = imageData.getString("picture");
-      PImage picture = images.get(pictureName);
+      PShape picture = images.get(pictureName);
       float pictureW = imageData.getFloat("width") * unit;
       float pictureH = imageData.getFloat("height") * unit;
       float startX = check(imageData.getFloat("startx") * unit, width);
@@ -56,7 +56,7 @@ class Background {
     }
   }
   
-  void drawImageRepeat(JSONObject imageData, PImage picture,
+  void drawImageRepeat(JSONObject imageData, PShape picture,
     float w, float h, float startX, float startY) {
     float x = startX;
     float y = startY;
@@ -72,7 +72,7 @@ class Background {
     }
   }
   
-  void drawImageOnce(JSONObject imageData, PImage picture,
+  void drawImageOnce(JSONObject imageData, PShape picture,
     float w, float h, float startX, float startY) {
     float velocity = imageData.getFloat("velocity") * unit;
     float x = startX + xShift * velocity;
@@ -80,19 +80,30 @@ class Background {
     drawImage(picture, x, y, w, h);
   }
   
-  void drawImageInterval(JSONObject imageData, PImage picture,
+  void drawImageInterval(JSONObject imageData, PShape picture,
     float w, float h, float startX, float startY) {
-    float x = startX;
+    float velocity = imageData.getFloat("velocity") * unit;
+    float interval = imageData.getFloat("interval") * unit;
+    float x = startX + xShift * velocity;
     float y = startY;
+    int count = imageData.getInt("count");
+    for(int i = 0; i < count; i++) {
+      drawImage(picture, x, y, w, h);
+      x += interval;
+    }
   }
   
-  void drawImage(PImage picture, float x, float y, float w, float h) {
+  void drawImage(PShape picture, float x, float y, float w, float h) {
     if(x > width || x + w < 0 || y > height || y + h < 0) {
       return;
     }
-    image(picture, x , y , w , h);
+    shape(picture, x , y , w , h);
     
     debugPoint(x, y);
+  }
+
+  void update() {
+    xShift--;
   }
   
   void update(char direction) {
@@ -101,6 +112,14 @@ class Background {
     } else if(direction == 'R') {
       xShift--;
     }
+  }
+
+  void update(float xShift) {
+    this.xShift += xShift;
+  }
+
+  void init() {
+    xShift = 0;
   }
   
   float check(float original, float max) {

@@ -58,6 +58,23 @@
         "type": "toggle",
         "valueType": "bool",
         "default": false
+      },
+      {
+        "title": "Frame Rate",
+        "tip": "Adjust the frame rate of the game.",
+        "type": "dropdown",
+        "valueType": "int",
+        "default": 0,
+        "options": [
+          {
+            "name": "30",
+            "value": 30
+          },
+          {
+            "name": "60",
+            "value": 60
+          }
+        ]
       }
     ]
   }

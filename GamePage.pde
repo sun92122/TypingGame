@@ -332,6 +332,14 @@ class PlayingPage implements Page {
   
   void update() {
     character.update();
+    if(state == ENTERING) {
+      background.update();
+      countDown -= 1 / frameRate;
+      if(countDown <= 0) {
+        state = PLAYING;
+        character.update(0);
+      }
+    }
     if(state == PLAYING) {
       timer = max(0, timer - round(1000 / frameRate));
       for(int i = 0; i < mobs.size(); i++) {
@@ -357,6 +365,7 @@ class PlayingPage implements Page {
       isStart = true;
       // level.start();
       character.update(1);
+      background.init();
     }
     if(state != PAUSE) {
       update();
@@ -525,11 +534,6 @@ class PlayingPage implements Page {
     
     character.display(
       constrain(300 * (1.2 - countDown / 2.5) + 60, 0, 300), height - 150);
-    countDown -= 1 / frameRate;
-    if(countDown <= 0) {
-      state = PLAYING;
-      character.update(0);
-    }
   }
   
   void drawPlaying() {
