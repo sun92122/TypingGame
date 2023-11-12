@@ -6,7 +6,7 @@ class Character {
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
   
-  int state = 0; // 0 = idle, 1 = moving, 2 = attacking, 3 = dead, 4 = typing
+  int state = 1; // 0 = idle, 1 = moving, 2 = attacking, 3 = dead, 4 = typing
   String[] stateNames = {"idle", "moving", "attacking", "dead", "typing"};
   int stateChangeTime = 0;
   int currentImageIndex = 0;
