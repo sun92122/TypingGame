@@ -1,6 +1,7 @@
 interface Page {
   void draw();
   void keyPressed();
+  void keyTyped();
   void keyReleased();
   void mouseClicked();
   void mouseDragged();
@@ -54,7 +55,7 @@ class MenuPage implements Page {
       }
       mainMenuButton[i].display(currentButton == i);
     }
-
+    
     if(isDebugMode) {
       fill(#FF0000);
       textSize(10);
@@ -94,6 +95,8 @@ class MenuPage implements Page {
       background.update('R');
     }
   }
+  
+  void keyTyped() {}
   
   void keyReleased() {}
   
@@ -159,6 +162,8 @@ class PlayPage implements Page {
   
   void keyPressed() {}
   
+  void keyTyped() {}
+  
   void keyReleased() {}
   
   void mouseClicked() {}
@@ -223,6 +228,8 @@ class UpgradePage implements Page {
   }
   
   void keyPressed() {}
+  
+  void keyTyped() {}
   
   void keyReleased() {}
   
@@ -292,6 +299,8 @@ class SettingPage implements Page {
     }
   }
   
+  void keyTyped() {}
+  
   void keyReleased() {}
   
   void mouseClicked() {
@@ -338,6 +347,7 @@ class PlayingPage implements Page {
   int score = 0;
   int fever = 100;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
+  String inputText = "";
   
   // player info
   int hp = 100;
@@ -480,7 +490,7 @@ class PlayingPage implements Page {
     
     game.menuButton.display();
   }
-    
+  
   void drawPause() {}
   
   void drawEnter() {
@@ -496,6 +506,13 @@ class PlayingPage implements Page {
   
   void drawPlaying() {
     character.display(300, height - 150);
+
+    // input text
+    fill(0);
+    textSize(50);
+    textAlign(CENTER, CENTER);
+    textFont(game.fonts.get("NotoSansTC"));
+    text(inputText, 200, 300);
   }
   
   void drawEnding() {
@@ -507,6 +524,25 @@ class PlayingPage implements Page {
   }
   
   void keyPressed() {}
+  
+  void keyTyped() {
+    if(state != PLAYING) {
+      return;
+    }
+    if(key == CODED) {
+      return;
+    }
+    
+    if(key == BACKSPACE) {
+      if(inputText.length() > 0) {
+        inputText = inputText.substring(0, inputText.length() - 1);
+      }
+    } else if(key == ENTER || key == RETURN || key == ' ') {
+      inputText = "";
+    } else {
+      inputText += key;
+    }
+  }
   
   void keyReleased() {
     if(isDebugMode) {

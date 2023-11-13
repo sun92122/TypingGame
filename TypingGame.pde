@@ -1,5 +1,3 @@
-String inputText = "";
-
 Player player;
 Game game;
 
@@ -54,19 +52,7 @@ void keyPressed() {
 }
 
 void keyTyped() {
-  if(key == CODED) {
-    return;
-  }
-  
-  if(key == BACKSPACE) {
-    if(inputText.length() > 0) {
-      inputText = inputText.substring(0, inputText.length() - 1);
-    }
-  } else if(key == ENTER || key == RETURN) {
-    inputText = "";
-  } else {
-    inputText += key;
-  }
+  game.keyTyped();
 }
 
 void mouseClicked() {

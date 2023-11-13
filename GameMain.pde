@@ -166,6 +166,26 @@ class Game {
         break;
     }
   }
+
+  void keyTyped() {
+    switch(currentScene) {
+      case 0:
+        menuPage.keyTyped();
+        break;
+      case 1:
+        playPage.keyTyped();
+        break;
+      case 2:
+        upgradePage.keyTyped();
+        break;
+      case 3:
+        settingPage.keyTyped();
+        break;
+      case 4:
+        playingPage.keyTyped();
+        break;
+    }
+  }
   
   void keyReleased() {
     switch(currentScene) {
