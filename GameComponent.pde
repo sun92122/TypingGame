@@ -707,25 +707,45 @@ class FeverBar {
     strokeWeight(2);
     rect(0, 15, 500, 30);
     
-    colorMode(HSB, maxColorHue, 255, 255);
-    
     if(fever == 100) {
+      textFont(game.fonts.get("Filepile"));
+      textAlign(CENTER, CENTER);
+      if(feverTextSize > 35) {
+        feverTextSize = 35;
+        feverTextDirection = -1;
+      } else if(feverTextSize < 30) {
+        feverTextSize = 30;
+        feverTextDirection = 1;
+      }
+      feverTextSize += 0.3 * feverTextDirection;
+      textSize(feverTextSize);
+      
+      fill(#FFFFFF);
+      noStroke();
+      rectMode(CORNERS);
+      float halfTextWidth = textWidth("FEVER!!") / 2;
+      float halfTextAscent = textAscent() / 2;
+      rect( -1 * halfTextWidth, -10 - halfTextAscent, halfTextWidth, min( -10 + halfTextAscent, 0));
+      
+      colorMode(HSB, maxColorHue, 255, 255);
       // 更新色帶的水平位置
       hueOffset -= 5;  // 使色帶向左移動
       if(hueOffset < 0) {
         hueOffset = maxColorHue;  // 超過最大色調值時重置偏移量
       }
       
-      for(int j = 0; j <= 30; j++) {
-        for(int i = 0; i <= 500; i++) {
-          // 計算當前點的色調
-          float currentHue = (i + hueOffset) % maxColorHue;
-          float adjustedHue = adjustHue(currentHue);
-          stroke(adjustedHue, saturation, 255);  // 使用更新的亮度值
-          strokeWeight(1);
-          point(i - 250,  j);
-        }
+      rectMode(CENTER);
+      for(int i = 0; i <= 500; i++) {
+        // 計算當前點的色調
+        stroke(adjustHue((i + hueOffset) % maxColorHue), saturation, 255);  // 使用更新的亮度值
+        strokeWeight(0.5);
+        noFill();
+        rect(i - 250, 15, 1, 30);
       }
+      // fever text
+      fill(0);
+      text("FEVER!!", 0, -10);
+      
       // 更新飽和度
       saturation += 3 * feverSatDirection;
       if(saturation > 200) {  // 調整飽和度上限
@@ -736,32 +756,16 @@ class FeverBar {
         feverSatDirection = 1;
       }
     } else {
+      colorMode(HSB, maxColorHue, 255, 255);
       for(float i = 0; i <= 494 * fever / 100; i += 1) {
-        for(int j = 0; j <= 24; j += 1) {
-          stroke(i / 494 * 400, 200, 255);
-          strokeWeight(1);
-          point(i - 246.5, j + 3.5);
-        }
+        stroke(i / 494 * maxColorHue, 200, 255);
+        strokeWeight(0.5);
+        noFill();
+        rect(i - 246, 15.5, 1, 24);
       }
     }
     
-    //fever text
     colorMode(RGB, 255, 255, 255);
-    if(fever == 100) {
-      textFont(game.fonts.get("Filepile"));
-      textAlign(CENTER);
-      if(feverTextSize > 35) {
-        feverTextSize = 35;
-        feverTextDirection = -1;
-      } else if(feverTextSize < 30) {
-        feverTextSize = 30;
-        feverTextDirection = 1;
-      }
-      feverTextSize += 0.3 * feverTextDirection;
-      textSize(feverTextSize);
-      fill(0);
-      text("FEVER!!", 0, -10);
-    }
     
     popMatrix();
   }
