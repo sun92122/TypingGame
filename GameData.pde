@@ -10,7 +10,9 @@ class Vocab {
   
   Table[] vocabs = new Table[6];
   
-  Vocab() {};
+  Vocab() {
+    loadVocab();
+  };
   
   void loadVocab() {
     for(int i = 0; i < vocabsPath.length; i++) {
@@ -18,13 +20,18 @@ class Vocab {
     }
   }
   
-  String getVocab(int level, int index) {
-    return vocabs[level - 1].getString(index, 0);
+  String getVocab(int vocabIndex, int index) {
+    return vocabs[vocabIndex].getString(index, 0);
   }
   
-  String getRandVocab(int level) {
-    int index = (int) random(vocabs[level - 1].getRowCount());
-    return vocabs[level - 1].getString(index, 0);
+  String getRandVocab(int vocabIndex) {
+    int index = (int) random(vocabs[vocabIndex].getRowCount());
+    String vocab = vocabs[vocabIndex].getString(index, 0);
+    while(vocab.indexOf(" ") != -1) {
+      index = (int) random(vocabs[vocabIndex].getRowCount());
+      vocab = vocabs[vocabIndex].getString(index, 0);
+    }
+    return vocab;
   }
 }
 

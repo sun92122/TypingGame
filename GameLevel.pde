@@ -9,6 +9,8 @@ class Level {
   
   int timeLimit;
   String map;
+  int[] vocabs = new int[6];
+  int weightSum = 0;
   Table enemies = new Table();
   
   Level(int levelNumber, JSONObject data) {
@@ -29,11 +31,27 @@ class Level {
 
     this.timeLimit = data.getInt("timelimit");
     this.map = data.getString("background");
+
+    getVocabWeights();
     
     this.enemies.addColumn("time");
     this.enemies.addColumn("mob");
     this.enemies.addColumn("moblevel");
     getEnemiesTable();
+  }
+
+  void getVocabWeights() {
+    JSONObject vocabs = data.getJSONObject("vocab");
+    int weightSum = 0;
+    for(int i = 0; i < 6; i++) {
+      try {
+        weightSum += vocabs.getInt(str(i + 1));
+        this.vocabs[i] = weightSum;
+      } catch(Exception e) {
+        this.vocabs[i] = weightSum;
+      }
+    }
+    this.weightSum = weightSum;
   }
   
   void getEnemiesTable() {

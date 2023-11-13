@@ -111,6 +111,12 @@ class Game {
       fonts.put(fontNameList[i], createFont(fontPathList[i], 32));
     }
     textFont(fonts.get("PressStart2P"));
+
+    // setup vocab text setting
+    for(int i = 0; i < 3; i++) {
+      VocabTextSetting.positionX[i] *= unit;
+      VocabTextSetting.positionY[i] *= unit;
+    }
     
     logPrint("Game initialized");
   }

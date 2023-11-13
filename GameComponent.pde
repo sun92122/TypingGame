@@ -783,3 +783,91 @@ class FeverBar {
     }
   }
 }
+
+class VocabText {
+  float x;
+  float y;
+  float w;
+  float h;
+  char[] vocab;
+  VocabTextSetting setting = new VocabTextSetting();
+  TextBox textBox;
+  
+  VocabText(int index, String vocab) {
+    this.x = setting.positionX[index];
+    this.y = setting.positionY[index];
+    this.vocab = vocab.toCharArray();
+    textFont(game.fonts.get(setting.font));
+    textSize(setting.textSize);
+    w = textWidth(vocab);
+    h = setting.textSize;
+    textBox = new TextBox();
+  }
+  
+  void display(String input) {
+    displayBox();
+    pushMatrix();
+    translate(x - w / 2, y);
+    boolean lastCorrect = true;
+    for(int i = 0; i < vocab.length; i++) {
+      if(lastCorrect && i < input.length() && vocab[i] == input.charAt(i)) {
+        fill(setting.colors[1]);
+      } else if(lastCorrect && i < input.length()) {
+        fill(setting.colors[2]);
+        lastCorrect = false;
+      } else {
+        fill(setting.colors[0]);
+      }
+      textFont(game.fonts.get(setting.font));
+      textSize(setting.textSize);
+      textAlign(LEFT, BOTTOM);
+      text(vocab[i], 0, 0);
+      translate(textWidth(vocab[i]), 0);
+    }
+    popMatrix();
+  }
+  
+  void displayBox() {
+    pushMatrix();
+    translate(x, y);
+    rectMode(CORNERS);
+    fill(#FFFFFF);
+    stroke(0);
+    strokeWeight(2);
+    rect( -80, -45, 80, 5);
+    popMatrix();
+  }
+}
+
+static class VocabTextSetting {
+  static color[] colors = {#000000, #00FF00, #FF0000};
+  static int textSize = 40;
+  static String font = "Cubic11";
+  static float[] positionX = {640, 640, 640};
+  static float[] positionY = {130, 190, 250};
+}
+
+class TextBox {
+  float x;
+  float y;
+  float w;
+  float h;
+
+  TextBox(float x, float y, float w, float h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+  }
+
+  void display() {
+    pushMatrix();
+    translate(x, y);
+    rectMode(CORNER);
+    fill(#FFFFFF);
+    stroke(#000000);
+    strokeWeight(2);
+    rect(0, 0, w, h);
+    popMatrix();
+  }
+}

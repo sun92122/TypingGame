@@ -42,6 +42,7 @@ void draw() {
     textFont(game.fonts.get("NotoSansTC"));
     textAlign(LEFT, TOP);
     text("FPS: " + nf(frameRate, 2, 2), 10, 20);
+    text("Mouse: " + mouseX + ", " + mouseY, 10, 40);
     textAlign(CENTER, CENTER);
     text("Debug Mode", width / 2, 20);
   }
@@ -53,6 +54,10 @@ void keyPressed() {
 
 void keyTyped() {
   game.keyTyped();
+}
+
+void keyReleased() {
+  game.keyReleased();
 }
 
 void mouseClicked() {

@@ -5,6 +5,9 @@
     "timelimit": 9999000,
     "background": "volcanic",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -28,6 +31,10 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 50,
+      "2": 50
+    },
     "enemies": [
       {
         "mob": "Bird",
@@ -44,6 +51,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -60,6 +70,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -76,6 +89,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -92,6 +108,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -108,6 +127,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -124,6 +146,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -140,6 +165,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -156,6 +184,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -172,6 +203,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -188,6 +222,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -204,6 +241,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",
@@ -220,6 +260,9 @@
     "timelimit": 9999000,
     "background": "",
     "music": "",
+    "vocab": {
+      "1": 100
+    },
     "enemies": [
       {
         "mob": "StarBurst",

@@ -348,6 +348,8 @@ class PlayingPage implements Page {
   int fever = 100;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
   String inputText = "";
+  String[] vocabs = new String[3];
+  VocabText[] vocabText = new VocabText[3];
   
   // player info
   int hp = 100;
@@ -368,6 +370,10 @@ class PlayingPage implements Page {
     this.background = game.backgrounds.get(level.map);
     
     this.timer = level.timeLimit;
+    for(int i = 0; i < 3; i++) {
+      vocabs[i] = getVocab();
+      vocabText[i] = new VocabText(i, vocabs[i]);
+    }
   }
   
   void update() {
@@ -459,7 +465,7 @@ class PlayingPage implements Page {
     } else{
       rect(102.5, 28, hp, 24.5);
     }
-    // testing the change in hp & fever
+    // testing the change in hp & fever // DEBUG
     if(mousePressed && (mouseButton == LEFT)) {
       hp -= 1;
       fever -= 1;
@@ -497,7 +503,7 @@ class PlayingPage implements Page {
     fill(0);
     textSize(250);
     textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
+    textFont(game.fonts.get("Cubic11"));
     text("0" + nfc(countDown, 2), width / 2, height / 2);
     
     character.display(
@@ -506,13 +512,18 @@ class PlayingPage implements Page {
   
   void drawPlaying() {
     character.display(300, height - 150);
-
+    
     // input text
     fill(0);
     textSize(50);
     textAlign(CENTER, CENTER);
     textFont(game.fonts.get("NotoSansTC"));
     text(inputText, 200, 300);
+
+    // vocab text
+    for(int i = 0; i < 3; i++) {
+      vocabText[i].display(inputText);
+    }
   }
   
   void drawEnding() {
@@ -523,13 +534,22 @@ class PlayingPage implements Page {
     text("Ending", width / 2, height / 2);
   }
   
+  String getVocab() {
+    int index = (int)random(0, level.weightSum);
+    int vocabIndex = 0;
+    while(index >= level.vocabs[vocabIndex]) {
+      vocabIndex++;
+    }
+    return game.vocab.getRandVocab(vocabIndex);
+  }
+  
   void keyPressed() {}
   
   void keyTyped() {
     if(state != PLAYING) {
       return;
     }
-    if(key == CODED) {
+    if(key == CODED || key == TAB) {
       return;
     }
     
@@ -540,14 +560,21 @@ class PlayingPage implements Page {
     } else if(key == ENTER || key == RETURN || key == ' ') {
       inputText = "";
     } else {
-      inputText += key;
+      if('a' <= key && key <= 'z') {
+        inputText += key;
+      } else if('A' <= key && key <= 'Z') {
+        inputText += key;
+      }
     }
   }
   
   void keyReleased() {
     if(isDebugMode) {
-      if(key == ' ') {
-        state = ENDING;
+      if(key == TAB) {
+        for(int i = 0; i < 3; i++) {
+          vocabs[i] = getVocab();
+          vocabText[i] = new VocabText(i, vocabs[i]);
+        }
       }
     }
   }
