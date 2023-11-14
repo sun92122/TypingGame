@@ -13,15 +13,22 @@
         "mob": "StarBurst",
         "moblevel": 1,
         "time": 9998000,
-        "interval": 60000,
-        "count": 5
+        "interval": 30000,
+        "count": 10
       },
       {
         "mob": "Bird",
         "moblevel": 1,
         "time": 9997000,
-        "interval": 60000,
-        "count": 5
+        "interval": 30000,
+        "count": 10
+      },
+      {
+        "mob": "RA",
+        "moblevel": 1,
+        "time": 9996000,
+        "interval": 30000,
+        "count": 10
       }
     ]
   },

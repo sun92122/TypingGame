@@ -64,5 +64,77 @@
         }
       ]
     }
+  },
+  {
+    "name": "RA",
+    "HP": 100,
+    "attack": {
+      "damage": 10,
+      "distance": 100,
+      "duration": 5000
+    },
+    "velocity": 0.4,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 1000,
+          "path": "images/mobs/RickAstley/RA1.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA2.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA3.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA2.svg"
+        }
+      ],
+      "moving": [
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA1.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA2.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA3.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA2.svg"
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA1.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA2.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA3.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/mobs/RickAstley/RA2.svg"
+        }
+      ],
+      "dead": [
+        {
+          "duration": 100000,
+          "path": "images/mobs/RickAstley/RA1.svg"
+        }
+      ]
+    }
   }
 ]
