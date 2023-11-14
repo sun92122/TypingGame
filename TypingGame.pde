@@ -24,7 +24,7 @@ void setup() {
 }
 
 void draw() {
-  if(false) {
+  if(true) {
     try {
       game.update();
       game.draw();

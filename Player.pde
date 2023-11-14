@@ -14,6 +14,7 @@ class Player {
   JSONObject settings;
 
   String character = "Potato";
+  String pet = "White Dog";
   
   Player() {
     this.name = "";

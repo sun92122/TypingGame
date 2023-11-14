@@ -1,6 +1,7 @@
 class Pet {
   String name;
   JSONObject data;
+  float scale = 1;
   
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
@@ -10,8 +11,8 @@ class Pet {
   int stateChangeTime = 0;
   int currentImageIndex = 0;
   
-  float x;
-  float y;
+  float x = 0;
+  float y = 630;
   float attackDamage;
   float attackDistance;
   float attackDuration;
@@ -21,6 +22,7 @@ class Pet {
   Pet(JSONObject data) {
     this.data = data;
     this.name = data.getString("name");
+    this.scale = data.getFloat("scale");
     
     loadPetData();
   }
@@ -32,6 +34,8 @@ class Pet {
   }
   
   void loadPetData_() {}
+  
+  void display() {}
   
   void setLocation(float x, float y) {
     this.x = x;
@@ -47,6 +51,15 @@ class Pet {
   void update() {
     update_();
   }
+  
+  void update(int state) {
+    this.state = state;
+    
+    this.stateChangeTime = 0;
+    this.currentImageIndex = 0;
+    
+    update_();
+  }
 }
 
 class PetSvg extends Pet {
@@ -54,7 +67,7 @@ class PetSvg extends Pet {
     super(data);
   }
   
-  void loadMobData_() {
+  void loadPetData_() {
     JSONObject pictures = data.getJSONObject("pictures");
     for(String stateName : stateNames) {
       JSONArray stateData = pictures.getJSONArray(stateName);
@@ -73,8 +86,10 @@ class PetSvg extends Pet {
     ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
     PShape currentShape = currentShapes.get(currentImageIndex);
     shapeMode(CORNER);
-    shape(currentShape, x, y - currentShape.getHeight(),
-      currentShape.getWidth() * unit, currentShape.getHeight() * unit);
+    float h = currentShape.getHeight() * scale;
+    float w = currentShape.getWidth() * scale;
+    shapeMode(CORNER);
+    shape(currentShape, x - w, y - h, w * unit, h * unit);
     
     debugPoint(x, y);
   }
@@ -88,5 +103,4 @@ class PetSvg extends Pet {
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
   }
-  
 }

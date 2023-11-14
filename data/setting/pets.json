@@ -1,6 +1,7 @@
 [
   {
     "name": "White Dog",
+    "scale": 0.08,
     "pictures": {
       "idle": [
         {
@@ -48,6 +49,7 @@
   },
   {
     "name": "Rat",
+    "scale": 0.08,
     "pictures": {
       "idle": [
         {

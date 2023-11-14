@@ -338,6 +338,7 @@ class PlayingPage implements Page {
   
   Level level;
   Character character;
+  Pet pet;
   Background background;
   FeverBar feverBar = new FeverBar();
   
@@ -367,6 +368,7 @@ class PlayingPage implements Page {
   PlayingPage(Level level) {
     this.level = level;
     this.character = game.characters.get(player.character);
+    this.pet = game.pets.get(player.pet);
     this.background = game.backgrounds.get(level.map);
     
     this.timer = level.timeLimit;
@@ -378,12 +380,14 @@ class PlayingPage implements Page {
   
   void update() {
     character.update();
+    pet.update();
     if(state == ENTERING) {
       background.update();
       countDown -= 1 / frameRate;
       if(countDown <= 0) {
         state = PLAYING;
         character.update(0);
+        pet.update(0);
       }
     }
     if(state == PLAYING) {
@@ -512,11 +516,15 @@ class PlayingPage implements Page {
     text("0" + nfc(countDown, 2), width / 2, height / 2);
     
     character.display(
-      constrain(300 * (1.2 - countDown / 2.5) + 60, 0, 300), height - 150);
+      constrain(400 * (1.2 - countDown / 2.5) + 60, 0, 400), height - 150);
+    pet.setLocation(
+      constrain(400 * (1.2 - countDown / 2.5) - 140, 0, 200), height - 150);
+    pet.display();
   }
   
   void drawPlaying() {
-    character.display(300, height - 150);
+    character.display(400, height - 150);
+    pet.display();
     
     // input text
     fill(0);

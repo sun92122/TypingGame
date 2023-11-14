@@ -9,6 +9,7 @@ class Game {
   LevelData levelData;
   CharacterData characterData;
   MobData mobData;
+  PetData petData;
   BackgroundData backgroundData;
   
   // view
@@ -36,6 +37,9 @@ class Game {
   
   // mob
   HashMap<String, Mob> mobs = new HashMap<String, Mob>();
+  
+  // pet
+  HashMap<String, Pet> pets = new HashMap<String, Pet>();
   
   // background
   HashMap<String, Background> backgrounds = new HashMap<String, Background>();
@@ -66,6 +70,7 @@ class Game {
     levelData = new LevelData();
     characterData = new CharacterData();
     mobData = new MobData();
+    petData = new PetData();
     backgroundData = new BackgroundData();
     
     load.loadSettings(settings);
@@ -93,6 +98,13 @@ class Game {
     for(int i = 2; i < mobData.mobCount; i++) {
       mobTemp = new MobSvg(mobData.mobs.getJSONObject(i));
       mobs.put(mobTemp.name, mobTemp);
+    }
+    
+    // load pets
+    Pet petTemp;
+    for(int i = 0; i < petData.petCount; i++) {
+      petTemp = new PetSvg(petData.pets.getJSONObject(i));
+      pets.put(petTemp.name, petTemp);
     }
     
     // load backgrounds
