@@ -117,6 +117,27 @@ class MobData {
   }
 }
 
+class PetData {
+  String petPath = "data/setting/pets.json";
+  
+  JSONArray pets;
+  int petCount;
+  
+  PetData() {
+    loadPetData();
+  }
+  
+  void loadPetData() {
+    try {
+      pets = loadJSONArray(petPath);
+      petCount = pets.size();
+    } catch(Exception e) {
+      println("Error, pets file not found");
+    }
+  }
+
+}
+
 class BackgroundData {
   String backgroundPath = "data/setting/backgrounds.json";
   
