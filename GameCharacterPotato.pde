@@ -1,4 +1,4 @@
-class CharacterPotato extends CharacterCode {
+class CharacterPotato extends Character {
   CharacterPotato(JSONObject data) {
     super(data);
     shapes = setupCharacterPotatoShape();

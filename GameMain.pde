@@ -91,7 +91,7 @@ class Game {
     mobTemp = new MobCodeBird(mobData.mobs.getJSONObject(1));
     mobs.put(mobTemp.name, mobTemp);
     for(int i = 2; i < mobData.mobCount; i++) {
-      mobTemp = new Mob(mobData.mobs.getJSONObject(i));
+      mobTemp = new MobSvg(mobData.mobs.getJSONObject(i));
       mobs.put(mobTemp.name, mobTemp);
     }
     
@@ -111,7 +111,7 @@ class Game {
       fonts.put(fontNameList[i], createFont(fontPathList[i], 32));
     }
     textFont(fonts.get("PressStart2P"));
-
+    
     // setup vocab text setting
     for(int i = 0; i < 3; i++) {
       VocabTextSetting.positionX[i] *= unit;
@@ -172,7 +172,7 @@ class Game {
         break;
     }
   }
-
+  
   void keyTyped() {
     switch(currentScene) {
       case 0:

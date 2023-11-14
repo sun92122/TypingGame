@@ -2,7 +2,6 @@ class Character {
   String name;
   JSONObject data;
   
-  HashMap<String, PImage[]> images = new HashMap<String, PImage[]>();
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
   
@@ -10,8 +9,6 @@ class Character {
   String[] stateNames = {"idle", "moving", "attacking", "dead", "typing"};
   int stateChangeTime = 0;
   int currentImageIndex = 0;
-  
-  Character() {}
   
   Character(JSONObject data) {
     this.data = data;
@@ -24,24 +21,19 @@ class Character {
     JSONObject pictures = data.getJSONObject("pictures");
     for(String stateName : stateNames) {
       JSONArray stateData = pictures.getJSONArray(stateName);
-      PImage[] stateImages = new PImage[stateData.size()];
       IntList stateAnimations = new IntList();
       for(int i = 0; i < stateData.size(); i++) {
-        stateImages[i] = loadImage(stateData.getJSONObject(i).getString("path"));
         stateAnimations.append(stateData.getJSONObject(i).getInt("duration"));
       }
-      images.put(stateName, stateImages);
       animations.put(stateName, stateAnimations);
     }
   }
   
   void display(float x, float y) {
-    // display the character, max height 300px, proportional scaling
-    // x, y is the right bottom corner of the character
-    PImage currentImage = images.get(stateNames[state])[currentImageIndex];
-    float imageHeight = min(300, currentImage.height);
-    float imageWidth = currentImage.width * imageHeight / currentImage.height;
-    image(currentImage, x - imageWidth, y - imageHeight, imageWidth, imageHeight);
+    // display the character, x, y is the right bottom corner of the character
+    ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
+    PShape currentShape = currentShapes.get(currentImageIndex);
+    shape(currentShape, x, y);
     
     debugPoint(x, y);
   }
@@ -51,7 +43,7 @@ class Character {
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
     if(millis() > stateChangeTime) {
-      currentImageIndex = (currentImageIndex + 1) % images.get(stateNames[state]).length;
+      currentImageIndex = (currentImageIndex + 1) % shapes.get(stateNames[state]).size();
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
   }
@@ -72,10 +64,8 @@ class Character {
   }
 }
 
-class CharacterCode extends Character {  
-  CharacterCode() {}
-  
-  CharacterCode(JSONObject data) {
+class CharacterSvg extends Character {  
+  CharacterSvg(JSONObject data) {
     super(data);
   }
   
@@ -83,10 +73,13 @@ class CharacterCode extends Character {
     JSONObject pictures = data.getJSONObject("pictures");
     for(String stateName : stateNames) {
       JSONArray stateData = pictures.getJSONArray(stateName);
+      ArrayList<PShape> stateShapes = new ArrayList<PShape>();
       IntList stateAnimations = new IntList();
       for(int i = 0; i < stateData.size(); i++) {
+        stateShapes.add(loadShape(stateData.getJSONObject(i).getString("path")));
         stateAnimations.append(stateData.getJSONObject(i).getInt("duration"));
       }
+      shapes.put(stateName, stateShapes);
       animations.put(stateName, stateAnimations);
     }
   }
