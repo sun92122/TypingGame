@@ -10,26 +10,38 @@
       ],
       "moving": [
         {
-          "duration": 100000,
-          "path": "images/pets/WhiteDog/WhiteDog0.svg"
+          "duration": 300,
+          "path": "images/pets/WhiteDog/WhiteDog_In1.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/WhiteDog/WhiteDog_In2.svg"
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/WhiteDog/WhiteDog_In3.svg"
         }
       ],
       "attacking": [
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog1.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out1.svg"
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog2.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out2.svg"
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog3.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out3.svg"
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog4.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out4.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/WhiteDog/WhiteDog_Out5.svg"
         }
       ]
     }
