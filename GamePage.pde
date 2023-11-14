@@ -397,6 +397,9 @@ class PlayingPage implements Page {
         mob.setLocation(width, height - 150);
         mobs.add(mob);
         level.enemies.removeRow(0);
+        if(level.enemies.getRowCount() == 0) {
+          break;
+        }
       }
       // level.update();
     }
