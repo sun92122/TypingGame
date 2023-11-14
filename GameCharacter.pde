@@ -1,6 +1,7 @@
 class Character {
   String name;
   JSONObject data;
+  float scale = 1;
   
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
@@ -67,6 +68,7 @@ class Character {
 class CharacterSvg extends Character {  
   CharacterSvg(JSONObject data) {
     super(data);
+    this.scale = data.getFloat("scale");
   }
   
   void loadCharacterData() {
@@ -88,7 +90,9 @@ class CharacterSvg extends Character {
     // display the character, x, y is the right bottom corner of the character
     ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
     PShape currentShape = currentShapes.get(currentImageIndex);
-    shape(currentShape, x, y);
+    float h = currentShape.getHeight() * scale * unit;
+    float w = currentShape.getWidth() * scale * unit;
+    shape(currentShape, x - w, y - h, w, h);
     
     debugPoint(x, y);
   }

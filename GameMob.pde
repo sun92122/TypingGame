@@ -1,6 +1,7 @@
 class Mob {
   String name;
   JSONObject data;
+  float scale = 1;
   
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
@@ -25,6 +26,11 @@ class Mob {
   Mob(JSONObject data) {
     this.data = data;
     this.name = data.getString("name");
+    try {
+      this.scale = data.getFloat("scale");
+    } catch(Exception e) {
+      this.scale = 1;
+    }
     
     loadMobData();
   }
@@ -67,6 +73,7 @@ class Mob {
   Mob copyData(Mob mob, int interval) {
     mob.name = name;
     mob.data = data;
+    mob.scale = scale;
     
     mob.hp = hp * interval;
     mob.attackDamage = attackDamage * interval;
@@ -114,8 +121,9 @@ class MobSvg extends Mob {
     ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
     PShape currentShape = currentShapes.get(currentImageIndex);
     shapeMode(CORNER);
-    shape(currentShape, x, y - currentShape.getHeight(),
-      currentShape.getWidth() * unit, currentShape.getHeight() * unit);
+    float h = currentShape.getHeight() * scale * unit;
+    float w = currentShape.getWidth() * scale * unit;
+    shape(currentShape, x, y - h, w, h);
     
     debugPoint(x, y);
   }

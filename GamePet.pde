@@ -86,11 +86,11 @@ class PetSvg extends Pet {
     ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
     PShape currentShape = currentShapes.get(currentImageIndex);
     shapeMode(CORNER);
-    float h = currentShape.getHeight() * scale;
-    float w = currentShape.getWidth() * scale;
+    float h = currentShape.getHeight() * scale * unit;
+    float w = currentShape.getWidth() * scale * unit;
     shapeMode(CORNER);
-    shape(currentShape, x - w, y - h, w * unit, h * unit);
-    
+    shape(currentShape, x - w, y - h, w, h);
+
     debugPoint(x, y);
   }
   
