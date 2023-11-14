@@ -758,7 +758,7 @@ class FeverBar {
     } else {
       colorMode(HSB, maxColorHue, 255, 255);
       for(float i = 0; i <= 494 * fever / 100; i += 1) {
-        stroke(i / 494 * maxColorHue, 200, 255);
+        stroke(map(i / 494 * maxColorHue, 0, 255, 170, 240), 200, 255);
         strokeWeight(0.5);
         noFill();
         rect(i - 246, 15.5, 1, 24);
