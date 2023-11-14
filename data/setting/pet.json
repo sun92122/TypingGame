@@ -1,0 +1,72 @@
+[
+  {
+    "name": "White Dog",
+    "pictures": {
+      "idle": [
+        {
+          "duration": 100000,
+          "path": "images/pets/WhiteDog/WhiteDog0.svg"
+        }
+      ],
+      "moving": [
+        {
+          "duration": 100000,
+          "path": "images/pets/WhiteDog/WhiteDog0.svg"
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 100,
+          "path": "images/pets/WhiteDog/WhiteDog1.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/WhiteDog/WhiteDog2.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/WhiteDog/WhiteDog3.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/WhiteDog/WhiteDog4.svg"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Rat",
+    "pictures": {
+      "idle": [
+        {
+          "duration": 100000,
+          "path": "images/pets/Rat/Rat0.svg"
+        }
+      ],
+      "moving": [
+        {
+          "duration": 100000,
+          "path": "images/pets/Rat/Rat0.svg"
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 100,
+          "path": "images/pets/Rat/Rat1.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Rat/Rat2.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Rat/Rat3.svg"
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Rat/Rat4.svg"
+        }
+      ]
+    }
+  }
+]
