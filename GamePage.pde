@@ -391,14 +391,16 @@ class PlayingPage implements Page {
       for(int i = 0; i < mobs.size(); i++) {
         mobs.get(i).update();
       }
-      while(level.enemies.getRow(0).getInt("time") >= timer) {
-        TableRow row = level.enemies.getRow(0);
-        Mob mob = game.mobs.get(row.getString("mob")).copy(row.getInt("moblevel"));
-        mob.setLocation(width, height - 150);
-        mobs.add(mob);
-        level.enemies.removeRow(0);
-        if(level.enemies.getRowCount() == 0) {
-          break;
+      if(level.enemies.getRowCount() > 0) {
+        while(level.enemies.getRow(0).getInt("time") >= timer) {
+          TableRow row = level.enemies.getRow(0);
+          Mob mob = game.mobs.get(row.getString("mob")).copy(row.getInt("moblevel"));
+          mob.setLocation(width, height - 150);
+          mobs.add(mob);
+          level.enemies.removeRow(0);
+          if(level.enemies.getRowCount() == 0) {
+            break;
+          }
         }
       }
       // level.update();
@@ -522,7 +524,7 @@ class PlayingPage implements Page {
     textAlign(CENTER, CENTER);
     textFont(game.fonts.get("NotoSansTC"));
     text(inputText, 200, 300);
-
+    
     // vocab text
     for(int i = 0; i < 3; i++) {
       vocabText[i].display(inputText);
