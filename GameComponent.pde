@@ -801,11 +801,11 @@ class VocabText {
     textSize(setting.textSize);
     w = textWidth(vocab);
     h = setting.textSize;
-    textBox = new TextBox();
+    textBox = new TextBox(x - 100, y - 45, 200, 50);
   }
   
   void display(String input) {
-    displayBox();
+    textBox.display();
     pushMatrix();
     translate(x - w / 2, y);
     boolean lastCorrect = true;
@@ -824,17 +824,6 @@ class VocabText {
       text(vocab[i], 0, 0);
       translate(textWidth(vocab[i]), 0);
     }
-    popMatrix();
-  }
-  
-  void displayBox() {
-    pushMatrix();
-    translate(x, y);
-    rectMode(CORNERS);
-    fill(#FFFFFF);
-    stroke(0);
-    strokeWeight(2);
-    rect( -80, -45, 80, 5);
     popMatrix();
   }
 }
