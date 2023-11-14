@@ -10,23 +10,16 @@
     },
     "enemies": [
       {
-        "mob": "StarBurst",
+        "mob": "Green",
         "moblevel": 1,
-        "time": 9998000,
+        "time": 9999000,
         "interval": 30000,
         "count": 10
       },
       {
-        "mob": "Bird",
+        "mob": "Fat",
         "moblevel": 1,
-        "time": 9997000,
-        "interval": 30000,
-        "count": 10
-      },
-      {
-        "mob": "RA",
-        "moblevel": 1,
-        "time": 9996000,
+        "time": 9995000,
         "interval": 30000,
         "count": 10
       }

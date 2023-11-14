@@ -360,6 +360,7 @@ class PlayingPage implements Page {
   // status
   boolean isStart = false;
   int state = 1; // 0: pause, 1: entering, 2: playing, 3: ending
+  int preState = 1;
   final int PAUSE = 0;
   final int ENTERING = 1;
   final int PLAYING = 2;
@@ -503,10 +504,27 @@ class PlayingPage implements Page {
     fever = constrain(fever, 0, 100);
     feverBar.display(fever);
     
-    game.menuButton.display();
+    if(state == PAUSE) {
+      fill(#000000, 60);
+      rectMode(CORNER);
+      rect(0, 0, width, height);
+      textSize(50);
+      textAlign(CENTER, CENTER);
+      textFont(game.fonts.get("NotoSansTC"));
+      fill(#FFFFFF);
+      text("Pause", width / 2, height / 2);
+    } else {
+      game.menuButton.display();
+    }
   }
   
-  void drawPause() {}
+  void drawPause() {
+    if(preState == ENTERING) {
+      drawEnter();
+    } else {
+      drawPlaying();
+    }
+  }
   
   void drawEnter() {
     fill(0);
@@ -590,6 +608,9 @@ class PlayingPage implements Page {
         }
       }
     }
+    if(state == PAUSE && key == ENTER) {
+      state = preState;
+    }
   }
   
   void mouseClicked() {}
@@ -598,5 +619,10 @@ class PlayingPage implements Page {
   
   void mousePressed() {}
   
-  void mouseReleased() {}
+  void mouseReleased() {
+    if(game.menuButton.isHover()) {
+      preState = state;
+      state = PAUSE;
+    }
+  }
 }

@@ -74,7 +74,7 @@
       "duration": 5000
     },
     "velocity": 0.4,
-    "scale": 0.5,
+    "scale": 0.1,
     "pictures": {
       "idle": [
         {
@@ -134,6 +134,128 @@
         {
           "duration": 100000,
           "path": "images/mobs/RickAstley/RA1.svg"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Fat",
+    "HP": 100,
+    "attack": {
+      "damage": 10,
+      "distance": 100,
+      "duration": 5000
+    },
+    "velocity": 0.4,
+    "scale": 0.4,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 1000,
+          "path": "images/mobs/fat/fat1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat3.svg"
+        }
+      ],
+      "moving": [
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat3.svg"
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 1000,
+          "path": "images/mobs/fat/fat1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/fat/fat3.svg"
+        }
+      ],
+      "dead": [
+        {
+          "duration": 100000,
+          "path": "images/mobs/fat/fat1.svg"
+        }
+      ]
+    }
+  },
+  {
+    "name": "Green",
+    "HP": 100,
+    "attack": {
+      "damage": 10,
+      "distance": 100,
+      "duration": 5000
+    },
+    "velocity": 0.6,
+    "scale": 0.25,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 1000,
+          "path": "images/mobs/green/green1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green3.svg"
+        }
+      ],
+      "moving": [
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green3.svg"
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 1000,
+          "path": "images/mobs/green/green1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/green/green3.svg"
+        }
+      ],
+      "dead": [
+        {
+          "duration": 100000,
+          "path": "images/mobs/green/green1.svg"
         }
       ]
     }

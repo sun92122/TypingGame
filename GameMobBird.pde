@@ -23,7 +23,7 @@ static class MobBirdData {
   static PShape eye;
   
   static float xShift = 0;
-  static float yShift = -500;
+  static float yShift = -700;
 }
 
 void setupMobBirdData() {

@@ -82,7 +82,7 @@
           "width": 150,
           "height": 80,
           "startx": 750,
-          "starty": 50,
+          "starty": 200,
           "velocity": 0.1,
           "interval": 300,
           "count": 3
@@ -93,7 +93,7 @@
           "width": 150,
           "height": 80,
           "startx": 3000,
-          "starty": 50,
+          "starty": 200,
           "velocity": 0.1,
           "interval": 300,
           "count": 3
