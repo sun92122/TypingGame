@@ -4,6 +4,7 @@ class Mob {
   
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
+  float currentRotation = 0;
   
   int state = 1; // 0 = idle, 1 = moving, 2 = attacking, 3 = dead
   String[] stateNames = {"idle", "moving", "attacking", "dead"};

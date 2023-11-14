@@ -9,7 +9,21 @@ class MobDynamicSB extends MobDynamic {
   }
   
   void display() {
-    displayMobSB(state, x, y);
+    currentRotation = (currentRotation + MobSBData.rotateSpeed / frameRate) % 360;
+    switch(state) {
+      case 0:
+        displayMobSBIdle(x, y, currentRotation);
+        break;
+      case 1:
+        displayMobSBMoving(x, y, currentRotation);
+        break;
+      case 2:
+        displayMobSBAttacking(x, y, currentRotation);
+        break;
+      case 3:
+        displayMobSBDying(x, y, currentRotation);
+        break;
+    }
     
     debugPoint(x, y);
   }
@@ -29,8 +43,8 @@ static class MobSBData {
   static PShape face = new PShape();
   static PShape outShape = new PShape();
   static PShape inShape = new PShape();
-  
-  static float currentRotation = 0;
+
+  static float rotateSpeed = 300;
 }
 
 void setupMobSBData() {
@@ -77,51 +91,33 @@ void setupMobSBData() {
   MobSBData.inShape.scale(MobSBData.scale);
 }
 
-void displayMobSB(int state, float x, float y) {
-  switch(state) {
-    case 0:
-      displayMobSBIdle(x, y);
-      break;
-    case 1:
-      displayMobSBMoving(x, y);
-      break;
-    case 2:
-      displayMobSBAttacking(x, y);
-      break;
-    case 3:
-      displayMobSBDying(x, y);
-      break;
-  }
-}
-
-void displayMobSBIdle(float x, float y) {
-  MobSBData.currentRotation += 300 / frameRate;
+void displayMobSBIdle(float x, float y, float r) {
   pushMatrix();
   translate(x + 170 * MobSBData.scale, y - 250 * MobSBData.scale);
   shape(MobSBData.face);
   for(int i = 0; i < MobSBData.satellitesNum; i++) {
     pushMatrix();
-    rotate(radians(360 / MobSBData.satellitesNum * i - MobSBData.currentRotation));
-    translate(20 * sin(radians(MobSBData.currentRotation * 3)) * MobSBData.scale, 0);
+    rotate(radians(360 / MobSBData.satellitesNum * i - r));
+    translate(20 * sin(radians(r * 3)) * MobSBData.scale, 0);
     shape(MobSBData.outShape);
     popMatrix();
     pushMatrix();
-    rotate(radians(360 / MobSBData.satellitesNum * i + MobSBData.currentRotation));
-    translate(10 * sin(radians(MobSBData.currentRotation * 2.99)) * MobSBData.scale, 0);
+    rotate(radians(360 / MobSBData.satellitesNum * i + r));
+    translate(10 * sin(radians(r * 2.99)) * MobSBData.scale, 0);
     shape(MobSBData.inShape);
     popMatrix();
   }
   popMatrix();
 }
 
-void displayMobSBMoving(float x, float y) {
-  displayMobSBIdle(x, y);
+void displayMobSBMoving(float x, float y, float r) {
+  displayMobSBIdle(x, y, r);
 }
 
-void displayMobSBAttacking(float x, float y) {
-  displayMobSBIdle(x, y);
+void displayMobSBAttacking(float x, float y, float r) {
+  displayMobSBIdle(x, y, r);
 }
 
-void displayMobSBDying(float x, float y) {
-  displayMobSBIdle(x, y);
+void displayMobSBDying(float x, float y, float r) {
+  displayMobSBIdle(x, y, r);
 }
