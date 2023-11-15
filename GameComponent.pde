@@ -723,9 +723,9 @@ class FeverBar {
       fill(#FFFFFF);
       noStroke();
       rectMode(CORNERS);
-      float halfTextWidth = textWidth("FEVER!!") / 2;
-      float halfTextAscent = textAscent() / 2;
-      rect( -1 * halfTextWidth, -10 - halfTextAscent, halfTextWidth, min( -10 + halfTextAscent, 0));
+      float halfW = textWidth("FEVER!!") / 2;
+      float halfH = textAscent() / 2;
+      rect( -1 * halfW, -10 - halfH, halfW, min( -10 + halfH, -1));
       
       colorMode(HSB, maxColorHue, 255, 255);
       // 更新色帶的水平位置
