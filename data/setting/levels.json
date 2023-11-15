@@ -22,6 +22,13 @@
         "time": 9995000,
         "interval": 30000,
         "count": 10
+      },
+      {
+        "mob": "Bear",
+        "moblevel": 1,
+        "time": 9991000,
+        "interval": 30000,
+        "count": 10
       }
     ]
   },
