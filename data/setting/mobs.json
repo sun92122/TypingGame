@@ -344,5 +344,78 @@
         }
       ]
     }
+  },
+  {
+    "name": "Tongue",
+    "HP": 100,
+    "attack": {
+      "damage": 10,
+      "distance": 100,
+      "duration": 5000
+    },
+    "velocity": 0.3,
+    "scale": 0.25,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 1000,
+          "path": "images/mobs/tongue/tongue1.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/tongue/tongue2.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/tongue/tongue3.svg"
+        },
+        {
+          "duration": 250,
+          "path": "images/mobs/tongue/tongue4.svg"
+        }
+      ],
+      "moving": [
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue1.svg"
+        },
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue2.svg"
+        },
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue3.svg"
+        },
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue4.svg"
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue1.svg"
+        },
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue2.svg"
+        },
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue3.svg"
+        },
+        {
+          "duration": 200,
+          "path": "images/mobs/tongue/tongue4.svg"
+        }
+      ],
+      "dead": [
+        {
+          "duration": 100000,
+          "path": "images/mobs/tongue/tongue1.svg"
+        }
+      ]
+    }
   }
 ]

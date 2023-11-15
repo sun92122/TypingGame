@@ -44,7 +44,7 @@
     },
     "enemies": [
       {
-        "mob": "Bird",
+        "mob": "Tongue",
         "moblevel": 1,
         "time": 9998000,
         "interval": 6000,
