@@ -841,14 +841,14 @@ class TextBox {
   float y;
   float w;
   float h;
-
+  
   TextBox(float x, float y, float w, float h) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
   }
-
+  
   void display() {
     pushMatrix();
     translate(x, y);
@@ -858,5 +858,23 @@ class TextBox {
     strokeWeight(2);
     rect(0, 0, w, h);
     popMatrix();
+  }
+}
+
+class PausePage {
+  float x = 0;
+  float y = 0;
+  float w = 1280;
+  float h = 720;
+  
+  void display() {
+    fill(#000000, 60);
+    rectMode(CORNER);
+    rect(0, 0, w, h);
+    textSize(50);
+    textAlign(CENTER, CENTER);
+    textFont(game.fonts.get("NotoSansTC"));
+    fill(#FFFFFF);
+    text("Pause", w / 2, 100);
   }
 }

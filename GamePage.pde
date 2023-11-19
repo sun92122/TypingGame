@@ -340,7 +340,9 @@ class PlayingPage implements Page {
   Character character;
   Pet pet;
   Background background;
+  float backgroundY = 570;
   FeverBar feverBar = new FeverBar();
+  PausePage pausePage = new PausePage();
   
   // game info
   float countDown = 3.5f;
@@ -371,6 +373,9 @@ class PlayingPage implements Page {
     this.character = game.characters.get(player.character);
     this.pet = game.pets.get(player.pet);
     this.background = game.backgrounds.get(level.map);
+    this.backgroundY = height - 200;
+    pausePage.w = width;
+    pausePage.h = height;
     
     this.timer = level.timeLimit;
     for(int i = 0; i < 3; i++) {
@@ -400,7 +405,7 @@ class PlayingPage implements Page {
         while(level.enemies.getRow(0).getInt("time") >= timer) {
           TableRow row = level.enemies.getRow(0);
           Mob mob = game.mobs.get(row.getString("mob")).copy(row.getInt("moblevel"));
-          mob.setLocation(width, height - 150);
+          mob.setLocation(width, backgroundY);
           mobs.add(mob);
           level.enemies.removeRow(0);
           if(level.enemies.getRowCount() == 0) {
@@ -505,14 +510,7 @@ class PlayingPage implements Page {
     feverBar.display(fever);
     
     if(state == PAUSE) {
-      fill(#000000, 60);
-      rectMode(CORNER);
-      rect(0, 0, width, height);
-      textSize(50);
-      textAlign(CENTER, CENTER);
-      textFont(game.fonts.get("NotoSansTC"));
-      fill(#FFFFFF);
-      text("Pause", width / 2, height / 2);
+      pausePage.display();
     } else {
       game.menuButton.display();
     }
@@ -534,14 +532,14 @@ class PlayingPage implements Page {
     text("0" + nfc(countDown, 2), width / 2, height / 2);
     
     character.display(
-      constrain(400 * (1.2 - countDown / 2.5) + 60, 0, 400), height - 150);
+      constrain(400 * (1.2 - countDown / 2.5) + 60, 0, 400), backgroundY);
     pet.setLocation(
-      constrain(400 * (1.2 - countDown / 2.5) - 140, 0, 200), height - 150);
+      constrain(400 * (1.2 - countDown / 2.5) - 140, 0, 200), backgroundY);
     pet.display();
   }
   
   void drawPlaying() {
-    character.display(400, height - 150);
+    character.display(400, backgroundY);
     pet.display();
     
     // input text
