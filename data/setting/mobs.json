@@ -79,61 +79,87 @@
       "idle": [
         {
           "duration": 1000,
-          "path": "images/mobs/RickAstley/RA1.svg"
+          "path": "images/mobs/RickAstley/RA1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA2.svg"
+          "path": "images/mobs/RickAstley/RA2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA3.svg"
+          "path": "images/mobs/RickAstley/RA3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA2.svg"
+          "path": "images/mobs/RickAstley/RA2.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA1.svg"
+          "path": "images/mobs/RickAstley/RA1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA2.svg"
+          "path": "images/mobs/RickAstley/RA2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA3.svg"
+          "path": "images/mobs/RickAstley/RA3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA2.svg"
+          "path": "images/mobs/RickAstley/RA2.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA1.svg"
+          "path": "images/mobs/RickAstley/RA1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA2.svg"
+          "path": "images/mobs/RickAstley/RA2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA3.svg"
+          "path": "images/mobs/RickAstley/RA3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/mobs/RickAstley/RA2.svg"
+          "path": "images/mobs/RickAstley/RA2.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "dead": [
         {
           "duration": 100000,
-          "path": "images/mobs/RickAstley/RA1.svg"
+          "path": "images/mobs/RickAstley/RA1.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }
@@ -152,49 +178,69 @@
       "idle": [
         {
           "duration": 1000,
-          "path": "images/mobs/fat/fat1.svg"
+          "path": "images/mobs/fat/fat1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat2.svg"
+          "path": "images/mobs/fat/fat2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat3.svg"
+          "path": "images/mobs/fat/fat3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat1.svg"
+          "path": "images/mobs/fat/fat1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat2.svg"
+          "path": "images/mobs/fat/fat2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat3.svg"
+          "path": "images/mobs/fat/fat3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 1000,
-          "path": "images/mobs/fat/fat1.svg"
+          "path": "images/mobs/fat/fat1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat2.svg"
+          "path": "images/mobs/fat/fat2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/fat/fat3.svg"
+          "path": "images/mobs/fat/fat3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "dead": [
         {
           "duration": 100000,
-          "path": "images/mobs/fat/fat1.svg"
+          "path": "images/mobs/fat/fat1.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }
@@ -213,49 +259,69 @@
       "idle": [
         {
           "duration": 1000,
-          "path": "images/mobs/green/green1.svg"
+          "path": "images/mobs/green/green1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/green/green2.svg"
+          "path": "images/mobs/green/green2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/green/green3.svg"
+          "path": "images/mobs/green/green3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 250,
-          "path": "images/mobs/green/green1.svg"
+          "path": "images/mobs/green/green1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/green/green2.svg"
+          "path": "images/mobs/green/green2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/green/green3.svg"
+          "path": "images/mobs/green/green3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 1000,
-          "path": "images/mobs/green/green1.svg"
+          "path": "images/mobs/green/green1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/green/green2.svg"
+          "path": "images/mobs/green/green2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/green/green3.svg"
+          "path": "images/mobs/green/green3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "dead": [
         {
           "duration": 100000,
-          "path": "images/mobs/green/green1.svg"
+          "path": "images/mobs/green/green1.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }
@@ -274,73 +340,105 @@
       "idle": [
         {
           "duration": 1000,
-          "path": "images/mobs/bear/bear1.svg"
+          "path": "images/mobs/bear/bear1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/bear/bear2.svg"
+          "path": "images/mobs/bear/bear2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/bear/bear3.svg"
+          "path": "images/mobs/bear/bear3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/bear/bear4.svg"
+          "path": "images/mobs/bear/bear4.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/bear/bear5.svg"
+          "path": "images/mobs/bear/bear5.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear1.svg"
+          "path": "images/mobs/bear/bear1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear2.svg"
+          "path": "images/mobs/bear/bear2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear3.svg"
+          "path": "images/mobs/bear/bear3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear4.svg"
+          "path": "images/mobs/bear/bear4.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear5.svg"
+          "path": "images/mobs/bear/bear5.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear1.svg"
+          "path": "images/mobs/bear/bear1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear2.svg"
+          "path": "images/mobs/bear/bear2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear3.svg"
+          "path": "images/mobs/bear/bear3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear4.svg"
+          "path": "images/mobs/bear/bear4.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/bear/bear5.svg"
+          "path": "images/mobs/bear/bear5.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "dead": [
         {
           "duration": 100000,
-          "path": "images/mobs/bear/bear1.svg"
+          "path": "images/mobs/bear/bear1.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }
@@ -359,61 +457,87 @@
       "idle": [
         {
           "duration": 1000,
-          "path": "images/mobs/tongue/tongue1.svg"
+          "path": "images/mobs/tongue/tongue1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/tongue/tongue2.svg"
+          "path": "images/mobs/tongue/tongue2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/tongue/tongue3.svg"
+          "path": "images/mobs/tongue/tongue3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 250,
-          "path": "images/mobs/tongue/tongue4.svg"
+          "path": "images/mobs/tongue/tongue4.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue1.svg"
+          "path": "images/mobs/tongue/tongue1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue2.svg"
+          "path": "images/mobs/tongue/tongue2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue3.svg"
+          "path": "images/mobs/tongue/tongue3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue4.svg"
+          "path": "images/mobs/tongue/tongue4.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue1.svg"
+          "path": "images/mobs/tongue/tongue1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue2.svg"
+          "path": "images/mobs/tongue/tongue2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue3.svg"
+          "path": "images/mobs/tongue/tongue3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 200,
-          "path": "images/mobs/tongue/tongue4.svg"
+          "path": "images/mobs/tongue/tongue4.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "dead": [
         {
           "duration": 100000,
-          "path": "images/mobs/tongue/tongue1.svg"
+          "path": "images/mobs/tongue/tongue1.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }

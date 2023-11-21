@@ -6,43 +6,61 @@
       "idle": [
         {
           "duration": 100000,
-          "path": "images/pets/WhiteDog/WhiteDog0.svg"
+          "path": "images/pets/WhiteDog/WhiteDog0.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 300,
-          "path": "images/pets/WhiteDog/WhiteDog_In1.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_In1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/pets/WhiteDog/WhiteDog_In2.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_In2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 300,
-          "path": "images/pets/WhiteDog/WhiteDog_In3.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_In3.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog_Out1.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog_Out2.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog_Out3.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog_Out4.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out4.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/WhiteDog/WhiteDog_Out5.svg"
+          "path": "images/pets/WhiteDog/WhiteDog_Out5.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }
@@ -54,31 +72,43 @@
       "idle": [
         {
           "duration": 100000,
-          "path": "images/pets/Rat/Rat0.svg"
+          "path": "images/pets/Rat/Rat0.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "moving": [
         {
           "duration": 100000,
-          "path": "images/pets/Rat/Rat0.svg"
+          "path": "images/pets/Rat/Rat0.svg",
+          "x": 0,
+          "y": 0
         }
       ],
       "attacking": [
         {
           "duration": 100,
-          "path": "images/pets/Rat/Rat1.svg"
+          "path": "images/pets/Rat/Rat1.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/Rat/Rat2.svg"
+          "path": "images/pets/Rat/Rat2.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/Rat/Rat3.svg"
+          "path": "images/pets/Rat/Rat3.svg",
+          "x": 0,
+          "y": 0
         },
         {
           "duration": 100,
-          "path": "images/pets/Rat/Rat4.svg"
+          "path": "images/pets/Rat/Rat4.svg",
+          "x": 0,
+          "y": 0
         }
       ]
     }
