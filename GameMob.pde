@@ -159,6 +159,8 @@ class MobSvg extends Mob {
     
     mob.shapes = shapes;
     mob.animations = animations;
+    mob.shiftX = shiftX;
+    mob.shiftY = shiftY;
     
     return mob;
   }
