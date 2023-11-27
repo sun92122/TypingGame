@@ -805,7 +805,11 @@ class VocabText {
   }
   
   void display(String input) {
-    textBox.display();
+    if(equals(input)) {
+      textBox.display(#FFFF00);
+    } else {
+      textBox.display(#FFFFFF);
+    }
     pushMatrix();
     translate(x - w / 2, y);
     boolean lastCorrect = true;
@@ -825,6 +829,14 @@ class VocabText {
       translate(textWidth(vocab[i]), 0);
     }
     popMatrix();
+  }
+  
+  boolean equals(String input) {
+    if(player.getSettingBoolean("Difficulty", "Case Sensitivity")) {
+      return input.equals(new String(vocab));
+    } else {
+      return input.equalsIgnoreCase(new String(vocab));
+    }
   }
 }
 
@@ -850,10 +862,14 @@ class TextBox {
   }
   
   void display() {
+    this.display(#FFFFFF);
+  }
+  
+  void display(color c) {
     pushMatrix();
     translate(x, y);
     rectMode(CORNER);
-    fill(#FFFFFF);
+    fill(c);
     stroke(#000000);
     strokeWeight(2);
     rect(0, 0, w, h);

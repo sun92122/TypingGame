@@ -77,5 +77,18 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Difficulty",
+    "tip": "Adjust the difficulty of the game.",
+    "sub": [
+      {
+        "title": "Case Sensitivity",
+        "tip": "Toggle case sensitivity.",
+        "type": "toggle",
+        "valueType": "bool",
+        "default": false
+      }
+    ]
   }
 ]
