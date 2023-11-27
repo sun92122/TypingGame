@@ -46,6 +46,49 @@ class MainMenuButton {
   }
 }
 
+class CheckExit {
+  float x = width / 2;
+  float y = height / 2;
+  float w = 500;
+  float h = 400;
+  
+  void display() {
+    fill(#000000, 60);
+    rectMode(CORNER);
+    rect(0, 0, width, height);
+    
+    pushMatrix();
+    translate(x, y);
+    rectMode(CENTER);
+    fill(225);
+    rect(0, 0, w, h);
+    fill(0);
+    textFont(game.fonts.get("PressStart2P"));
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    text("Are you sure you want to exit?", 0, -100);
+    text("Yes", -100, 100);
+    text("No", 100, 100);
+    popMatrix();
+  }
+  
+  boolean isHoverYes() {
+    if(mouseX > x - w / 2 && mouseX < x - w / 4 && 
+      mouseY > y + h / 4 && mouseY < y + h / 2) {
+      return true;
+    }
+    return false;
+  }
+  
+  boolean isHoverNo() {
+    if(mouseX > x + w / 4 && mouseX < x + w / 2 && 
+      mouseY > y + h / 4 && mouseY < y + h / 2) {
+      return true;
+    }
+    return false;
+  }
+}
+
 class MenuButton {
   float x = width - 75;
   float y = height - 75;

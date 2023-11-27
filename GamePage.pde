@@ -23,6 +23,9 @@ class MenuPage implements Page {
   float characterX = 0;
   float characterY = height - 150;
   
+  CheckExit checkExit = new CheckExit();
+  boolean isExiting = false;
+  
   MenuPage() {
     logPrint("MenuPage created.");
   }
@@ -48,12 +51,16 @@ class MenuPage implements Page {
     textFont(game.fonts.get("PressStart2P"));
     text("Typing Game", width / 2, height / 2 - 200);
     
-    // buttons // TODO: change to button class (Component.pde)
+    // buttons
     for(int i = 0; i < mainMenuButton.length; i++) {
-      if(mainMenuButton[i].isHover()) {
+      if(mainMenuButton[i].isHover() && !isExiting) {
         currentButton = i;
       }
       mainMenuButton[i].display(currentButton == i);
+    }
+    
+    if(isExiting) {
+      checkExit.display();
     }
     
     if(isDebugMode) {
@@ -98,7 +105,11 @@ class MenuPage implements Page {
   
   void keyTyped() {}
   
-  void keyReleased() {}
+  void keyReleased() {
+    if(key == ESC_) {
+      isExiting = true;
+    }
+  }
   
   void mouseClicked() {}
   
@@ -107,9 +118,15 @@ class MenuPage implements Page {
   void mousePressed() {}
   
   void mouseReleased() {
-    if(mainMenuButton[currentButton].isHover()) {
-      if(currentButton == 3) {
+    if(isExiting) {
+      if(checkExit.isHoverYes()) {
         game.gameExit();
+      } else if(checkExit.isHoverNo()) {
+        isExiting = false;
+      }
+    } else if(mainMenuButton[currentButton].isHover()) {
+      if(currentButton == 3) {
+        isExiting = true;
       } else {
         game.currentScene = currentButton + 1;
       }
@@ -587,6 +604,15 @@ class PlayingPage implements Page {
         inputText = inputText.substring(0, inputText.length() - 1);
       }
     } else if(key == ENTER || key == RETURN || key == ' ') {
+      for(int i = 2; i >= 0; i--) {
+        if(vocabs[i].equals(inputText)) {
+          score += 100;
+          fever += 10;
+          vocabs[i] = getVocab();
+          vocabText[i] = new VocabText(i, vocabs[i]);
+          break;
+        }
+      }
       inputText = "";
     } else {
       if('a' <= key && key <= 'z') {
@@ -619,8 +645,12 @@ class PlayingPage implements Page {
   
   void mouseReleased() {
     if(game.menuButton.isHover()) {
-      preState = state;
-      state = PAUSE;
+      this.pause();
     }
+  }
+  
+  void pause() {
+    preState = state;
+    state = PAUSE;
   }
 }

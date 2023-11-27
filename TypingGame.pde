@@ -1,3 +1,5 @@
+final char ESC_ = 24;
+
 Player player;
 Game game;
 
@@ -57,6 +59,9 @@ void keyTyped() {
 }
 
 void keyReleased() {
+  if(keyCode == ESC) {
+    key = ESC_;
+  }
   game.keyReleased();
 }
 
