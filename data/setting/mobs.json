@@ -74,7 +74,7 @@
       "duration": 5000
     },
     "velocity": 0.4,
-    "scale": 0.1,
+    "scale": 0.08,
     "pictures": {
       "idle": [
         {
@@ -173,7 +173,7 @@
       "duration": 5000
     },
     "velocity": 0.4,
-    "scale": 0.4,
+    "scale": 0.2,
     "pictures": {
       "idle": [
         {
@@ -254,7 +254,7 @@
       "duration": 5000
     },
     "velocity": 0.6,
-    "scale": 0.25,
+    "scale": 0.12,
     "pictures": {
       "idle": [
         {
@@ -335,7 +335,7 @@
       "duration": 5000
     },
     "velocity": 0.6,
-    "scale": 0.25,
+    "scale": 0.12,
     "pictures": {
       "idle": [
         {
@@ -452,7 +452,7 @@
       "duration": 5000
     },
     "velocity": 0.3,
-    "scale": 0.25,
+    "scale": 0.12,
     "pictures": {
       "idle": [
         {
