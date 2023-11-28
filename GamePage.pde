@@ -261,25 +261,35 @@ class UpgradePage implements Page {
     fill(0);
     text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
 
-    // Attack Page
+    // SKILLS
 
     // Basic attack
+    float BasicX = width / 5.6 + pageWidth / 6;
+    float BasicY = height / 5.3 + pageHeight / 3.2;
     fill(0);
-    text("Basic", width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3.2 - skillHeight / 2 - text_Size / 2);
+    text("Basic", BasicX, BasicY - skillHeight / 2 - text_Size / 2);
     fill(255);
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3.2, skillWidth, skillHeight, 20);
+    rect(BasicX, BasicY, skillWidth, skillHeight, 20);
+    // Add an upgrade button in the square
+    fill(#00a2ed);
+    rect(BasicX, BasicY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", BasicX, BasicY + skillHeight / 2.8);
+    
 
     // FEVER
+    float FEVERX = BasicX;
+    float FEVERY = height / 5.3 + pageHeight / 3 * 2.3;
     fill(0);
-    text("FEVER", width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3 * 2.3 - skillHeight / 2 - text_Size / 2);
+    text("FEVER", FEVERX, FEVERY - skillHeight / 2 - text_Size / 2);
     fill(255);
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3 * 2.3, skillWidth, skillHeight, 20);
+    rect(FEVERX, FEVERY, skillWidth, skillHeight, 20);
 
     // seperate line
     stroke(0);
@@ -287,36 +297,44 @@ class UpgradePage implements Page {
     line(width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight / 8, width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight - pageHeight / 16);
 
     // Skill 1-1
+    float Skill_1_1_X = width / 5.6 + pageWidth / 3 + pageWidth / 5.5;
+    float Skill_1_1_Y = height / 5.3 + pageHeight / 3.2;
     fill(0);
-    text("Skill 1", width / 5.6 + pageWidth / 3 + pageWidth / 5.5 + skillWidth / 2 + pageWidth * 3.5 / 264, height / 5.3 + pageHeight / 3.2 - skillHeight / 2 - text_Size / 2);
+    text("Skill 1", Skill_1_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_1_1_Y - skillHeight / 2 - text_Size / 2);
     fill(255);
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(width / 5.6 + pageWidth / 3 + pageWidth / 5.5, height / 5.3 + pageHeight / 3.2, skillWidth, skillHeight, 20);
+    rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
 
     // Skill 1-2
+    float Skill_1_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
+    float Skill_1_2_Y = Skill_1_1_Y;
     fill(255);
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2, height / 5.3 + pageHeight / 3.2, skillWidth, skillHeight, 20);
+    rect(Skill_1_2_X, Skill_1_2_Y, skillWidth, skillHeight, 20);
 
     // Skill 2-1
+    float Skill_2_1_X = Skill_1_1_X;
+    float Skill_2_1_Y = height / 5.3 + pageHeight / 3 * 2.3;
     fill(0);
-    text("Skill 2", width / 5.6 + pageWidth / 3 + pageWidth / 5.5 + skillWidth / 2 + pageWidth * 3.5 / 264, height / 5.3 + pageHeight / 3 * 2.3 - skillHeight / 2 - text_Size / 2);
+    text("Skill 2", Skill_2_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_2_1_Y - skillHeight / 2 - text_Size / 2);
     fill(255);
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(width / 5.6 + pageWidth / 3 + pageWidth / 5.5, height / 5.3 + pageHeight / 3 * 2.3, skillWidth, skillHeight, 20);
+    rect(Skill_2_1_X, Skill_2_1_Y, skillWidth, skillHeight, 20);
 
     // Skill 2-2
+    float Skill_2_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
+    float Skill_2_2_Y = Skill_2_1_Y;
     fill(255);
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2, height / 5.3 + pageHeight / 3 * 2.3, skillWidth, skillHeight, 20);
+    rect(Skill_2_2_X, Skill_2_2_Y, skillWidth, skillHeight, 20);
   }
   
   void keyPressed() {}
