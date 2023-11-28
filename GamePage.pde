@@ -218,9 +218,9 @@ class UpgradePage implements Page {
     
     game.backButton.display();
 
-    // Icon icon = new Icon();
-    // icon.loadIcon("orange");
-    // icon.display();
+    Icon icon = new Icon();
+    icon.loadIcon();
+    icon.display(5);
     
   }
 

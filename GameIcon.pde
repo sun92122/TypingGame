@@ -1,19 +1,21 @@
 // load svg files in the icon folder and make a function to display the icon
 // Still Debugging
 class Icon {
-  String name = "icon1";
-  String path;
-  PShape image;
-    
-  void loadIcon(String name) {
-    this.name = name;
-    this.path = "images/icon/" + name + ".svg";
-    println(path);
-    image = loadShape(path);
+  String[] filenames = {"orange", "green", "blue", "purple", "rainbow", "mouse1", "mouse2", "phone", "rotator"};
+  PShape[] icons = new PShape[filenames.length];
+  Boolean isloaded = false;
+
+  void loadIcon(){
+    if(isloaded == false){
+      for(int i = 0; i < filenames.length; i++){
+        icons[i] = loadShape("images/icon/" + filenames[i] + ".svg");
+      }
+      isloaded = true;
+    }
   }
 
-  void display(){
-    shape(image, mouseX, mouseY, 100, 100);
+  void display(int i){
+    shape(icons[i], mouseX, mouseY);
   }
 
 }
