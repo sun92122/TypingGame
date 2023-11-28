@@ -213,13 +213,14 @@ class UpgradePage implements Page {
   
   void draw() {
     background(255); // TODO: change upgrade background
-    
-
+  
     attack_Page_Display();
-
-
     
     game.backButton.display();
+
+    // Icon icon = new Icon();
+    // icon.loadIcon("orange");
+    // icon.display();
     
   }
 
@@ -277,8 +278,7 @@ class UpgradePage implements Page {
     fill(#00a2ed);
     rect(BasicX, BasicY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
     fill(255);
-    text("Upgrade", BasicX, BasicY + skillHeight / 2.8);
-    
+    text("Upgrade", BasicX, BasicY + skillHeight / 2.8);    
 
     // FEVER
     float FEVERX = BasicX;
