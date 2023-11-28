@@ -213,35 +213,42 @@ class UpgradePage implements Page {
   
   void draw() {
     background(255); // TODO: change upgrade background
-    rectMode(CENTER);
-    
-    pushMatrix();
-    translate(width / 4, 0);
-    fill(0);
+    rectMode(CORNER);
+
+    float tagWidth = width * 7 / 35;
+    float tagHeight = height / 7;
+    int Stroke_Weight = 6;
+
+    // Money & HP
+    fill(200);
+    stroke(0);
+    strokeWeight(Stroke_Weight);
+    rect(width / 5.6 + tagWidth, height / 11, tagWidth, tagHeight, 20);
+    textAlign(CENTER);
+    textFont(game.fonts.get("Cubic11"));
     textSize(30);
-    textFont(game.fonts.get("NotoSansTC"));
-    textAlign(CENTER, CENTER);
-    text("Player ?", 0, 100);
-    rect(0, height / 2, 200, 200); // TODO: show player image
-    popMatrix();
-    
-    // player info at right
-    pushMatrix();
-    translate(width / 2 + width / 4, 0);
-    text("HP: ?", 0, 200);
-    text("Skill 1: ?", 0, 300);
-    text("Skill 2: ?", 0, 400);
-    popMatrix();
+    fill(0);
+    text("MONEY & HP", width / 5.6 + tagWidth * 1.5, height / 11 + tagHeight / 2.1);
+    // PET
+    fill(200);
+    stroke(0);
+    strokeWeight(Stroke_Weight);
+    rect(width / 5.6 + 2 * tagWidth, height / 11, tagWidth, tagHeight, 20);
+    fill(0);
+    text("PET", width / 5.6 + tagWidth * 2.5, height / 11 + tagHeight / 2.1);
+    // Attack
+    fill(255);
+    stroke(0);
+    strokeWeight(Stroke_Weight);
+    rect(width / 5.6, height / 5.3, width * 24 / 35, height * 46 / 65, 20);
+    rect(width / 5.6, height / 11, tagWidth, tagHeight, 20);
+    noStroke();
+    rect(width / 5.6 + Stroke_Weight / 2, height / 5.3 + Stroke_Weight / 2, width / 4.5, tagHeight);
+    fill(0);
+    text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
     
     game.backButton.display();
     
-    game.menuButton.display();
-    
-    // upgrade text
-    fill(0);
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    text("Upgrade", width / 2, 50);
   }
   
   void keyPressed() {}
