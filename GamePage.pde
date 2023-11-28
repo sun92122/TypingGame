@@ -213,12 +213,28 @@ class UpgradePage implements Page {
   
   void draw() {
     background(255); // TODO: change upgrade background
-    rectMode(CORNER);
+    
 
+    attack_Page_Display();
+
+
+    
+    game.backButton.display();
+    
+  }
+
+  void attack_Page_Display(){
     float tagWidth = width * 7 / 35;
     float tagHeight = height / 7;
-    int Stroke_Weight = 6;
+    float pageWidth = width * 24 / 35;
+    float pageHeight = height * 46 / 65;
+    float skillWidth = pageWidth / 4;
+    float skillHeight = pageHeight / 3;
 
+    int Stroke_Weight = 6;
+    int text_Size = 30;
+
+    rectMode(CORNER);
     // Money & HP
     fill(200);
     stroke(0);
@@ -226,29 +242,81 @@ class UpgradePage implements Page {
     rect(width / 5.6 + tagWidth, height / 11, tagWidth, tagHeight, 20);
     textAlign(CENTER);
     textFont(game.fonts.get("Cubic11"));
-    textSize(30);
+    textSize(text_Size);
     fill(0);
     text("MONEY & HP", width / 5.6 + tagWidth * 1.5, height / 11 + tagHeight / 2.1);
     // PET
     fill(200);
     stroke(0);
-    strokeWeight(Stroke_Weight);
     rect(width / 5.6 + 2 * tagWidth, height / 11, tagWidth, tagHeight, 20);
     fill(0);
     text("PET", width / 5.6 + tagWidth * 2.5, height / 11 + tagHeight / 2.1);
     // Attack
     fill(255);
     stroke(0);
-    strokeWeight(Stroke_Weight);
-    rect(width / 5.6, height / 5.3, width * 24 / 35, height * 46 / 65, 20);
+    rect(width / 5.6, height / 5.3, pageWidth, pageHeight, 20);
     rect(width / 5.6, height / 11, tagWidth, tagHeight, 20);
     noStroke();
     rect(width / 5.6 + Stroke_Weight / 2, height / 5.3 + Stroke_Weight / 2, width / 4.5, tagHeight);
     fill(0);
     text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
-    
-    game.backButton.display();
-    
+
+    // Attack Page
+
+    // Basic attack
+    fill(0);
+    text("Basic", width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3.2 - skillHeight / 2 - text_Size / 2);
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    rect(width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3.2, skillWidth, skillHeight, 20);
+
+    // FEVER
+    fill(0);
+    text("FEVER", width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3 * 2.3 - skillHeight / 2 - text_Size / 2);
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    rect(width / 5.6 + pageWidth / 6, height / 5.3 + pageHeight / 3 * 2.3, skillWidth, skillHeight, 20);
+
+    // seperate line
+    stroke(0);
+    strokeWeight(4);
+    line(width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight / 8, width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight - pageHeight / 16);
+
+    // Skill 1-1
+    fill(0);
+    text("Skill 1", width / 5.6 + pageWidth / 3 + pageWidth / 5.5 + skillWidth / 2 + pageWidth * 3.5 / 264, height / 5.3 + pageHeight / 3.2 - skillHeight / 2 - text_Size / 2);
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    rect(width / 5.6 + pageWidth / 3 + pageWidth / 5.5, height / 5.3 + pageHeight / 3.2, skillWidth, skillHeight, 20);
+
+    // Skill 1-2
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    rect(width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2, height / 5.3 + pageHeight / 3.2, skillWidth, skillHeight, 20);
+
+    // Skill 2-1
+    fill(0);
+    text("Skill 2", width / 5.6 + pageWidth / 3 + pageWidth / 5.5 + skillWidth / 2 + pageWidth * 3.5 / 264, height / 5.3 + pageHeight / 3 * 2.3 - skillHeight / 2 - text_Size / 2);
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    rect(width / 5.6 + pageWidth / 3 + pageWidth / 5.5, height / 5.3 + pageHeight / 3 * 2.3, skillWidth, skillHeight, 20);
+
+    // Skill 2-2
+    fill(255);
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    rect(width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2, height / 5.3 + pageHeight / 3 * 2.3, skillWidth, skillHeight, 20);
   }
   
   void keyPressed() {}
