@@ -207,34 +207,34 @@ class PlayPage implements Page {
 }
 
 class UpgradePage implements Page {
+  Icon icon = new Icon();
+  
   UpgradePage() {
+    icon.loadIcon();
     logPrint("UpgradePage created.");
   }
   
   void draw() {
     background(255); // TODO: change upgrade background
-  
+    
     attack_Page_Display();
     
     game.backButton.display();
-
-    Icon icon = new Icon();
-    icon.loadIcon();
-    icon.display(5);
     
+    icon.display(5);    
   }
-
-  void attack_Page_Display(){
+  
+  void attack_Page_Display() {
     float tagWidth = width * 7 / 35;
     float tagHeight = height / 7;
     float pageWidth = width * 24 / 35;
     float pageHeight = height * 46 / 65;
     float skillWidth = pageWidth / 4;
     float skillHeight = pageHeight / 3;
-
+    
     int Stroke_Weight = 6;
     int text_Size = 30;
-
+    
     rectMode(CORNER);
     // Money & HP
     fill(200);
@@ -261,9 +261,9 @@ class UpgradePage implements Page {
     rect(width / 5.6 + Stroke_Weight / 2, height / 5.3 + Stroke_Weight / 2, width / 4.5, tagHeight);
     fill(0);
     text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
-
+    
     // SKILLS
-
+    
     // Basic attack
     float BasicX = width / 5.6 + pageWidth / 6;
     float BasicY = height / 5.3 + pageHeight / 3.2;
@@ -279,7 +279,7 @@ class UpgradePage implements Page {
     rect(BasicX, BasicY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
     fill(255);
     text("Upgrade", BasicX, BasicY + skillHeight / 2.8);    
-
+    
     // FEVER
     float FEVERX = BasicX;
     float FEVERY = height / 5.3 + pageHeight / 3 * 2.3;
@@ -290,12 +290,12 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(FEVERX, FEVERY, skillWidth, skillHeight, 20);
-
+    
     // seperate line
     stroke(0);
     strokeWeight(4);
     line(width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight / 8, width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight - pageHeight / 16);
-
+    
     // Skill 1-1
     float Skill_1_1_X = width / 5.6 + pageWidth / 3 + pageWidth / 5.5;
     float Skill_1_1_Y = height / 5.3 + pageHeight / 3.2;
@@ -306,7 +306,7 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
-
+    
     // Skill 1-2
     float Skill_1_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
     float Skill_1_2_Y = Skill_1_1_Y;
@@ -315,7 +315,7 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_1_2_X, Skill_1_2_Y, skillWidth, skillHeight, 20);
-
+    
     // Skill 2-1
     float Skill_2_1_X = Skill_1_1_X;
     float Skill_2_1_Y = height / 5.3 + pageHeight / 3 * 2.3;
@@ -326,7 +326,7 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_2_1_X, Skill_2_1_Y, skillWidth, skillHeight, 20);
-
+    
     // Skill 2-2
     float Skill_2_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
     float Skill_2_2_Y = Skill_2_1_Y;

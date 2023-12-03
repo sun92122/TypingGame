@@ -3,19 +3,15 @@
 class Icon {
   String[] filenames = {"orange", "green", "blue", "purple", "rainbow", "mouse1", "mouse2", "phone", "rotator"};
   PShape[] icons = new PShape[filenames.length];
-  Boolean isloaded = false;
-
-  void loadIcon(){
-    if(isloaded == false){
-      for(int i = 0; i < filenames.length; i++){
-        icons[i] = loadShape("images/icon/" + filenames[i] + ".svg");
-      }
-      isloaded = true;
+  
+  void loadIcon() {
+    for(int i = 0; i < filenames.length; i++) {
+      icons[i] = loadShape("images/icon/" + filenames[i] + ".svg");
     }
   }
-
-  void display(int i){
+  
+  void display(int i) {
     shape(icons[i], mouseX, mouseY);
   }
-
+  
 }
