@@ -27,11 +27,25 @@ class Vocab {
   String getRandVocab(int vocabIndex) {
     int index = (int) random(vocabs[vocabIndex].getRowCount());
     String vocab = vocabs[vocabIndex].getString(index, 0);
-    while(vocab.indexOf(" ") != -1) {
+    while(!checkVocab(vocab)) {
       index = (int) random(vocabs[vocabIndex].getRowCount());
       vocab = vocabs[vocabIndex].getString(index, 0);
     }
     return vocab;
+  }
+  
+  boolean checkVocab(String vocab) {
+    for(int i = 0; i < vocab.length(); i++) {
+      char c = vocab.charAt(i);
+      if('a' <= c && c <= 'z') {
+        continue;
+      } else if('A' <= c && c <= 'Z') {
+        continue;
+      } else {
+        return false;
+      }
+    }
+    return true;
   }
 }
 
@@ -135,7 +149,7 @@ class PetData {
       println("Error, pets file not found");
     }
   }
-
+  
 }
 
 class BackgroundData {
