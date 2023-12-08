@@ -925,6 +925,19 @@ class PausePage {
   float y = 0;
   float w = 1280;
   float h = 720;
+
+  PausePageButton[] buttons = new PausePageButton[2];
+  int index = -1;
+
+  int state = 0; // 0: play, 1: pause, 2: exit
+  final int PLAY = 0;
+  final int PAUSE = 1;
+  final int EXIT = 2;
+
+  PausePage() {
+    buttons[0] = new PausePageButton("Resume", 300);
+    buttons[1] = new PausePageButton("Exit", 400);
+  }
   
   void display() {
     fill(#000000, 60);
@@ -935,5 +948,68 @@ class PausePage {
     textFont(game.fonts.get("NotoSansTC"));
     fill(#FFFFFF);
     text("Pause", w / 2, 100);
+
+    for(int i = 0; i < buttons.length; i++) {
+      buttons[i].display(i == index);
+      if(buttons[i].isHover()) {
+        index = i;
+      }
+    }
+  }
+
+  void mouseReleased() {
+    if(index == 0) {
+      state = 0;
+    } else if(index == 1) {
+      state = 2;
+    }
+  }
+}
+
+class PausePageButton {
+  float x = width / 2;
+  float y = height / 2;
+  float w = 250;
+  float h = 50;
+  PixelArrow pixel_arrow_left = new PixelArrow('R');
+  PixelArrow pixel_arrow_right = new PixelArrow('L');
+  
+  String str = "Resume";
+  
+  PausePageButton(String str) {
+    this.str = str;
+  }
+  
+  PausePageButton(String str, float y) {
+    this.str = str;
+    this.y = y;
+  }
+  
+  void display(boolean isSelect) {
+    pushMatrix();
+    translate(x, y);
+    textFont(game.fonts.get("PressStart2P"));
+    textSize(30);
+    textAlign(CENTER, CENTER);
+    w = textWidth(str) + 20;
+    rectMode(CENTER);
+    noStroke();
+    if(isHover() || isSelect) {
+      fill(225);
+      rect(0, 0, w + 70, h);
+      pixel_arrow_left.display( -w / 2 - 10, 0);
+      pixel_arrow_right.display(w / 2 + 10, 0);
+    }
+    fill(0);
+    text(str, 0, 0);
+    popMatrix();
+  }
+  
+  boolean isHover() {
+    if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
+      mouseY > y - h / 2 && mouseY < y + h / 2) {
+      return true;
+    }
+    return false;
   }
 }
