@@ -221,7 +221,7 @@ class UpgradePage implements Page {
     
     game.backButton.display();
     
-    icon.display(8);    
+    icon.display(0);    
   }
   
   void attack_Page_Display() {
