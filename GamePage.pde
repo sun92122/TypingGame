@@ -181,7 +181,11 @@ class PlayPage implements Page {
   
   void keyTyped() {}
   
-  void keyReleased() {}
+  void keyReleased() {
+    if(key == ESC_) {
+      game.currentScene = 0;
+    }
+  }
   
   void mouseClicked() {}
   
@@ -411,7 +415,11 @@ class UpgradePage implements Page {
   
   void keyTyped() {}
   
-  void keyReleased() {}
+  void keyReleased() {
+    if(key == ESC_) {
+      game.currentScene = 0;
+    }
+  }
   
   void mouseClicked() {}
   
@@ -481,7 +489,11 @@ class SettingPage implements Page {
   
   void keyTyped() {}
   
-  void keyReleased() {}
+  void keyReleased() {
+    if(key == ESC_) {
+      game.currentScene = 0;
+    }
+  }
   
   void mouseClicked() {
     for(int i = 0; i < settingOption.length; i++) {
