@@ -460,6 +460,7 @@ class PlayingPage implements Page {
   int score = 0;
   int fever = 100;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
+  float mobXMin = width;
   String inputText = "";
   String[] vocabs = new String[3];
   VocabText[] vocabText = new VocabText[3];
@@ -522,6 +523,11 @@ class PlayingPage implements Page {
             break;
           }
         }
+      }
+      // find the mob x min
+      mobXMin = width;
+      for(int i = 0; i < mobs.size(); i++) {
+        mobXMin = min(mobXMin, mobs.get(i).x);
       }
       // level.update();
     }
@@ -682,6 +688,11 @@ class PlayingPage implements Page {
     return game.vocab.getRandVocab(vocabIndex);
   }
   
+  void attack(int attackType) {
+    score += 100;
+    fever += 10;
+  }
+  
   void keyPressed() {}
   
   void keyTyped() {
@@ -699,8 +710,7 @@ class PlayingPage implements Page {
     } else if(key == ENTER || key == RETURN || key == ' ') {
       for(int i = 2; i >= 0; i--) {
         if(vocabs[i].equals(inputText)) {
-          score += 100;
-          fever += 10;
+          attack(i + (i % 1));
           vocabs[i] = getVocab();
           vocabText[i] = new VocabText(i, vocabs[i]);
           break;
@@ -730,15 +740,27 @@ class PlayingPage implements Page {
     }
   }
   
-  void mouseClicked() {}
+  void mouseClicked() {
+    if(game.menuButton.isHover()) {
+      this.pause();
+    }
+  }
   
   void mouseDragged() {}
   
   void mousePressed() {}
   
   void mouseReleased() {
-    if(game.menuButton.isHover()) {
-      this.pause();
+    // if(game.menuButton.isHover()) {
+    //   this.pause();
+    // }
+    if(state == PAUSE) {
+      pausePage.mouseReleased();
+      if(pausePage.state == pausePage.Play) {
+        state = preState;
+      } else if(pausePage.state == pausePage.Exit) {
+        game.currentScene = 0;
+      }
     }
   }
   
