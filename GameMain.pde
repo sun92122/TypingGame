@@ -50,13 +50,15 @@ class Game {
     "NotoSansTC",
     "Cubic11",
     "PressStart2P",
-    "Filepile"
+    "Filepile",
+    "Arial Black"
   };
   String[] fontPathList = {
     "font/NotoSansTC-Regular.ttf",
     "font/Cubic_11_1.013_R.ttf",
     "font/PressStart2P-Regular.ttf",
-    "font/Filepile.otf"
+    "font/Filepile.otf",
+    "font/ARIBLK.TTF"
   };
   
   // state variables
