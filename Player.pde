@@ -1,5 +1,8 @@
 class Player {
   String name;
+  int basicSkillLevel = 1;
+  int feverLevel = 1;
+  int[] skillLevel = new int[4];
   /**
   * The player's settings.
   * @type {Object}

@@ -1,7 +1,7 @@
 // load svg files in the icon folder and make a function to display the icon
 // Still Debugging
 class Icon {
-  String[] filenames = {"orange", "green", "blue", "purple", "rainbow", "mouse1", "mouse2", "phone", "rotator"};
+  String[] filenames = {"orange", "green", "blue", "purple", "rainbow", "mouse1", "mouse2", "phone", "ice", "rotator"};
   PShape[] icons = new PShape[filenames.length];
   
   void loadIcon() {
@@ -9,7 +9,7 @@ class Icon {
       icons[i] = loadShape("images/icon/" + filenames[i] + ".svg");
     }
     for(int i = 0; i < 4; i++) {
-      // icons[i].rotate(PI/6);
+      icons[i].rotate(-PI/8);
     }
   }
   

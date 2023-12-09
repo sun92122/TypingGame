@@ -232,6 +232,10 @@ class UpgradePage implements Page {
     
     int Stroke_Weight = 6;
     int text_Size = 30;
+    int text_Size_Skill = 20;
+
+    PFont C11 = game.fonts.get("Cubic11");
+    PFont ABL = game.fonts.get("Arial Black");
     
     rectMode(CORNER);
     // Money & HP
@@ -240,7 +244,7 @@ class UpgradePage implements Page {
     strokeWeight(Stroke_Weight);
     rect(width / 5.6 + tagWidth, height / 11, tagWidth, tagHeight, 20);
     textAlign(CENTER);
-    textFont(game.fonts.get("Cubic11"));
+    textFont(C11);
     textSize(text_Size);
     fill(0);
     text("MONEY & HP", width / 5.6 + tagWidth * 1.5, height / 11 + tagHeight / 2.1);
@@ -273,12 +277,23 @@ class UpgradePage implements Page {
     rectMode(CENTER);
     rect(BasicX, BasicY, skillWidth, skillHeight, 20);
     // Show Basic icon
-    icon.display(1, BasicX, BasicY);
+    icon.display(player.basicSkillLevel-1, BasicX, BasicY + skillHeight / 10);
+    // Show the current level of the skill
+    textAlign(LEFT);
+    textFont(ABL);
+    fill(0);
+    stroke(255);
+    textSize(text_Size_Skill);
+    text("Lv." + player.basicSkillLevel, BasicX - skillWidth / 2, BasicY - skillHeight / 2);
     // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
     fill(#00a2ed);
+    stroke(0);
     rect(BasicX, BasicY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
     fill(255);
-    text("Upgrade", BasicX, BasicY + skillHeight / 2.8);    
+    text("Upgrade", BasicX, BasicY + skillHeight / 2.8);   
     
     // FEVER
     float FEVERX = BasicX;
@@ -290,6 +305,17 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(FEVERX, FEVERY, skillWidth, skillHeight, 20);
+    // Show FEVER icon
+    icon.display(4, FEVERX, FEVERY - skillHeight / 20);
+    // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
+    fill(#00a2ed);
+    stroke(0);
+    rect(FEVERX, FEVERY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);  
+    fill(255);
+    text("Upgrade", FEVERX, FEVERY + skillHeight / 2.8);
     
     // seperate line
     stroke(0);
@@ -306,6 +332,17 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
+    // Show Skill Mouse icon
+    icon.display(player.skillLevel[0]+5, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
+    // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
+    fill(#00a2ed);
+    stroke(0);
+    rect(Skill_1_1_X, Skill_1_1_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", Skill_1_1_X, Skill_1_1_Y + skillHeight / 2.8);
     
     // Skill 1-2
     float Skill_1_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
@@ -315,6 +352,17 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_1_2_X, Skill_1_2_Y, skillWidth, skillHeight, 20);
+    // Show Skill Phone icon
+    icon.display(7, Skill_1_2_X, Skill_1_2_Y - skillHeight / 10);
+    // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
+    fill(#00a2ed);
+    stroke(0);
+    rect(Skill_1_2_X, Skill_1_2_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", Skill_1_2_X, Skill_1_2_Y + skillHeight / 2.8);
     
     // Skill 2-1
     float Skill_2_1_X = Skill_1_1_X;
@@ -326,6 +374,17 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_2_1_X, Skill_2_1_Y, skillWidth, skillHeight, 20);
+    // Show Skill Ice icon
+    icon.display(8, Skill_2_1_X, Skill_2_1_Y - skillHeight / 10);
+    // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
+    fill(#00a2ed);
+    stroke(0);
+    rect(Skill_2_1_X, Skill_2_1_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", Skill_2_1_X, Skill_2_1_Y + skillHeight / 2.8);
     
     // Skill 2-2
     float Skill_2_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
@@ -335,6 +394,17 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(Skill_2_2_X, Skill_2_2_Y, skillWidth, skillHeight, 20);
+    // Show Skill Shuriken icon
+    icon.display(9, Skill_2_2_X, Skill_2_2_Y - skillHeight / 10);
+    // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
+    fill(#00a2ed);
+    stroke(0);
+    rect(Skill_2_2_X, Skill_2_2_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", Skill_2_2_X, Skill_2_2_Y + skillHeight / 2.8);
   }
   
   void keyPressed() {}
