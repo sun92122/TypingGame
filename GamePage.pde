@@ -107,7 +107,7 @@ class MenuPage implements Page {
   
   void keyReleased() {
     if(key == ESC_) {
-      isExiting = true;
+      isExiting = !isExiting;
     }
   }
   
