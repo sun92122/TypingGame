@@ -219,9 +219,7 @@ class UpgradePage implements Page {
     
     attack_Page_Display();
     
-    game.backButton.display();
-    
-    icon.display(0);    
+    game.backButton.display();    
   }
   
   void attack_Page_Display() {
@@ -274,6 +272,8 @@ class UpgradePage implements Page {
     strokeWeight(4);
     rectMode(CENTER);
     rect(BasicX, BasicY, skillWidth, skillHeight, 20);
+    // Show Basic icon
+    icon.display(1, BasicX, BasicY);
     // Add an upgrade button in the square
     fill(#00a2ed);
     rect(BasicX, BasicY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);

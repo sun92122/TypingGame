@@ -8,10 +8,14 @@ class Icon {
     for(int i = 0; i < filenames.length; i++) {
       icons[i] = loadShape("images/icon/" + filenames[i] + ".svg");
     }
+    for(int i = 0; i < 4; i++) {
+      // icons[i].rotate(PI/6);
+    }
   }
   
-  void display(int i) {
-    shape(icons[i], mouseX, mouseY);
+  void display(int i, float x, float y) {
+    shapeMode(CENTER);
+    shape(icons[i], x, y);
   }
   
 }
