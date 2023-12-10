@@ -224,7 +224,10 @@ class UpgradePage implements Page {
   float pageHeight = height * 46 / 65;
   float skillWidth = pageWidth / 4;
   float skillHeight = pageHeight / 3;
+  float moneyHpWidth = pageWidth / 3;
+  float moneyHpHeight = pageHeight / 1.4;
 
+  // ATTACK page variables
   float BasicX = width / 5.6 + pageWidth / 6;
   float BasicY = height / 5.3 + pageHeight / 3.2;
   float FEVERX = BasicX;
@@ -238,23 +241,76 @@ class UpgradePage implements Page {
   float Skill_2_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
   float Skill_2_2_Y = Skill_2_1_Y;
 
+  // MONEY & HP page variables
+  float moneyX = width / 2 - pageWidth / 4.3 + 25;
+  float moneyHpY = height / 1.75;
+  float hpX = width / 2 + pageWidth / 4.3 + 25;
+
+  // PET page variables
+  float dogX = width / 5.6 + pageWidth / 2;
+  float dogY = height / 5.3 + pageHeight / 3.2;
+  float whiteDogX = dogX - pageWidth / 3.2;
+  float whiteDogY = dogY;
+  float fowlX = dogX + pageWidth / 3.2;
+  float fowlY = dogY;
+  float ratX = dogX;
+  float ratY = height / 5.3 + pageHeight / 3 * 2.3;
+  float oxX = dogX - pageWidth / 3.2;
+  float oxY = ratY;
+  float turtleX = dogX + pageWidth / 3.2;
+  float turtleY = ratY;
+
   int Stroke_Weight = 6;
   int text_Size = 30;
   int text_Size_Skill = 25;
+
+  int currentPage = 0;
+
+  PFont C11;
+  PFont ABL;
   
   void draw() {
     background(255); // TODO: change upgrade background
+
+    C11 = game.fonts.get("Cubic11");
+    ABL = game.fonts.get("Arial Black");
     
-    attack_Page_Display();
+    switch(currentPage){
+      case 0:
+        attack_Page_Display();
+        break;
+      case 1:
+        money_hp_Page_Display();
+        break;
+      case 2:
+        pet_Page_Display();
+        break;
+    }
+    println(currentPage);
+
+    show_Money();
     
     game.backButton.display();    
   }
   
+  void show_Money(){
+    // draw a rectangular frame at the down left corner
+    noFill();
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CORNER);
+    rect(1120, 10, 150, 50, 10);
+    // show money at the down left corner
+    fill(0);
+    textFont(C11);
+    textSize(text_Size);
+    textAlign(LEFT);
+    text("$:  ", 1130, 45);
+    textAlign(RIGHT);
+    text(round(player.money), 1260, 45);
+  }
+
   void attack_Page_Display() {
-
-    PFont C11 = game.fonts.get("Cubic11");
-    PFont ABL = game.fonts.get("Arial Black");
-
     rectMode(CORNER);
     // Money & HP
     fill(200);
@@ -283,189 +339,336 @@ class UpgradePage implements Page {
     text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
     
     // SKILLS
-    
-    // Basic attack
+    // Skill Icon
+    skill_Icon_Display();
+
+    // Skill Level
+    skill_Level_Display(BasicX, BasicY, 0);
+    skill_Level_Display(FEVERX, FEVERY, 1);
+    skill_Level_Display(Skill_1_1_X, Skill_1_1_Y, 2);
+    skill_Level_Display(Skill_1_2_X, Skill_1_2_Y, 3);
+    skill_Level_Display(Skill_2_1_X, Skill_2_1_Y, 4);
+    skill_Level_Display(Skill_2_2_X, Skill_2_2_Y, 5);
+
+    // Skill Frame
+    skill_Frame_Display(BasicX, BasicY, 0);
+    skill_Frame_Display(FEVERX, FEVERY, 1);
+    skill_Frame_Display(Skill_1_1_X, Skill_1_1_Y, 2);
+    skill_Frame_Display(Skill_1_2_X, Skill_1_2_Y, 3);
+    skill_Frame_Display(Skill_2_1_X, Skill_2_1_Y, 4);
+    skill_Frame_Display(Skill_2_2_X, Skill_2_2_Y, 5);
+
+    // Skill Text
     fill(0);
     text("Basic", BasicX, BasicY - skillHeight / 2 - text_Size / 2);
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rectMode(CENTER);
-    rect(BasicX, BasicY, skillWidth, skillHeight, 20);
-    // Show Basic icon
-    if(player.basicSkillLevel < 5){
-      icon.display(player.basicSkillLevel-1, BasicX, BasicY + skillHeight / 10);
-    } else{
-      icon.display(4, BasicX, BasicY + skillHeight / 10);
-    }
-    // Show the current level of the skill
-    textAlign(LEFT);
-    textFont(ABL);
-    fill(0);
-    textSize(text_Size_Skill);
-    if(player.basicSkillLevel < 5){
-      text("Lv." + player.basicSkillLevel, BasicX - skillWidth / 2 + 10, BasicY - skillHeight / 2 + 25);
-    } else{
-      text("Lv.MAX", BasicX - skillWidth / 2 + 10, BasicY - skillHeight / 2 + 25);
-    }
-    // Add an upgrade button in the square
-    textSize(text_Size);
-    textFont(C11);
-    textAlign(CENTER);
-    fill(#00a2ed);
-    rect(BasicX, BasicY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
-    fill(255);
-    text("Upgrade", BasicX, BasicY + skillHeight / 2.8);   
-    
-    // FEVER
-    fill(0);
     text("FEVER", FEVERX, FEVERY - skillHeight / 2 - text_Size / 2);
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rectMode(CENTER);
-    rect(FEVERX, FEVERY, skillWidth, skillHeight, 20);
-    // Show FEVER icon
-    icon.display(5, FEVERX, FEVERY - skillHeight / 20);
-    // Show the current level of the skill
-    textAlign(LEFT);
-    textFont(ABL);
-    fill(0);
-    textSize(text_Size_Skill);
-    if(player.feverLevel < 5){
-      text("Lv." + player.feverLevel, FEVERX - skillWidth / 2 + 10, FEVERY - skillHeight / 2 + 25);
-    } else{
-      text("Lv.MAX", FEVERX - skillWidth / 2 + 10, FEVERY - skillHeight / 2 + 25);
-    }
-    // Add an upgrade button in the square
-    textSize(text_Size);
-    textFont(C11);
-    textAlign(CENTER);
-    fill(#00a2ed);
-    rect(FEVERX, FEVERY + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);  
-    fill(255);
-    text("Upgrade", FEVERX, FEVERY + skillHeight / 2.8);
-    
+    text("Skill 1", Skill_1_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_1_1_Y - skillHeight / 2 - text_Size / 2);
+    text("Skill 2", Skill_2_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_2_1_Y - skillHeight / 2 - text_Size / 2);
+
+    // Show the current selected skill
+    red_Frame_Display(player.currentSkill1, player.currentSkill2);
+
     // seperate line
     stroke(0);
     strokeWeight(4);
     line(width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight / 8, width / 5.6 + pageWidth / 3, height / 5.3 + pageHeight - pageHeight / 16);
-    
-    // Skill 1-1
-    fill(0);
-    text("Skill 1", Skill_1_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_1_1_Y - skillHeight / 2 - text_Size / 2);
-    fill(255);
+  }
+
+  void skill_Frame_Display(float x, float y, int levelIndex){
+    // draw rectangular frame
+    noFill();
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
+    rect(x, y, skillWidth, skillHeight, 20);
+    // Add an upgrade button in the square
+    textSize(text_Size);
+    textFont(C11);
+    textAlign(CENTER);
+    // check if the player has enough money to upgrade
+    if((player.money < player.skillLevel[levelIndex] * 10) || (player.skillLevel[levelIndex] == 5)){
+      fill(150);
+    }else{
+      fill(#00a2ed);
+    }
+    rect(x, y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", x, y + skillHeight / 2.8);
+  }
+
+  void skill_Icon_Display() {
+    // Show Basic icon
+    if(player.skillLevel[0] < 5){
+      icon.display(player.skillLevel[0]-1, BasicX, BasicY + skillHeight / 10);
+    } else{
+      icon.display(4, BasicX, BasicY + skillHeight / 10);
+    }
+    // Show FEVER icon
+    icon.display(5, FEVERX, FEVERY - skillHeight / 20);
     // Show Skill Mouse icon
-    if(player.skillLevel[0] > 3){
+    if(player.skillLevel[2] > 3){
       icon.display(7, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
     } else{
       icon.display(6, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
     }
-    // Show the current level of the skill
-    textAlign(LEFT);
-    textFont(ABL);
-    fill(0);
-    textSize(text_Size_Skill);
-    if(player.skillLevel[0] < 5){
-      text("Lv." + player.skillLevel[0], Skill_1_1_X - skillWidth / 2 + 10, Skill_1_1_Y - skillHeight / 2 + 25);
-    } else{
-      text("Lv.MAX", Skill_1_1_X - skillWidth / 2 + 10, Skill_1_1_Y - skillHeight / 2 + 25);
-    }
-    // Add an upgrade button in the square
-    textSize(text_Size);
-    textFont(C11);
-    textAlign(CENTER);
-    fill(#00a2ed);
-    rect(Skill_1_1_X, Skill_1_1_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
-    fill(255);
-    text("Upgrade", Skill_1_1_X, Skill_1_1_Y + skillHeight / 2.8);
-    
-    // Skill 1-2
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rectMode(CENTER);
-    rect(Skill_1_2_X, Skill_1_2_Y, skillWidth, skillHeight, 20);
     // Show Skill Phone icon
     icon.display(8, Skill_1_2_X, Skill_1_2_Y - skillHeight / 10);
-    // Show the current level of the skill
-    textAlign(LEFT);
-    textFont(ABL);
-    fill(0);
-    textSize(text_Size_Skill);
-    if(player.skillLevel[1] < 5){
-      text("Lv." + player.skillLevel[1], Skill_1_2_X - skillWidth / 2 + 10, Skill_1_2_Y - skillHeight / 2 + 25);
-    } else{
-      text("Lv.MAX", Skill_1_2_X - skillWidth / 2 + 10, Skill_1_2_Y - skillHeight / 2 + 25);
-    }
-    // Add an upgrade button in the square
-    textSize(text_Size);
-    textFont(C11);
-    textAlign(CENTER);
-    fill(#00a2ed);
-    rect(Skill_1_2_X, Skill_1_2_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
-    fill(255);
-    text("Upgrade", Skill_1_2_X, Skill_1_2_Y + skillHeight / 2.8);
-    
-    // Skill 2-1
-    fill(0);
-    text("Skill 2", Skill_2_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_2_1_Y - skillHeight / 2 - text_Size / 2);
-    fill(255);
-    stroke(0);
-    strokeWeight(4);
-    rectMode(CENTER);
-    rect(Skill_2_1_X, Skill_2_1_Y, skillWidth, skillHeight, 20);
     // Show Skill Ice icon
     icon.display(9, Skill_2_1_X, Skill_2_1_Y - skillHeight / 10);
+    // Show Skill Shuriken icon
+    icon.display(10, Skill_2_2_X, Skill_2_2_Y - skillHeight / 10);
+  }
+
+  void skill_Level_Display(float x, float y, int levelIndex){
+    color[] levelColor = {0, #008000, #0077B6, #A335EE};
     // Show the current level of the skill
     textAlign(LEFT);
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.skillLevel[2] < 5){
-      text("Lv." + player.skillLevel[2], Skill_2_1_X - skillWidth / 2 + 10, Skill_2_1_Y - skillHeight / 2 + 25);
+    if(player.skillLevel[levelIndex] < 5){
+      fill(levelColor[player.skillLevel[levelIndex]-1]);
+      text("Lv." + player.skillLevel[levelIndex], x - skillWidth / 2 + 10, y - skillHeight / 2 + 25);
     } else{
-      text("Lv.MAX", Skill_2_1_X - skillWidth / 2 + 10, Skill_2_1_Y - skillHeight / 2 + 25);
+      fill(#FF8000);
+      text("Lv.MAX", x - skillWidth / 2 + 10, y - skillHeight / 2 + 25);
     }
-    // Add an upgrade button in the square
-    textSize(text_Size);
-    textFont(C11);
+  }
+
+  void red_Frame_Display(String currentSkill1, String currentSkill2){
+      stroke(#FF0800);
+      strokeWeight(5);
+      noFill();
+      rectMode(CENTER);
+      rect(BasicX, BasicY, skillWidth, skillHeight, 20);
+      rect(FEVERX, FEVERY, skillWidth, skillHeight, 20);
+    if(currentSkill1 == "mouse"){
+      rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
+    }else if(currentSkill1 == "phone"){
+      rect(Skill_1_2_X, Skill_1_2_Y, skillWidth, skillHeight, 20);
+    }
+    if(currentSkill2 == "ice"){
+      rect(Skill_2_1_X, Skill_2_1_Y, skillWidth, skillHeight, 20);
+    }else if(currentSkill2 == "shuriken"){
+      rect(Skill_2_2_X, Skill_2_2_Y, skillWidth, skillHeight, 20);
+    }
+  }
+
+  void money_hp_Page_Display(){
+    rectMode(CORNER);
+    // ATTACK
+    fill(200);
+    stroke(0);
+    strokeWeight(Stroke_Weight);
+    rect(width / 5.6, height / 11, tagWidth, tagHeight, 20);
     textAlign(CENTER);
-    fill(#00a2ed);
-    rect(Skill_2_1_X, Skill_2_1_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    textFont(C11);
+    textSize(text_Size);
+    fill(0);
+    text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
+    // PET
+    fill(200);
+    stroke(0);
+    rect(width / 5.6 + 2 * tagWidth, height / 11, tagWidth, tagHeight, 20);
+    fill(0);
+    text("PET", width / 5.6 + tagWidth * 2.5, height / 11 + tagHeight / 2.1);
+    // MONEY & HP
     fill(255);
-    text("Upgrade", Skill_2_1_X, Skill_2_1_Y + skillHeight / 2.8);
-    
-    // Skill 2-2
-    fill(255);
+    stroke(0);
+    rect(width / 5.6, height / 5.3, pageWidth, pageHeight, 20);
+    rect(width / 5.6 + tagWidth, height / 11, tagWidth, tagHeight, 20);
+    noStroke();
+    rect(width / 5.6 - Stroke_Weight + tagWidth, height / 5.3 + Stroke_Weight / 2, width / 4.5, tagHeight);
+    fill(0);
+    text("MONEY & HP", width / 5.6 + tagWidth * 1.5, height / 11 + tagHeight / 2.1);
+
+    // Show Frame
+    money_hp_Frame_Display();
+
+    // Icon
+    icon.display(11, moneyX, moneyHpY - moneyHpHeight / 10);
+    icon.display(12, hpX, moneyHpY - moneyHpHeight / 10);
+
+    // Level
+    money_hp_Leval_Display(moneyX, moneyHpY, player.earningEffiLevel);
+    money_hp_Leval_Display(hpX, moneyHpY, player.maxHpLevel);
+  }
+
+  void money_hp_Frame_Display(){
+    noFill();
     stroke(0);
     strokeWeight(4);
     rectMode(CENTER);
-    rect(Skill_2_2_X, Skill_2_2_Y, skillWidth, skillHeight, 20);
-    // Show Skill Shuriken icon
-    icon.display(10, Skill_2_2_X, Skill_2_2_Y - skillHeight / 10);
+    // Money Frame
+    rect(moneyX, moneyHpY, moneyHpWidth, moneyHpHeight, 20);
+    // HP Frame
+    rect(hpX, moneyHpY, moneyHpWidth, moneyHpHeight, 20);
+
+    // Text
+    fill(0);
+    text("Earning Efficiency", moneyX, moneyHpY - moneyHpHeight / 2 - text_Size / 2);
+    text("Max HP", hpX, moneyHpY - moneyHpHeight / 2 - text_Size / 2);
+
+    // Money uprade button
+    if((player.money < player.earningEffiLevel * 10) || (player.earningEffiLevel == 11)){
+      fill(150);
+    }else{
+      fill(#00a2ed);
+    }
+    rect(moneyX, moneyHpY + moneyHpHeight / 2.5, moneyHpWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", moneyX, moneyHpY + moneyHpHeight / 2.4);
+    // HP uprade button
+    if((player.money < player.maxHpLevel * 10) || (player.maxHpLevel == 11)){
+      fill(150);
+    }else{
+      fill(#00a2ed);
+    }
+    rect(hpX, moneyHpY + moneyHpHeight / 2.5, moneyHpWidth * 3 / 4, skillHeight / 4);
+    fill(255);
+    text("Upgrade", hpX, moneyHpY + moneyHpHeight / 2.4);
+  }
+
+  void money_hp_Leval_Display(float x, float y, int level){
+    color[] levelColor = {0, 0, 0, #008000, #008000, #008000, #0077B6, #0077B6, #A335EE, #A335EE};
     // Show the current level of the skill
     textAlign(LEFT);
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.skillLevel[3] < 5){
-      text("Lv." + player.skillLevel[3], Skill_2_2_X - skillWidth / 2 + 10, Skill_2_2_Y - skillHeight / 2 + 25);
-    } else{
-      text("Lv.MAX", Skill_2_2_X - skillWidth / 2 + 10, Skill_2_2_Y - skillHeight / 2 + 25);
+    if(level < 11){
+      fill(levelColor[level-1]);
+      text("Lv." + level, x - moneyHpWidth / 2 + 10, y - moneyHpHeight / 2 + 25);
+    }else{
+      fill(#FF8000);
+      text("Lv.MAX", x - moneyHpWidth / 2 + 10, y - moneyHpHeight / 2 + 25);
     }
-    // Add an upgrade button in the square
+  }
+
+  void pet_Page_Display(){
+    rectMode(CORNER);
+    // ATTACK
+    fill(200);
+    stroke(0);
+    strokeWeight(Stroke_Weight);
+    rect(width / 5.6, height / 11, tagWidth, tagHeight, 20);
+    textAlign(CENTER);
+    textFont(C11);
     textSize(text_Size);
+    fill(0);
+    text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
+    // MONEY & HP
+    fill(200);
+    stroke(0);
+    rect(width / 5.6 + 1 * tagWidth, height / 11, tagWidth, tagHeight, 20);
+    fill(0);
+    text("MONEY & HP", width / 5.6 + tagWidth * 1.5, height / 11 + tagHeight / 2.1);
+    // PET
+    fill(255);
+    stroke(0);
+    rect(width / 5.6, height / 5.3, pageWidth, pageHeight, 20);
+    rect(width / 5.6 + 2 * tagWidth, height / 11, tagWidth, tagHeight, 20);
+    noStroke();
+    rect(width / 5.6 - Stroke_Weight + 2 * tagWidth, height / 5.3 + Stroke_Weight / 2, width / 4.5, tagHeight);
+    fill(0);
+    text("PET", width / 5.6 + tagWidth * 2.5, height / 11 + tagHeight / 2.1);
+
+    // Icon
+    icon.display(13, whiteDogX, whiteDogY - skillHeight / 10);
+    icon.display(14, dogX, dogY - skillHeight / 10);
+    icon.display(15, fowlX, fowlY - skillHeight / 10);
+    icon.display(16, oxX, oxY - skillHeight / 10);
+    icon.display(17, ratX, ratY - skillHeight / 10);
+    icon.display(18, turtleX, turtleY - skillHeight / 10);
+
+    // frame & Upgrade Button
+    pet_Frame_Display(whiteDogX, whiteDogY, 0);
+    pet_Frame_Display(dogX, dogY, 1);
+    pet_Frame_Display(fowlX, fowlY, 2);
+    pet_Frame_Display(oxX, oxY, 3);
+    pet_Frame_Display(ratX, ratY, 4);
+    pet_Frame_Display(turtleX, turtleY, 5);
+
+    // Level
+    pet_Leval_Display(whiteDogX, whiteDogY, 0);
+    pet_Leval_Display(dogX, dogY, 1);
+    pet_Leval_Display(fowlX, fowlY, 2);
+    pet_Leval_Display(oxX, oxY, 3);
+    pet_Leval_Display(ratX, ratY, 4);
+    pet_Leval_Display(turtleX, turtleY, 5);
+
+    // Text
+    fill(0);
+    textAlign(CENTER);
+    textFont(C11);
+    textSize(text_Size);
+    text("Bingo", whiteDogX, whiteDogY - skillHeight / 2 - text_Size / 2);
+    text("Lucky", dogX, dogY - skillHeight / 2 - text_Size / 2);
+    text("Cogi", fowlX, fowlY - skillHeight / 2 - text_Size / 2);
+    text("Oxygen", oxX, oxY - skillHeight / 2 - text_Size / 2);
+    text("Jerry", ratX, ratY - skillHeight / 2 - text_Size / 2);
+    text("TingCoCo", turtleX, turtleY - skillHeight / 2 - text_Size / 2);
+
+    // red frame
+    pet_red_Frame_Display(player.currentPet);
+  }
+
+  void pet_Frame_Display(float x, float y, int petIndex){
+    noFill();
+    stroke(0);
+    strokeWeight(4);
+    rectMode(CENTER);
+    // draw rectangular frame
+    rect(x, y, skillWidth, skillHeight, 20);
+    // Add an upgrade button in the square
+    textSize(text_Size);  
     textFont(C11);
     textAlign(CENTER);
-    fill(#00a2ed);
-    rect(Skill_2_2_X, Skill_2_2_Y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
+    // check if the player has enough money to upgrade
+    if((player.money < player.petLevel[petIndex] * 10) || (player.petLevel[petIndex] == 5)){
+      fill(150);
+    }else{
+      fill(#00a2ed);
+    }
+    rect(x, y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
     fill(255);
-    text("Upgrade", Skill_2_2_X, Skill_2_2_Y + skillHeight / 2.8);
+    text("Upgrade", x, y + skillHeight / 2.8); 
+  }
+
+  void pet_Leval_Display(float x, float y, int petIndex){
+    color[] levelColor = {0, #008000, #0077B6, #A335EE};
+    // Show the current level of the pet
+    textAlign(LEFT);
+    textFont(ABL);
+    fill(0);
+    textSize(text_Size_Skill);
+    if(player.petLevel[petIndex] < 5){
+      fill(levelColor[player.petLevel[petIndex]-1]);
+      text("Lv." + player.petLevel[petIndex], x - skillWidth / 2 + 10, y - skillHeight / 2 + 25);
+    }else{
+      fill(#FF8000);
+      text("Lv.MAX", x - skillWidth / 2 + 10, y - skillHeight / 2 + 25);
+    }
+  }
+
+  void pet_red_Frame_Display(String currentpet){
+      stroke(#FF0800);
+      strokeWeight(5);
+      noFill();
+      rectMode(CENTER);
+    if(currentpet == "white dog"){
+      rect(whiteDogX, whiteDogY, skillWidth, skillHeight, 20);
+    }else if(currentpet == "dog"){
+      rect(dogX, dogY, skillWidth, skillHeight, 20);
+    }else if(currentpet == "fowl"){
+      rect(fowlX, fowlY, skillWidth, skillHeight, 20);
+    }else if(currentpet == "ox"){
+      rect(oxX, oxY, skillWidth, skillHeight, 20);
+    }else if(currentpet == "rat"){
+      rect(ratX, ratY, skillWidth, skillHeight, 20);
+    }else if(currentpet == "turtle"){
+      rect(turtleX, turtleY, skillWidth, skillHeight, 20);
+    }
   }
   
   void keyPressed() {}
@@ -479,60 +682,6 @@ class UpgradePage implements Page {
   }
   
   void mouseClicked() {
-    // Upgrade button Basic
-    if(mouseX > (BasicX - skillWidth * 3 / 4) && mouseX < (BasicX + skillWidth * 3 / 4) && mouseY > (BasicY + skillHeight / 3.2 - skillHeight / 4) && mouseY < (BasicY + skillHeight / 3.2 + skillHeight / 4)){
-      if(player.basicSkillLevel < 5){
-        if(player.money >= player.basicSkillLevel * 10){
-          player.money -= player.basicSkillLevel * 10;
-          player.basicSkillLevel += 1;
-        }
-      }
-    }
-    // Upgrade button FEVER
-    if(mouseX > (FEVERX - skillWidth * 3 / 4) && mouseX < (FEVERX + skillWidth * 3 / 4) && mouseY > (FEVERY + skillHeight / 3.2 - skillHeight / 4) && mouseY < (FEVERY + skillHeight / 3.2 + skillHeight / 4)){
-      if(player.feverLevel < 5){
-        if(player.money >= player.feverLevel * 10){
-          player.money -= player.feverLevel * 10;
-          player.feverLevel++;
-        }
-      }
-    }
-    // Upgrade button Skill 1-1
-    if(mouseX > (Skill_1_1_X - skillWidth * 3 / 4) && mouseX < (Skill_1_1_X + skillWidth * 3 / 4) && mouseY > (Skill_1_1_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_1_1_Y + skillHeight / 3.2 + skillHeight / 4)){
-      if(player.skillLevel[0] < 5){
-        if(player.money >= player.skillLevel[0] * 10){
-          player.money -= player.skillLevel[0] * 10;
-          player.skillLevel[0]++;
-        }
-      }
-    }
-    // Upgrade button Skill 1-2
-    if(mouseX > (Skill_1_2_X - skillWidth * 3 / 4) && mouseX < (Skill_1_2_X + skillWidth * 3 / 4) && mouseY > (Skill_1_2_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_1_2_Y + skillHeight / 3.2 + skillHeight / 4)){
-      if(player.skillLevel[1] < 5){
-        if(player.money >= player.skillLevel[1] * 10){
-          player.money -= player.skillLevel[1] * 10;
-          player.skillLevel[1]++;
-        }
-      }
-    }
-    // Upgrade button Skill 2-1
-    if(mouseX > (Skill_2_1_X - skillWidth * 3 / 4) && mouseX < (Skill_2_1_X + skillWidth * 3 / 4) && mouseY > (Skill_2_1_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_2_1_Y + skillHeight / 3.2 + skillHeight / 4)){
-      if(player.skillLevel[2] < 5){
-        if(player.money >= player.skillLevel[2] * 10){
-          player.money -= player.skillLevel[2] * 10;
-          player.skillLevel[2]++;
-        }
-      }
-    }
-    // Upgrade button Skill 2-2
-    if(mouseX > (Skill_2_2_X - skillWidth * 3 / 4) && mouseX < (Skill_2_2_X + skillWidth * 3 / 4) && mouseY > (Skill_2_2_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_2_2_Y + skillHeight / 3.2 + skillHeight / 4)){
-      if(player.skillLevel[3] < 5){
-        if(player.money >= player.skillLevel[3] * 10){
-          player.money -= player.skillLevel[3] * 10;
-          player.skillLevel[3]++;
-        }
-      }
-    }
   }
   
   void mouseDragged() {}
@@ -542,6 +691,191 @@ class UpgradePage implements Page {
   void mouseReleased() {
     if(game.backButton.isHover()) {
       game.currentScene = 0;
+    }
+    // Select the page
+    if(mouseX > (width / 5.6) && mouseX < (width / 5.6 + tagWidth) && mouseY > (height / 11) && mouseY < (height / 11 + tagHeight)){
+      currentPage = 0;
+    }else if(mouseX > (width / 5.6 + tagWidth) && mouseX < (width / 5.6 + tagWidth * 2) && mouseY > (height / 11) && mouseY < (height / 11 + tagHeight)){
+      currentPage = 1;
+    }else if(mouseX > (width / 5.6 + tagWidth * 2) && mouseX < (width / 5.6 + tagWidth * 3) && mouseY > (height / 11) && mouseY < (height / 11 + tagHeight)){
+      currentPage = 2;
+    }
+    switch(currentPage){
+      case 0:
+        // Upgrade button Basic
+        if(mouseX > (BasicX - skillWidth * 3 / 8) && mouseX < (BasicX + skillWidth * 3 / 8) && mouseY > (BasicY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (BasicY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.skillLevel[0] < 5){
+            if(player.money >= player.skillLevel[0] * 10){
+              player.money -= player.skillLevel[0] * 10;
+              player.skillLevel[0] += 1;
+            }
+          }
+        }
+        // Upgrade button FEVER
+        if(mouseX > (FEVERX - skillWidth * 3 / 8) && mouseX < (FEVERX + skillWidth * 3 / 8) && mouseY > (FEVERY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (FEVERY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.skillLevel[1] < 5){
+            if(player.money >= player.skillLevel[1] * 10){
+              player.money -= player.skillLevel[1] * 10;
+              player.skillLevel[1]++;
+            }
+          }
+        }
+        // Upgrade button Skill 1-1
+        if(mouseX > (Skill_1_1_X - skillWidth * 3 / 8) && mouseX < (Skill_1_1_X + skillWidth * 3 / 8) && mouseY > (Skill_1_1_Y + skillHeight / 3.2 - skillHeight / 8) && mouseY < (Skill_1_1_Y + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.skillLevel[2] < 5){
+            if(player.money >= player.skillLevel[2] * 10){
+              player.money -= player.skillLevel[2] * 10;
+              player.skillLevel[2]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Skill 1-2
+        if(mouseX > (Skill_1_2_X - skillWidth * 3 / 8) && mouseX < (Skill_1_2_X + skillWidth * 3 / 8) && mouseY > (Skill_1_2_Y + skillHeight / 3.2 - skillHeight / 8) && mouseY < (Skill_1_2_Y + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.skillLevel[3] < 5){
+            if(player.money >= player.skillLevel[3] * 10){
+              player.money -= player.skillLevel[3] * 10;
+              player.skillLevel[3]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Skill 2-1
+        if(mouseX > (Skill_2_1_X - skillWidth * 3 / 8) && mouseX < (Skill_2_1_X + skillWidth * 3 / 8) && mouseY > (Skill_2_1_Y + skillHeight / 3.2 - skillHeight / 8) && mouseY < (Skill_2_1_Y + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.skillLevel[4] < 5){
+            if(player.money >= player.skillLevel[4] * 10){
+              player.money -= player.skillLevel[4] * 10;
+              player.skillLevel[4]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Skill 2-2
+        if(mouseX > (Skill_2_2_X - skillWidth * 3 / 8) && mouseX < (Skill_2_2_X + skillWidth * 3 / 8) && mouseY > (Skill_2_2_Y + skillHeight / 3.2 - skillHeight / 8) && mouseY < (Skill_2_2_Y + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.skillLevel[5] < 5){
+            if(player.money >= player.skillLevel[5] * 10){
+              player.money -= player.skillLevel[5] * 10;
+              player.skillLevel[5]++;
+              return;
+            }
+          }
+        }
+        // Select Skill1
+        if(mouseX > (Skill_1_1_X - skillWidth / 2) && mouseX < (Skill_1_1_X + skillWidth / 2) && mouseY > (Skill_1_1_Y - skillHeight / 2) && mouseY < (Skill_1_1_Y + skillHeight / 2)){
+          player.currentSkill1 = "mouse";
+        }
+        if(mouseX > (Skill_1_2_X - skillWidth / 2) && mouseX < (Skill_1_2_X + skillWidth / 2) && mouseY > (Skill_1_2_Y - skillHeight / 2) && mouseY < (Skill_1_2_Y + skillHeight / 2)){
+          player.currentSkill1 = "phone";
+        }
+        // Select Skill2
+        if(mouseX > (Skill_2_1_X - skillWidth / 2) && mouseX < (Skill_2_1_X + skillWidth / 2) && mouseY > (Skill_2_1_Y - skillHeight / 2) && mouseY < (Skill_2_1_Y + skillHeight / 2)){
+          player.currentSkill2 = "ice";
+        }
+        if(mouseX > (Skill_2_2_X - skillWidth / 2) && mouseX < (Skill_2_2_X + skillWidth / 2) && mouseY > (Skill_2_2_Y - skillHeight / 2) && mouseY < (Skill_2_2_Y + skillHeight / 2)){
+          player.currentSkill2 = "shuriken";
+        }
+        break;
+      case 1:
+        // Upgrade button Money
+        if(mouseX > (moneyX - moneyHpWidth * 3 / 8) && mouseX < (moneyX + moneyHpWidth * 3 / 8) && mouseY > (moneyHpY + moneyHpHeight / 2.5 - skillHeight / 8) && mouseY < (moneyHpY + moneyHpHeight / 2.5 + skillHeight / 8)){
+          if(player.money >= player.earningEffiLevel * 10){
+            if(player.earningEffiLevel < 11){
+              player.money -= player.earningEffiLevel * 10;
+              player.earningEffiLevel++;
+            }
+          }
+        }
+        // Upgrade button HP
+        if(mouseX > (hpX - moneyHpWidth * 3 / 8) && mouseX < (hpX + moneyHpWidth * 3 / 8) && mouseY > (moneyHpY + moneyHpHeight / 2.5 - skillHeight / 8) && mouseY < (moneyHpY + moneyHpHeight / 2.5 + skillHeight / 8)){
+          if(player.money >= player.maxHpLevel * 10){
+            if(player.maxHpLevel < 11){
+              player.money -= player.maxHpLevel * 10;
+              player.maxHpLevel++;
+            }
+          }
+        }
+        break;
+      case 2:
+        // Upgrade button White Dog
+        if(mouseX > (whiteDogX - skillWidth * 3 / 8) && mouseX < (whiteDogX + skillWidth * 3 / 8) && mouseY > (whiteDogY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (whiteDogY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.money >= player.petLevel[0] * 10){
+            if(player.petLevel[0] < 5){
+              player.money -= player.petLevel[0] * 10;
+              player.petLevel[0]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Dog
+        if(mouseX > (dogX - skillWidth * 3 / 8) && mouseX < (dogX + skillWidth * 3 / 8) && mouseY > (dogY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (dogY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.money >= player.petLevel[1] * 10){
+            if(player.petLevel[1] < 5){
+              player.money -= player.petLevel[1] * 10;
+              player.petLevel[1]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Fowl
+        if(mouseX > (fowlX - skillWidth * 3 / 8) && mouseX < (fowlX + skillWidth * 3 / 8) && mouseY > (fowlY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (fowlY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.money >= player.petLevel[2] * 10){
+            if(player.petLevel[2] < 5){
+              player.money -= player.petLevel[2] * 10;
+              player.petLevel[2]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Ox
+        if(mouseX > (oxX - skillWidth * 3 / 8) && mouseX < (oxX + skillWidth * 3 / 8) && mouseY > (oxY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (oxY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.money >= player.petLevel[3] * 10){
+            if(player.petLevel[3] < 5){
+              player.money -= player.petLevel[3] * 10;
+              player.petLevel[3]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Rat
+        if(mouseX > (ratX - skillWidth * 3 / 8) && mouseX < (ratX + skillWidth * 3 / 8) && mouseY > (ratY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (ratY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.money >= player.petLevel[4] * 10){
+            if(player.petLevel[4] < 5){
+              player.money -= player.petLevel[4] * 10;
+              player.petLevel[4]++;
+              return;
+            }
+          }
+        }
+        // Upgrade button Turtle
+        if(mouseX > (turtleX - skillWidth * 3 / 8) && mouseX < (turtleX + skillWidth * 3 / 8) && mouseY > (turtleY + skillHeight / 3.2 - skillHeight / 8) && mouseY < (turtleY + skillHeight / 3.2 + skillHeight / 8)){
+          if(player.money >= player.petLevel[5] * 10){
+            if(player.petLevel[5] < 5){
+              player.money -= player.petLevel[5] * 10;
+              player.petLevel[5]++;
+              return;
+            }
+          }
+        }
+        // Select Pet
+        if(mouseX > (whiteDogX - skillWidth / 2) && mouseX < (whiteDogX + skillWidth / 2) && mouseY > (whiteDogY - skillHeight / 2) && mouseY < (whiteDogY + skillHeight / 2)){
+          player.currentPet = "white dog";
+        }
+        if(mouseX > (dogX - skillWidth / 2) && mouseX < (dogX + skillWidth / 2) && mouseY > (dogY - skillHeight / 2) && mouseY < (dogY + skillHeight / 2)){
+          player.currentPet = "dog";
+        }
+        if(mouseX > (fowlX - skillWidth / 2) && mouseX < (fowlX + skillWidth / 2) && mouseY > (fowlY - skillHeight / 2) && mouseY < (fowlY + skillHeight / 2)){
+          player.currentPet = "fowl";
+        }
+        if(mouseX > (oxX - skillWidth / 2) && mouseX < (oxX + skillWidth / 2) && mouseY > (oxY - skillHeight / 2) && mouseY < (oxY + skillHeight / 2)){
+          player.currentPet = "ox";
+        }
+        if(mouseX > (ratX - skillWidth / 2) && mouseX < (ratX + skillWidth / 2) && mouseY > (ratY - skillHeight / 2) && mouseY < (ratY + skillHeight / 2)){
+          player.currentPet = "rat";
+        }
+        if(mouseX > (turtleX - skillWidth / 2) && mouseX < (turtleX + skillWidth / 2) && mouseY > (turtleY - skillHeight / 2) && mouseY < (turtleY + skillHeight / 2)){
+          player.currentPet = "turtle";
+        }
+      break;
     }
   }
 }
@@ -950,9 +1284,9 @@ class PlayingPage implements Page {
     // }
     if(state == PAUSE) {
       pausePage.mouseReleased();
-      if(pausePage.state == pausePage.Play) {
+      if(pausePage.state == pausePage.PLAY) {
         state = preState;
-      } else if(pausePage.state == pausePage.Exit) {
+      } else if(pausePage.state == pausePage.EXIT) {
         game.currentScene = 0;
       }
     }

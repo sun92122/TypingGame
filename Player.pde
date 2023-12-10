@@ -1,11 +1,20 @@
 class Player {
   String name;
 
-  int basicSkillLevel = 1;
-  int feverLevel = 1;
-  int[] skillLevel = new int[4];
+  // 0: Basic, 1: FEVER, 2: Mouse, 3: Phone, 4: Ice, 5: Shuriken
+  int[] skillLevel = new int[6];
+  // 0: white dog, 1: dog, 2: fowl, 3: ox, 4: rat, 5: turtle
+  int[] petLevel = new int[6];
+  int earningEffiLevel = 1;
+  int maxHpLevel = 1;
 
-  int money = 1000;
+  float money = 5000;
+  float earningEfficiency = 1 + 0.1f * (earningEffiLevel - 1);
+  int maxHP = 100 + 10 * (maxHpLevel - 1);
+
+  String currentSkill1 = "mouse";
+  String currentSkill2 = "ice";
+  String currentPet = "white dog";
   /**
   * The player's settings.
   * @type {Object}
@@ -26,8 +35,9 @@ class Player {
     this.name = "";
     this.settings = new JSONObject();
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 6; i++) {
       this.skillLevel[i] = 1;
+      this.petLevel[i] = 1;
     }
   }
   
