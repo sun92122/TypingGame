@@ -546,6 +546,7 @@ class PlayingPage implements Page {
   String inputText = "";
   String[] vocabs = new String[3];
   VocabText[] vocabText = new VocabText[3];
+  Table attackTable = new Table();
   
   // player info
   int hp = 100;
@@ -575,6 +576,10 @@ class PlayingPage implements Page {
       vocabs[i] = getVocab();
       vocabText[i] = new VocabText(i, vocabs[i]);
     }
+
+    attackTable.addColumn("damage");
+    attackTable.addColumn("piercing");
+    attackTable.addColumn("delay");
   }
   
   void update() {
@@ -773,9 +778,16 @@ class PlayingPage implements Page {
   void attack(int attackType) {
     score += 100;
     fever += 10;
+    character.changeState(4, attackType, attackTable, mobXMin);
   }
   
-  void keyPressed() {}
+  void keyPressed() {
+    if(state != PAUSE) {
+      if(key == ESC_) {
+        pause();
+      }
+    }
+  }
   
   void keyTyped() {
     if(state != PLAYING) {
@@ -824,7 +836,7 @@ class PlayingPage implements Page {
   
   void mouseClicked() {
     if(game.menuButton.isHover()) {
-      this.pause();
+      pause();
     }
   }
   
@@ -838,9 +850,9 @@ class PlayingPage implements Page {
     // }
     if(state == PAUSE) {
       pausePage.mouseReleased();
-      if(pausePage.state == pausePage.Play) {
+      if(pausePage.state == pausePage.PLAY) {
         state = preState;
-      } else if(pausePage.state == pausePage.Exit) {
+      } else if(pausePage.state == pausePage.EXIT) {
         game.currentScene = 0;
       }
     }

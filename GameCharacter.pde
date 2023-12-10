@@ -6,8 +6,15 @@ class Character {
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
   
-  int state = 1; // 0 = idle, 1 = moving, 2 = attacking, 3 = dead, 4 = typing
-  String[] stateNames = {"idle", "moving", "attacking", "dead", "typing"};
+  CharacterAttack attack;
+  int attackType = -1;
+  final int BASIC_ATT = 0;
+  final int FEVER_ATT = 1;
+  final int SPECIAL_ATT_1 = 2;
+  final int SPECIAL_ATT_2 = 3;
+  
+  int state = 1; // 0 = idle, 1 = moving, 2 = typing, 3 = injuried, 4 = attacking
+  String[] stateNames = {"idle", "moving", "typing", "injuried"};
   int stateChangeTime = 0;
   int currentImageIndex = 0;
   
@@ -18,39 +25,18 @@ class Character {
     loadCharacterData();
   }
   
-  void loadCharacterData() {
-    JSONObject pictures = data.getJSONObject("pictures");
-    for(String stateName : stateNames) {
-      JSONArray stateData = pictures.getJSONArray(stateName);
-      IntList stateAnimations = new IntList();
-      for(int i = 0; i < stateData.size(); i++) {
-        stateAnimations.append(stateData.getJSONObject(i).getInt("duration"));
-      }
-      animations.put(stateName, stateAnimations);
-    }
-  }
+  void loadCharacterData() {}
   
-  void display(float x, float y) {
-    // display the character, x, y is the right bottom corner of the character
-    ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
-    PShape currentShape = currentShapes.get(currentImageIndex);
-    shape(currentShape, x, y);
-    
-    debugPoint(x, y);
-  }
+  void display(float x, float y) {}
   
-  void update_() {
-    if(stateChangeTime == 0) {
-      stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
-    }
-    if(millis() > stateChangeTime) {
-      currentImageIndex = (currentImageIndex + 1) % shapes.get(stateNames[state]).size();
-      stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
-    }
-  }
+  void update_() {}
   
   void update() {
-    update_();
+    if(state < 4) {
+      update_();
+    } else if(!attack.isAttacking) {
+      changeState(0);
+    }
   }
   
   void update(int state) {
@@ -59,9 +45,18 @@ class Character {
   }
   
   void changeState(int state) {
+    if(this.state >= state && state != 0) return;
     this.state = state;
     currentImageIndex = 0;
     stateChangeTime = 0;
+  }
+  
+  void changeState(int state, int attackType, Table attackTable, float mobXMin) {
+    if(this.state >= state) return;
+    this.state = state;
+    currentImageIndex = 0;
+    stateChangeTime = 0;
+    attack.attack(attackType, attackTable, mobXMin);
   }
 }
 
@@ -84,15 +79,20 @@ class CharacterSvg extends Character {
       shapes.put(stateName, stateShapes);
       animations.put(stateName, stateAnimations);
     }
+
+    attack = new CharacterAttack(data.getJSONObject("attack"), scale);
   }
   
   void display(float x, float y) {
-    // display the character, x, y is the right bottom corner of the character
-    ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
-    PShape currentShape = currentShapes.get(currentImageIndex);
-    float h = currentShape.getHeight() * scale * unit;
-    float w = currentShape.getWidth() * scale * unit;
-    shape(currentShape, x - w, y - h, w, h);
+    if(state == 4) {
+      attack.display(x, y);
+    } else {
+      ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
+      PShape currentShape = currentShapes.get(currentImageIndex);
+      float h = currentShape.getHeight() * scale * unit;
+      float w = currentShape.getWidth() * scale * unit;
+      shape(currentShape, x - w, y - h, w, h);
+    }
     
     debugPoint(x, y);
   }
@@ -102,6 +102,9 @@ class CharacterSvg extends Character {
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
     if(millis() > stateChangeTime) {
+      if(state > 1 && currentImageIndex == shapes.get(stateNames[state]).size() - 1) {
+        changeState(0);
+      }
       currentImageIndex = (currentImageIndex + 1) % shapes.get(stateNames[state]).size();
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
