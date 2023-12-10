@@ -245,6 +245,25 @@ class UpgradePage implements Page {
   float Skill_2_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
   float Skill_2_2_Y = Skill_2_1_Y;
 
+  // MONEY & HP page variables
+  float moneyX = width / 2 - pageWidth / 4.3 + 25;
+  float moneyHpY = height / 1.75;
+  float hpX = width / 2 + pageWidth / 4.3 + 25;
+
+  // PET page variables
+  float dogX = width / 5.6 + pageWidth / 2;
+  float dogY = height / 5.3 + pageHeight / 3.2;
+  float whiteDogX = dogX - pageWidth / 3.2;
+  float whiteDogY = dogY;
+  float fowlX = dogX + pageWidth / 3.2;
+  float fowlY = dogY;
+  float ratX = dogX;
+  float ratY = height / 5.3 + pageHeight / 3 * 2.3;
+  float oxX = dogX - pageWidth / 3.2;
+  float oxY = ratY;
+  float turtleX = dogX + pageWidth / 3.2;
+  float turtleY = ratY;
+
   int Stroke_Weight = 6;
   int text_Size = 30;
   int text_Size_Skill = 25;
