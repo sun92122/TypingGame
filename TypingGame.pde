@@ -1,5 +1,10 @@
+import processing.sound.*;
+
+TypingGame mainSketch = this;
+
 final char ESC_ = 24;
 
+SoundManager sound;
 Player player;
 Game game;
 
@@ -17,6 +22,7 @@ void setup() {
     surface.setResizable(false);
     surface.setLocation((displayWidth - width) / 2,(displayHeight - height) / 2);
     
+    sound = new SoundManager();
     player = new Player();
     game = new Game();
   } catch(Exception e) {
@@ -51,6 +57,9 @@ void draw() {
 }
 
 void keyPressed() {
+  if(keyCode == ESC) {
+    key = ESC_;
+  }
   game.keyPressed();
 }
 

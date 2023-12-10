@@ -182,3 +182,30 @@ class BackgroundData {
     }
   }
 }
+
+class SoundData {
+
+  String soundPath = "data/setting/sounds.json";
+  
+  JSONArray soundsData;
+  HashMap<String, SoundFile> sounds = new HashMap<String, SoundFile>();
+  
+  SoundData() {
+    loadSoundData();
+  }
+  
+  void loadSoundData() {
+    try {
+      soundsData = loadJSONArray(soundPath);
+      for(int i = 0; i < soundsData.size(); i++) {
+        JSONObject soundData = soundsData.getJSONObject(i);
+        String name = soundData.getString("name");
+        SoundFile soundFile = new SoundFile(mainSketch, soundData.getString("path"));
+        sounds.put(name, soundFile);
+      }
+    } catch(Exception e) {
+      println("Error, sounds file not found");
+      println(e);
+    }
+  }
+}
