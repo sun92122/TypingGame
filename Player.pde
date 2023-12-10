@@ -1,8 +1,11 @@
 class Player {
   String name;
+
   int basicSkillLevel = 1;
   int feverLevel = 1;
   int[] skillLevel = new int[4];
+
+  int money = 1000;
   /**
   * The player's settings.
   * @type {Object}
@@ -22,6 +25,10 @@ class Player {
   Player() {
     this.name = "";
     this.settings = new JSONObject();
+
+    for (int i = 0; i < 4; i++) {
+      this.skillLevel[i] = 1;
+    }
   }
   
   // Getters and setters for settings
