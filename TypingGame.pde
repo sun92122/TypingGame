@@ -4,7 +4,7 @@ TypingGame mainSketch = this;
 
 final char ESC_ = 24;
 
-SoundManager sound;
+AudioManager audio;
 Player player;
 Game game;
 
@@ -22,7 +22,7 @@ void setup() {
     surface.setResizable(false);
     surface.setLocation((displayWidth - width) / 2,(displayHeight - height) / 2);
     
-    sound = new SoundManager();
+    audio = new AudioManager();
     player = new Player();
     game = new Game();
   } catch(Exception e) {
@@ -34,6 +34,7 @@ void setup() {
 void draw() {
   if(true) {
     try {
+      audio.update();
       game.update();
       game.draw();
     } catch(Exception e) {
@@ -41,6 +42,7 @@ void draw() {
       exit();
     }
   } else {
+    audio.update();
     game.update();
     game.draw();
   }

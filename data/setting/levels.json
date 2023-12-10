@@ -4,7 +4,7 @@
     "description": "This is a tutorial level.",
     "timelimit": 9999000,
     "background": "volcanic",
-    "music": "",
+    "music": "bgm1",
     "vocab": {
       "1": 100
     },

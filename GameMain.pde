@@ -133,6 +133,14 @@ class Game {
     }
     
     logPrint("Game initialized");
+    menuPage.init();
+  }
+  
+  void switchScene(int scene) {
+    currentScene = scene;
+    if(currentScene == 0) {
+      menuPage.init();
+    }
   }
   
   void update() {}
@@ -228,7 +236,7 @@ class Game {
   }
   
   void mouseClicked() {
-    sound.play("click");
+    audio.playSound("click");
     switch(currentScene) {
       case 0:
         menuPage.mouseClicked();

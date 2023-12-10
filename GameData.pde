@@ -183,28 +183,44 @@ class BackgroundData {
   }
 }
 
-class SoundData {
+class AudioData {
 
-  String soundPath = "data/setting/sounds.json";
+  String audioPath = "data/setting/audios.json";
   
-  JSONArray soundsData;
+  JSONObject audiosDatas;
+  HashMap<String, String> audiosPath = new HashMap<String, String>();
   HashMap<String, SoundFile> sounds = new HashMap<String, SoundFile>();
+  HashMap<String, SoundFile> musics = new HashMap<String, SoundFile>();
   
-  SoundData() {
-    loadSoundData();
+  AudioData() {
+    loadAudioData();
   }
   
-  void loadSoundData() {
+  void loadAudioData() {
     try {
-      soundsData = loadJSONArray(soundPath);
+      audiosDatas = loadJSONObject(audioPath);
+
+      JSONArray musicsData = audiosDatas.getJSONArray("musics");
+      for(int i = 0; i < musicsData.size(); i++) {
+        JSONObject musicData = musicsData.getJSONObject(i);
+        String name = musicData.getString("name");
+        String path = musicData.getString("path");
+        SoundFile musicFile = new SoundFile(mainSketch, path);
+        musics.put(name, musicFile);
+        audiosPath.put(name, path);
+      }
+
+      JSONArray soundsData = audiosDatas.getJSONArray("sounds");
       for(int i = 0; i < soundsData.size(); i++) {
         JSONObject soundData = soundsData.getJSONObject(i);
         String name = soundData.getString("name");
-        SoundFile soundFile = new SoundFile(mainSketch, soundData.getString("path"));
+        String path = soundData.getString("path");
+        SoundFile soundFile = new SoundFile(mainSketch, path);
         sounds.put(name, soundFile);
+        audiosPath.put(name, path);
       }
     } catch(Exception e) {
-      println("Error, sounds file not found");
+      println("Error, audios file not found");
       println(e);
     }
   }

@@ -1,0 +1,26 @@
+{
+  "musics": [
+    {
+      "name": "bgm1",
+      "path": "audio/music/bgm.wav"
+    },
+    {
+      "name": "menu",
+      "path": "audio/music/bgm.wav"
+    }
+  ],
+  "sounds": [
+    {
+      "name": "click",
+      "path": "audio/sound/點擊音效.mp3"
+    },
+    {
+      "name": "win",
+      "path": "audio/sound/獲勝.mp3"
+    },
+    {
+      "name": "select level",
+      "path": "audio/sound/選擇介面點擊關卡.mp3"
+    }
+  ]
+}
