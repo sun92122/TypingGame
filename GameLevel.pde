@@ -9,6 +9,7 @@ class Level {
   
   int timeLimit;
   String map;
+  String bgm;
   int[] vocabs = new int[6];
   int weightSum = 0;
   Table enemies = new Table();
@@ -31,6 +32,7 @@ class Level {
 
     this.timeLimit = data.getInt("timelimit");
     this.map = data.getString("background");
+    this.bgm = data.getString("music");
 
     getVocabWeights();
     

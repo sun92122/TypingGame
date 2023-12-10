@@ -30,6 +30,10 @@ class MenuPage implements Page {
     logPrint("MenuPage created.");
   }
   
+  void init() {
+    audio.playMusic("menu");
+  }
+  
   void draw() {
     background.drawBehind();
     character.display(characterX, characterY);
@@ -91,7 +95,7 @@ class MenuPage implements Page {
       if(currentButton == 3) {
         game.gameExit();
       } else {
-        game.currentScene = currentButton + 1;
+        game.switchScene(currentButton + 1);
       }
     }
     if(keyCode == LEFT) {
@@ -128,7 +132,7 @@ class MenuPage implements Page {
       if(currentButton == 3) {
         isExiting = true;
       } else {
-        game.currentScene = currentButton + 1;
+        game.switchScene(currentButton + 1);
       }
     }
   }
@@ -183,7 +187,7 @@ class PlayPage implements Page {
   
   void keyReleased() {
     if(key == ESC_) {
-      game.currentScene = 0;
+      game.switchScene(0);
     }
   }
   
@@ -195,7 +199,7 @@ class PlayPage implements Page {
   
   void mouseReleased() {
     if(game.backButton.isHover()) {
-      game.currentScene = 0;
+      game.switchScene(0);
     }
     for(int i = 0; i < 15; i++) {
       if(i + pageIndex * 15 >= levelCount) {
@@ -203,7 +207,7 @@ class PlayPage implements Page {
       }
       if(levels[i + pageIndex * 15].levelIcon.isHover() && 
         levels[i + pageIndex * 15].isUnlock) {
-        game.currentScene = 4;
+        game.switchScene(4);
         game.playingPage = new PlayingPage(levels[i + pageIndex * 15]);
       }
     }
@@ -217,7 +221,7 @@ class UpgradePage implements Page {
     icon.loadIcon();
     logPrint("UpgradePage created.");
   }
-
+  
   float tagWidth = width * 7 / 35;
   float tagHeight = height / 7;
   float pageWidth = width * 24 / 35;
@@ -240,25 +244,6 @@ class UpgradePage implements Page {
   float Skill_2_1_Y = height / 5.3 + pageHeight / 3 * 2.3;
   float Skill_2_2_X = width / 5.6 + pageWidth / 3 + pageWidth / 3 + skillWidth / 2;
   float Skill_2_2_Y = Skill_2_1_Y;
-
-  // MONEY & HP page variables
-  float moneyX = width / 2 - pageWidth / 4.3 + 25;
-  float moneyHpY = height / 1.75;
-  float hpX = width / 2 + pageWidth / 4.3 + 25;
-
-  // PET page variables
-  float dogX = width / 5.6 + pageWidth / 2;
-  float dogY = height / 5.3 + pageHeight / 3.2;
-  float whiteDogX = dogX - pageWidth / 3.2;
-  float whiteDogY = dogY;
-  float fowlX = dogX + pageWidth / 3.2;
-  float fowlY = dogY;
-  float ratX = dogX;
-  float ratY = height / 5.3 + pageHeight / 3 * 2.3;
-  float oxX = dogX - pageWidth / 3.2;
-  float oxY = ratY;
-  float turtleX = dogX + pageWidth / 3.2;
-  float turtleY = ratY;
 
   int Stroke_Weight = 6;
   int text_Size = 30;
@@ -677,7 +662,7 @@ class UpgradePage implements Page {
   
   void keyReleased() {
     if(key == ESC_) {
-      game.currentScene = 0;
+      game.switchScene(0);
     }
   }
   
@@ -937,7 +922,7 @@ class SettingPage implements Page {
   
   void keyReleased() {
     if(key == ESC_) {
-      game.currentScene = 0;
+      game.switchScene(0);
     }
   }
   
@@ -961,7 +946,7 @@ class SettingPage implements Page {
   
   void mouseReleased() {
     if(game.backButton.isHover()) {
-      game.currentScene = 0;
+      game.switchScene(0);
     }
     for(int i = 0; i < settingOption.length; i++) {
       if(settingOption[i].isHover()) {
@@ -992,6 +977,7 @@ class PlayingPage implements Page {
   String inputText = "";
   String[] vocabs = new String[3];
   VocabText[] vocabText = new VocabText[3];
+  Table attackTable = new Table();
   
   // player info
   int hp = 100;
@@ -1021,6 +1007,10 @@ class PlayingPage implements Page {
       vocabs[i] = getVocab();
       vocabText[i] = new VocabText(i, vocabs[i]);
     }
+    
+    attackTable.addColumn("damage");
+    attackTable.addColumn("piercing");
+    attackTable.addColumn("delay");
   }
   
   void update() {
@@ -1068,6 +1058,8 @@ class PlayingPage implements Page {
   void draw() {
     if(!isStart) {
       isStart = true;
+      audio.stopAllMusic();
+      audio.playMusic(level.bgm);
       // level.start();
       character.update(1);
       background.init();
@@ -1219,9 +1211,16 @@ class PlayingPage implements Page {
   void attack(int attackType) {
     score += 100;
     fever += 10;
+    character.changeState(4, attackType, attackTable, mobXMin);
   }
   
-  void keyPressed() {}
+  void keyPressed() {
+    if(state != PAUSE) {
+      if(key == ESC_) {
+        pause();
+      }
+    }
+  }
   
   void keyTyped() {
     if(state != PLAYING) {
@@ -1270,7 +1269,7 @@ class PlayingPage implements Page {
   
   void mouseClicked() {
     if(game.menuButton.isHover()) {
-      this.pause();
+      pause();
     }
   }
   
@@ -1287,7 +1286,8 @@ class PlayingPage implements Page {
       if(pausePage.state == pausePage.PLAY) {
         state = preState;
       } else if(pausePage.state == pausePage.EXIT) {
-        game.currentScene = 0;
+        audio.stopMusic(level.bgm);
+        game.switchScene(1);
       }
     }
   }

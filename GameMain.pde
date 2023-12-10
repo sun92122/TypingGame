@@ -83,13 +83,13 @@ class Game {
     settingPage = new SettingPage(settings);
     
     // load characters
-    characters.put(characterNameList[0],
-      new CharacterPotato(characterData.characters.getJSONObject(0)));
-    menuPage.character = characters.get(characterNameList[0]); // set menu character
-    for(int i = 1; i < characterNameList.length; i++) {
+    // characters.put(characterNameList[0],
+    //   new CharacterPotato(characterData.characters.getJSONObject(0)));
+    for(int i = 0; i < characterNameList.length; i++) {
       characters.put(characterNameList[i],
-        new Character(characterData.characters.getJSONObject(i)));
+        new CharacterSvg(characterData.characters.getJSONObject(i)));
     }
+    menuPage.character = characters.get(characterNameList[0]); // set menu character
     
     // load mobs
     Mob mobTemp;
@@ -133,6 +133,14 @@ class Game {
     }
     
     logPrint("Game initialized");
+    menuPage.init();
+  }
+  
+  void switchScene(int scene) {
+    currentScene = scene;
+    if(currentScene == 0) {
+      menuPage.init();
+    }
   }
   
   void update() {}
@@ -228,6 +236,7 @@ class Game {
   }
   
   void mouseClicked() {
+    audio.playSound("click");
     switch(currentScene) {
       case 0:
         menuPage.mouseClicked();
