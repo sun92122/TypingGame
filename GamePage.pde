@@ -1232,6 +1232,7 @@ class PlayingPage implements Page {
     }
   }
   
+  // Todo: delete the button at the down right corner
   void drawEnding() {
     // background
     noStroke();
@@ -1250,11 +1251,16 @@ class PlayingPage implements Page {
     fill(0);
     pushMatrix();
     translate(width / 2, height / 2);
+    // Show Victory or Failed
     if(Victory == 1){
       text("VICTORY", 0, -200);
     }else{
       text("FAILED", 0, -200);
     }
+    // Show Score
+    // Show Time Remaining
+    // Show Money Earned
+    // Show button (back to main menu, back to level select menu, next level)
     popMatrix();
   }
   
