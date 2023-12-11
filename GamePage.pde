@@ -1472,6 +1472,9 @@ class PlayingPage implements Page {
       }
       inputText = "";
     } else {
+      if(inputText.length() >= 20) {
+        return;
+      }
       if('a' <= key && key <= 'z') {
         inputText += key;
       } else if('A' <= key && key <= 'Z') {
