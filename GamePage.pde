@@ -1037,8 +1037,10 @@ class PlayingPage implements Page {
 
   // variables for ending page
   int isVictory = 0;
-  float accuracy = 0.9;
-  float earnedMoney = 100;
+  int isAccurateCount;
+  int notAccurateCount;
+  float accuracy;
+  float earnedMoney = 0;
   
   PlayingPage(Level level) {
     this.level = level;
@@ -1230,7 +1232,9 @@ class PlayingPage implements Page {
     
     // time
     textAlign(LEFT);
-    text("Time: " + nfc(timer / 1000.0, 2), width - 250, 100);
+    text("Time: ", width - 250, 100);
+    textAlign(RIGHT);
+    text(nfc(timer / 1000.0, 2), width - 30, 100);
     
     // fever
     fever = constrain(fever, 0, 100);
@@ -1325,6 +1329,11 @@ class PlayingPage implements Page {
     // Show Time Remaining
     text("Time Remaining:  " + nfc(timer / 1000.0, 2), 0, -50);
     // Show Accuracy
+    if(isAccurateCount == 0 && notAccurateCount == 0){
+      accuracy = 0;
+    }else{
+      accuracy = isAccurateCount / (isAccurateCount + notAccurateCount);
+    }
     text("Accuracy:  " + 100 * accuracy + " %", 0, 10);
     // Show Score
     text("Score:  " + score, 0, 70);
@@ -1392,6 +1401,7 @@ class PlayingPage implements Page {
   void attack(int attackType) {
     score += 100;
     fever += 2;
+    isAccurateCount += 1;
     character.changeState(4, attackType, attackTable, mobXMin);
   }
   
