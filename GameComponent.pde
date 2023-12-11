@@ -20,8 +20,8 @@ class MainMenuButton {
   void display(boolean isSelect) {
     pushMatrix();
     translate(x, y);
-    textFont(game.fonts.get("PressStart2P"));
-    textSize(30);
+    textFont(game.fonts.get("Arial Black"));
+    textSize(40);
     textAlign(CENTER, CENTER);
     w = textWidth(str) + 20;
     rectMode(CENTER);
@@ -707,10 +707,10 @@ class LevelIcon {
     rectMode(CENTER);
     strokeWeight(2);
     stroke(0);
-    fill(225);
+    fill(255);
     rect(0, 0, w, h, r);
     fill(0);
-    textFont(game.fonts.get("NotoSansTC"));
+    textFont(game.fonts.get("Karmatic Arcade"));
     textAlign(CENTER, CENTER);
     if(isLock) {
       textSize(20);

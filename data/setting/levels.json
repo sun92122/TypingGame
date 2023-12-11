@@ -2,7 +2,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 500,
     "background": "volcanic",
     "music": "bgm1",
     "vocab": {

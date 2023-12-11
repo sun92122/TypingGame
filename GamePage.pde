@@ -181,10 +181,10 @@ class PlayPage implements Page {
     
     // level choose text
     fill(0);
+    textFont(game.fonts.get("Karmatic Arcade"));
     textSize(50);
-    textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
-    text("Level", width / 2, 50);
+    textAlign(CENTER);
+    text("Level Select", width / 2, 100);
   }
   
   void keyPressed() {}
@@ -1003,9 +1003,9 @@ class PlayingPage implements Page {
   PausePage pausePage = new PausePage();
   
   // game info
-  float countDown = 3.5f;
-  int timer = 9999000; // count down to 0
+  float countDown = 3.0f;
   int score = 0;
+  int timer;
   int currentHP = player.maxHP;
   int fever = 0;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
@@ -1023,6 +1023,7 @@ class PlayingPage implements Page {
   final int ENTERING = 1;
   final int PLAYING = 2;
   final int ENDING = 3;
+  int Victory = 0;
   
   PlayingPage(Level level) {
     this.level = level;
@@ -1033,7 +1034,7 @@ class PlayingPage implements Page {
     pausePage.w = width;
     pausePage.h = height;
     
-    this.timer = level.timeLimit;
+    this.timer = level.timeLimit; // count down to 0
     for(int i = 0; i < 3; i++) {
       vocabs[i] = getVocab();
       vocabText[i] = new VocabText(i, vocabs[i]);
@@ -1078,6 +1079,10 @@ class PlayingPage implements Page {
       for(int i = 0; i < mobs.size(); i++) {
         mobXMin = min(mobXMin, mobs.get(i).x);
       }
+      // check if the time is up
+      if(timer == 0) {
+        state = ENDING;
+      }
       // level.update();
     }
     if(state == ENDING) {
@@ -1111,9 +1116,6 @@ class PlayingPage implements Page {
         break;
       case PLAYING:
         drawPlaying();
-        break;
-      case ENDING:
-        drawEnding();
         break;
     }
     
@@ -1164,17 +1166,25 @@ class PlayingPage implements Page {
     
     // score
     textAlign(LEFT);
-    text("score: ", width - 250, 50);
+    text("Score: ", width - 250, 50);
     textAlign(RIGHT);
     text(score, width - 30, 50);
     
     // time
     textAlign(LEFT);
-    text("time: " + nfc(timer / 1000.0, 2), width - 250, 100);
+    text("Time: " + nfc(timer / 1000.0, 2), width - 250, 100);
     
     // fever
     fever = constrain(fever, 0, 100);
-    feverBar.display(fever);
+    // feverBar only displayed when state == PLAYING or ENTERING
+    if(state == PLAYING || state == ENTERING) {
+      feverBar.display(fever);
+    }
+
+    // Draw Ending Page
+    if(state == ENDING) {
+      drawEnding();
+    }
     
     if(state == PAUSE) {
       pausePage.display();
@@ -1223,11 +1233,29 @@ class PlayingPage implements Page {
   }
   
   void drawEnding() {
-    fill(0);
+    // background
+    noStroke();
+    rectMode(CENTER);
+    fill(0, 100);
+    rect(width / 2, height / 2, width, height);
+    // white rectangle
+    stroke(0);
+    strokeWeight(5);
+    fill(250);
+    rect(width / 2, height / 2, width - 100, height - 100, 10);
+    // Text
+    textFont(game.fonts.get("Arial Black"));
+    textAlign(CENTER);
     textSize(100);
-    textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
-    text("Ending", width / 2, height / 2);
+    fill(0);
+    pushMatrix();
+    translate(width / 2, height / 2);
+    if(Victory == 1){
+      text("VICTORY", 0, -200);
+    }else{
+      text("FAILED", 0, -200);
+    }
+    popMatrix();
   }
   
   String getVocab() {
@@ -1241,7 +1269,7 @@ class PlayingPage implements Page {
   
   void attack(int attackType) {
     score += 100;
-    fever += 10;
+    fever += 2;
     character.changeState(4, attackType, attackTable, mobXMin);
   }
   
