@@ -20,8 +20,8 @@ class MainMenuButton {
   void display(boolean isSelect) {
     pushMatrix();
     translate(x, y);
-    textFont(game.fonts.get("Arial Black"));
-    textSize(40);
+    textFont(game.fonts.get("Undo"));
+    textSize(54);
     textAlign(CENTER, CENTER);
     w = textWidth(str) + 20;
     rectMode(CENTER);

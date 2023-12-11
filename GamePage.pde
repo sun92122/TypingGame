@@ -42,11 +42,12 @@ class MenuPage implements Page {
     noStroke();
     rectMode(CORNER);
     rect(0, 0, width, height);
+    // Main Menu Options Frame
     rectMode(CENTER);
     fill(255, 200);
     stroke(0);
     strokeWeight(5);
-    rect(width / 2, height / 1.55, width / 3.5, height / 2, 10);
+    rect(width / 2, height / 1.54, width / 3.5, height / 2, 10);
     
     if(!keyPressed) { 
       background.update();
@@ -271,19 +272,21 @@ class UpgradePage implements Page {
   float turtleY = ratY;
 
   int Stroke_Weight = 6;
-  int text_Size = 30;
+  int text_Size = 35;
   int text_Size_Skill = 25;
 
   int currentPage = 0;
 
   PFont C11;
   PFont ABL;
+  PFont EU;
   
   void draw() {
     background(255); // TODO: change upgrade background
 
     C11 = game.fonts.get("Cubic11");
     ABL = game.fonts.get("Arial Black");
+    EU = game.fonts.get("Undo");
     
     switch(currentPage){
       case 0:
@@ -312,7 +315,7 @@ class UpgradePage implements Page {
     // show money at the down left corner
     fill(0);
     textFont(C11);
-    textSize(text_Size);
+    textSize(30);
     textAlign(LEFT);
     text("$:  ", 1130, 45);
     textAlign(RIGHT);
@@ -328,7 +331,7 @@ class UpgradePage implements Page {
     rect(width / 5.6 + tagWidth, height / 11, tagWidth, tagHeight, 20);
     textAlign(CENTER);
     textFont(C11);
-    textSize(text_Size);
+    textSize(30);
     fill(0);
     text("MONEY & HP", width / 5.6 + tagWidth * 1.5, height / 11 + tagHeight / 2.1);
     // PET
@@ -369,10 +372,11 @@ class UpgradePage implements Page {
 
     // Skill Text
     fill(0);
-    text("Basic", BasicX, BasicY - skillHeight / 2 - text_Size / 2);
-    text("FEVER", FEVERX, FEVERY - skillHeight / 2 - text_Size / 2);
-    text("Skill 1", Skill_1_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_1_1_Y - skillHeight / 2 - text_Size / 2);
-    text("Skill 2", Skill_2_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_2_1_Y - skillHeight / 2 - text_Size / 2);
+    textSize(46);
+    text("Basic", BasicX, BasicY - skillHeight / 2 - text_Size / 4);
+    text("FEVER", FEVERX, FEVERY - skillHeight / 2 - text_Size / 4);
+    text("Skill 1", Skill_1_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_1_1_Y - skillHeight / 2 - text_Size / 4);
+    text("Skill 2", Skill_2_1_X + skillWidth / 2 + pageWidth * 3.5 / 264, Skill_2_1_Y - skillHeight / 2 - text_Size / 4);
 
     // Show the current selected skill
     red_Frame_Display(player.currentSkill1, player.currentSkill2);
@@ -391,8 +395,8 @@ class UpgradePage implements Page {
     rectMode(CENTER);
     rect(x, y, skillWidth, skillHeight, 20);
     // Add an upgrade button in the square
+    textFont(EU);
     textSize(text_Size);
-    textFont(C11);
     textAlign(CENTER);
     // check if the player has enough money to upgrade
     if((player.money < player.skillLevel[levelIndex] * 10) || (player.skillLevel[levelIndex] == 5)){
@@ -472,7 +476,7 @@ class UpgradePage implements Page {
     rect(width / 5.6, height / 11, tagWidth, tagHeight, 20);
     textAlign(CENTER);
     textFont(C11);
-    textSize(text_Size);
+    textSize(30);
     fill(0);
     text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
     // PET
@@ -524,8 +528,10 @@ class UpgradePage implements Page {
 
     // Text
     fill(0);
-    text("Earning Efficiency", moneyX, moneyHpY - moneyHpHeight / 2 - text_Size / 2);
-    text("Max HP", hpX, moneyHpY - moneyHpHeight / 2 - text_Size / 2);
+    textFont(EU);
+    textSize(46);
+    text("Efficiency", moneyX, moneyHpY - moneyHpHeight / 2 - text_Size / 4);
+    text("Max HP", hpX, moneyHpY - moneyHpHeight / 2 - text_Size / 4);
 
     // Money uprade button
     if((player.money < player.earningEffiLevel * 10) || (player.earningEffiLevel == 11)){
@@ -535,7 +541,9 @@ class UpgradePage implements Page {
     }
     rect(moneyX, moneyHpY + moneyHpHeight / 2.5, moneyHpWidth * 3 / 4, skillHeight / 4);
     fill(255);
-    text("Upgrade", moneyX, moneyHpY + moneyHpHeight / 2.4);
+    textFont(EU);
+    textSize(text_Size);
+    text("Upgrade", moneyX, moneyHpY + moneyHpHeight / 2.35);
     // HP uprade button
     if((player.money < player.maxHpLevel * 10) || (player.maxHpLevel == 11)){
       fill(150);
@@ -544,7 +552,7 @@ class UpgradePage implements Page {
     }
     rect(hpX, moneyHpY + moneyHpHeight / 2.5, moneyHpWidth * 3 / 4, skillHeight / 4);
     fill(255);
-    text("Upgrade", hpX, moneyHpY + moneyHpHeight / 2.4);
+    text("Upgrade", hpX, moneyHpY + moneyHpHeight / 2.35);
   }
 
   void money_hp_Leval_Display(float x, float y, int level){
@@ -572,7 +580,7 @@ class UpgradePage implements Page {
     rect(width / 5.6, height / 11, tagWidth, tagHeight, 20);
     textAlign(CENTER);
     textFont(C11);
-    textSize(text_Size);
+    textSize(30);
     fill(0);
     text("ATTACK", width / 5.6 + tagWidth * 0.5, height / 11 + tagHeight / 2.1);
     // MONEY & HP
@@ -618,14 +626,14 @@ class UpgradePage implements Page {
     // Text
     fill(0);
     textAlign(CENTER);
-    textFont(C11);
-    textSize(text_Size);
-    text("Bingo", whiteDogX, whiteDogY - skillHeight / 2 - text_Size / 2);
-    text("Lucky", dogX, dogY - skillHeight / 2 - text_Size / 2);
-    text("Cogi", fowlX, fowlY - skillHeight / 2 - text_Size / 2);
-    text("Oxygen", oxX, oxY - skillHeight / 2 - text_Size / 2);
-    text("Jerry", ratX, ratY - skillHeight / 2 - text_Size / 2);
-    text("TingCoCo", turtleX, turtleY - skillHeight / 2 - text_Size / 2);
+    textFont(EU);
+    textSize(46);
+    text("Bingo", whiteDogX, whiteDogY - skillHeight / 2 - text_Size / 4);
+    text("Lucky", dogX, dogY - skillHeight / 2 - text_Size / 4);
+    text("Cogi", fowlX, fowlY - skillHeight / 2 - text_Size / 4);
+    text("Oxygen", oxX, oxY - skillHeight / 2 - text_Size / 4);
+    text("Jerry", ratX, ratY - skillHeight / 2 - text_Size / 4);
+    text("TingCoCo", turtleX, turtleY - skillHeight / 2 - text_Size / 4);
 
     // red frame
     pet_red_Frame_Display(player.currentPet);
@@ -650,6 +658,8 @@ class UpgradePage implements Page {
     }
     rect(x, y + skillHeight / 3.2, skillWidth * 3 / 4, skillHeight / 4);
     fill(255);
+    textFont(EU);
+    textSize(text_Size);
     text("Upgrade", x, y + skillHeight / 2.8); 
   }
 
@@ -1003,7 +1013,7 @@ class PlayingPage implements Page {
   PausePage pausePage = new PausePage();
   
   // game info
-  float countDown = 3.0f;
+  float countDown = 0.5f;
   int score = 0;
   int timer;
   int currentHP = player.maxHP;
@@ -1023,7 +1033,10 @@ class PlayingPage implements Page {
   final int ENTERING = 1;
   final int PLAYING = 2;
   final int ENDING = 3;
-  int Victory = 0;
+
+  // variables for ending page
+  int isvictory = 0;
+  float accuracy = 0.9;
   
   PlayingPage(Level level) {
     this.level = level;
@@ -1251,15 +1264,26 @@ class PlayingPage implements Page {
     fill(0);
     pushMatrix();
     translate(width / 2, height / 2);
+    textFont(game.fonts.get("Undo"));
+    textSize(140);
     // Show Victory or Failed
-    if(Victory == 1){
-      text("VICTORY", 0, -200);
+    if(isvictory == 0){
+      fill(0, 122, 204);
+      text("VICTORY", 0, -160);
     }else{
-      text("FAILED", 0, -200);
+      fill(192, 0, 0);
+      text("FAILED", 0, -160);
     }
-    // Show Score
+    textSize(40);
+    fill(0);
     // Show Time Remaining
+    text("Time Remaining:  " + nfc(timer / 1000.0, 2), 0, -50);
+    // Show Accuracy
+    text("Accuracy:  " + 100 * accuracy + " %", 0, 10);
+    // Show Score
+    text("Score:  " + score, 0, 70);
     // Show Money Earned
+    text("Money:  " + round(player.money), 0, 130);
     // Show button (back to main menu, back to level select menu, next level)
     popMatrix();
   }

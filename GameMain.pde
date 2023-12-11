@@ -52,7 +52,8 @@ class Game {
     "PressStart2P",
     "Filepile",
     "Arial Black",
-    "Karmatic Arcade"
+    "Karmatic Arcade",
+    "Undo"
   };
   String[] fontPathList = {
     "font/NotoSansTC-Regular.ttf",
@@ -60,7 +61,8 @@ class Game {
     "font/PressStart2P-Regular.ttf",
     "font/Filepile.otf",
     "font/ARIBLK.TTF",
-    "font/ka1.ttf"
+    "font/ka1.ttf",
+    "font/editundo.ttf"
   };
   
   // state variables
