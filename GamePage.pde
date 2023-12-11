@@ -1013,7 +1013,7 @@ class PlayingPage implements Page {
   PausePage pausePage = new PausePage();
   
   // game info
-  float countDown = 0.5f;
+  float countDown = 3.1f;
   int score = 0;
   int timer;
   int currentHP = player.maxHP;
@@ -1250,7 +1250,7 @@ class PlayingPage implements Page {
     
     if(state == PAUSE) {
       pausePage.display();
-    } else {
+    } else if (state != ENDING) {
       game.menuButton.display();
     }
   }

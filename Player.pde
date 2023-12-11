@@ -43,6 +43,9 @@ class Player {
     this.attackName.put(2, "skill3");
     this.attackName.put(3, "skill4");
     // TODO: read from file
+    for (int i = 0; i < 6; i++) {
+      this.petLevel[i] = 1;
+    }
     this.attackLevel.set("basic", 1);
     this.attackLevel.set("fever", 1);
     this.attackLevel.set("skill1", 1);
