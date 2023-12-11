@@ -87,5 +87,17 @@ class AudioManager {
         otherSounds.remove(i);
       }
     }
+    if(musicVolume != player.getSettingInt("Audio", "Music") / 100.0) {
+      musicVolume = player.getSettingInt("Audio", "Music") / 100.0;
+      for(SoundFile audio : audioData.musics.values()) {
+        audio.amp(musicVolume);
+      }
+    }
+    if(soundVolume != player.getSettingInt("Audio", "Sound") / 100.0) {
+      soundVolume = player.getSettingInt("Audio", "Sound") / 100.0;
+      for(SoundFile audio : audioData.sounds.values()) {
+        audio.amp(soundVolume);
+      }
+    }
   }
 }
