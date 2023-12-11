@@ -32,6 +32,7 @@ class MenuPage implements Page {
   
   void init() {
     audio.playMusic("menu");
+    characterX = 0;
   }
   
   void draw() {
