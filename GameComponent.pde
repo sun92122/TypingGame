@@ -87,7 +87,7 @@ class CheckExit {
       strokeWeight(3);
       rect(100, 100, 100, 50);
     }
-    
+
     popMatrix();
   }
   
@@ -703,17 +703,17 @@ class VocabText {
     textSize(setting.textSize);
     w = textWidth(vocab);
     h = setting.textSize;
-    textBox = new TextBox(x - 100, y - 45, 200, 50);
+    textBox = new TextBox(x, y - 45, 450, 50);
   }
   
   void display(String input) {
     if(equals(input)) {
-      textBox.display(#FFFF00);
+      textBox.display(#FFCC00);
     } else {
       textBox.display(#FFFFFF);
     }
     pushMatrix();
-    translate(x - w / 2, y);
+    translate(x - w / 2, y - 45);
     boolean lastCorrect = true;
     for(int i = 0; i < vocab.length; i++) {
       if(lastCorrect && i < input.length() && vocab[i] == input.charAt(i)) {
@@ -726,7 +726,7 @@ class VocabText {
       }
       textFont(game.fonts.get(setting.font));
       textSize(setting.textSize);
-      textAlign(LEFT, BOTTOM);
+      textAlign(LEFT, CENTER);
       text(vocab[i], 0, 0);
       translate(textWidth(vocab[i]), 0);
     }
@@ -743,8 +743,8 @@ class VocabText {
 }
 
 static class VocabTextSetting {
-  static color[] colors = {#000000, #00FF00, #FF0000};
-  static int textSize = 40;
+  static color[] colors = {#000000, #33CC33, #FF0000};
+  static int textSize = 35;
   static String font = "Cubic11";
   static float[] positionX = {640, 640, 640};
   static float[] positionY = {130, 190, 250};
@@ -770,11 +770,11 @@ class TextBox {
   void display(color c) {
     pushMatrix();
     translate(x, y);
-    rectMode(CORNER);
+    rectMode(CENTER);
     fill(c);
     stroke(#000000);
     strokeWeight(2);
-    rect(0, 0, w, h);
+    rect(0, 0, w, h, 10);
     popMatrix();
   }
 }

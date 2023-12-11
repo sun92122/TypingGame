@@ -1028,6 +1028,9 @@ class PlayingPage implements Page {
   String[] vocabs = new String[3];
   VocabText[] vocabText = new VocabText[3];
   Table attackTable = new Table();
+
+  // variables for input & vocab
+  int inputLColor = 50;
   
   // status
   boolean isStart = false;
@@ -1179,6 +1182,11 @@ class PlayingPage implements Page {
         break;
       case PLAYING:
         drawPlaying();
+        if(inputLColor == 50 && frameCount % int(frameRate / 2) == 0){
+          inputLColor = 255;
+        } else if(inputLColor == 255 && frameCount % int(frameRate / 2) == 0){
+          inputLColor = 50;
+        }
         break;
     }
     
@@ -1224,8 +1232,9 @@ class PlayingPage implements Page {
     // money
     fill(0);
     text("$", 37.5, 100);
-    text(":", 68, 100);
-    text(round(player.money), 100, 100);
+    text(":  +", 68, 100);
+    textAlign(LEFT);
+    text(round(earnedMoney), 120, 100);
     
     // score
     textAlign(LEFT);
@@ -1291,13 +1300,28 @@ class PlayingPage implements Page {
   void drawPlaying() {
     character.display(400, backgroundY);
     pet.display();
+
+    // INPUT on the top of the rectangle
+    fill(0);
+    textFont(game.fonts.get("Undo"));
+    textSize(45);
+    textAlign(CENTER, CENTER);
+    text("Input", 200, 220);
     
+    // input rectangle
+    fill(255);
+    stroke(0);
+    strokeWeight(2);
+    rectMode(CENTER);
+    rect(200, 270, 380, 50, 10);
+
     // input text
     fill(0);
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
-    text(inputText, 200, 300);
+    textFont(game.fonts.get("Cubic11"));
+    textSize(35);
+    text(inputText, 200, 270);
+    fill(inputLColor);
+    text("|", 200 + (textWidth(inputText) + textWidth("|")) / 2, 270);
     
     // vocab text
     for(int i = 0; i < 3; i++) {
@@ -1350,6 +1374,8 @@ class PlayingPage implements Page {
     text("Score:  " + score, 0, 70);
     // Show Money Earned
     text("Money:  +" + round(earnedMoney), 0, 130);
+    // Add earned money to player.money
+    player.money += earnedMoney;
     // Show button (back to main menu, back to level select menu, next level)
     strokeWeight(3);
     noFill();

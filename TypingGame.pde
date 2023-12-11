@@ -10,7 +10,7 @@ Game game;
 
 float unit = 1;
 
-boolean isDebugMode = false;
+boolean isDebugMode = true;
 
 void settings() {
   size(1280, 720); // default
