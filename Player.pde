@@ -1,8 +1,6 @@
 class Player {
   String name;
 
-  // 0: Basic, 1: FEVER, 2: Mouse, 3: Phone, 4: Ice, 5: Shuriken
-  int[] skillLevel = new int[6];
   // 0: white dog, 1: dog, 2: fowl, 3: ox, 4: rat, 5: turtle
   int[] petLevel = new int[6];
   int earningEffiLevel = 1;
@@ -13,6 +11,7 @@ class Player {
   int maxHP = 100;
   IntDict attackLevel = new IntDict();
   HashMap<Integer, String> attackName = new HashMap<Integer, String>();
+  // -2: basic, -1: fever, 0: skill1, 1: skill2, 2: skill3, 3: skill4
 
   String currentSkill1 = "mouse";
   String currentSkill2 = "ice";
@@ -37,9 +36,6 @@ class Player {
     this.name = "";
     this.settings = new JSONObject();
 
-    for (int i = 0; i < 6; i++) {
-      this.skillLevel[i] = 1;
-    }
     this.attackName.put(-2, "basic");
     this.attackName.put(-1, "fever");
     this.attackName.put(0, "skill1");
