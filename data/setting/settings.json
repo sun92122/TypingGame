@@ -56,7 +56,7 @@
         "title": "Fullscreen",
         "tip": "Toggle fullscreen mode.",
         "type": "toggle",
-        "valueType": "bool",
+        "valueType": "boolean",
         "default": false
       },
       {
@@ -86,8 +86,28 @@
         "title": "Case Sensitivity",
         "tip": "Toggle case sensitivity.",
         "type": "toggle",
-        "valueType": "bool",
+        "valueType": "boolean",
         "default": false
+      }
+    ]
+  },
+  {
+    "name": "Info",
+    "tip": "View information about the game.",
+    "sub": [
+      {
+        "title": "Version",
+        "tip": "View the version of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "beta 1.0.0"
+      },
+      {
+        "title": "Author",
+        "tip": "View the author of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": ""
       }
     ]
   }

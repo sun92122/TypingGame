@@ -23,8 +23,6 @@ class CharacterAttack {
     this.scale = scale;
     
     loadCharacterAttack();
-
-    update();
   }
   
   void loadCharacterAttack() {
@@ -93,7 +91,7 @@ class CharacterAttack {
 }
 
 class CharacterAttackType {
-  int index = 0;
+  int index = -2;
   float scale = 1;
   JSONObject attackTypeData;
   
@@ -107,11 +105,13 @@ class CharacterAttackType {
   
   ArrayList<PShape> attackShapes[];
   IntList attackAnimations[];
-  IntList shiftX[];
-  IntList shiftY[];
+  IntList shiftXs[];
+  IntList shiftYs[];
   
   ArrayList<PShape> shapes;
   IntList animations;
+  IntList shiftX;
+  IntList shiftY;
   int currentImageIndex = 0;
   int stateChangeTime = 0;
   
@@ -137,8 +137,8 @@ class CharacterAttackType {
     piercing = new int[maxLevel];
     attackShapes = new ArrayList[maxLevel];
     attackAnimations = new IntList[maxLevel];
-    shiftX = new IntList[maxLevel];
-    shiftY = new IntList[maxLevel];
+    shiftXs = new IntList[maxLevel];
+    shiftYs = new IntList[maxLevel];
     
     for(int i = 0; i < maxLevel; i++) {
       damage[i] = damageData.getInt(i);
@@ -146,8 +146,8 @@ class CharacterAttackType {
       piercing[i] = piercingData.getInt(i);
       attackShapes[i] = new ArrayList<PShape>();
       attackAnimations[i] = new IntList();
-      shiftX[i] = new IntList();
-      shiftY[i] = new IntList();
+      shiftXs[i] = new IntList();
+      shiftYs[i] = new IntList();
       
       JSONArray attackShapeDataLevel = attackShapeData.getJSONArray(i);
       for(int j = 0; j < attackShapeDataLevel.size(); j++) {
@@ -159,8 +159,8 @@ class CharacterAttackType {
         
         attackShapes[i].add(shape);
         attackAnimations[i].append(shapeAnimation);
-        shiftX[i].append(shapeShiftX);
-        shiftY[i].append(shapeShiftY);
+        shiftXs[i].append(shapeShiftX);
+        shiftYs[i].append(shapeShiftY);
       }
     }
   }
@@ -168,10 +168,12 @@ class CharacterAttackType {
   void loadCharacterAttackLevel() {
     // load attack level
     // level = player.getAttackLevel(index);
-    level = 1;
+    level = player.getAttackLevel(index);
     
     shapes = attackShapes[level - 1];
     animations = attackAnimations[level - 1];
+    shiftX = shiftXs[level - 1];
+    shiftY = shiftYs[level - 1];
   }
   
   void attackTypeToTableRow(Table attackTable) {
@@ -179,11 +181,6 @@ class CharacterAttackType {
     row.setInt("damage", damage[level - 1]);
     row.setInt("piercing", piercing[level - 1]);
     row.setInt("delay", delayTime);
-    println("attack type: " + name +
-      ", damage: " + damage[level - 1] +
-      ", piercing: " + piercing[level - 1] +
-      ", delay: " + delayTime  +
-      ", level: " + level); // DEBUG
     return;
   }
   
@@ -201,9 +198,11 @@ class CharacterAttackType {
       stateChangeTime = millis() + animations.get(currentImageIndex);
     }
     PShape currentShape = shapes.get(currentImageIndex);
+    int currentShiftX = shiftX.get(currentImageIndex);
+    int currentShiftY = shiftY.get(currentImageIndex);
     float h = currentShape.getHeight() * scale * unit;
     float w = currentShape.getWidth() * scale * unit;
-    shape(currentShape, x - w, y - h, w, h);
+    shape(currentShape, x - w + currentShiftX, y - h + currentShiftY, w, h);
     return true;
   }
 }

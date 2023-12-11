@@ -1019,6 +1019,7 @@ class PlayingPage implements Page {
   int currentHP = player.maxHP;
   int fever = 0;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
+  Table mobXTable = new Table();
   float mobXMin = width;
   String inputText = "";
   String[] vocabs = new String[3];
@@ -1055,10 +1056,14 @@ class PlayingPage implements Page {
       vocabs[i] = getVocab();
       vocabText[i] = new VocabText(i, vocabs[i]);
     }
-    
+
+    mobXTable.addColumn("x");
+    mobXTable.addColumn("index");    
     attackTable.addColumn("damage");
     attackTable.addColumn("piercing");
     attackTable.addColumn("delay");
+
+    character.attack.update();
   }
   
   void update() {
@@ -1075,9 +1080,28 @@ class PlayingPage implements Page {
     }
     if(state == PLAYING) {
       timer = max(0, timer - round(1000 / frameRate));
-      for(int i = 0; i < mobs.size(); i++) {
-        mobs.get(i).update();
+      mobXTable.clearRows();
+      for(int i = mobs.size() - 1; i >= 0; i--) {
+        if(mobs.get(i).hp <= 0) {
+          mobs.remove(i);
+          score += 100;
+          money += 10;
+          continue;
+        }
+        if(mobs.get(i).update()) {
+          hp -= mobs.get(i).attacked();
+          character.update(3);
+          audio.playSound("player injured");
+          if(hp <= 0) {
+            state = ENDING;
+            break;
+          }
+        }
+        TableRow row = mobXTable.addRow();
+        row.setFloat("x", mobs.get(i).x);
+        row.setInt("index", i);
       }
+      mobXTable.sort("x");
       if(level.enemies.getRowCount() > 0) {
         while(level.enemies.getRow(0).getInt("time") >= timer) {
           TableRow row = level.enemies.getRow(0);
@@ -1091,6 +1115,28 @@ class PlayingPage implements Page {
         }
       }
       // find the mob x min
+      if(mobXTable.getRowCount() > 0) {
+        mobXMin = mobXTable.getRow(0).getInt("x");
+      }
+      // attack
+      for(int i = attackTable.getRowCount() - 1; i >= 0; i--) {
+        TableRow row = attackTable.getRow(i);
+        row.setInt("delay", max(0, row.getInt("delay") - round(1000 / frameRate)));
+        int piercing = row.getInt("piercing");
+        int damage = row.getInt("damage");
+        if(row.getInt("delay") <= 0) {
+          for(int j = 0; j <= piercing; j++) {
+            if(j >= mobs.size()) {
+              break;
+            }
+            mobs.get(mobXTable.getRow(j).getInt("index")).injured(damage);
+            println("mob " + mobXTable.getRow(j).getInt("index") + " injured, hp: " + mobs.get(mobXTable.getRow(j).getInt("index")).hp); // DEBUG
+          }
+        }
+        if(attackTable.getRow(i).getInt("delay") <= 0) {
+          attackTable.removeRow(i);
+        }
+      }
       mobXMin = width;
       for(int i = 0; i < mobs.size(); i++) {
         mobXMin = min(mobXMin, mobs.get(i).x);

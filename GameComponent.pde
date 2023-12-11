@@ -327,39 +327,42 @@ class SettingOption {
   }
 }
 
-// TODO: slider, toggle, dropdown
+// TODO: slider, toggle, dropdown, info
 class SubSetting {
+  JSONObject data;
+  
   float x = width / 2;
   float y = height / 2;
+  float w = 250;
+  float h = 50;
   char type = 's';
   String title = "Music";
-  
-  int intVal = 0;
-  float floatVal = 50;
-  boolean boolVal = false;
   String parent;
   
-  Slider slider;
-  Toggle toggle;
-  Dropdown dropdown;
+  // slider
+  float min = 0;
+  float max = 100;
+  float sliderValue = 50;
+  boolean isFocus = false;
+  // toggle
+  boolean toggleValue = false;
+  // dropdown
+  JSONArray options;
+  int dropdownIndex = 0;
   
   SubSetting(float x, float y, JSONObject data, String parent) {
-    this.x = x;
+    this.x = x + width / 2;
     this.y = y;
+    this.data = data;
     this.type = data.getString("type").charAt(0);
     this.title = data.getString("title");
     this.parent = parent;
-    
-    switch(type) {
-      case 's':
-        slider = new Slider(x + width / 2, y, 250, data, parent);
-        break;
-      case 't':
-        toggle = new Toggle(x + width / 2, y, 250, 50, data, parent);
-        break;
-      case 'd':
-        dropdown = new Dropdown(x + width / 2, y, 250, 50, data, parent);
-        break;
+    if(type == 's') {
+      this.min = data.getFloat("min");
+      this.max = data.getFloat("max");
+      this.h = 5;
+    } else if(type == 'd') {
+      this.options = data.getJSONArray("options");
     }
   }
   
@@ -368,274 +371,111 @@ class SubSetting {
     textFont(game.fonts.get("Cubic11"));
     textSize(26);
     textAlign(LEFT, CENTER);
-    float w = textWidth(title) + 20;
+    float titleW = textWidth(title) + 20;
     if(isSelect) {
       fill(225);
-      rect(x, y, w + 70, 50);
+      rect(x - width / 2, y, titleW + 70, 50);
     }
     fill(0);
-    text(title, x, y);
+    text(title, x - width / 2, y);
+    
+    pushMatrix();
+    translate(x, y);
+    rectMode(CENTER);
     switch(type) {
       case 's':
-        slider.display();
+        sliderValue = player.getSettingFloat(parent, title);
+        fill(0);
+        rect(0, 0, w, 5);
+        circle(map(sliderValue, min, max, -w / 2, w / 2), 0, 10);
         break;
       case 't':
-        toggle.display();
+        toggleValue = player.getSettingBoolean(parent, title);
+        if(toggleValue) {
+          fill(0, 255, 0);
+        } else {
+          fill(255, 0, 0);
+        }
+        rect(0, 0, w, h);
         break;
       case 'd':
-        dropdown.display();
+        dropdownIndex = player.getSettingInt(parent, title);
+        fill(0);
+        rect(0, 0, w, h);
+        fill(255);
+        rect(0, 0, w - 10, h - 10);
+        fill(0);
+        textFont(game.fonts.get("Cubic11"));
+        textSize(26);
+        textAlign(LEFT, CENTER);
+        text(options.getJSONObject(dropdownIndex).getString("name"), -w / 2 + 10, 0);
+        break;
+      case 'i':
         break;
     }
+    popMatrix();
   }
   
   void mouseClicked() {
     switch(type) {
       case 's':
-        slider.mouseClicked();
+        if(isHover()) {
+          isFocus = true;
+          sliderValue = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
+          player.setSetting(parent, title, sliderValue);
+        }
         break;
       case 't':
-        toggle.mouseClicked();
+        if(isHover()) {
+          toggleValue = !toggleValue;
+          player.setSetting(parent, title, toggleValue);
+        }
         break;
       case 'd':
-        dropdown.mouseClicked();
+        if(isHover()) {
+          dropdownIndex = (dropdownIndex + 1) % options.size();
+          player.setSetting(parent, title, dropdownIndex);
+        }
         break;
     }
   }
   
   void mouseDragged() {
-    switch(type) {
-      case 's':
-        slider.mouseDragged();
-        break;
-      case 't':
-        toggle.mouseDragged();
-        break;
-      case 'd':
-        dropdown.mouseDragged();
-        break;
+    if(type == 's' && isFocus) {
+      sliderValue = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
+      player.setSetting(parent, title, sliderValue);
     }
   }
   
   void mousePressed() {
-    switch(type) {
-      case 's':
-        slider.mousePressed();
-        break;
-      case 't':
-        toggle.mousePressed();
-        break;
-      case 'd':
-        dropdown.mousePressed();
-        break;
-    }
-  }
-  
-  void mouseReleased() {
-    switch(type) {
-      case 's':
-        slider.mouseReleased();
-        break;
-      case 't':
-        toggle.mouseReleased();
-        break;
-      case 'd':
-        dropdown.mouseReleased();
-        break;
-    }
-  }
-}
-
-class Slider {
-  float x;
-  float y;
-  float w = 250;
-  float h = 5;
-  float min = 0;
-  float max = 100;
-  float value = 50;
-  
-  JSONObject data;
-  String title;
-  String parent;
-  
-  boolean isFocus = false;
-  
-  Slider(float x, float y, float w, JSONObject data, String parent) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.data = data;
-    this.min = data.getFloat("min");
-    this.max = data.getFloat("max");
-    this.title = data.getString("title");
-    this.parent = parent;
-  }
-  
-  void display() {
-    value = player.getSettingFloat(parent, title);
-    pushMatrix();
-    translate(x, y);
-    rectMode(CENTER);
-    fill(0);
-    rect(0, 0, w, 5);
-    circle(map(value, min, max, -w / 2, w / 2), 0, 10);
-    popMatrix();
-  }
-  
-  void mouseClicked() {
-    if(isHover()) {
-      isFocus = true;
-      value = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
-      player.setSetting(parent, title, value);
-    }
-  }
-  
-  void mouseDragged() {
-    if(isFocus) {
-      value = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
-      player.setSetting(parent, title, value);
-    }
-  }
-  
-  void mousePressed() {
-    if(isHover()) {
+    if(type == 's' && isHover()) {
       isFocus = true;
     }
   }
   
   void mouseReleased() {
-    isFocus = false;
+    if(type == 's') {
+      isFocus = false;
+    }
   }
   
   boolean isHover() {
-    if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
-      mouseY > y - 20 && mouseY < y + 20) {
-      return true;
-    }
-    return false;
-  }
-}
-
-class Toggle {
-  float x;
-  float y;
-  float w = 50;
-  float h = 25;
-  boolean value = false;
-  
-  JSONObject data;
-  String title;
-  String parent;
-  
-  Toggle(float x, float y, float w, float h, JSONObject data, String parent) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    this.data = data;
-    this.title = data.getString("title");
-    this.parent = parent;
-  }
-  
-  void display() {
-    value = player.getSettingBoolean(parent, title);
-    pushMatrix();
-    translate(x, y);
-    rectMode(CENTER);
-    if(value) {
-      fill(0, 255, 0);
-    } else {
-      fill(255, 0, 0);
-    }
-    rect(0, 0, w, h);
-    popMatrix();
-  }
-  
-  void mouseClicked() {
-    if(isHover()) {
-      value = !value;
-      player.setSetting(parent, title, value);
-    }
-  }
-  
-  void mouseDragged() {}
-  
-  void mousePressed() {}
-  
-  void mouseReleased() {}
-  
-  boolean isHover() {
-    if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
-      mouseY > y - h / 2 && mouseY < y + h / 2) {
-      return true;
-    }
-    return false;
-  }
-}
-
-class Dropdown {
-  float x;
-  float y;
-  float w = 250;
-  float h = 50;
-  JSONArray options;
-  int index = 0;
-  
-  JSONObject data;
-  String title;
-  String parent;
-  
-  Dropdown(float x, float y, float w, float h, JSONObject data, String parent) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
-    this.data = data;
-    this.title = data.getString("title");
-    this.options = data.getJSONArray("options");
-    this.parent = parent;
-  }
-  
-  void display() {
-    index = player.getSettingInt(parent, title);
-    pushMatrix();
-    translate(x, y);
-    rectMode(CENTER);
-    fill(0);
-    rect(0, 0, w, h);
-    fill(255);
-    rect(0, 0, w - 10, h - 10);
-    fill(0);
-    textFont(game.fonts.get("Cubic11"));
-    textSize(26);
-    textAlign(LEFT, CENTER);
-    text(options.getJSONObject(index).getString("name"), -w / 2 + 10, 0);
-    popMatrix();
-  }
-  
-  void mouseClicked() {
-    if(isHover()) {
-      index = (index + 1) % options.size();
-      player.setSetting(parent, title, index);
-    }
-  }
-  
-  void mouseDragged() {}
-  
-  void mousePressed() {}
-  
-  void mouseReleased() {}
-  
-  boolean isHover() {
-    if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
-      mouseY > y - h / 2 && mouseY < y + h / 2) {
-      return true;
+    if(type == 's') {
+      if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
+        mouseY > y - 20 && mouseY < y + 20) {
+        return true;
+      }
+    } else if(type == 't' || type == 'd') {
+      if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
+        mouseY > y - h / 2 && mouseY < y + h / 2) {
+        return true;
+      }
     }
     return false;
   }
   
   float getValue() {
-    return options.getJSONObject(index).getFloat("value");
+    return options.getJSONObject(dropdownIndex).getFloat("value");
   }
 }
 
@@ -944,7 +784,7 @@ class PausePage {
   float y = 0;
   float w = width;
   float h = height;
-
+  
   PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
 
@@ -973,7 +813,7 @@ class PausePage {
     textFont(game.fonts.get("NotoSansTC"));
     fill(#FFFFFF);
     text("Pause", w / 2, 100);
-
+    
     for(int i = 0; i < buttons.length; i++) {
       buttons[i].display(i == index);
       if(buttons[i].isHover()) {
@@ -981,7 +821,7 @@ class PausePage {
       }
     }
   }
-
+  
   void mouseReleased() {
     if(index == 0) {
       state = 0;

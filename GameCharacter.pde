@@ -13,14 +13,15 @@ class Character {
   final int SPECIAL_ATT_1 = 2;
   final int SPECIAL_ATT_2 = 3;
   
-  int state = 1; // 0 = idle, 1 = moving, 2 = typing, 3 = injuried, 4 = attacking
-  String[] stateNames = {"idle", "moving", "typing", "injuried"};
+  int state = 1; // 0 = idle, 1 = moving, 2 = typing, 3 = injured, 4 = attacking
+  String[] stateNames = {"idle", "moving", "typing", "injured"};
   int stateChangeTime = 0;
   int currentImageIndex = 0;
   
   Character(JSONObject data) {
     this.data = data;
     this.name = data.getString("name");
+    this.scale = data.getFloat("scale");
     
     loadCharacterData();
   }
@@ -63,7 +64,6 @@ class Character {
 class CharacterSvg extends Character {  
   CharacterSvg(JSONObject data) {
     super(data);
-    this.scale = data.getFloat("scale");
   }
   
   void loadCharacterData() {
@@ -79,7 +79,7 @@ class CharacterSvg extends Character {
       shapes.put(stateName, stateShapes);
       animations.put(stateName, stateAnimations);
     }
-
+    
     attack = new CharacterAttack(data.getJSONObject("attack"), scale);
   }
   

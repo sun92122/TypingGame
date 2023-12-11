@@ -2,6 +2,7 @@ class Mob {
   String name;
   JSONObject data;
   float scale = 1;
+  int characterX = 400;
   
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
   HashMap<String, IntList> animations = new HashMap<String, IntList>();
@@ -13,13 +14,15 @@ class Mob {
   String[] stateNames = {"idle", "moving", "attacking", "dead"};
   int stateChangeTime = 0;
   int currentImageIndex = 0;
+  boolean isAttacked = false;
+  int attackTime = 0;
   
   float x;
   float y;
   float hp;
   float attackDamage;
-  float attackDistance;
-  float attackDuration;
+  int attackDistance;
+  int attackDuration;
   float velocity;
   // ...
   
@@ -41,8 +44,8 @@ class Mob {
     this.hp = data.getFloat("HP");
     JSONObject attack = data.getJSONObject("attack");
     this.attackDamage = attack.getFloat("damage");
-    this.attackDistance = attack.getFloat("distance");
-    this.attackDuration = attack.getFloat("duration");
+    this.attackDistance = attack.getInt("distance");
+    this.attackDuration = attack.getInt("duration");
     this.velocity = data.getFloat("velocity");
     
     loadMobData_();
@@ -62,14 +65,39 @@ class Mob {
   
   void update_() {}
   
-  void update() {
+  boolean update() {
     x -= velocity;
+    if(x < characterX + attackDistance) {
+      x = characterX + attackDistance;
+      if(state != 2 && attackTime < millis()) {
+        changeState(2);
+        attackTime = millis() + attackDuration;
+      }
+    }
     update_();
+    
+    return isAttacked;
   }
   
-  void update(int state) {
+  void changeState(int state) {
     this.state = state;
-    update_();
+    currentImageIndex = 0;
+    stateChangeTime = 0;
+  }
+  
+  float attacked() {
+    isAttacked = false;
+    // return damage
+    return attackDamage;
+  }
+  
+  void injured(float damage) {
+    hp -= damage;
+    audio.playSound("mob injured");
+    if(hp <= 0) {
+      hp = 0;
+      changeState(3);
+    }
   }
   
   Mob copyData(Mob mob, int interval) {
@@ -145,6 +173,10 @@ class MobSvg extends Mob {
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
     if(millis() > stateChangeTime) {
+      if(state == 2 && currentImageIndex == shapes.get(stateNames[state]).size() - 1) {
+        changeState(0);
+        isAttacked = true;
+      }
       currentImageIndex = (currentImageIndex + 1) % shapes.get(stateNames[state]).size();
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
