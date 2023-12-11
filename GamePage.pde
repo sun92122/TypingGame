@@ -1013,7 +1013,9 @@ class PlayingPage implements Page {
   PausePage pausePage = new PausePage();
   
   // game info
-  float countDown = 3.1f;
+  float countDown = 3.0f;
+  float countDownTextSize = 50;
+  int cntDownTxtSizeDirect = 1;
   int score = 0;
   int timer;
   int currentHP = player.maxHP;
@@ -1139,8 +1141,8 @@ class PlayingPage implements Page {
       for(int i = 0; i < mobs.size(); i++) {
         mobXMin = min(mobXMin, mobs.get(i).x);
       }
-      // check if the time is up
-      if(timer == 0) {
+      // check if the level ends
+      if(timer == 0 || currentHP <= 0) {
         state = ENDING;
       }
       // level.update();
@@ -1264,11 +1266,19 @@ class PlayingPage implements Page {
   }
   
   void drawEnter() {
-    fill(0);
-    textSize(250);
-    textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("Cubic11"));
-    text("0" + nfc(countDown, 2), width / 2, height / 2);
+    // Changing the text size for count down, the text size will increase from 50 to 150 in 0.5 sec and then drop back to 50 in another 0.5 sec
+    if(countDownTextSize <= 250 && cntDownTxtSizeDirect == 1) {
+      countDownTextSize += 300 / frameRate;
+    } else if(countDownTextSize > 250 && cntDownTxtSizeDirect == 1){
+      countDownTextSize = 150;
+      cntDownTxtSizeDirect = 0;
+    } else if(countDownTextSize >= 50 && cntDownTxtSizeDirect == 0) {
+      countDownTextSize -= 300 / frameRate;
+    } else if(countDownTextSize < 50 && cntDownTxtSizeDirect == 0) {
+      countDownTextSize = 50;
+      cntDownTxtSizeDirect = 1;
+    }
+    draw_CountDown();
     
     character.display(
       constrain(400 * (1.2 - countDown / 2.5) + 60, 0, 400), backgroundY);
@@ -1389,6 +1399,31 @@ class PlayingPage implements Page {
     return index;
   }
   
+  void draw_CountDown() {
+    float countDownTextDrawSize;
+    if(countDownTextSize > 150) {
+      countDownTextDrawSize = 150;
+    } else{
+      countDownTextDrawSize = countDownTextSize;
+    }
+    textFont(game.fonts.get("Undo"));
+    textAlign(CENTER, CENTER);
+    // Show 3, 2, 1
+    if(countDown > 2) {
+      fill(0);
+      textSize(countDownTextDrawSize);
+      text(3, width / 2, height / 3);
+    }else if(countDown > 1) {
+      fill(0);
+      textSize(countDownTextDrawSize);
+      text(2, width / 2, height / 3);
+    }else {
+      fill(0);
+      textSize(countDownTextDrawSize);
+      text(1, width / 2, height / 3);
+    }
+  }
+
   String getVocab() {
     int index = (int)random(0, level.weightSum);
     int vocabIndex = 0;
