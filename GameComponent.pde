@@ -49,40 +49,45 @@ class MainMenuButton {
 class CheckExit {
   float x = width / 2;
   float y = height / 2;
-  float w = 500;
-  float h = 400;
+  float w = width / 1.5;
+  float h = height / 2;
   
   void display() {
-    fill(#000000, 60);
+    fill(0, 100);
     rectMode(CORNER);
     rect(0, 0, width, height);
     
     pushMatrix();
     translate(x, y);
     rectMode(CENTER);
-    fill(225);
-    rect(0, 0, w, h);
+    fill(250);
+    rect(0, 0, w, h, 10);
     fill(0);
     textFont(game.fonts.get("PressStart2P"));
-    textSize(20);
+    textSize(25);
     textAlign(CENTER, CENTER);
     text("Are you sure you want to exit?", 0, -100);
+    noFill();
+    stroke(0);
+    strokeWeight(3);
+    rect(-100, 100, 100, 50);
     text("Yes", -100, 100);
+    rect(100, 100, 100, 50);
     text("No", 100, 100);
     popMatrix();
   }
   
   boolean isHoverYes() {
-    if(mouseX > x - w / 2 && mouseX < x - w / 4 && 
-      mouseY > y + h / 4 && mouseY < y + h / 2) {
+    if(mouseX > x - 150 && mouseX < x + 50 && 
+      mouseY > y + 50 && mouseY < y + 150) {
       return true;
     }
     return false;
   }
   
   boolean isHoverNo() {
-    if(mouseX > x + w / 4 && mouseX < x + w / 2 && 
-      mouseY > y + h / 4 && mouseY < y + h / 2) {
+    if(mouseX > x + 50 && mouseX < x + 150 && 
+      mouseY > y + 50 && mouseY < y + 150) {
       return true;
     }
     return false;
@@ -542,10 +547,10 @@ class LevelIcon {
     rectMode(CENTER);
     strokeWeight(2);
     stroke(0);
-    fill(225);
+    fill(255);
     rect(0, 0, w, h, r);
     fill(0);
-    textFont(game.fonts.get("NotoSansTC"));
+    textFont(game.fonts.get("Karmatic Arcade"));
     textAlign(CENTER, CENTER);
     if(isLock) {
       textSize(20);
@@ -763,26 +768,32 @@ class TextBox {
 class PausePage {
   float x = 0;
   float y = 0;
-  float w = 1280;
-  float h = 720;
+  float w = width;
+  float h = height;
   
-  PausePageButton[] buttons = new PausePageButton[2];
+  PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
-  
-  int state = 0; // 0: play, 1: pause, 2: exit
+
+  int state = 0; // 0: play, 1: pause, 2: Select_Level, 3: Main Menu
   final int PLAY = 0;
   final int PAUSE = 1;
-  final int EXIT = 2;
-  
+  final int SELECT_LEVEL = 2;
+  final int MAIN_MENU = 3;
+
   PausePage() {
     buttons[0] = new PausePageButton("Resume", 300);
-    buttons[1] = new PausePageButton("Exit", 400);
+    buttons[1] = new PausePageButton("Select Level", 400);
+    buttons[2] = new PausePageButton("Main Menu", 500);
   }
   
   void display() {
-    fill(#000000, 60);
+    noStroke();
+    fill(0, 100);
     rectMode(CORNER);
     rect(0, 0, w, h);
+    rectMode(CENTER);
+    fill(250);
+    rect(w / 2, h / 1.8, w / 1.5, h / 1.5, 10);
     textSize(50);
     textAlign(CENTER, CENTER);
     textFont(game.fonts.get("NotoSansTC"));
@@ -802,6 +813,8 @@ class PausePage {
       state = 0;
     } else if(index == 1) {
       state = 2;
+    } else if(index == 2) {
+      state = 3;
     }
   }
 }

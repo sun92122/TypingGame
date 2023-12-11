@@ -1,7 +1,7 @@
 // load svg files in the icon folder and make a function to display the icon
 // Still Debugging
 class Icon {
-  String[] filenames = {"red", "orange", "green", "blue", "purple", "rainbow", "mouse1", "mouse2", "phone", "ice", "rotator"};
+  String[] filenames = {"red", "orange", "green", "blue", "purple", "rainbow", "mouse1", "mouse2", "phone", "ice", "rotator", "earningEfficiency", "maxHp", "white dog", "dog", "fowl", "ox", "rat", "turtle"};
   PShape[] icons = new PShape[filenames.length];
   
   void loadIcon() {
