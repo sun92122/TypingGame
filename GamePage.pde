@@ -39,8 +39,14 @@ class MenuPage implements Page {
     character.display(characterX, characterY);
     background.drawInFront();
     fill(#FFFFFF, 125);
+    noStroke();
     rectMode(CORNER);
     rect(0, 0, width, height);
+    rectMode(CENTER);
+    fill(255, 200);
+    stroke(0);
+    strokeWeight(5);
+    rect(width / 2, height / 1.55, width / 3.5, height / 2, 10);
     
     if(!keyPressed) { 
       background.update();
@@ -50,10 +56,10 @@ class MenuPage implements Page {
     
     // title
     fill(0);
-    textSize(50);
-    textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("PressStart2P"));
-    text("Typing Game", width / 2, height / 2 - 200);
+    textAlign(CENTER);
+    textFont(game.fonts.get("Karmatic Arcade"));
+    textSize(70);
+    text("Typing Game", width / 2, height / 2 - 190);
     
     // buttons
     for(int i = 0; i < mainMenuButton.length; i++) {
