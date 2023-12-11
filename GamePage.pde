@@ -1082,15 +1082,13 @@ class PlayingPage implements Page {
       for(int i = mobs.size() - 1; i >= 0; i--) {
         if(mobs.get(i).hp <= 0) {
           mobs.remove(i);
-          score += 100;
-          money += 10;
           continue;
         }
         if(mobs.get(i).update()) {
-          hp -= mobs.get(i).attacked();
+          currentHP -= mobs.get(i).attacked();
           character.update(3);
           audio.playSound("player injured");
-          if(hp <= 0) {
+          if(currentHP <= 0) {
             state = ENDING;
             break;
           }
