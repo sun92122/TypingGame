@@ -20,17 +20,22 @@ class Vocab {
     }
   }
   
-  String getVocab(int vocabIndex, int index) {
-    return vocabs[vocabIndex].getString(index, 0);
+  String[] getVocab(int vocabIndex, int index) {
+    String[] vocab = new String[2];
+    vocab[0] = vocabs[vocabIndex].getString(index, 0);
+    vocab[1] = vocabs[vocabIndex].getString(index, 2);
+    return vocab;
   }
   
-  String getRandVocab(int vocabIndex) {
+  String[] getRandVocab(int vocabIndex) {
     int index = (int) random(vocabs[vocabIndex].getRowCount());
-    String vocab = vocabs[vocabIndex].getString(index, 0);
-    while(!checkVocab(vocab)) {
+    String[] vocab = new String[2]; 
+    vocab[0] = vocabs[vocabIndex].getString(index, 0);
+    while(!checkVocab(vocab[0])) {
       index = (int) random(vocabs[vocabIndex].getRowCount());
-      vocab = vocabs[vocabIndex].getString(index, 0);
+      vocab[0] = vocabs[vocabIndex].getString(index, 0);
     }
+    vocab[1] = vocabs[vocabIndex].getString(index, 2);
     return vocab;
   }
   
