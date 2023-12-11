@@ -297,8 +297,8 @@ class UpgradePage implements Page {
     rectMode(CENTER);
     rect(BasicX, BasicY, skillWidth, skillHeight, 20);
     // Show Basic icon
-    if(player.basicSkillLevel < 5) {
-      icon.display(player.basicSkillLevel - 1, BasicX, BasicY + skillHeight / 10);
+    if(player.getAttackLevel("basic") < 5) {
+      icon.display(player.getAttackLevel("basic") - 1, BasicX, BasicY + skillHeight / 10);
     } else{
       icon.display(4, BasicX, BasicY + skillHeight / 10);
     }
@@ -307,8 +307,8 @@ class UpgradePage implements Page {
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.basicSkillLevel < 5) {
-      text("Lv." + player.basicSkillLevel, BasicX - skillWidth / 2 + 10, BasicY - skillHeight / 2 + 25);
+    if(player.getAttackLevel("basic") < 5) {
+      text("Lv." + player.getAttackLevel("basic"), BasicX - skillWidth / 2 + 10, BasicY - skillHeight / 2 + 25);
     } else{
       text("Lv.MAX", BasicX - skillWidth / 2 + 10, BasicY - skillHeight / 2 + 25);
     }
@@ -336,8 +336,8 @@ class UpgradePage implements Page {
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.feverLevel < 5) {
-      text("Lv." + player.feverLevel, FEVERX - skillWidth / 2 + 10, FEVERY - skillHeight / 2 + 25);
+    if(player.getAttackLevel("fever") < 5) {
+      text("Lv." + player.getAttackLevel("fever"), FEVERX - skillWidth / 2 + 10, FEVERY - skillHeight / 2 + 25);
     } else{
       text("Lv.MAX", FEVERX - skillWidth / 2 + 10, FEVERY - skillHeight / 2 + 25);
     }
@@ -364,7 +364,7 @@ class UpgradePage implements Page {
     rectMode(CENTER);
     rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
     // Show Skill Mouse icon
-    if(player.skillLevel[0] > 3) {
+    if(player.getAttackLevel("skill1") > 3) {
       icon.display(7, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
     } else{
       icon.display(6, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
@@ -374,8 +374,8 @@ class UpgradePage implements Page {
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.skillLevel[0] < 5) {
-      text("Lv." + player.skillLevel[0], Skill_1_1_X - skillWidth / 2 + 10, Skill_1_1_Y - skillHeight / 2 + 25);
+    if(player.getAttackLevel("skill1") < 5) {
+      text("Lv." + player.getAttackLevel("skill1"), Skill_1_1_X - skillWidth / 2 + 10, Skill_1_1_Y - skillHeight / 2 + 25);
     } else{
       text("Lv.MAX", Skill_1_1_X - skillWidth / 2 + 10, Skill_1_1_Y - skillHeight / 2 + 25);
     }
@@ -401,8 +401,8 @@ class UpgradePage implements Page {
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.skillLevel[1] < 5) {
-      text("Lv." + player.skillLevel[1], Skill_1_2_X - skillWidth / 2 + 10, Skill_1_2_Y - skillHeight / 2 + 25);
+    if(player.getAttackLevel("skill2") < 5) {
+      text("Lv." + player.getAttackLevel("skill2"), Skill_1_2_X - skillWidth / 2 + 10, Skill_1_2_Y - skillHeight / 2 + 25);
     } else{
       text("Lv.MAX", Skill_1_2_X - skillWidth / 2 + 10, Skill_1_2_Y - skillHeight / 2 + 25);
     }
@@ -430,8 +430,8 @@ class UpgradePage implements Page {
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.skillLevel[2] < 5) {
-      text("Lv." + player.skillLevel[2], Skill_2_1_X - skillWidth / 2 + 10, Skill_2_1_Y - skillHeight / 2 + 25);
+    if(player.getAttackLevel("skill3") < 5) {
+      text("Lv." + player.getAttackLevel("skill3"), Skill_2_1_X - skillWidth / 2 + 10, Skill_2_1_Y - skillHeight / 2 + 25);
     } else{
       text("Lv.MAX", Skill_2_1_X - skillWidth / 2 + 10, Skill_2_1_Y - skillHeight / 2 + 25);
     }
@@ -457,8 +457,8 @@ class UpgradePage implements Page {
     textFont(ABL);
     fill(0);
     textSize(text_Size_Skill);
-    if(player.skillLevel[3] < 5) {
-      text("Lv." + player.skillLevel[3], Skill_2_2_X - skillWidth / 2 + 10, Skill_2_2_Y - skillHeight / 2 + 25);
+    if(player.getAttackLevel("skill4") < 5) {
+      text("Lv." + player.getAttackLevel("skill4"), Skill_2_2_X - skillWidth / 2 + 10, Skill_2_2_Y - skillHeight / 2 + 25);
     } else{
       text("Lv.MAX", Skill_2_2_X - skillWidth / 2 + 10, Skill_2_2_Y - skillHeight / 2 + 25);
     }
@@ -485,55 +485,55 @@ class UpgradePage implements Page {
   void mouseClicked() {
     // Upgrade button Basic
     if(mouseX > (BasicX - skillWidth * 3 / 4) && mouseX < (BasicX + skillWidth * 3 / 4) && mouseY > (BasicY + skillHeight / 3.2 - skillHeight / 4) && mouseY < (BasicY + skillHeight / 3.2 + skillHeight / 4)) {
-      if(player.basicSkillLevel < 5) {
-        if(player.money >= player.basicSkillLevel * 10) {
-          player.money -= player.basicSkillLevel * 10;
-          player.basicSkillLevel += 1;
+      if(player.getAttackLevel("basic") < 5) {
+        if(player.money >= player.getAttackLevel("basic") * 10) {
+          player.money -= player.getAttackLevel("basic") * 10;
+          player.increaseAttackLevel("basic");
         }
       }
     }
     // Upgrade button FEVER
     if(mouseX > (FEVERX - skillWidth * 3 / 4) && mouseX < (FEVERX + skillWidth * 3 / 4) && mouseY > (FEVERY + skillHeight / 3.2 - skillHeight / 4) && mouseY < (FEVERY + skillHeight / 3.2 + skillHeight / 4)) {
-      if(player.feverLevel < 5) {
-        if(player.money >= player.feverLevel * 10) {
-          player.money -= player.feverLevel * 10;
-          player.feverLevel++;
+      if(player.getAttackLevel("fever") < 5) {
+        if(player.money >= player.getAttackLevel("fever") * 10) {
+          player.money -= player.getAttackLevel("fever") * 10;
+          player.increaseAttackLevel("fever");
         }
       }
     }
     // Upgrade button Skill 1-1
     if(mouseX > (Skill_1_1_X - skillWidth * 3 / 4) && mouseX < (Skill_1_1_X + skillWidth * 3 / 4) && mouseY > (Skill_1_1_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_1_1_Y + skillHeight / 3.2 + skillHeight / 4)) {
-      if(player.skillLevel[0] < 5) {
-        if(player.money >= player.skillLevel[0] * 10) {
-          player.money -= player.skillLevel[0] * 10;
-          player.skillLevel[0]++;
+      if(player.getAttackLevel("skill1") < 5) {
+        if(player.money >= player.getAttackLevel("skill1") * 10) {
+          player.money -= player.getAttackLevel("skill1") * 10;
+          player.increaseAttackLevel("skill1");
         }
       }
     }
     // Upgrade button Skill 1-2
     if(mouseX > (Skill_1_2_X - skillWidth * 3 / 4) && mouseX < (Skill_1_2_X + skillWidth * 3 / 4) && mouseY > (Skill_1_2_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_1_2_Y + skillHeight / 3.2 + skillHeight / 4)) {
-      if(player.skillLevel[1] < 5) {
-        if(player.money >= player.skillLevel[1] * 10) {
-          player.money -= player.skillLevel[1] * 10;
-          player.skillLevel[1]++;
+      if(player.getAttackLevel("skill2") < 5) {
+        if(player.money >= player.getAttackLevel("skill2") * 10) {
+          player.money -= player.getAttackLevel("skill2") * 10;
+          player.increaseAttackLevel("skill2");
         }
       }
     }
     // Upgrade button Skill 2-1
     if(mouseX > (Skill_2_1_X - skillWidth * 3 / 4) && mouseX < (Skill_2_1_X + skillWidth * 3 / 4) && mouseY > (Skill_2_1_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_2_1_Y + skillHeight / 3.2 + skillHeight / 4)) {
-      if(player.skillLevel[2] < 5) {
-        if(player.money >= player.skillLevel[2] * 10) {
-          player.money -= player.skillLevel[2] * 10;
-          player.skillLevel[2]++;
+      if(player.getAttackLevel("skill3") < 5) {
+        if(player.money >= player.getAttackLevel("skill3") * 10) {
+          player.money -= player.getAttackLevel("skill3") * 10;
+          player.increaseAttackLevel("skill3");
         }
       }
     }
     // Upgrade button Skill 2-2
     if(mouseX > (Skill_2_2_X - skillWidth * 3 / 4) && mouseX < (Skill_2_2_X + skillWidth * 3 / 4) && mouseY > (Skill_2_2_Y + skillHeight / 3.2 - skillHeight / 4) && mouseY < (Skill_2_2_Y + skillHeight / 3.2 + skillHeight / 4)) {
-      if(player.skillLevel[3] < 5) {
-        if(player.money >= player.skillLevel[3] * 10) {
-          player.money -= player.skillLevel[3] * 10;
-          player.skillLevel[3]++;
+      if(player.getAttackLevel("skill4") < 5) {
+        if(player.money >= player.getAttackLevel("skill4") * 10) {
+          player.money -= player.getAttackLevel("skill4") * 10;
+          player.increaseAttackLevel("skill4");
         }
       }
     }
@@ -658,6 +658,7 @@ class PlayingPage implements Page {
   int score = 0;
   int fever = 100;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
+  Table mobXTable = new Table();
   float mobXMin = width;
   String inputText = "";
   String[] vocabs = new String[3];
@@ -692,10 +693,14 @@ class PlayingPage implements Page {
       vocabs[i] = getVocab();
       vocabText[i] = new VocabText(i, vocabs[i]);
     }
-    
+
+    mobXTable.addColumn("x");
+    mobXTable.addColumn("index");    
     attackTable.addColumn("damage");
     attackTable.addColumn("piercing");
     attackTable.addColumn("delay");
+
+    character.attack.update();
   }
   
   void update() {
@@ -712,9 +717,28 @@ class PlayingPage implements Page {
     }
     if(state == PLAYING) {
       timer = max(0, timer - round(1000 / frameRate));
-      for(int i = 0; i < mobs.size(); i++) {
-        mobs.get(i).update();
+      mobXTable.clearRows();
+      for(int i = mobs.size() - 1; i >= 0; i--) {
+        if(mobs.get(i).hp <= 0) {
+          mobs.remove(i);
+          score += 100;
+          money += 10;
+          continue;
+        }
+        if(mobs.get(i).update()) {
+          hp -= mobs.get(i).attacked();
+          character.update(3);
+          audio.playSound("player injured");
+          if(hp <= 0) {
+            state = ENDING;
+            break;
+          }
+        }
+        TableRow row = mobXTable.addRow();
+        row.setFloat("x", mobs.get(i).x);
+        row.setInt("index", i);
       }
+      mobXTable.sort("x");
       if(level.enemies.getRowCount() > 0) {
         while(level.enemies.getRow(0).getInt("time") >= timer) {
           TableRow row = level.enemies.getRow(0);
@@ -728,11 +752,28 @@ class PlayingPage implements Page {
         }
       }
       // find the mob x min
-      mobXMin = width;
-      for(int i = 0; i < mobs.size(); i++) {
-        mobXMin = min(mobXMin, mobs.get(i).x);
+      if(mobXTable.getRowCount() > 0) {
+        mobXMin = mobXTable.getRow(0).getInt("x");
       }
-      // level.update();
+      // attack
+      for(int i = attackTable.getRowCount() - 1; i >= 0; i--) {
+        TableRow row = attackTable.getRow(i);
+        row.setInt("delay", max(0, row.getInt("delay") - round(1000 / frameRate)));
+        int piercing = row.getInt("piercing");
+        int damage = row.getInt("damage");
+        if(row.getInt("delay") <= 0) {
+          for(int j = 0; j <= piercing; j++) {
+            if(j >= mobs.size()) {
+              break;
+            }
+            mobs.get(mobXTable.getRow(j).getInt("index")).injured(damage);
+            println("mob " + mobXTable.getRow(j).getInt("index") + " injured, hp: " + mobs.get(mobXTable.getRow(j).getInt("index")).hp); // DEBUG
+          }
+        }
+        if(attackTable.getRow(i).getInt("delay") <= 0) {
+          attackTable.removeRow(i);
+        }
+      }
     }
     if(state == ENDING) {
       // level.end();

@@ -4,6 +4,8 @@ class Player {
   int basicSkillLevel = 1;
   int feverLevel = 1;
   int[] skillLevel = new int[4];
+  IntDict attackLevel = new IntDict();
+  HashMap<Integer, String> attackName = new HashMap<Integer, String>();
 
   int money = 1000;
   /**
@@ -29,7 +31,38 @@ class Player {
     for (int i = 0; i < 4; i++) {
       this.skillLevel[i] = 1;
     }
+    this.attackName.put(-2, "basic");
+    this.attackName.put(-1, "fever");
+    this.attackName.put(0, "skill1");
+    this.attackName.put(1, "skill2");
+    this.attackName.put(2, "skill3");
+    this.attackName.put(3, "skill4");
+    // TODO: read from file
+    this.attackLevel.set("basic", 1);
+    this.attackLevel.set("fever", 1);
+    this.attackLevel.set("skill1", 1);
+    this.attackLevel.set("skill2", 1);
+    this.attackLevel.set("skill3", 1);
+    this.attackLevel.set("skill4", 1);
   }
+
+  // Getters and setters for attack level
+  int getAttackLevel(int index) {
+    return this.attackLevel.get(this.attackName.get(index));
+  }
+
+  int getAttackLevel(String attack) {
+    return this.attackLevel.get(attack);
+  }
+
+  void setAttackLevel(String attack, int level) {
+    this.attackLevel.set(attack, level);
+  }
+
+  void increaseAttackLevel(String attack) {
+    this.attackLevel.add(attack, 1);
+  }
+  // End getters and setters for attack level
   
   // Getters and setters for settings
   int getSettingInt(String parent, String child) {

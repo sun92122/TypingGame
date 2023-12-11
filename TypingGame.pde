@@ -10,7 +10,7 @@ Game game;
 
 float unit = 1;
 
-boolean isDebugMode = true;
+boolean isDebugMode = false;
 
 void settings() {
   size(1280, 720); // default
@@ -32,7 +32,7 @@ void setup() {
 }
 
 void draw() {
-  if(true) {
+  if(false) {
     try {
       audio.update();
       game.update();
@@ -105,4 +105,13 @@ void debugPoint(float x, float y) {
   point(x, y);
   strokeWeight(1);
   stroke(#000000);
+}
+
+void exit() {
+  noLoop();
+  surface.setVisible(false);
+  // save data
+  // TODO
+  println("Execution time : " + millis() / 1000 + " seconds", "Sketch terminated");  
+  super.exit();
 }
