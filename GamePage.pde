@@ -290,7 +290,6 @@ class UpgradePage implements Page {
         pet_Page_Display();
         break;
     }
-    println(player.earningEfficiency);
 
     show_Money();
     
@@ -1001,18 +1000,14 @@ class PlayingPage implements Page {
   float countDown = 3.5f;
   int timer = 9999000; // count down to 0
   int score = 0;
-  int fever = 100;
+  int currentHP = player.maxHP;
+  int fever = 0;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
   float mobXMin = width;
   String inputText = "";
   String[] vocabs = new String[3];
   VocabText[] vocabText = new VocabText[3];
   Table attackTable = new Table();
-  
-  // player info
-  int hp = 100;
-  int max_hp = 200;
-  int money = 100;
   
   // status
   boolean isStart = false;
@@ -1135,23 +1130,23 @@ class PlayingPage implements Page {
     strokeWeight(2);
     noFill();
     rectMode(CORNER);
-    rect(100, 25, max_hp + 5, 30);
+    rect(100, 25, 1.5 * player.maxHP + 5, 30);
     noStroke();
     fill(192, 0, 0);
-    if(hp > max_hp) {
-      rect(102.5, 28, max_hp, 24.5);
-      hp = max_hp;
-    } else if(hp < 0) {
-      hp = 0;
+    if(currentHP > player.maxHP) {
+      rect(102.5, 28, 1.5 * player.maxHP, 24.5);
+      currentHP = player.maxHP;
+    } else if(currentHP < 0) {
+      currentHP = 0;
     } else{
-      rect(102.5, 28, hp, 24.5);
+      rect(102.5, 28, 1.5 * currentHP, 24.5);
     }
     // testing the change in hp & fever // DEBUG
     if(mousePressed && (mouseButton == LEFT)) {
-      hp -= 1;
+      currentHP -= 1;
       fever -= 1;
     } else if(mousePressed && (mouseButton == RIGHT)) {
-      hp += 1;
+      currentHP += 1;
       fever += 1;
     }
     
@@ -1159,7 +1154,7 @@ class PlayingPage implements Page {
     fill(0);
     text("$", 37.5, 100);
     text(":", 68, 100);
-    text(money, 100, 100);
+    text(round(player.money), 100, 100);
     
     // score
     textAlign(LEFT);
