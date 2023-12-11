@@ -1026,6 +1026,7 @@ class PlayingPage implements Page {
   float mobXMin = width;
   String inputText = "";
   String[] vocabs = new String[3];
+  String[] vocabsCh = new String[3];
   VocabText[] vocabText = new VocabText[3];
   Table attackTable = new Table();
   
@@ -1056,7 +1057,9 @@ class PlayingPage implements Page {
     
     this.timer = level.timeLimit; // count down to 0
     for(int i = 0; i < 3; i++) {
-      vocabs[i] = getVocab();
+      String[] randomVocab = getVocab();
+      vocabs[i] = randomVocab[0];
+      vocabsCh[i] = randomVocab[1];
       vocabText[i] = new VocabText(i, vocabs[i]);
     }
     
@@ -1253,7 +1256,7 @@ class PlayingPage implements Page {
     
     if(state == PAUSE) {
       pausePage.display();
-    } else if (state != ENDING) {
+    } else if(state != ENDING) {
       game.menuButton.display();
     }
   }
@@ -1270,7 +1273,7 @@ class PlayingPage implements Page {
     // Changing the text size for count down, the text size will increase from 50 to 150 in 0.5 sec and then drop back to 50 in another 0.5 sec
     if(countDownTextSize <= 250 && cntDownTxtSizeDirect == 1) {
       countDownTextSize += 300 / frameRate;
-    } else if(countDownTextSize > 250 && cntDownTxtSizeDirect == 1){
+    } else if(countDownTextSize > 250 && cntDownTxtSizeDirect == 1) {
       countDownTextSize = 150;
       cntDownTxtSizeDirect = 0;
     } else if(countDownTextSize >= 50 && cntDownTxtSizeDirect == 0) {
@@ -1355,7 +1358,7 @@ class PlayingPage implements Page {
     noFill();
     textAlign(CENTER, CENTER);
     // Draw Back to Main Menu Button
-    rect( - 350, 210, 300, 50, 10);
+    rect( -350, 210, 300, 50, 10);
     text("Main Menu", -350, 210);
     // Draw Select Level Button
     rect(0, 210, 300, 50, 10);
@@ -1371,7 +1374,7 @@ class PlayingPage implements Page {
     noFill();
     switch(endButtonIndex) {
       case 0:
-        rect( - 350, 210, 300, 50, 10);
+        rect( -350, 210, 300, 50, 10);
         break;
       case 1:
         rect(0, 210, 300, 50, 10);
@@ -1414,18 +1417,18 @@ class PlayingPage implements Page {
       fill(0);
       textSize(countDownTextDrawSize);
       text(3, width / 2, height / 3);
-    }else if(countDown > 1) {
+    } else if(countDown > 1) {
       fill(0);
       textSize(countDownTextDrawSize);
       text(2, width / 2, height / 3);
-    }else {
+    } else {
       fill(0);
       textSize(countDownTextDrawSize);
       text(1, width / 2, height / 3);
     }
   }
-
-  String getVocab() {
+  
+  String[] getVocab() {
     int index = (int)random(0, level.weightSum);
     int vocabIndex = 0;
     while(index >= level.vocabs[vocabIndex]) {
@@ -1465,7 +1468,9 @@ class PlayingPage implements Page {
       for(int i = 2; i >= 0; i--) {
         if(vocabs[i].equals(inputText)) {
           attack(i + (i % 1));
-          vocabs[i] = getVocab();
+          String[] randomVocab = getVocab();
+          vocabs[i] = randomVocab[0];
+          vocabsCh[i] = randomVocab[1];
           vocabText[i] = new VocabText(i, vocabs[i]);
           break;
         }
@@ -1487,7 +1492,9 @@ class PlayingPage implements Page {
     if(isDebugMode) {
       if(key == TAB) {
         for(int i = 0; i < 3; i++) {
-          vocabs[i] = getVocab();
+          String[] randomVocab = getVocab();
+          vocabs[i] = randomVocab[0];
+          vocabsCh[i] = randomVocab[1];
           vocabText[i] = new VocabText(i, vocabs[i]);
         }
       }
