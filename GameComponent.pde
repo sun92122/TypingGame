@@ -74,6 +74,20 @@ class CheckExit {
     text("Yes", -100, 100);
     rect(100, 100, 100, 50);
     text("No", 100, 100);
+
+    // Draw red frame when the mouse is hovering over the button
+    if(isHoverYes()) {
+      noFill();
+      stroke(#FF0800);
+      strokeWeight(3);
+      rect(-100, 100, 100, 50);
+    } else if(isHoverNo()) {
+      noFill();
+      stroke(#FF0800);
+      strokeWeight(3);
+      rect(100, 100, 100, 50);
+    }
+    
     popMatrix();
   }
   
