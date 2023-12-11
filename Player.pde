@@ -9,8 +9,8 @@ class Player {
   int maxHpLevel = 1;
 
   float money = 5000;
-  float earningEfficiency = 1 + 0.1f * (earningEffiLevel - 1);
-  int maxHP = 100 + 10 * (maxHpLevel - 1);
+  float earningEfficiency = 1;
+  int maxHP = 100;
 
   String currentSkill1 = "mouse";
   String currentSkill2 = "ice";

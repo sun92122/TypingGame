@@ -290,7 +290,7 @@ class UpgradePage implements Page {
         pet_Page_Display();
         break;
     }
-    println(currentPage);
+    println(player.earningEfficiency);
 
     show_Money();
     
@@ -496,6 +496,15 @@ class UpgradePage implements Page {
     // Level
     money_hp_Leval_Display(moneyX, moneyHpY, player.earningEffiLevel);
     money_hp_Leval_Display(hpX, moneyHpY, player.maxHpLevel);
+
+    // show the current earning efficiency
+    textAlign(CENTER);
+    textFont(ABL);
+    textSize(text_Size_Skill);
+    fill(0);
+    text("Efficiency: " + float(round(10 * player.earningEfficiency)) / 10 + " x", moneyX, moneyHpY + moneyHpHeight / 3.5);
+    // show the current max HP
+    text("Max HP: " + player.maxHP, hpX, moneyHpY + moneyHpHeight / 3.5);
   }
 
   void money_hp_Frame_Display(){
@@ -786,6 +795,7 @@ class UpgradePage implements Page {
             if(player.earningEffiLevel < 11){
               player.money -= player.earningEffiLevel * 10;
               player.earningEffiLevel++;
+              player.earningEfficiency += 0.1;
             }
           }
         }
@@ -795,6 +805,7 @@ class UpgradePage implements Page {
             if(player.maxHpLevel < 11){
               player.money -= player.maxHpLevel * 10;
               player.maxHpLevel++;
+              player.maxHP += 10;
             }
           }
         }
