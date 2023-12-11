@@ -20,8 +20,8 @@ class MainMenuButton {
   void display(boolean isSelect) {
     pushMatrix();
     translate(x, y);
-    textFont(game.fonts.get("Undo"));
-    textSize(54);
+    textFont(game.fonts.get("PressStart2P"));
+    textSize(30);
     textAlign(CENTER, CENTER);
     w = textWidth(str) + 20;
     rectMode(CENTER);
@@ -934,15 +934,15 @@ class PausePage {
   PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
 
-  int state = 0; // 0: play, 1: pause, 2: Level Menu, 3: Main Menu
+  int state = 0; // 0: play, 1: pause, 2: Select_Level, 3: Main Menu
   final int PLAY = 0;
   final int PAUSE = 1;
-  final int LEVEL_MENU = 2;
+  final int SELECT_LEVEL = 2;
   final int MAIN_MENU = 3;
 
   PausePage() {
     buttons[0] = new PausePageButton("Resume", 300);
-    buttons[1] = new PausePageButton("Level Menu", 400);
+    buttons[1] = new PausePageButton("Select Level", 400);
     buttons[2] = new PausePageButton("Main Menu", 500);
   }
   

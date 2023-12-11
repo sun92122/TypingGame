@@ -1035,8 +1035,9 @@ class PlayingPage implements Page {
   final int ENDING = 3;
 
   // variables for ending page
-  int isvictory = 0;
+  int isVictory = 0;
   float accuracy = 0.9;
+  float earnedMoney = 100;
   
   PlayingPage(Level level) {
     this.level = level;
@@ -1257,6 +1258,7 @@ class PlayingPage implements Page {
     strokeWeight(5);
     fill(250);
     rect(width / 2, height / 2, width - 100, height - 100, 10);
+
     // Text
     textFont(game.fonts.get("Arial Black"));
     textAlign(CENTER);
@@ -1267,7 +1269,7 @@ class PlayingPage implements Page {
     textFont(game.fonts.get("Undo"));
     textSize(140);
     // Show Victory or Failed
-    if(isvictory == 0){
+    if(isVictory == 0){
       fill(0, 122, 204);
       text("VICTORY", 0, -160);
     }else{
@@ -1283,9 +1285,55 @@ class PlayingPage implements Page {
     // Show Score
     text("Score:  " + score, 0, 70);
     // Show Money Earned
-    text("Money:  " + round(player.money), 0, 130);
+    text("Money:  +" + round(earnedMoney), 0, 130);
     // Show button (back to main menu, back to level select menu, next level)
+    strokeWeight(3);
+    noFill();
+    textAlign(CENTER, CENTER);
+    // Draw Back to Main Menu Button
+    rect(-350, 210, 300, 50, 10);
+    text("Main Menu", -350, 210);
+    // Draw Select Level Button
+    rect(0, 210, 300, 50, 10);
+    text("Select Level", 0, 210);
+    // Draw Next Level Button
+    rect(350, 210, 300, 50, 10);
+    text("Next Level", 350, 210);
+
+    // Draw the red button frame when the mouse is hovering
+    int endButtonIndex = ending_Page_Button_Hovering();
+    stroke(#FF0800);
+    strokeWeight(5);
+    noFill();
+    switch(endButtonIndex){
+      case 0:
+        rect(-350, 210, 300, 50, 10);
+        break;
+      case 1:
+        rect(0, 210, 300, 50, 10);
+        break;
+      case 2:
+        rect(350, 210, 300, 50, 10);
+        break;
+    }
     popMatrix();
+  }
+
+  int ending_Page_Button_Hovering(){
+    int index = -1;
+    // Back to Main Menu Button
+    if(mouseX > (width / 2 - 350 - 150) && mouseX < (width / 2 - 350 + 150) && mouseY > (height / 2 + 210 - 25) && mouseY < (height / 2 + 210 + 25)){
+      index = 0;
+    }
+    // Select Level Button
+    if(mouseX > (width / 2 - 150) && mouseX < (width / 2 + 150) && mouseY > (height / 2 + 210 - 25) && mouseY < (height / 2 + 210 + 25)){
+      index = 1;
+    }
+    // Next Level Button
+    if(mouseX > (width / 2 + 350 - 150) && mouseX < (width / 2 + 350 + 150) && mouseY > (height / 2 + 210 - 25) && mouseY < (height / 2 + 210 + 25)){
+      index = 2;
+    }
+    return index;
   }
   
   String getVocab() {
@@ -1374,12 +1422,33 @@ class PlayingPage implements Page {
       pausePage.mouseReleased();
       if(pausePage.state == pausePage.PLAY) {
         state = preState;
-      } else if(pausePage.state == pausePage.LEVEL_MENU) {
+      } else if(pausePage.state == pausePage.SELECT_LEVEL) {
         audio.stopMusic(level.bgm);
         game.switchScene(1);
       } else if(pausePage.state == pausePage.MAIN_MENU) {
         audio.stopMusic(level.bgm);
         game.switchScene(0);
+      }
+    }
+
+    // Click the button in the ending page
+    if(state == ENDING){
+      int endButtonIndex = ending_Page_Button_Hovering();
+      switch(endButtonIndex){
+        case 0:
+          audio.stopMusic(level.bgm);
+          game.switchScene(0);
+          break;
+        case 1:
+          audio.stopMusic(level.bgm);
+          game.switchScene(1);
+          break;
+        case 2: // Todo: switch to next level
+          // audio.stopMusic(level.bgm);
+          // game.switchScene(2);
+          audio.stopMusic(level.bgm);
+          game.switchScene(0);
+          break;
       }
     }
   }
