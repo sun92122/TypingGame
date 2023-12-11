@@ -1310,9 +1310,12 @@ class PlayingPage implements Page {
       pausePage.mouseReleased();
       if(pausePage.state == pausePage.PLAY) {
         state = preState;
-      } else if(pausePage.state == pausePage.EXIT) {
+      } else if(pausePage.state == pausePage.LEVEL_MENU) {
         audio.stopMusic(level.bgm);
         game.switchScene(1);
+      } else if(pausePage.state == pausePage.MAIN_MENU) {
+        audio.stopMusic(level.bgm);
+        game.switchScene(0);
       }
     }
   }

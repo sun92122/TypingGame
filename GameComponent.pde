@@ -60,8 +60,8 @@ class CheckExit {
     pushMatrix();
     translate(x, y);
     rectMode(CENTER);
-    fill(225);
-    rect(0, 0, w, h);
+    fill(250);
+    rect(0, 0, w, h, 10);
     fill(0);
     textFont(game.fonts.get("PressStart2P"));
     textSize(25);
@@ -928,26 +928,32 @@ class TextBox {
 class PausePage {
   float x = 0;
   float y = 0;
-  float w = 1280;
-  float h = 720;
+  float w = width;
+  float h = height;
 
-  PausePageButton[] buttons = new PausePageButton[2];
+  PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
 
-  int state = 0; // 0: play, 1: pause, 2: exit
+  int state = 0; // 0: play, 1: pause, 2: Level Menu, 3: Main Menu
   final int PLAY = 0;
   final int PAUSE = 1;
-  final int EXIT = 2;
+  final int LEVEL_MENU = 2;
+  final int MAIN_MENU = 3;
 
   PausePage() {
     buttons[0] = new PausePageButton("Resume", 300);
-    buttons[1] = new PausePageButton("Exit", 400);
+    buttons[1] = new PausePageButton("Level Menu", 400);
+    buttons[2] = new PausePageButton("Main Menu", 500);
   }
   
   void display() {
-    fill(#000000, 60);
+    noStroke();
+    fill(0, 100);
     rectMode(CORNER);
     rect(0, 0, w, h);
+    rectMode(CENTER);
+    fill(250);
+    rect(w / 2, h / 1.8, w / 1.5, h / 1.5, 10);
     textSize(50);
     textAlign(CENTER, CENTER);
     textFont(game.fonts.get("NotoSansTC"));
@@ -967,6 +973,8 @@ class PausePage {
       state = 0;
     } else if(index == 1) {
       state = 2;
+    } else if(index == 2) {
+      state = 3;
     }
   }
 }
