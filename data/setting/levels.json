@@ -37,7 +37,7 @@
     "description": "This is a tutorial level.",
     "timelimit": 9999000,
     "background": "road",
-    "music": "",
+    "music": "bgm1",
     "vocab": {
       "1": 50,
       "2": 50

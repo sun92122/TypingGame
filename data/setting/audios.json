@@ -2,7 +2,7 @@
   "musics": [
     {
       "name": "bgm1",
-      "path": "audio/music/bgm.wav"
+      "path": "audio/music/bgm1.wav"
     },
     {
       "name": "menu",
