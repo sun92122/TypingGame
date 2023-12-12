@@ -412,15 +412,15 @@ class UpgradePage implements Page {
   
   void skill_Icon_Display() {
     // Show Basic icon
-    if(player.getAttackLevel(0) < 5) {
-      icon.display(player.getAttackLevel(0) - 1, BasicX, BasicY + skillHeight / 10);
+    if(player.getAttackLevel("basic") < 5) {
+      icon.display(player.getAttackLevel("basic") - 1, BasicX, BasicY + skillHeight / 10);
     } else{
       icon.display(4, BasicX, BasicY + skillHeight / 10);
     }
     // Show FEVER icon
     icon.display(5, FEVERX, FEVERY - skillHeight / 20);
     // Show Skill Mouse icon
-    if(player.getAttackLevel(2) > 3) {
+    if(player.getAttackLevel("skill1") > 3) {
       icon.display(7, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
     } else{
       icon.display(6, Skill_1_1_X, Skill_1_1_Y - skillHeight / 20);
@@ -685,17 +685,17 @@ class UpgradePage implements Page {
     strokeWeight(5);
     noFill();
     rectMode(CENTER);
-    if(currentpet == "white dog") {
+    if(currentpet == "White Dog") {
       rect(whiteDogX, whiteDogY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "dog") {
+    } else if(currentpet == "Dog") {
       rect(dogX, dogY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "fowl") {
+    } else if(currentpet == "Fowl") {
       rect(fowlX, fowlY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "ox") {
+    } else if(currentpet == "Ox") {
       rect(oxX, oxY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "rat") {
+    } else if(currentpet == "Rat") {
       rect(ratX, ratY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "turtle") {
+    } else if(currentpet == "Turtle") {
       rect(turtleX, turtleY, skillWidth, skillHeight, 20);
     }
   }
