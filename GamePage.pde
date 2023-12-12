@@ -942,9 +942,9 @@ class SettingPage implements Page {
     
     // setting text
     fill(0);
+    textFont(game.fonts.get("Cubic11"));
     textSize(50);
     textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
     text("Setting", width / 2, 50);
   }
   
