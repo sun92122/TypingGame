@@ -942,9 +942,9 @@ class SettingPage implements Page {
     
     // setting text
     fill(0);
+    textFont(game.fonts.get("Cubic11"));
     textSize(50);
     textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
     text("Setting", width / 2, 50);
   }
   
@@ -1539,11 +1539,9 @@ class PlayingPage implements Page {
       if(attackFailed) {
         notAccurateCount += 1;
         currentHP -= 5;
+        fever -= 8;
         // character.update(3);
         audio.playSound("player injured");
-        // if(currentHP <= 0) {
-        //   state = ENDING;
-        // }
       }
       inputText = "";
     } else {

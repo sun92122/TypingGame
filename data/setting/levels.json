@@ -2,7 +2,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 120000,
+    "timelimit": 90000,
     "background": "volcanic",
     "music": "bgm1",
     "vocab": {
@@ -35,7 +35,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -46,7 +46,7 @@
       {
         "mob": "Tongue",
         "moblevel": 1,
-        "time": 9998000,
+        "time": 120000,
         "interval": 6000,
         "count": 5
       }
@@ -55,7 +55,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -74,7 +74,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -93,7 +93,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -112,7 +112,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -131,7 +131,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -150,7 +150,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -169,7 +169,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -188,7 +188,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -207,7 +207,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -226,7 +226,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -245,7 +245,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
@@ -264,7 +264,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 9999000,
+    "timelimit": 90000,
     "background": "",
     "music": "",
     "vocab": {
