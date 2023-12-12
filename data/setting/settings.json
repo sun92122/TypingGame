@@ -92,9 +92,58 @@
     ]
   },
   {
-    "name": "Info",
-    "tip": "View information about the game.",
+    "name": "About us",
+    "tip": "View the information of the game.",
     "sub": [
+      {
+        "title": "Program group",
+        "tip": "View the program group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "物理114 薛皓陽"
+      },
+      {
+        "title": "",
+        "tip": "View the program group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "物理114 林俊緯"
+      },
+      {
+        "title": "Art group",
+        "tip": "View the art group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "電機116 陳睿承"
+      },
+      {
+        "title": "",
+        "tip": "View the art group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "物理114 賴冠妤"
+      },
+      {
+        "title": "",
+        "tip": "View the art group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "物理114 王祥宇"
+      },
+      {
+        "title": "",
+        "tip": "View the art group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "物理114 楊士寬"
+      },
+      {
+        "title": "",
+        "tip": "View the art group of the game.",
+        "type": "info",
+        "valueType": "string",
+        "default": "物理114 張珉嘉"
+      },
       {
         "title": "Version",
         "tip": "View the version of the game.",
@@ -103,11 +152,143 @@
         "default": "beta 1.0.0"
       },
       {
-        "title": "Author",
-        "tip": "View the author of the game.",
+        "title": "Release date",
+        "tip": "View the release date of the game.",
         "type": "info",
         "valueType": "string",
-        "default": ""
+        "default": "2023/12/12"
+      },
+      {
+        "title": "Source code",
+        "tip": "View the source code of the game.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "GitHub",
+          "https://github.com/sun92122/TypingGame"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "OFL",
+    "tip": "View the Open Font License.",
+    "sub": [
+      {
+        "title": "NotoSansTC",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "",
+          ""
+        ]
+      },
+      {
+        "title": "Cubic11",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "SIL OFL 1.1",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/Cubic11"
+        ]
+      },
+      {
+        "title": "PressStart2P",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "SIL OFL 1.1",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/PressStart2P"
+        ]
+      },
+      {
+        "title": "Filepile",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "CC0 1.0 Universal",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/Filepile"
+        ]
+      },
+      {
+        "title": "Arial Black",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "Custom license",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/Arial%20Black"
+        ]
+      },
+      {
+        "title": "Karmatic Arcade",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "1001Fonts FFC",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/Karmatic%20Arcade"
+        ]
+      },
+      {
+        "title": "Undo",
+        "tip": "View the Open Font License.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "1001Fonts FFC",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/Undo"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "License",
+    "tip": "View the license of the game.",
+    "sub": [
+      {
+        "title": "@processing/processing-sound",
+        "tip": "View the Open Source Initiative license.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "LGPL-2.1 license",
+          "https://github.com/sun92122/TypingGame/blob/main/license/libraries/sound"
+        ]
+      },
+      {
+        "title": "bgm",
+        "tip": "View the license of content.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "Pixabay License",
+          ""
+        ]
+      },
+      {
+        "title": "bgm1",
+        "tip": "View the license of content.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "Pixabay License",
+          "https://github.com/sun92122/TypingGame/blob/main/license/audio/bgm1"
+        ]
+      },
+      {
+        "title": "玩家受擊音效",
+        "tip": "View the license of content.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "Custom license",
+          ""
+        ]
       }
     ]
   }

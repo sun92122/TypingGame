@@ -327,7 +327,7 @@ class SettingOption {
   }
 }
 
-// TODO: slider, toggle, dropdown, info
+// TODO: slider, toggle, dropdown, info, link
 class SubSetting {
   JSONObject data;
   
@@ -335,7 +335,7 @@ class SubSetting {
   float y = height / 2;
   float w = 250;
   float h = 50;
-  char type = 's';
+  char type = 's'; // s: slider, t: toggle, d: dropdown, i: info, l: link
   String title = "Music";
   String parent;
   
@@ -349,6 +349,9 @@ class SubSetting {
   // dropdown
   JSONArray options;
   int dropdownIndex = 0;
+  // info, link
+  String strValue = "";
+  String link = "";
   
   SubSetting(float x, float y, JSONObject data, String parent) {
     this.x = x + width / 2;
@@ -363,6 +366,11 @@ class SubSetting {
       this.h = 5;
     } else if(type == 'd') {
       this.options = data.getJSONArray("options");
+    } else if(type == 'i') {
+      this.strValue = data.getString("default");
+    } else if(type == 'l') {
+      this.strValue = data.getJSONArray("default").getString(0);
+      this.link = data.getJSONArray("default").getString(1);
     }
   }
   
@@ -411,6 +419,22 @@ class SubSetting {
         text(options.getJSONObject(dropdownIndex).getString("name"), -w / 2 + 10, 0);
         break;
       case 'i':
+        fill(0);
+        textFont(game.fonts.get("Cubic11"));
+        textSize(26);
+        textAlign(LEFT, CENTER);
+        text(strValue, -w * 3 / 4, 0);
+        break;
+      case 'l':
+        fill(0);
+        textFont(game.fonts.get("Cubic11"));
+        textSize(26);
+        textAlign(LEFT, CENTER);
+        if(textWidth(strValue) > w) {
+          text(strValue.substring(0, min(strValue.length(), 15)) + "...", -w * 3 / 4, 0);
+        } else {
+          text(strValue, -w * 3 / 4, 0);
+        }
         break;
     }
     popMatrix();
@@ -454,8 +478,15 @@ class SubSetting {
   }
   
   void mouseReleased() {
-    if(type == 's') {
-      isFocus = false;
+    switch(type) {
+      case 's':
+        isFocus = false;
+        break;
+      case 'l':
+        if(isHover()) {
+          link(link);
+        }
+        break;
     }
   }
   
@@ -468,6 +499,11 @@ class SubSetting {
     } else if(type == 't' || type == 'd') {
       if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
         mouseY > y - h / 2 && mouseY < y + h / 2) {
+        return true;
+      }
+    } else if(type == 'i' || type == 'l') {
+      if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
+        mouseY > y - 20 && mouseY < y + 20) {
         return true;
       }
     }

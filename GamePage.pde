@@ -973,21 +973,21 @@ class SettingPage implements Page {
   }
   
   void mouseClicked() {
-    for(int i = 0; i < settingOption.length; i++) {
-      settingOption[i].mouseClicked();
-    }
+    // for(int i = 0; i < settingOption.length; i++) {
+      settingOption[setting].mouseClicked();
+    // }
   }
   
   void mouseDragged() {
-    for(int i = 0; i < settingOption.length; i++) {
-      settingOption[i].mouseDragged();
-    }
+    // for(int i = 0; i < settingOption.length; i++) {
+      settingOption[setting].mouseDragged();
+    // }
   }
   
   void mousePressed() {
-    for(int i = 0; i < settingOption.length; i++) {
-      settingOption[i].mousePressed();
-    }
+    // for(int i = 0; i < settingOption.length; i++) {
+      settingOption[setting].mousePressed();
+    // }
   }
   
   void mouseReleased() {
@@ -998,7 +998,7 @@ class SettingPage implements Page {
       if(settingOption[i].isHover()) {
         setting = i;
       }
-      settingOption[i].mouseReleased();
+      settingOption[setting].mouseReleased();
     }
   }
 }
