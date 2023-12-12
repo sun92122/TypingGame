@@ -1124,7 +1124,10 @@ class PlayingPage implements Page {
           }
         }
       } else {
+        // Check if all mobs are dead, player win
         if(mobs.size() == 0) {
+          isVictory = 1;
+          player.money += earnedMoney;
           state = ENDING;
         }
       }
@@ -1162,7 +1165,7 @@ class PlayingPage implements Page {
       for(int i = 0; i < mobs.size(); i++) {
         mobXMin = min(mobXMin, mobs.get(i).x);
       }
-      // check if the level ends TODO: 怪物全滅判斷
+      // check if the player lose
       if(timer == 0 || currentHP <= 0) {
         isVictory = 0;
         // Add earned money to player.money
