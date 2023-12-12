@@ -66,7 +66,7 @@ class Mob {
   void update_() {}
   
   boolean update() {
-    x -= velocity;
+    x -= velocity * unit * 60 / frameRate;
     if(x < characterX + attackDistance) {
       x = characterX + attackDistance;
       if(state != 2 && attackTime < millis()) {
