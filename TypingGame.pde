@@ -32,7 +32,7 @@ void setup() {
 }
 
 void draw() {
-  if(true) {
+  if(false) {
     try {
       audio.update();
       game.update();
