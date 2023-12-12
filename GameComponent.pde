@@ -70,24 +70,24 @@ class CheckExit {
     noFill();
     stroke(0);
     strokeWeight(3);
-    rect(-100, 100, 100, 50);
+    rect( -100, 100, 100, 50);
     text("Yes", -100, 100);
     rect(100, 100, 100, 50);
     text("No", 100, 100);
-
+    
     // Draw red frame when the mouse is hovering over the button
     if(isHoverYes()) {
       noFill();
       stroke(#FF0800);
       strokeWeight(3);
-      rect(-100, 100, 100, 50);
+      rect( -100, 100, 100, 50);
     } else if(isHoverNo()) {
       noFill();
       stroke(#FF0800);
       strokeWeight(3);
       rect(100, 100, 100, 50);
     }
-
+    
     popMatrix();
   }
   
@@ -327,7 +327,7 @@ class SettingOption {
   }
 }
 
-// TODO: slider, toggle, dropdown, info
+// TODO: slider, toggle, dropdown, info, link
 class SubSetting {
   JSONObject data;
   
@@ -335,7 +335,7 @@ class SubSetting {
   float y = height / 2;
   float w = 250;
   float h = 50;
-  char type = 's';
+  char type = 's'; // s: slider, t: toggle, d: dropdown, i: info, l: link
   String title = "Music";
   String parent;
   
@@ -349,6 +349,9 @@ class SubSetting {
   // dropdown
   JSONArray options;
   int dropdownIndex = 0;
+  // info, link
+  String strValue = "";
+  String link = "";
   
   SubSetting(float x, float y, JSONObject data, String parent) {
     this.x = x + width / 2;
@@ -363,6 +366,11 @@ class SubSetting {
       this.h = 5;
     } else if(type == 'd') {
       this.options = data.getJSONArray("options");
+    } else if(type == 'i') {
+      this.strValue = data.getString("default");
+    } else if(type == 'l') {
+      this.strValue = data.getJSONArray("default").getString(0);
+      this.link = data.getJSONArray("default").getString(1);
     }
   }
   
@@ -411,31 +419,47 @@ class SubSetting {
         text(options.getJSONObject(dropdownIndex).getString("name"), -w / 2 + 10, 0);
         break;
       case 'i':
+        fill(0);
+        textFont(game.fonts.get("Cubic11"));
+        textSize(26);
+        textAlign(LEFT, CENTER);
+        text(strValue, -w * 3 / 4, 0);
+        break;
+      case 'l':
+        fill(0);
+        textFont(game.fonts.get("Cubic11"));
+        textSize(26);
+        textAlign(LEFT, CENTER);
+        if(textWidth(strValue) > w * 3 / 2) {
+          text(strValue.substring(0, min(strValue.length(), 25)) + "...", -w * 3 / 4, 0);
+        } else {
+          text(strValue, -w * 3 / 4, 0);
+        }
         break;
     }
     popMatrix();
   }
   
   void mouseClicked() {
+    if(!isHover()) {
+      return;
+    }
     switch(type) {
       case 's':
-        if(isHover()) {
-          isFocus = true;
-          sliderValue = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
-          player.setSetting(parent, title, sliderValue);
-        }
+        isFocus = true;
+        sliderValue = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
+        player.setSetting(parent, title, sliderValue);
         break;
       case 't':
-        if(isHover()) {
-          toggleValue = !toggleValue;
-          player.setSetting(parent, title, toggleValue);
-        }
+        toggleValue = !toggleValue;
+        player.setSetting(parent, title, toggleValue);
         break;
       case 'd':
-        if(isHover()) {
-          dropdownIndex = (dropdownIndex + 1) % options.size();
-          player.setSetting(parent, title, dropdownIndex);
-        }
+        dropdownIndex = (dropdownIndex + 1) % options.size();
+        player.setSetting(parent, title, dropdownIndex);
+        break;
+      case 'l':
+        link(link);
         break;
     }
   }
@@ -468,6 +492,11 @@ class SubSetting {
     } else if(type == 't' || type == 'd') {
       if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
         mouseY > y - h / 2 && mouseY < y + h / 2) {
+        return true;
+      }
+    } else if(type == 'i' || type == 'l') {
+      if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
+        mouseY > y - 25 && mouseY < y + 25) {
         return true;
       }
     }
@@ -787,13 +816,13 @@ class PausePage {
   
   PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
-
+  
   int state = 0; // 0: play, 1: pause, 2: Select_Level, 3: Main Menu
   final int PLAY = 0;
   final int PAUSE = 1;
   final int SELECT_LEVEL = 2;
   final int MAIN_MENU = 3;
-
+  
   PausePage() {
     buttons[0] = new PausePageButton("Resume", 300);
     buttons[1] = new PausePageButton("Select Level", 400);
