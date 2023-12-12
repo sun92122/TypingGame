@@ -152,13 +152,6 @@
         "default": "beta 1.0.0"
       },
       {
-        "title": "Release date",
-        "tip": "View the release date of the game.",
-        "type": "info",
-        "valueType": "string",
-        "default": "2023/12/12"
-      },
-      {
         "title": "Source code",
         "tip": "View the source code of the game.",
         "type": "link",
@@ -180,8 +173,8 @@
         "type": "link",
         "valueType": "string",
         "default": [
-          "",
-          ""
+          "SIL OFL 1.1",
+          "https://github.com/sun92122/TypingGame/blob/main/license/font/NotoSansTC"
         ]
       },
       {
@@ -287,7 +280,17 @@
         "valueType": "string",
         "default": [
           "Custom license",
-          ""
+          "https://github.com/sun92122/TypingGame/blob/main/license/audio/%E7%8E%A9%E5%AE%B6%E5%8F%97%E6%93%8A"
+        ]
+      },
+      {
+        "title": "Other sounds",
+        "tip": "View the license of content.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "Mixkit Sound Effects Free License",
+          "https://github.com/sun92122/TypingGame/blob/main/license/audio/Sounds"
         ]
       }
     ]

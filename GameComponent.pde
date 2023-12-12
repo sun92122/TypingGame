@@ -70,24 +70,24 @@ class CheckExit {
     noFill();
     stroke(0);
     strokeWeight(3);
-    rect(-100, 100, 100, 50);
+    rect( -100, 100, 100, 50);
     text("Yes", -100, 100);
     rect(100, 100, 100, 50);
     text("No", 100, 100);
-
+    
     // Draw red frame when the mouse is hovering over the button
     if(isHoverYes()) {
       noFill();
       stroke(#FF0800);
       strokeWeight(3);
-      rect(-100, 100, 100, 50);
+      rect( -100, 100, 100, 50);
     } else if(isHoverNo()) {
       noFill();
       stroke(#FF0800);
       strokeWeight(3);
       rect(100, 100, 100, 50);
     }
-
+    
     popMatrix();
   }
   
@@ -441,25 +441,25 @@ class SubSetting {
   }
   
   void mouseClicked() {
+    if(!isFocus) {
+      return;
+    }
     switch(type) {
       case 's':
-        if(isHover()) {
-          isFocus = true;
-          sliderValue = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
-          player.setSetting(parent, title, sliderValue);
-        }
+        isFocus = true;
+        sliderValue = constrain(map(mouseX, x - w / 2, x + w / 2, min, max), min, max);
+        player.setSetting(parent, title, sliderValue);
         break;
       case 't':
-        if(isHover()) {
-          toggleValue = !toggleValue;
-          player.setSetting(parent, title, toggleValue);
-        }
+        toggleValue = !toggleValue;
+        player.setSetting(parent, title, toggleValue);
         break;
       case 'd':
-        if(isHover()) {
-          dropdownIndex = (dropdownIndex + 1) % options.size();
-          player.setSetting(parent, title, dropdownIndex);
-        }
+        dropdownIndex = (dropdownIndex + 1) % options.size();
+        player.setSetting(parent, title, dropdownIndex);
+        break;
+      case 'l':
+        link(link);
         break;
     }
   }
@@ -478,15 +478,8 @@ class SubSetting {
   }
   
   void mouseReleased() {
-    switch(type) {
-      case 's':
-        isFocus = false;
-        break;
-      case 'l':
-        if(isHover()) {
-          link(link);
-        }
-        break;
+    if(type == 's') {
+      isFocus = false;
     }
   }
   
@@ -823,13 +816,13 @@ class PausePage {
   
   PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
-
+  
   int state = 0; // 0: play, 1: pause, 2: Select_Level, 3: Main Menu
   final int PLAY = 0;
   final int PAUSE = 1;
   final int SELECT_LEVEL = 2;
   final int MAIN_MENU = 3;
-
+  
   PausePage() {
     buttons[0] = new PausePageButton("Resume", 300);
     buttons[1] = new PausePageButton("Select Level", 400);
