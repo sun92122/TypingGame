@@ -42,6 +42,31 @@ class Level {
     getEnemiesTable();
   }
 
+  Level(Level level) {
+    this.levelNumber = level.levelNumber;
+    this.data = level.data;
+
+    this.levelIcon = level.levelIcon;
+    this.isUnlock = level.isUnlock;
+    this.page = level.page;
+    
+    this.timeLimit = level.timeLimit;
+    this.map = level.map;
+    this.bgm = level.bgm;
+    this.vocabs = level.vocabs;
+    this.weightSum = level.weightSum;
+    this.enemies = new Table();
+    this.enemies.addColumn("time");
+    this.enemies.addColumn("mob");
+    this.enemies.addColumn("moblevel");
+    for(TableRow row : level.enemies.rows()) {
+      TableRow newRow = enemies.addRow();
+      newRow.setInt("time", row.getInt("time"));
+      newRow.setString("mob", row.getString("mob"));
+      newRow.setInt("moblevel", row.getInt("moblevel"));
+    }
+  }
+
   void getVocabWeights() {
     JSONObject vocabs = data.getJSONObject("vocab");
     int weightSum = 0;
@@ -83,5 +108,10 @@ class Level {
   
   void desplayLevelIcon() {
     levelIcon.display();
+  }
+
+  Level copy() {
+    Level level = new Level(this);
+    return level;
   }
 }

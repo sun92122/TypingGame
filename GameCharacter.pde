@@ -103,6 +103,7 @@ class CharacterSvg extends Character {
   
   void update_() {
     if(stateChangeTime == 0) {
+      if(state == 4) changeState(0);
       stateChangeTime = millis() + animations.get(stateNames[state]).get(currentImageIndex);
     }
     if(millis() > stateChangeTime) {

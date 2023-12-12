@@ -216,7 +216,7 @@ class PlayPage implements Page {
       if(levels[i + pageIndex * 15].levelIcon.isHover() && 
         levels[i + pageIndex * 15].isUnlock) {
         game.switchScene(4);
-        game.playingPage = new PlayingPage(levels[i + pageIndex * 15]);
+        game.playingPage = new PlayingPage(levels[i + pageIndex * 15].copy());
       }
     }
   }
@@ -1121,6 +1121,10 @@ class PlayingPage implements Page {
           if(level.enemies.getRowCount() == 0) {
             break;
           }
+        }
+      } else {
+        if(mobs.size() == 0) {
+          state = ENDING;
         }
       }
 
