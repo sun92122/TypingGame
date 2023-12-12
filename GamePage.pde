@@ -1045,10 +1045,11 @@ class PlayingPage implements Page {
   
   // variables for ending page
   int isVictory = 0;
-  int isAccurateCount;
-  int notAccurateCount;
+  int isAccurateCount = 0;
+  int notAccurateCount = 0;
   float accuracy;
   float earnedMoney = 0;
+  boolean attackFailed = true;
   
   PlayingPage(Level level) {
     this.level = level;
@@ -1383,9 +1384,9 @@ class PlayingPage implements Page {
     if(isAccurateCount == 0 && notAccurateCount == 0) {
       accuracy = 0;
     } else{
-      accuracy = isAccurateCount / (isAccurateCount + notAccurateCount);
+      accuracy = float(isAccurateCount) / (isAccurateCount + notAccurateCount);
     }
-    text("Accuracy:  " + 100 * accuracy + " %", 0, 10);
+    text("Accuracy:  " + nf(100 * accuracy, 2, 2) + " %", 0, 10);
     // Show Score
     text("Score:  " + score, 0, 70);
     // Show Money Earned
@@ -1477,8 +1478,9 @@ class PlayingPage implements Page {
   }
   
   void attack(int attackType) {
+    earnedMoney += 2 * player.earningEfficiency;
     score += 100;
-    fever += 2;
+    fever += 4;
     isAccurateCount += 1;
 
     character.changeState(4, attackType, attackTable);
@@ -1506,12 +1508,15 @@ class PlayingPage implements Page {
         inputText = inputText.substring(0, inputText.length() - 1);
       }
     } else if(key == ENTER || key == RETURN || key == ' ') {
+      attackFailed = true;
       for(int i = 2; i >= 0; i--) {
         if(vocabs[i].equals(inputText)) {
           if(i == 0) {
             attack(0);
+            attackFailed = false;
           } else {
             attack(i + 1);
+            attackFailed = false;
           }
           String[] randomVocab = getVocab();
           vocabs[i] = randomVocab[0];
@@ -1524,7 +1529,17 @@ class PlayingPage implements Page {
         if(inputText.toLowerCase().equals("fever")) {
           fever = 0;
           attack(1);
+          attackFailed = false;
         }
+      }
+      if(attackFailed) {
+        notAccurateCount += 1;
+        currentHP -= 5;
+        // character.update(3);
+        audio.playSound("player injured");
+        // if(currentHP <= 0) {
+        //   state = ENDING;
+        // }
       }
       inputText = "";
     } else {

@@ -10,7 +10,7 @@ Game game;
 
 float unit = 1;
 
-boolean isDebugMode = true;
+boolean isDebugMode = false;
 
 void settings() {
   size(1280, 720); // default
@@ -32,7 +32,7 @@ void setup() {
 }
 
 void draw() {
-  if(false) {
+  if(true) {
     try {
       audio.update();
       game.update();
