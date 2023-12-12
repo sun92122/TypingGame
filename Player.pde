@@ -15,7 +15,9 @@ class Player {
 
   String currentSkill1 = "mouse";
   String currentSkill2 = "ice";
-  String currentPet = "white dog";
+
+  String character = "Potato";
+  String pet = "White Dog";
   /**
   * The player's settings.
   * @type {Object}
@@ -28,9 +30,6 @@ class Player {
   * }
   */
   JSONObject settings;
-
-  String character = "Potato";
-  String pet = "White Dog";
   
   Player() {
     this.name = "";
@@ -53,6 +52,32 @@ class Player {
     this.attackLevel.set("skill3", 1);
     this.attackLevel.set("skill4", 1);
   }
+
+  // Getters and setters Pet and Skill selection
+  void setPet(String pet) {
+    this.pet = pet;
+  }
+
+  void setSkill1(String skill) {
+    this.currentSkill1 = skill;
+  }
+
+  void setSkill2(String skill) {
+    this.currentSkill2 = skill;
+  }
+
+  String getPet() {
+    return this.pet;
+  }
+
+  String getSkill1() {
+    return this.currentSkill1;
+  }
+
+  String getSkill2() {
+    return this.currentSkill2;
+  }
+  // End getters and setters Pet and Skill selection
 
   // Getters and setters for attack level
   int getAttackLevel(int index) {

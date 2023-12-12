@@ -637,7 +637,7 @@ class UpgradePage implements Page {
     text("TingCoCo", turtleX, turtleY - skillHeight / 2 - text_Size / 4);
     
     // red frame
-    pet_red_Frame_Display(player.currentPet);
+    pet_red_Frame_Display(player.getPet());
   }
   
   void pet_Frame_Display(float x, float y, int petIndex) {
@@ -889,22 +889,22 @@ class UpgradePage implements Page {
         }
         // Select Pet
         if(mouseX > (whiteDogX - skillWidth / 2) && mouseX < (whiteDogX + skillWidth / 2) && mouseY > (whiteDogY - skillHeight / 2) && mouseY < (whiteDogY + skillHeight / 2)) {
-          player.currentPet = "white dog";
+          player.setPet("White Dog");
         }
         if(mouseX > (dogX - skillWidth / 2) && mouseX < (dogX + skillWidth / 2) && mouseY > (dogY - skillHeight / 2) && mouseY < (dogY + skillHeight / 2)) {
-          player.currentPet = "dog";
+          player.setPet("Dog");
         }
         if(mouseX > (fowlX - skillWidth / 2) && mouseX < (fowlX + skillWidth / 2) && mouseY > (fowlY - skillHeight / 2) && mouseY < (fowlY + skillHeight / 2)) {
-          player.currentPet = "fowl";
+          player.setPet("Fowl");
         }
         if(mouseX > (oxX - skillWidth / 2) && mouseX < (oxX + skillWidth / 2) && mouseY > (oxY - skillHeight / 2) && mouseY < (oxY + skillHeight / 2)) {
-          player.currentPet = "ox";
+          player.setPet("Ox");
         }
         if(mouseX > (ratX - skillWidth / 2) && mouseX < (ratX + skillWidth / 2) && mouseY > (ratY - skillHeight / 2) && mouseY < (ratY + skillHeight / 2)) {
-          player.currentPet = "rat";
+          player.setPet("Rat");
         }
         if(mouseX > (turtleX - skillWidth / 2) && mouseX < (turtleX + skillWidth / 2) && mouseY > (turtleY - skillHeight / 2) && mouseY < (turtleY + skillHeight / 2)) {
-          player.currentPet = "turtle";
+          player.setPet("Turtle");
         }
         break;
     }
@@ -1029,6 +1029,7 @@ class PlayingPage implements Page {
   String[] vocabsCh = new String[3];
   VocabText[] vocabText = new VocabText[3];
   Table attackTable = new Table();
+  ArrayList<CharacterAttackComponent> attacks = new ArrayList<CharacterAttackComponent>();
 
   // variables for input & vocab
   int inputLColor = 50;
@@ -1121,6 +1122,14 @@ class PlayingPage implements Page {
           }
         }
       }
+
+      // update attacks
+      for(int i = attacks.size() - 1; i >= 0; i--) {
+        if(attacks.get(i).update()) {
+          attacks.remove(i);
+        }
+      }
+
       // find the mob x min
       if(mobXTable.getRowCount() > 0) {
         mobXMin = mobXTable.getRow(0).getInt("x");
@@ -1137,7 +1146,6 @@ class PlayingPage implements Page {
               break;
             }
             mobs.get(mobXTable.getRow(j).getInt("index")).injured(damage);
-            println("mob " + mobXTable.getRow(j).getInt("index") + " injured, hp: " + mobs.get(mobXTable.getRow(j).getInt("index")).hp); // DEBUG
           }
         }
         if(attackTable.getRow(i).getInt("delay") <= 0) {
@@ -1193,9 +1201,14 @@ class PlayingPage implements Page {
         break;
     }
     
-    // mobs // TODO
+    // mobs
     for(int i = 0; i < mobs.size(); i++) {
       mobs.get(i).display();
+    }
+
+    // attacks
+    for(int i = 0; i < attacks.size(); i++) {
+      attacks.get(i).display();
     }
     
     background.drawInFront();
@@ -1223,14 +1236,14 @@ class PlayingPage implements Page {
     } else{
       rect(102.5, 28, 1.5 * currentHP, 24.5);
     }
-    // testing the change in hp & fever // DEBUG
-    if(mousePressed && (mouseButton == LEFT)) {
-      currentHP -= 1;
-      fever -= 1;
-    } else if(mousePressed && (mouseButton == RIGHT)) {
-      currentHP += 1;
-      fever += 1;
-    }
+    // // testing the change in hp & fever // DEBUG
+    // if(mousePressed && (mouseButton == LEFT)) {
+    //   currentHP -= 1;
+    //   fever -= 1;
+    // } else if(mousePressed && (mouseButton == RIGHT)) {
+    //   currentHP += 1;
+    //   fever += 1;
+    // }
     
     // money
     fill(0);
@@ -1467,7 +1480,9 @@ class PlayingPage implements Page {
     score += 100;
     fever += 2;
     isAccurateCount += 1;
-    character.changeState(4, attackType, attackTable, mobXMin);
+
+    character.changeState(4, attackType, attackTable);
+    character.getAttackComponents(attackType, attacks, mobXMin, 400, backgroundY);
   }
   
   void keyPressed() {
@@ -1493,12 +1508,22 @@ class PlayingPage implements Page {
     } else if(key == ENTER || key == RETURN || key == ' ') {
       for(int i = 2; i >= 0; i--) {
         if(vocabs[i].equals(inputText)) {
-          attack(i + (i % 1));
+          if(i == 0) {
+            attack(0);
+          } else {
+            attack(i + 1);
+          }
           String[] randomVocab = getVocab();
           vocabs[i] = randomVocab[0];
           vocabsCh[i] = randomVocab[1];
           vocabText[i] = new VocabText(i, vocabs[i]);
           break;
+        }
+      }
+      if(fever >= 100) {
+        if(inputText.toLowerCase().equals("fever")) {
+          fever = 0;
+          attack(1);
         }
       }
       inputText = "";

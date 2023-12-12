@@ -52,12 +52,16 @@ class Character {
     stateChangeTime = 0;
   }
   
-  void changeState(int state, int attackType, Table attackTable, float mobXMin) {
+  void changeState(int state, int attackType, Table attackTable) {
     if(this.state >= state) return;
     this.state = state;
     currentImageIndex = 0;
     stateChangeTime = 0;
-    attack.attack(attackType, attackTable, mobXMin);
+    attack.attack(attackType, attackTable);
+  }
+
+  void getAttackComponents(int attackType, ArrayList<CharacterAttackComponent> attackComponents, float mobXMin, float characterX, float characterY) {
+    attack.getAttackComponents(attackType, attackComponents, mobXMin, characterX, characterY);
   }
 }
 
