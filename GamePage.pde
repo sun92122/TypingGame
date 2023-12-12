@@ -1537,9 +1537,6 @@ class PlayingPage implements Page {
         currentHP -= 5;
         // character.update(3);
         audio.playSound("player injured");
-        // if(currentHP <= 0) {
-        //   state = ENDING;
-        // }
       }
       inputText = "";
     } else {
