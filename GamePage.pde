@@ -1535,6 +1535,7 @@ class PlayingPage implements Page {
       if(attackFailed) {
         notAccurateCount += 1;
         currentHP -= 5;
+        fever -= 8;
         // character.update(3);
         audio.playSound("player injured");
       }
