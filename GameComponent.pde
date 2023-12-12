@@ -148,10 +148,12 @@ class MenuButton {
 }
 
 class BackButton {
-  float x = 100;
-  float y = 50;
-  float w = 100;
-  float h = 50;
+  float x = 45;
+  float y = 45;
+  float w = 60;
+  float h = 60;
+
+  PShape backArrow = loadShape("images/background/button/backbutton.svg");
   
   BackButton() {}
   
@@ -171,15 +173,17 @@ class BackButton {
     pushMatrix();
     translate(x, y);
     rectMode(CENTER);
-    strokeWeight(2);
+    if(isHover()) {
+      noStroke();
+      fill(200);
+      rect(0, 0, w, h, 20);
+    }
+    strokeWeight(4);
     stroke(0);
-    fill(127);
-    rect(0, 0, w, h);
-    fill(0);
-    textFont(game.fonts.get("NotoSansTC"));
-    textSize(30);
-    textAlign(CENTER, CENTER);
-    text("Back", 0, 0);
+    noFill();
+    rect(0, 0, w, h, 20);
+    shapeMode(CENTER);
+    shape(backArrow, 0, 0, 0.9 * w, 0.9 * h);
     popMatrix();
   }
   

@@ -312,15 +312,15 @@ class UpgradePage implements Page {
     stroke(0);
     strokeWeight(4);
     rectMode(CORNER);
-    rect(1120, 10, 150, 50, 10);
+    rect(1110, 20, 150, 50, 10);
     // show money at the down left corner
     fill(0);
     textFont(C11);
     textSize(30);
     textAlign(LEFT);
-    text("$:  ", 1130, 45);
+    text("$:  ", 1120, 55);
     textAlign(RIGHT);
-    text(round(player.money), 1260, 45);
+    text(round(player.money), 1250, 55);
   }
   
   void attack_Page_Display() {
@@ -1095,6 +1095,7 @@ class PlayingPage implements Page {
       for(int i = mobs.size() - 1; i >= 0; i--) {
         if(mobs.get(i).hp <= 0) {
           mobs.remove(i);
+          earnedMoney += 2 * player.earningEfficiency;
           continue;
         }
         if(mobs.get(i).update()) {
@@ -1157,8 +1158,11 @@ class PlayingPage implements Page {
       for(int i = 0; i < mobs.size(); i++) {
         mobXMin = min(mobXMin, mobs.get(i).x);
       }
-      // check if the level ends
+      // check if the level ends TODO: 怪物全滅判斷
       if(timer == 0 || currentHP <= 0) {
+        isVictory = 0;
+        // Add earned money to player.money
+        player.money += earnedMoney;
         state = ENDING;
       }
       // level.update();
@@ -1369,7 +1373,7 @@ class PlayingPage implements Page {
     textFont(game.fonts.get("Undo"));
     textSize(140);
     // Show Victory or Failed
-    if(isVictory == 0) {
+    if(isVictory == 1) {
       fill(0, 122, 204);
       text("VICTORY", 0, -160);
     } else{
@@ -1391,8 +1395,6 @@ class PlayingPage implements Page {
     text("Score:  " + score, 0, 70);
     // Show Money Earned
     text("Money:  +" + round(earnedMoney), 0, 130);
-    // Add earned money to player.money
-    player.money += earnedMoney;
     // Show button (back to main menu, back to level select menu, next level)
     strokeWeight(3);
     noFill();
@@ -1478,7 +1480,6 @@ class PlayingPage implements Page {
   }
   
   void attack(int attackType) {
-    earnedMoney += 2 * player.earningEfficiency;
     score += 100;
     fever += 4;
     isAccurateCount += 1;
