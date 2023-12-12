@@ -1588,26 +1588,27 @@ class PlayingPage implements Page {
   void mousePressed() {}
   
   void mouseReleased() {
+    // page changing logic on pause page
     if(state == PAUSE) {
       pausePage.mouseReleased();
       if(pausePage.state == pausePage.PLAY) {
         state = preState;
       } else if(pausePage.state == pausePage.SELECT_LEVEL) {
-        if(pausePage.selectLevelClicked) {
-          if(checkExit.isHoverYes()){
+        if(pausePage.selectLevelClicked) { // if player clicked the select level button
+          if(checkExit.isHoverYes()){ // go to level select page
             audio.stopMusic(level.bgm);
             game.switchScene(1);
-          } else if(checkExit.isHoverNo()){
+          } else if(checkExit.isHoverNo()){ // back to pause page
             pausePage.selectLevelClicked = false;
             pausePage.state = pausePage.PAUSE;
           }
         }
       } else if(pausePage.state == pausePage.MAIN_MENU) {
-        if(pausePage.mainMenuClicked) {
-          if(checkExit.isHoverYes()){
+        if(pausePage.mainMenuClicked) { // if player clicked the main menu button
+          if(checkExit.isHoverYes()){ // go to main menu
             audio.stopMusic(level.bgm);
             game.switchScene(0);
-          } else if(checkExit.isHoverNo()){
+          } else if(checkExit.isHoverNo()){ // back to pause page
             pausePage.mainMenuClicked = false;
             pausePage.state = pausePage.PAUSE;
           }
@@ -1627,7 +1628,7 @@ class PlayingPage implements Page {
           audio.stopMusic(level.bgm);
           game.switchScene(1);
           break;
-        case 2 : // Todo: switch to next level
+        case 2 : // TODO: switch to next level
           // audio.stopMusic(level.bgm);
           // game.switchScene(2);
           audio.stopMusic(level.bgm);

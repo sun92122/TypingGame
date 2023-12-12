@@ -855,6 +855,7 @@ class PausePage {
       }
     }
 
+    // check if the player really wanna quit
     if(selectLevelClicked) {
       checkExit.display("Go back to level select menu ?");
     } else if(mainMenuClicked) {
