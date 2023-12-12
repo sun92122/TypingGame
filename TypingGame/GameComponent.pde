@@ -150,7 +150,7 @@ class BackButton {
   float w = 60;
   float h = 60;
 
-  PShape backArrow = loadShape("images/background/button/backbutton.svg");
+  PShape backArrow = loadShape("images/icon/button/backbutton.svg");
   
   BackButton() {}
   
