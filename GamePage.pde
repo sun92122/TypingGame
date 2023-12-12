@@ -72,7 +72,7 @@ class MenuPage implements Page {
     }
     
     if(isExiting) {
-      checkExit.display();
+      checkExit.display("Exit the game ?");
     }
     
     if(isDebugMode) {
@@ -178,8 +178,6 @@ class PlayPage implements Page {
     }
     
     game.backButton.display();
-    
-    game.menuButton.display();
     
     // level choose text
     fill(0);
@@ -1012,6 +1010,8 @@ class PlayingPage implements Page {
   float backgroundY = 570;
   FeverBar feverBar = new FeverBar();
   PausePage pausePage = new PausePage();
+  CheckExit checkExit = new CheckExit();
+  
   
   // game info
   float countDown = 3.0f;
@@ -1402,28 +1402,15 @@ class PlayingPage implements Page {
     text("Score:  " + score, 0, 70);
     // Show Money Earned
     text("Money:  +" + round(earnedMoney), 0, 130);
-    // Show button (back to main menu, back to level select menu, next level)
-    strokeWeight(3);
-    noFill();
-    textAlign(CENTER, CENTER);
-    // Draw Back to Main Menu Button
-    rect( -350, 210, 300, 50, 10);
-    text("Main Menu", -350, 210);
-    // Draw Select Level Button
-    rect(0, 210, 300, 50, 10);
-    text("Select Level", 0, 210);
-    // Draw Next Level Button
-    rect(350, 210, 300, 50, 10);
-    text("Next Level", 350, 210);
-    
-    // Draw the red button frame when the mouse is hovering
+
+    // Show button (back to main menu, back to level select menu, next level)  
+    // Draw the gray background when the mouse is hovering
     int endButtonIndex = ending_Page_Button_Hovering();
-    stroke(#FF0800);
-    strokeWeight(5);
-    noFill();
+    noStroke();
+    fill(200);
     switch(endButtonIndex) {
       case 0:
-        rect( -350, 210, 300, 50, 10);
+        rect(-350, 210, 300, 50, 10);
         break;
       case 1:
         rect(0, 210, 300, 50, 10);
@@ -1432,6 +1419,20 @@ class PlayingPage implements Page {
         rect(350, 210, 300, 50, 10);
         break;
     }
+    stroke(0);
+    strokeWeight(3);
+    textAlign(CENTER, CENTER);
+    // Draw Button Frames
+    noFill();
+    rect( -350, 210, 300, 50, 10);
+    rect(0, 210, 300, 50, 10);
+    rect(350, 210, 300, 50, 10);
+    // Show Button Text
+    fill(0);
+    text("Main Menu", -350, 210);
+    text("Select Level", 0, 210);
+    text("Next Level", 350, 210);
+
     popMatrix();
   }
   
@@ -1587,19 +1588,30 @@ class PlayingPage implements Page {
   void mousePressed() {}
   
   void mouseReleased() {
-    // if(game.menuButton.isHover()) {
-    //   this.pause();
-    // }
     if(state == PAUSE) {
       pausePage.mouseReleased();
       if(pausePage.state == pausePage.PLAY) {
         state = preState;
       } else if(pausePage.state == pausePage.SELECT_LEVEL) {
-        audio.stopMusic(level.bgm);
-        game.switchScene(1);
+        if(pausePage.selectLevelClicked) {
+          if(checkExit.isHoverYes()){
+            audio.stopMusic(level.bgm);
+            game.switchScene(1);
+          } else if(checkExit.isHoverNo()){
+            pausePage.selectLevelClicked = false;
+            pausePage.state = pausePage.PAUSE;
+          }
+        }
       } else if(pausePage.state == pausePage.MAIN_MENU) {
-        audio.stopMusic(level.bgm);
-        game.switchScene(0);
+        if(pausePage.mainMenuClicked) {
+          if(checkExit.isHoverYes()){
+            audio.stopMusic(level.bgm);
+            game.switchScene(0);
+          } else if(checkExit.isHoverNo()){
+            pausePage.mainMenuClicked = false;
+            pausePage.state = pausePage.PAUSE;
+          }
+        }
       }
     }
     

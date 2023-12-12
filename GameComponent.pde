@@ -52,7 +52,7 @@ class CheckExit {
   float w = width / 1.5;
   float h = height / 2;
   
-  void display() {
+  void display(String str) {
     fill(0, 100);
     rectMode(CORNER);
     rect(0, 0, width, height);
@@ -66,34 +66,31 @@ class CheckExit {
     textFont(game.fonts.get("PressStart2P"));
     textSize(25);
     textAlign(CENTER, CENTER);
-    text("Are you sure you want to exit?", 0, -100);
+    text(str, 0, -100);
+    if(isHoverYes()){
+      fill(200);
+      noStroke();
+      rect(-100, 100, 100, 50);
+    } else if(isHoverNo()){
+      fill(200);
+      noStroke();
+      rect(100, 100, 100, 50);
+    }
     noFill();
     stroke(0);
     strokeWeight(3);
     rect( -100, 100, 100, 50);
-    text("Yes", -100, 100);
     rect(100, 100, 100, 50);
+    fill(0);
+    text("Yes", -100, 100);
     text("No", 100, 100);
-    
-    // Draw red frame when the mouse is hovering over the button
-    if(isHoverYes()) {
-      noFill();
-      stroke(#FF0800);
-      strokeWeight(3);
-      rect( -100, 100, 100, 50);
-    } else if(isHoverNo()) {
-      noFill();
-      stroke(#FF0800);
-      strokeWeight(3);
-      rect(100, 100, 100, 50);
-    }
-    
+ 
     popMatrix();
   }
   
   boolean isHoverYes() {
-    if(mouseX > x - 150 && mouseX < x + 50 && 
-      mouseY > y + 50 && mouseY < y + 150) {
+    if(mouseX > x - 150 && mouseX < x - 50 && 
+      mouseY > y + 75 && mouseY < y + 125) {
       return true;
     }
     return false;
@@ -101,7 +98,7 @@ class CheckExit {
   
   boolean isHoverNo() {
     if(mouseX > x + 50 && mouseX < x + 150 && 
-      mouseY > y + 50 && mouseY < y + 150) {
+      mouseY > y + 75 && mouseY < y + 125) {
       return true;
     }
     return false;
@@ -109,8 +106,8 @@ class CheckExit {
 }
 
 class MenuButton {
-  float x = width - 75;
-  float y = height - 75;
+  float x = width - 45;
+  float y = height - 45;
   float r = 50;
   
   MenuButton() {}
@@ -817,6 +814,10 @@ class PausePage {
   float y = 0;
   float w = width;
   float h = height;
+
+  CheckExit checkExit = new CheckExit();
+  boolean selectLevelClicked = false;
+  boolean mainMenuClicked = false;
   
   PausePageButton[] buttons = new PausePageButton[3];
   int index = -1;
@@ -842,8 +843,8 @@ class PausePage {
     fill(250);
     rect(w / 2, h / 1.8, w / 1.5, h / 1.5, 10);
     textSize(50);
+    textFont(game.fonts.get("PressStart2P"));
     textAlign(CENTER, CENTER);
-    textFont(game.fonts.get("NotoSansTC"));
     fill(#FFFFFF);
     text("Pause", w / 2, 100);
     
@@ -853,15 +854,25 @@ class PausePage {
         index = i;
       }
     }
+
+    if(selectLevelClicked) {
+      checkExit.display("Go back to level select menu ?");
+    } else if(mainMenuClicked) {
+      checkExit.display("Go back to main menu ?");
+    }
   }
   
   void mouseReleased() {
-    if(index == 0) {
-      state = 0;
-    } else if(index == 1) {
-      state = 2;
-    } else if(index == 2) {
-      state = 3;
+    if(selectLevelClicked == false && mainMenuClicked == false){
+      if(index == 0) {
+        state = 0;
+      } else if(index == 1) {
+        state = 2;
+        selectLevelClicked = true;
+      } else if(index == 2) {
+        state = 3;
+        mainMenuClicked = true;
+      }
     }
   }
 }
