@@ -430,8 +430,8 @@ class SubSetting {
         textFont(game.fonts.get("Cubic11"));
         textSize(26);
         textAlign(LEFT, CENTER);
-        if(textWidth(strValue) > w) {
-          text(strValue.substring(0, min(strValue.length(), 15)) + "...", -w * 3 / 4, 0);
+        if(textWidth(strValue) > w * 3 / 2) {
+          text(strValue.substring(0, min(strValue.length(), 25)) + "...", -w * 3 / 4, 0);
         } else {
           text(strValue, -w * 3 / 4, 0);
         }
@@ -441,7 +441,7 @@ class SubSetting {
   }
   
   void mouseClicked() {
-    if(!isFocus) {
+    if(!isHover()) {
       return;
     }
     switch(type) {
@@ -496,7 +496,7 @@ class SubSetting {
       }
     } else if(type == 'i' || type == 'l') {
       if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
-        mouseY > y - 20 && mouseY < y + 20) {
+        mouseY > y - 25 && mouseY < y + 25) {
         return true;
       }
     }
