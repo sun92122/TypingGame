@@ -7,7 +7,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.8
+    "velocity": 0.08
   },
   {
     "name": "Bird",
@@ -17,7 +17,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.5,
+    "velocity": 0.05,
     "pictures": {
       "idle": [
         {
@@ -73,7 +73,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.4,
+    "velocity": 0.04,
     "scale": 0.08,
     "pictures": {
       "idle": [
@@ -172,7 +172,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.4,
+    "velocity": 0.04,
     "scale": 0.2,
     "pictures": {
       "idle": [
@@ -253,7 +253,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.6,
+    "velocity": 0.06,
     "scale": 0.12,
     "pictures": {
       "idle": [
@@ -334,7 +334,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.6,
+    "velocity": 0.06,
     "scale": 0.12,
     "pictures": {
       "idle": [
@@ -451,7 +451,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.3,
+    "velocity": 0.03,
     "scale": 0.12,
     "pictures": {
       "idle": [

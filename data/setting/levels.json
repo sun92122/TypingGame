@@ -12,23 +12,23 @@
       {
         "mob": "Green",
         "moblevel": 1,
-        "time": 9999000,
+        "time": 120000,
         "interval": 30000,
-        "count": 10
+        "count": 1
       },
       {
         "mob": "Fat",
         "moblevel": 1,
-        "time": 9995000,
+        "time": 120000,
         "interval": 30000,
-        "count": 10
+        "count": 1
       },
       {
         "mob": "Bear",
         "moblevel": 1,
-        "time": 9991000,
+        "time": 120000,
         "interval": 30000,
-        "count": 10
+        "count": 1
       }
     ]
   },
