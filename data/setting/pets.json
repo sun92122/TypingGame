@@ -1,7 +1,7 @@
 [
   {
     "name": "White Dog",
-    "scale": 0.05,
+    "scale": 0.1,
     "pictures": {
       "idle": [
         {
@@ -163,7 +163,7 @@
   },
   {
     "name": "Ox",
-    "scale": 0.1,
+    "scale": 0.25,
     "pictures": {
       "idle": [
         {
@@ -289,7 +289,7 @@
   },
   {
     "name": "Turtle",
-    "scale": 0.05,
+    "scale": 0.1,
     "pictures": {
       "idle": [
         {
