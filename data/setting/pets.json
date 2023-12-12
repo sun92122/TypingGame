@@ -66,6 +66,162 @@
     }
   },
   {
+    "name": "Dog",
+    "scale": 0.05,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 100000,
+          "path": "images/pets/Dog/Dog0.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "moving": [
+        {
+          "duration": 300,
+          "path": "images/pets/Dog/Dog0.svg",
+          "x": 0,
+          "y": 0  
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/Dog/Dog1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/Dog/Dog2.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 100,
+          "path": "images/pets/Dog/Dog0.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Dog/Dog1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Dog/Dog2.svg",
+          "x": 0,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "Fowl",
+    "scale": 0.05,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 100000,
+          "path": "images/pets/Fowl/Fowl0.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "moving": [
+        {
+          "duration": 200,
+          "path": "images/pets/Fowl/FowlIn1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 200,
+          "path": "images/pets/Fowl/FowlIn2.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 80,
+          "path": "images/pets/Fowl/FowlOut1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 80,
+          "path": "images/pets/Fowl/FowlOut2.svg",
+          "x": 0,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "Ox",
+    "scale": 0.1,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 100000,
+          "path": "images/pets/Ox/Ox0.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "moving": [
+        {
+          "duration": 300,
+          "path": "images/pets/Ox/Ox_In1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/Ox/Ox_In2.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 100,
+          "path": "images/pets/Ox/Ox_Out1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Ox/Ox_Out2.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Ox/Ox_Out3.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Ox/Ox_Out4.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 100,
+          "path": "images/pets/Ox/Ox_Out5.svg",
+          "x": 0,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
     "name": "Rat",
     "scale": 0.05,
     "pictures": {
@@ -79,8 +235,26 @@
       ],
       "moving": [
         {
-          "duration": 100000,
-          "path": "images/pets/Rat/Rat0.svg",
+          "duration": 300,
+          "path": "images/pets/Rat/Rat1.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/Rat/Rat2.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/Rat/Rat3.svg",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "duration": 300,
+          "path": "images/pets/Rat/Rat4.svg",
           "x": 0,
           "y": 0
         }
@@ -107,6 +281,36 @@
         {
           "duration": 100,
           "path": "images/pets/Rat/Rat4.svg",
+          "x": 0,
+          "y": 0
+        }
+      ]
+    }
+  },
+  {
+    "name": "Turtle",
+    "scale": 0.05,
+    "pictures": {
+      "idle": [
+        {
+          "duration": 100000,
+          "path": "images/pets/Turtle/Turtle0.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "moving": [
+        {
+          "duration": 10000,
+          "path": "images/pets/Turtle/Turtle_In.svg",
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "attacking": [
+        {
+          "duration": 10000,
+          "path": "images/pets/Turtle/Turtle_Out.svg",
           "x": 0,
           "y": 0
         }
