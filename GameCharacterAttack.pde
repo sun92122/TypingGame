@@ -42,7 +42,6 @@ class CharacterAttack {
   }
   
   void attack(int attackType, Table attackTable) {
-    println("attack: " + attackType + " " + attackingType + " " + isAttacking);
     switch(attackType) {
       case BASIC_ATT:
         if(!isAttacking || attackingType < BASIC_ATT) {
