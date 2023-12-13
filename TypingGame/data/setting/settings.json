@@ -149,7 +149,7 @@
         "tip": "View the version of the game.",
         "type": "info",
         "valueType": "string",
-        "default": "beta 1.0.0"
+        "default": "1.0.0-beta.1"
       },
       {
         "title": "Source code",
