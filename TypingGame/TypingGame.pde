@@ -19,6 +19,7 @@ void settings() {
 void setup() {
   try {
     surface.setTitle("Typing Game");
+    surface.setIcon(loadImage("images/icon/icon.png"));
     surface.setResizable(false);
     surface.setLocation((displayWidth - width) / 2,(displayHeight - height) / 2);
     
