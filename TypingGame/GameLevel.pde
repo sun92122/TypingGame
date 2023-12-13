@@ -85,7 +85,7 @@ class Level {
     JSONArray waves = data.getJSONArray("enemies");
     JSONObject wave;
     String mob;
-    int mobLevel;
+    float mobLevel;
     int time;
     int count;
     int interval;
