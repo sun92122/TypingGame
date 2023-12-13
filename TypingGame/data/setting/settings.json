@@ -259,8 +259,8 @@
         "type": "link",
         "valueType": "string",
         "default": [
-          "Pixabay License",
-          ""
+          "CC BY 4.0",
+          "https://github.com/sun92122/TypingGame/blob/main/license/audio/bgm"
         ]
       },
       {
@@ -281,6 +281,16 @@
         "default": [
           "Custom license",
           "https://github.com/sun92122/TypingGame/blob/main/license/audio/%E7%8E%A9%E5%AE%B6%E5%8F%97%E6%93%8A"
+        ]
+      },
+      {
+        "title": "輸入錯誤",
+        "tip": "View the license of content.",
+        "type": "link",
+        "valueType": "string",
+        "default": [
+          "Pixabay License",
+          ""
         ]
       },
       {
