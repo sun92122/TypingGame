@@ -28,8 +28,8 @@ class MobDynamicSB extends MobDynamic {
     debugPoint(x, y);
   }
   
-  Mob copy(int interval) {
-    return super.copy(new MobDynamicSB(), interval);
+  Mob copy(float moblevel) {
+    return super.copy(new MobDynamicSB(), moblevel);
   }
 }
 

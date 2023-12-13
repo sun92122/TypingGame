@@ -1115,7 +1115,7 @@ class PlayingPage implements Page {
       if(level.enemies.getRowCount() > 0) {
         while(level.enemies.getRow(0).getInt("time") >= timer) {
           TableRow row = level.enemies.getRow(0);
-          Mob mob = game.mobs.get(row.getString("mob")).copy(row.getInt("moblevel"));
+          Mob mob = game.mobs.get(row.getString("mob")).copy(row.getFloat("moblevel"));
           mob.setLocation(width, backgroundY);
           mobs.add(mob);
           level.enemies.removeRow(0);

@@ -100,13 +100,13 @@ class Mob {
     }
   }
   
-  Mob copyData(Mob mob, int interval) {
+  Mob copyData(Mob mob, float moblevel) {
     mob.name = name;
     mob.data = data;
     mob.scale = scale;
     
-    mob.hp = hp * interval;
-    mob.attackDamage = attackDamage * interval;
+    mob.hp = hp * moblevel;
+    mob.attackDamage = attackDamage * moblevel;
     mob.attackDistance = attackDistance;
     mob.attackDuration = attackDuration;
     mob.velocity = velocity;
@@ -114,12 +114,12 @@ class Mob {
     return mob;
   }
   
-  Mob copy(int interval) {
-    return copy(new Mob(), interval);
+  Mob copy(float moblevel) {
+    return copy(new Mob(), moblevel);
   }
   
-  Mob copy(Mob mob, int interval) {
-    return copyData(mob, interval);
+  Mob copy(Mob mob, float moblevel) {
+    return copyData(mob, moblevel);
   }
 }
 
@@ -182,12 +182,12 @@ class MobSvg extends Mob {
     }
   }
   
-  Mob copy(int interval) {
-    return copy(new MobSvg(), interval);
+  Mob copy(float moblevel) {
+    return copy(new MobSvg(), moblevel);
   }
   
-  Mob copy(Mob mobSvg, int interval) {
-    Mob mob = copyData(mobSvg, interval);
+  Mob copy(Mob mobSvg, float moblevel) {
+    Mob mob = copyData(mobSvg, moblevel);
     
     mob.shapes = shapes;
     mob.animations = animations;
@@ -228,12 +228,12 @@ class MobCode extends MobSvg {
     debugPoint(x, y);
   }
   
-  Mob copy(int interval) {
-    return copyData(new MobCode(), interval);
+  Mob copy(float moblevel) {
+    return copyData(new MobCode(), moblevel);
   }
   
-  Mob copy(Mob mobCode, int interval) {
-    Mob mob = copyData(mobCode, interval);
+  Mob copy(Mob mobCode, float moblevel) {
+    Mob mob = copyData(mobCode, moblevel);
     
     mob.shapes = shapes;
     mob.animations = animations;
@@ -253,11 +253,11 @@ class MobDynamic extends Mob {
   
   void display() {}
   
-  Mob copy(int interval) {
-    return copy(new MobDynamic(), interval);
+  Mob copy(float moblevel) {
+    return copy(new MobDynamic(), moblevel);
   }
   
-  Mob copy(Mob mobDynamic, int interval) {
-    return copyData(mobDynamic, interval);
+  Mob copy(Mob mobDynamic, float moblevel) {
+    return copyData(mobDynamic, moblevel);
   }
 }

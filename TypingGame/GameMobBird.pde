@@ -9,8 +9,8 @@ class MobCodeBird extends MobCode {
     shapes = MobBirdData.shapes;
   }
   
-  Mob copy(int interval) {
-    return super.copy(new MobCodeBird(), interval);
+  Mob copy(float moblevel) {
+    return super.copy(new MobCodeBird(), moblevel);
   }
 }
 

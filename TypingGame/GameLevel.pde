@@ -63,7 +63,7 @@ class Level {
       TableRow newRow = enemies.addRow();
       newRow.setInt("time", row.getInt("time"));
       newRow.setString("mob", row.getString("mob"));
-      newRow.setInt("moblevel", row.getInt("moblevel"));
+      newRow.setFloat("moblevel", row.getFloat("moblevel"));
     }
   }
 
@@ -92,7 +92,7 @@ class Level {
     for(int i = 0; i < waves.size(); i++) {
       wave = waves.getJSONObject(i);
       mob = wave.getString("mob");
-      mobLevel = wave.getInt("moblevel");
+      mobLevel = wave.getFloat("moblevel");
       time = wave.getInt("time");
       count = wave.getInt("count");
       interval = wave.getInt("interval");
@@ -100,7 +100,7 @@ class Level {
         TableRow row = enemies.addRow();
         row.setInt("time", time - j * interval);
         row.setString("mob", mob);
-        row.setInt("moblevel", mobLevel);
+        row.setFloat("moblevel", mobLevel);
       }
     }
     enemies.sortReverse("time");
