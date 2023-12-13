@@ -339,63 +339,39 @@
     "pictures": {
       "idle": [
         {
-          "duration": 1000,
+          "duration": 1000000,
           "path": "images/mobs/bear/bear1.svg",
-          "x": 0,
-          "y": 0
-        },
-        {
-          "duration": 250,
-          "path": "images/mobs/bear/bear2.svg",
-          "x": 0,
-          "y": 0
-        },
-        {
-          "duration": 250,
-          "path": "images/mobs/bear/bear3.svg",
-          "x": 0,
-          "y": 0
-        },
-        {
-          "duration": 250,
-          "path": "images/mobs/bear/bear4.svg",
-          "x": 0,
-          "y": 0
-        },
-        {
-          "duration": 250,
-          "path": "images/mobs/bear/bear5.svg",
           "x": 0,
           "y": 0
         }
       ],
       "moving": [
         {
-          "duration": 200,
+          "duration": 150,
           "path": "images/mobs/bear/bear1.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
+          "duration": 150,
           "path": "images/mobs/bear/bear2.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
+          "duration": 150,
           "path": "images/mobs/bear/bear3.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
+          "duration": 150,
           "path": "images/mobs/bear/bear4.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
+          "duration": 150,
           "path": "images/mobs/bear/bear5.svg",
           "x": 0,
           "y": 0
@@ -403,32 +379,32 @@
       ],
       "attacking": [
         {
-          "duration": 200,
-          "path": "images/mobs/bear/bear1.svg",
+          "duration": 150,
+          "path": "images/mobs/bear/bear been attacked1.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
-          "path": "images/mobs/bear/bear2.svg",
+          "duration": 150,
+          "path": "images/mobs/bear/bear been attacked2.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
-          "path": "images/mobs/bear/bear3.svg",
+          "duration": 150,
+          "path": "images/mobs/bear/bear been attacked3.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
-          "path": "images/mobs/bear/bear4.svg",
+          "duration": 150,
+          "path": "images/mobs/bear/bear been attacked4.svg",
           "x": 0,
           "y": 0
         },
         {
-          "duration": 200,
-          "path": "images/mobs/bear/bear5.svg",
+          "duration": 150,
+          "path": "images/mobs/bear/bear been attacked5.svg",
           "x": 0,
           "y": 0
         }
@@ -436,7 +412,7 @@
       "dead": [
         {
           "duration": 100000,
-          "path": "images/mobs/bear/bear1.svg",
+          "path": "images/mobs/bear/bear been attacked5.svg",
           "x": 0,
           "y": 0
         }
