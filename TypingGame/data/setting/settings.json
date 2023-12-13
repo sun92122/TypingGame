@@ -290,7 +290,7 @@
         "valueType": "string",
         "default": [
           "Pixabay License",
-          ""
+          "https://github.com/sun92122/TypingGame/blob/main/license/audio/%E8%BC%B8%E5%85%A5%E9%8C%AF%E8%AA%A4"
         ]
       },
       {
