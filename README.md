@@ -9,6 +9,14 @@
 
 ## 程式碼說明
 
+### 新增關卡、怪物
+
+詳見 [level.md](.\docs\level.md)、[mob.md](.\docs\mob.md)。
+
+### 設定玩家角色、寵物
+
+詳見 [character.md](.\docs\character.md)、[pet.md](.\docs\pet.md)。
+
 ### 執行與編譯
 
 替換 `<path\to\rootFolder>` 為專案根目錄的路徑  
