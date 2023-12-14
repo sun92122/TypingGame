@@ -1,21 +1,33 @@
 # Typing Game
 
-## 遊戲說明
+## 遊戲介紹
 
+### 頁面介紹
+
+### 玩法說明
+
+### 商店
+
+<!-- 
 ### 彩蛋
 
 | 彩蛋 | 觸發位置 | 觸發條件 | 備註 |
 | --- | --- | --- | --- |
+ -->
 
-## 程式碼說明
+## 原始碼說明
 
-### 新增關卡、怪物
+### 新增關卡、怪物、背景
 
-詳見 [level.md](.\docs\level.md)、[mob.md](.\docs\mob.md)。
+詳見 [level.md](.\docs\level.md)、[mob.md](.\docs\mob.md)、[background.md](.\docs\background.md)。
 
 ### 設定玩家角色、寵物
 
 詳見 [character.md](.\docs\character.md)、[pet.md](.\docs\pet.md)。
+
+### 設定音效
+
+詳見 [audio.md](.\docs\audio.md)。
 
 ### 執行與編譯
 
