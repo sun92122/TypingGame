@@ -6,7 +6,7 @@ class Player {
   int earningEffiLevel = 1;
   int maxHpLevel = 1;
 
-  float money = 5000;
+  float money = 50;
   float earningEfficiency = 1;
   int maxHP = 100;
   IntDict attackLevel = new IntDict();
