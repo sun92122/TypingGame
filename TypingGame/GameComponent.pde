@@ -496,8 +496,8 @@ class SubSetting {
         return true;
       }
     } else if(type == 'i' || type == 'l') {
-      if(mouseX > x - w / 2 && mouseX < x + w / 2 && 
-        mouseY > y - 25 && mouseY < y + 25) {
+      if(mouseX > x - w * 3 / 4 && mouseX < x + w / 4 && 
+        mouseY > y - h / 2 && mouseY < y + h / 2) {
         return true;
       }
     }
