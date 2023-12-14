@@ -74,7 +74,7 @@
       "duration": 5000
     },
     "velocity": 0.04,
-    "scale": 0.08,
+    "scale": 0.24,
     "pictures": {
       "idle": [
         {
@@ -172,7 +172,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.04,
+    "velocity": 0.12,
     "scale": 0.2,
     "pictures": {
       "idle": [
@@ -253,7 +253,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.06,
+    "velocity": 0.18,
     "scale": 0.12,
     "pictures": {
       "idle": [
@@ -334,7 +334,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.06,
+    "velocity": 0.20,
     "scale": 0.12,
     "pictures": {
       "idle": [
@@ -427,7 +427,7 @@
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.03,
+    "velocity": 0.15,
     "scale": 0.12,
     "pictures": {
       "idle": [
