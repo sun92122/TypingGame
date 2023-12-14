@@ -19,15 +19,15 @@
 
 ### 新增關卡、怪物、背景
 
-詳見 [level.md](.\docs\level.md)、[mob.md](.\docs\mob.md)、[background.md](.\docs\background.md)。
+詳見 [level.md](./docs/level.md)、[mob.md](./docs/mob.md)、[background.md](./docs/background.md)。
 
 ### 設定玩家角色、寵物
 
-詳見 [character.md](.\docs\character.md)、[pet.md](.\docs\pet.md)。
+詳見 [character.md](./docs/character.md)、[pet.md](./docs/pet.md)。
 
 ### 設定音效
 
-詳見 [audio.md](.\docs\audio.md)。
+詳見 [audio.md](./docs/audio.md)。
 
 ### 執行與編譯
 
