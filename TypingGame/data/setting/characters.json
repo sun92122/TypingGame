@@ -136,13 +136,13 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -162,13 +162,13 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -188,13 +188,13 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -214,13 +214,13 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ]
@@ -236,14 +236,14 @@
       "fever": {
         "max level": 5,
         "effect": 0,
-        "delay": 200,
+        "delay": 300,
         "name": "fever",
         "damage": [
-          10,
-          20,
           30,
-          40,
-          50
+          60,
+          90,
+          120,
+          150
         ],
         "cooldown": [
           0,
@@ -253,11 +253,11 @@
           0
         ],
         "piercing": [
-          0,
-          1,
-          2,
-          3,
-          4
+          99,
+          99,
+          99,
+          99,
+          99
         ],
         "pictures": [
           [
@@ -276,37 +276,37 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -326,37 +326,37 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -376,37 +376,37 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -426,37 +426,37 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ],
@@ -476,37 +476,37 @@
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attack2.svg",
-              "x": 0,
+              "x": 22,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             },
             {
               "duration": 100,
               "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-              "x": 0,
+              "x": 195,
               "y": 0
             }
           ]
@@ -526,11 +526,11 @@
           "delay": 1000,
           "name": "mouse",
           "damage": [
-            10,
-            20,
-            30,
-            40,
-            50
+            100,
+            200,
+            300,
+            400,
+            500
           ],
           "cooldown": [
             0,
@@ -541,10 +541,10 @@
           ],
           "piercing": [
             0,
-            1,
-            2,
-            3,
-            4
+            0,
+            0,
+            0,
+            0
           ],
           "pictures": [
             [
@@ -762,11 +762,11 @@
           "delay": 200,
           "name": "phone",
           "damage": [
-            10,
             20,
-            30,
             40,
-            50
+            60,
+            80,
+            100
           ],
           "cooldown": [
             0,
@@ -776,59 +776,35 @@
             0
           ],
           "piercing": [
-            0,
-            1,
-            2,
-            3,
-            4
+            99,
+            99,
+            99,
+            99,
+            99
           ],
           "pictures": [
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill11/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill11/attack1.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
+                "path": "images/characters/potato/attacking/skill11/attack2.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
+                "path": "images/characters/potato/attacking/skill11/attack3.svg",
                 "x": 0,
                 "y": 0
               }
@@ -836,49 +812,25 @@
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill11/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill11/attack1.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
+                "path": "images/characters/potato/attacking/skill11/attack2.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
+                "path": "images/characters/potato/attacking/skill11/attack3.svg",
                 "x": 0,
                 "y": 0
               }
@@ -886,49 +838,25 @@
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill11/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill11/attack1.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
+                "path": "images/characters/potato/attacking/skill11/attack2.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
+                "path": "images/characters/potato/attacking/skill11/attack3.svg",
                 "x": 0,
                 "y": 0
               }
@@ -936,49 +864,25 @@
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill11/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill11/attack1.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
+                "path": "images/characters/potato/attacking/skill11/attack2.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
+                "path": "images/characters/potato/attacking/skill11/attack3.svg",
                 "x": 0,
                 "y": 0
               }
@@ -986,60 +890,106 @@
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill11/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill11/attack1.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
+                "path": "images/characters/potato/attacking/skill11/attack2.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
+                "path": "images/characters/potato/attacking/skill11/attack3.svg",
                 "x": 0,
                 "y": 0
               }
             ]
           ],
           "other": [
-            [],
-            [],
-            [],
-            [],
-            []
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 1000000,
+                    "path": "images/characters/potato/attacking/skill11/mouse1.svg"
+                  }
+                ],
+                "scale": 0.1,
+                "delay": 400,
+                "x": -50,
+                "y": -200,
+                "type": 1
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 1000000,
+                    "path": "images/characters/potato/attacking/skill11/mouse1.svg"
+                  }
+                ],
+                "scale": 0.1,
+                "delay": 400,
+                "x": -50,
+                "y": -200,
+                "type": 1
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 1000000,
+                    "path": "images/characters/potato/attacking/skill11/mouse1.svg"
+                  }
+                ],
+                "scale": 0.1,
+                "delay": 400,
+                "x": -50,
+                "y": -200,
+                "type": 1
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 1000000,
+                    "path": "images/characters/potato/attacking/skill11/mouse2.svg"
+                  }
+                ],
+                "scale": 0.1,
+                "delay": 400,
+                "x": -50,
+                "y": -200,
+                "type": 1
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 1000000,
+                    "path": "images/characters/potato/attacking/skill11/mouse2.svg"
+                  }
+                ],
+                "scale": 0.1,
+                "delay": 400,
+                "x": -50,
+                "y": -200,
+                "type": 1
+              }
+            ]
           ]
         },
         {
@@ -1048,11 +998,11 @@
           "delay": 1500,
           "name": "ice",
           "damage": [
-            50,
-            100,
-            150,
-            200,
-            250
+            15,
+            30,
+            45,
+            60,
+            75
           ],
           "cooldown": [
             10000,
@@ -1511,14 +1461,14 @@
         {
           "max level": 5,
           "effect": 0,
-          "delay": 200,
+          "delay": 1600,
           "name": "shuriken",
           "damage": [
-            10,
-            20,
-            30,
-            40,
-            50
+            25,
+            45,
+            65,
+            85,
+            110
           ],
           "cooldown": [
             0,
@@ -1528,270 +1478,660 @@
             0
           ],
           "piercing": [
-            0,
-            1,
-            2,
-            3,
-            4
+            99,
+            99,
+            99,
+            99,
+            99
           ],
           "pictures": [
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill22/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
+                "y": 0
+              },
+              {
+                "duration": 2000,
+                "path": "images/characters/potato/attacking/skill22/attacked.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
                 "y": 0
               }
             ],
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill22/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
+                "y": 0
+              },
+              {
+                "duration": 2000,
+                "path": "images/characters/potato/attacking/skill22/attacked.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
                 "y": 0
               }
             ],
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill22/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
+                "y": 0
+              },
+              {
+                "duration": 2000,
+                "path": "images/characters/potato/attacking/skill22/attacked.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
                 "y": 0
               }
             ],
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill22/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
+                "y": 0
+              },
+              {
+                "duration": 2000,
+                "path": "images/characters/potato/attacking/skill22/attacked.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
                 "y": 0
               }
             ],
             [
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack0.svg",
+                "path": "images/characters/potato/attacking/skill22/attack0.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack1.svg",
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
+                "y": 0
+              },
+              {
+                "duration": 100,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
+                "y": 0
+              },
+              {
+                "duration": 2000,
+                "path": "images/characters/potato/attacking/skill22/attacked.svg",
                 "x": 0,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attack2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack5.svg",
+                "x": 123,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel1.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack4.svg",
+                "x": 125,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel2.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack3.svg",
+                "x": 85,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel3.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack2.svg",
+                "x": 28,
                 "y": 0
               },
               {
                 "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel4.svg",
-                "x": 0,
-                "y": 0
-              },
-              {
-                "duration": 100,
-                "path": "images/characters/potato/attacking/basic/attacklevel5.svg",
-                "x": 0,
+                "path": "images/characters/potato/attacking/skill22/attack1.svg",
+                "x": 8,
                 "y": 0
               }
             ]
           ],
           "other": [
-            [],
-            [],
-            [],
-            [],
-            []
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard1.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard2.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard3.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard4.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard5.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard6.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard7.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard8.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard9.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard10.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard11.svg"
+                  }
+                ],
+                "scale": 0.15,
+                "delay": 600,
+                "x": 100,
+                "y": 0,
+                "type": 2
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard1.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard2.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard3.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard4.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard5.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard6.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard7.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard8.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard9.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard10.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard11.svg"
+                  }
+                ],
+                "scale": 0.15,
+                "delay": 600,
+                "x": 100,
+                "y": 0,
+                "type": 2
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard1.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard2.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard3.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard4.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard5.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard6.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard7.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard8.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard9.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard10.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard11.svg"
+                  }
+                ],
+                "scale": 0.15,
+                "delay": 600,
+                "x": 100,
+                "y": 0,
+                "type": 2
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard1.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard2.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard3.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard4.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard5.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard6.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard7.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard8.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard9.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard10.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard11.svg"
+                  }
+                ],
+                "scale": 0.15,
+                "delay": 600,
+                "x": 100,
+                "y": 0,
+                "type": 2
+              }
+            ],
+            [
+              {
+                "pictures": [
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard1.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard2.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard3.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard4.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard5.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard6.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard7.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard8.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard9.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard10.svg"
+                  },
+                  {
+                    "duration": 80,
+                    "path": "images/characters/potato/attacking/skill22/keyboard11.svg"
+                  }
+                ],
+                "scale": 0.15,
+                "delay": 600,
+                "x": 100,
+                "y": 0,
+                "type": 2
+              }
+            ]
           ]
         }
       ]

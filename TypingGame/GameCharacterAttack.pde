@@ -283,6 +283,9 @@ class CharacterAttackComponent {
     
     loadCharacterAttackComponent();
     this.flyingTime = damageDelay - this.startDelay;
+    if(this.type == 2) {
+      this.flyingTime *= 2;
+    }
   }
   
   CharacterAttackComponent(CharacterAttackComponent component) {
@@ -295,6 +298,7 @@ class CharacterAttackComponent {
     this.scale = component.scale;
     
     this.startDelay = component.startDelay;
+    this.type = component.type;
     
     this.startX = component.startX;
     this.startY = component.startY;
