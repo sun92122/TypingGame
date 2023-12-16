@@ -318,7 +318,7 @@ class UpgradePage implements Page {
     textAlign(LEFT);
     text("$:  ", 1120, 55);
     textAlign(RIGHT);
-    text(round(player.money), 1250, 55);
+    text(nf(player.money, 0, 1), 1250, 55);
   }
   
   void attack_Page_Display() {
@@ -1262,7 +1262,7 @@ class PlayingPage implements Page {
     text("$", 37.5, 100);
     text(":  +", 68, 100);
     textAlign(LEFT);
-    text(round(earnedMoney), 120, 100);
+    text(nf(earnedMoney, 0, 1), 120, 100);
     
     // score
     textAlign(LEFT);
@@ -1401,7 +1401,7 @@ class PlayingPage implements Page {
     // Show Score
     text("Score:  " + score, 0, 70);
     // Show Money Earned
-    text("Money:  +" + round(earnedMoney), 0, 130);
+    text("Money:  +" + nf(earnedMoney, 0, 1), 0, 130);
 
     // Show button (back to main menu, back to level select menu, next level)  
     // Draw the gray background when the mouse is hovering
