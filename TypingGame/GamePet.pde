@@ -1,6 +1,7 @@
 class Pet {
   String name;
   JSONObject data;
+  int index;
   float scale = 1;
   
   HashMap<String, ArrayList<PShape>> shapes = new HashMap<String, ArrayList<PShape>>();
@@ -15,13 +16,15 @@ class Pet {
   
   float x = 0;
   float y = 630;
-  float attackDamage;
-  float attackDistance;
-  float attackDuration;
+
+  int maxLevel;
+  int level = 1;
+  int[] attackDamage;
+  int damage;
   float velocity;
-  // ...
   
-  Pet(JSONObject data) {
+  Pet(JSONObject data, int index) {
+    this.index = index;
     this.data = data;
     this.name = data.getString("name");
     this.scale = data.getFloat("scale");
@@ -30,8 +33,14 @@ class Pet {
   }
   
   void loadPetData() {
-    // TODO: load pet data from JSON
-    
+    maxLevel = data.getInt("maxlevel");
+    attackDamage = new int[maxLevel];
+    JSONArray attackDamageData = data.getJSONArray("damage");
+    for(int i = 0; i < maxLevel; i++) {
+      attackDamage[i] = attackDamageData.getInt(i);
+    }
+    velocity = data.getFloat("velocity");
+
     loadPetData_();
   }
   
@@ -45,12 +54,17 @@ class Pet {
   }
   
   void move() {
-    x += velocity;
+    float frameCorrection = frameRate / 60.0f;
+    x += velocity * frameCorrection * unit;
   }
   
   void update_() {}
   
   void update() {
+    if(state == 2) {
+      move();
+    }
+
     update_();
   }
   
@@ -62,11 +76,23 @@ class Pet {
     
     update_();
   }
+
+  void init() {
+    level = player.getPetLevel(index);
+    damage = attackDamage[level - 1];
+  }
+
+  void attack(Table attackTable) {
+    TableRow row = attackTable.addRow();
+    row.setInt("damage", damage);
+    row.setInt("piercing", 999);
+    row.setInt("delay", 0);
+  }
 }
 
 class PetSvg extends Pet {
-  PetSvg(JSONObject data) {
-    super(data);
+  PetSvg(JSONObject data, int index) {
+    super(data, index);
   }
   
   void loadPetData_() {
@@ -91,6 +117,10 @@ class PetSvg extends Pet {
   }
   
   void display() {
+    if(x - 100 > width || x + 100 < 0) {
+      return;
+    }
+
     ArrayList<PShape> currentShapes = shapes.get(stateNames[state]);
     PShape currentShape = currentShapes.get(currentImageIndex);
     int currentShiftX = shiftX.get(stateNames[state]).get(currentImageIndex);

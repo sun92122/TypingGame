@@ -109,7 +109,7 @@ class Game {
     // load pets
     Pet petTemp;
     for(int i = 0; i < petData.petCount; i++) {
-      petTemp = new PetSvg(petData.pets.getJSONObject(i));
+      petTemp = new PetSvg(petData.pets.getJSONObject(i), i);
       pets.put(petTemp.name, petTemp);
     }
     

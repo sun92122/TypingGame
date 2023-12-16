@@ -1021,6 +1021,8 @@ class PlayingPage implements Page {
   int timer;
   int currentHP = player.maxHP;
   int fever = 0;
+  int petCount = 1;
+  boolean petAttack = false;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
   Table mobXTable = new Table();
   float mobXMin = width;
@@ -1075,6 +1077,7 @@ class PlayingPage implements Page {
     attackTable.addColumn("delay");
     
     character.attack.update();
+    pet.init();
   }
   
   void update() {
@@ -1099,6 +1102,10 @@ class PlayingPage implements Page {
           continue;
         }
         if(mobs.get(i).update()) {
+          if(petCount > 0) {
+            petAttack = true;
+            pet.update(2);
+          }
           currentHP -= mobs.get(i).attacked();
           character.update(3);
           audio.playSound("player injured");
@@ -1137,6 +1144,13 @@ class PlayingPage implements Page {
         if(attacks.get(i).update()) {
           attacks.remove(i);
         }
+      }
+
+      // pet attack
+      if(petAttack) {
+        petCount--;
+        petAttack = false;
+        pet.attack(attackTable);
       }
 
       // find the mob x min

@@ -79,6 +79,16 @@ class Player {
   }
   // End getters and setters Pet and Skill selection
 
+  // Getters and setters for pet level
+  int getPetLevel(int index) {
+    return this.petLevel[index];
+  }
+
+  void setPetLevel(int index, int level) {
+    this.petLevel[index] = level;
+  }
+  // End getters and setters for pet level
+
   // Getters and setters for attack level
   int getAttackLevel(int index) {
     return this.attackLevel.get(this.attackName.get(index));
