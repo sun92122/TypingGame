@@ -1022,7 +1022,7 @@ class PlayingPage implements Page {
   int currentHP = player.maxHP;
   int fever = 0;
   ArrayList<Mob> mobs = new ArrayList<Mob>();
-  Table mobXTable = new Table();
+  FloatDict mobXDict = new FloatDict();
   float mobXMin = width;
   String inputText = "";
   String[] vocabs = new String[3];
@@ -1068,8 +1068,6 @@ class PlayingPage implements Page {
       vocabText[i] = new VocabText(i, vocabs[i]);
     }
     
-    mobXTable.addColumn("x");
-    mobXTable.addColumn("index");    
     attackTable.addColumn("damage");
     attackTable.addColumn("piercing");
     attackTable.addColumn("delay");
@@ -1091,7 +1089,7 @@ class PlayingPage implements Page {
     }
     if(state == PLAYING) {
       timer = max(0, timer - round(1000 / frameRate));
-      mobXTable.clearRows();
+      mobXDict.clear();
       for(int i = mobs.size() - 1; i >= 0; i--) {
         if(mobs.get(i).hp <= 0) {
           mobs.remove(i);
@@ -1107,20 +1105,17 @@ class PlayingPage implements Page {
             break;
           }
         }
-        TableRow row = mobXTable.addRow();
-        row.setFloat("x", mobs.get(i).x);
-        row.setInt("index", i);
+        mobXDict.set(str(i), mobs.get(i).x);
       }
-      mobXTable.sort("x");
+      mobXDict.sortValues();
       if(level.enemies.getRowCount() > 0) {
-        while(level.enemies.getRow(0).getInt("time") >= timer) {
-          TableRow row = level.enemies.getRow(0);
-          Mob mob = game.mobs.get(row.getString("mob")).copy(row.getFloat("moblevel"));
-          mob.setLocation(width, backgroundY);
-          mobs.add(mob);
-          level.enemies.removeRow(0);
-          if(level.enemies.getRowCount() == 0) {
-            break;
+        for(int i = level.enemies.getRowCount() - 1; i >= 0; i--) {
+          TableRow row = level.enemies.getRow(i);
+          if(row.getInt("time") >= timer) {
+            Mob mob = game.mobs.get(row.getString("mob")).copy(row.getFloat("moblevel"));
+            mob.setLocation(width, backgroundY);
+            mobs.add(mob);
+            level.enemies.removeRow(i);
           }
         }
       } else {
@@ -1140,8 +1135,10 @@ class PlayingPage implements Page {
       }
 
       // find the mob x min
-      if(mobXTable.getRowCount() > 0) {
-        mobXMin = mobXTable.getRow(0).getInt("x");
+      if(mobXDict.size() > 0) {
+        mobXMin = mobXDict.minValue();
+      } else{
+        mobXMin = width;
       }
       // attack
       for(int i = attackTable.getRowCount() - 1; i >= 0; i--) {
@@ -1150,21 +1147,19 @@ class PlayingPage implements Page {
         int piercing = row.getInt("piercing");
         int damage = row.getInt("damage");
         if(row.getInt("delay") <= 0) {
+          String[] mobXKeys = mobXDict.keyArray();
           for(int j = 0; j <= piercing; j++) {
             if(j >= mobs.size()) {
               break;
             }
-            mobs.get(mobXTable.getRow(j).getInt("index")).injured(damage);
+            mobs.get(int(mobXKeys[j])).injured(damage);
           }
         }
         if(attackTable.getRow(i).getInt("delay") <= 0) {
           attackTable.removeRow(i);
         }
       }
-      mobXMin = width;
-      for(int i = 0; i < mobs.size(); i++) {
-        mobXMin = min(mobXMin, mobs.get(i).x);
-      }
+
       // check if the player lose
       if(timer == 0 || currentHP <= 0) {
         isVictory = 0;

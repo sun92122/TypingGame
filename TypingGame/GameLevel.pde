@@ -103,7 +103,6 @@ class Level {
         row.setFloat("moblevel", mobLevel);
       }
     }
-    enemies.sortReverse("time");
   }
   
   void desplayLevelIcon() {
