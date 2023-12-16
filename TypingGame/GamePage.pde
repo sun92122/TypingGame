@@ -1304,7 +1304,7 @@ class PlayingPage implements Page {
   }
   
   void drawEnter() {
-    // Changing the text size for count down, the text size will increase from 50 to 150 in 0.5 sec and then drop back to 50 in another 0.5 sec
+    // Changing the text size for count down, the text size will increase from 50 to 150 and holds at there for a moment, then drop back to 50
     if(countDownTextSize <= 250 && cntDownTxtSizeDirect == 1) {
       countDownTextSize += 300 / frameRate;
     } else if(countDownTextSize > 250 && cntDownTxtSizeDirect == 1) {
@@ -1316,7 +1316,7 @@ class PlayingPage implements Page {
       countDownTextSize = 50;
       cntDownTxtSizeDirect = 1;
     }
-    draw_CountDown();
+    drawCountDown();
     
     character.display(
       constrain(400 * (1.2 - countDown / 2.5) + 60, 0, 400), backgroundY);
@@ -1453,7 +1453,7 @@ class PlayingPage implements Page {
     return index;
   }
   
-  void draw_CountDown() {
+  void drawCountDown() {
     float countDownTextDrawSize;
     if(countDownTextSize > 150) {
       countDownTextDrawSize = 150;
@@ -1463,19 +1463,9 @@ class PlayingPage implements Page {
     textFont(game.fonts.get("Undo"));
     textAlign(CENTER, CENTER);
     // Show 3, 2, 1
-    if(countDown > 2) {
-      fill(0);
-      textSize(countDownTextDrawSize);
-      text(3, width / 2, height / 3);
-    } else if(countDown > 1) {
-      fill(0);
-      textSize(countDownTextDrawSize);
-      text(2, width / 2, height / 3);
-    } else {
-      fill(0);
-      textSize(countDownTextDrawSize);
-      text(1, width / 2, height / 3);
-    }
+    fill(0);
+    textSize(countDownTextDrawSize);
+    text(ceil(countDown), width / 2, height / 3);
   }
   
   String[] getVocab() {
