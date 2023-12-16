@@ -2,6 +2,15 @@
   {
     "name": "White Dog",
     "scale": 0.1,
+    "velocity": 20,
+    "maxlevel": 5,
+    "damage": [
+      50,
+      150,
+      250,
+      350,
+      450
+    ],
     "pictures": {
       "idle": [
         {
@@ -68,6 +77,15 @@
   {
     "name": "Dog",
     "scale": 0.05,
+    "velocity": 20,
+    "maxlevel": 5,
+    "damage": [
+      50,
+      150,
+      250,
+      350,
+      450
+    ],
     "pictures": {
       "idle": [
         {
@@ -82,7 +100,7 @@
           "duration": 300,
           "path": "images/pets/Dog/Dog0.svg",
           "x": 0,
-          "y": 0  
+          "y": 0
         },
         {
           "duration": 300,
@@ -122,6 +140,15 @@
   {
     "name": "Fowl",
     "scale": 0.05,
+    "velocity": 2,
+    "maxlevel": 5,
+    "damage": [
+      50,
+      150,
+      250,
+      350,
+      450
+    ],
     "pictures": {
       "idle": [
         {
@@ -164,6 +191,15 @@
   {
     "name": "Ox",
     "scale": 0.25,
+    "velocity": 20,
+    "maxlevel": 5,
+    "damage": [
+      50,
+      150,
+      250,
+      350,
+      450
+    ],
     "pictures": {
       "idle": [
         {
@@ -224,6 +260,15 @@
   {
     "name": "Rat",
     "scale": 0.05,
+    "velocity": 2,
+    "maxlevel": 5,
+    "damage": [
+      50,
+      150,
+      250,
+      350,
+      450
+    ],
     "pictures": {
       "idle": [
         {
@@ -290,6 +335,15 @@
   {
     "name": "Turtle",
     "scale": 0.1,
+    "velocity": 20,
+    "maxlevel": 5,
+    "damage": [
+      50,
+      150,
+      250,
+      350,
+      450
+    ],
     "pictures": {
       "idle": [
         {
