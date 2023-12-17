@@ -13,7 +13,7 @@
         "mob": "Green",
         "moblevel": 1,
         "time": 120000,
-        "interval": 30000,
+        "interval": 20000,
         "count": 2
       },
       {

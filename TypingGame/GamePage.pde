@@ -33,6 +33,7 @@ class MenuPage implements Page {
   void init() {
     audio.playMusic("menu");
     characterX = 0;
+    character.update(1);
   }
   
   void draw() {
@@ -54,7 +55,7 @@ class MenuPage implements Page {
       background.update();
       characterX += 10 / frameRate;
     }
-    character.update();
+    character.update(1);
     
     // title
     fill(0);
@@ -1184,6 +1185,7 @@ class PlayingPage implements Page {
       // level.update();
     }
     if(state == ENDING) {
+      attacks.clear();
       // level.end();
       // level background shift?
     }
@@ -1253,7 +1255,7 @@ class PlayingPage implements Page {
     fill(192, 0, 0);
     currentHP = constrain(currentHP, 0, player.maxHP);
     rect(102.5, 28, 1.5 * currentHP, 24.5);
-    
+
     // testing the change in hp & fever // DEBUG
     // if(mousePressed && (mouseButton == LEFT)) {
     //   currentHP -= 1;
