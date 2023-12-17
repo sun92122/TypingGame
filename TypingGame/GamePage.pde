@@ -1242,22 +1242,19 @@ class PlayingPage implements Page {
     
     // HP
     text("HP:", 30, 50);
+    rectMode(CORNER);
+    // HP bar black frame
     stroke(0);
     strokeWeight(2);
     noFill();
-    rectMode(CORNER);
     rect(100, 25, 1.5 * player.maxHP + 5, 30);
+    // HP bar red
     noStroke();
     fill(192, 0, 0);
-    if(currentHP > player.maxHP) {
-      rect(102.5, 28, 1.5 * player.maxHP, 24.5);
-      currentHP = player.maxHP;
-    } else if(currentHP < 0) {
-      currentHP = 0;
-    } else{
-      rect(102.5, 28, 1.5 * currentHP, 24.5);
-    }
-    // // testing the change in hp & fever // DEBUG
+    currentHP = constrain(currentHP, 0, player.maxHP);
+    rect(102.5, 28, 1.5 * currentHP, 24.5);
+    
+    // testing the change in hp & fever // DEBUG
     // if(mousePressed && (mouseButton == LEFT)) {
     //   currentHP -= 1;
     //   fever -= 1;
@@ -1273,16 +1270,12 @@ class PlayingPage implements Page {
     textAlign(LEFT);
     text(nf(earnedMoney, 0, 1), 120, 100);
     
-    // score
+    // score and time
     textAlign(LEFT);
     text("Score: ", width - 250, 50);
-    textAlign(RIGHT);
-    text(score, width - 30, 50);
-    
-    // time
-    textAlign(LEFT);
     text("Time: ", width - 250, 100);
     textAlign(RIGHT);
+    text(score, width - 30, 50);
     text(nfc(timer / 1000.0, 2), width - 30, 100);
     
     // fever
@@ -1488,7 +1481,7 @@ class PlayingPage implements Page {
   
   void attack(int attackType) {
     score += 100;
-    fever += 4;
+    fever += 5;
     isAccurateCount += 1;
 
     character.changeState(4, attackType, attackTable);
