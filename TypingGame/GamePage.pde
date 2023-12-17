@@ -455,14 +455,14 @@ class UpgradePage implements Page {
     rectMode(CENTER);
     rect(BasicX, BasicY, skillWidth, skillHeight, 20);
     rect(FEVERX, FEVERY, skillWidth, skillHeight, 20);
-    if(currentSkill1 == "mouse") {
+    if(currentSkill1.equals("mouse")) {
       rect(Skill_1_1_X, Skill_1_1_Y, skillWidth, skillHeight, 20);
-    } else if(currentSkill1 == "phone") {
+    } else if(currentSkill1.equals("phone")) {
       rect(Skill_1_2_X, Skill_1_2_Y, skillWidth, skillHeight, 20);
     }
-    if(currentSkill2 == "ice") {
+    if(currentSkill2.equals("ice")) {
       rect(Skill_2_1_X, Skill_2_1_Y, skillWidth, skillHeight, 20);
-    } else if(currentSkill2 == "shuriken") {
+    } else if(currentSkill2.equals("shuriken")) {
       rect(Skill_2_2_X, Skill_2_2_Y, skillWidth, skillHeight, 20);
     }
   }
@@ -684,17 +684,17 @@ class UpgradePage implements Page {
     strokeWeight(5);
     noFill();
     rectMode(CENTER);
-    if(currentpet == "White Dog") {
+    if(currentpet.equals("WhiteDog")) {
       rect(whiteDogX, whiteDogY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "Dog") {
+    } else if(currentpet.equals("Dog")) {
       rect(dogX, dogY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "Fowl") {
+    } else if(currentpet.equals("Fowl")) {
       rect(fowlX, fowlY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "Ox") {
+    } else if(currentpet.equals("Ox")) {
       rect(oxX, oxY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "Rat") {
+    } else if(currentpet.equals("Rat")) {
       rect(ratX, ratY, skillWidth, skillHeight, 20);
-    } else if(currentpet == "Turtle") {
+    } else if(currentpet.equals("Turtle")) {
       rect(turtleX, turtleY, skillWidth, skillHeight, 20);
     }
   }
