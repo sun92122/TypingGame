@@ -684,7 +684,7 @@ class UpgradePage implements Page {
     strokeWeight(5);
     noFill();
     rectMode(CENTER);
-    if(currentpet.equals("WhiteDog")) {
+    if(currentpet.equals("White Dog")) {
       rect(whiteDogX, whiteDogY, skillWidth, skillHeight, 20);
     } else if(currentpet.equals("Dog")) {
       rect(dogX, dogY, skillWidth, skillHeight, 20);
