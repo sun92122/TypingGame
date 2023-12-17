@@ -8,6 +8,8 @@ AudioManager audio;
 Player player;
 Game game;
 
+DataManager dataManager;
+
 float unit = 1;
 
 boolean isDebugMode = false;
@@ -17,7 +19,7 @@ void settings() {
 }
 
 void setup() {
-  try {
+  // try {
     surface.setTitle("Typing Game");
     surface.setIcon(loadImage("images/icon/icon.png"));
     surface.setResizable(false);
@@ -25,11 +27,14 @@ void setup() {
     
     audio = new AudioManager();
     player = new Player();
+    dataManager = new DataManager();
+    dataManager.load();
+
     game = new Game();
-  } catch(Exception e) {
-    println("Error: " + e);
-    exit();
-  }
+  // } catch(Exception e) {
+  //   println("Error: " + e);
+  //   exit();
+  // }
 }
 
 void draw() {
@@ -112,7 +117,8 @@ void exit() {
   noLoop();
   surface.setVisible(false);
   // save data
-  // TODO
+  dataManager.save();
+  
   println("Execution time : " + millis() / 1000 + " seconds", "Sketch terminated");  
   super.exit();
 }

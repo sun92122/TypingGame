@@ -19,12 +19,6 @@ class Game {
   SettingPage settingPage;
   PlayingPage playingPage;
   
-  // controller
-  Load load = new Load();
-  Save save = new Save();
-  ExportData exportData = new ExportData();
-  ImportData importData = new ImportData();
-  
   // global components
   MenuButton menuButton = new MenuButton();
   BackButton backButton = new BackButton();
@@ -79,7 +73,7 @@ class Game {
     petData = new PetData();
     backgroundData = new BackgroundData();
     
-    load.loadSettings(settings);
+    dataManager.loadSettings(settings);
     
     menuPage = new MenuPage();
     playPage = new PlayPage(levelData);
