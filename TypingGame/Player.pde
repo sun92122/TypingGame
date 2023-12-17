@@ -30,27 +30,24 @@ class Player {
   * }
   */
   JSONObject settings;
+
+  /**
+  * The player's level.
+  * @type {Object}
+  * "level": {
+  *   "level name": "level value",
+  *   ...
+  * }
+  */
+  JSONObject level;
   
   Player() {
-    this.name = "";
-    this.settings = new JSONObject();
-
     this.attackName.put(-2, "basic");
     this.attackName.put(-1, "fever");
     this.attackName.put(0, "skill1");
     this.attackName.put(1, "skill2");
     this.attackName.put(2, "skill3");
     this.attackName.put(3, "skill4");
-    // TODO: read from file
-    for (int i = 0; i < 6; i++) {
-      this.petLevel[i] = 1;
-    }
-    this.attackLevel.set("basic", 1);
-    this.attackLevel.set("fever", 1);
-    this.attackLevel.set("skill1", 1);
-    this.attackLevel.set("skill2", 1);
-    this.attackLevel.set("skill3", 1);
-    this.attackLevel.set("skill4", 1);
   }
 
   // Getters and setters Pet and Skill selection
