@@ -14,19 +14,19 @@
         "moblevel": 1,
         "time": 120000,
         "interval": 20000,
-        "count": 2
+        "count": 1
       },
       {
         "mob": "Fat",
         "moblevel": 1,
-        "time": 120000,
+        "time": 110000,
         "interval": 30000,
         "count": 1
       },
       {
         "mob": "Bear",
         "moblevel": 1,
-        "time": 120000,
+        "time": 115000,
         "interval": 30000,
         "count": 1
       }
@@ -35,7 +35,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 90000,
+    "timelimit": 120000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -46,7 +46,7 @@
       {
         "mob": "Tongue",
         "moblevel": 1,
-        "time": 90000,
+        "time": 120000,
         "interval": 5000,
         "count": 5
       }
@@ -66,23 +66,23 @@
       {
         "mob": "Fat",
         "moblevel": 1,
-        "time": 120000,
+        "time": 110000,
         "interval": 30000,
         "count": 1
       },
       {
         "mob": "Bear",
         "moblevel": 1,
-        "time": 120000,
+        "time": 110000,
         "interval": 30000,
         "count": 1
       },
       {
         "mob": "Tongue",
         "moblevel": 1,
-        "time": 100000,
+        "time": 120000,
         "interval": 5000,
-        "count": 2
+        "count": 3
       }
     ]
   },
@@ -99,23 +99,16 @@
     },
     "enemies": [
       {
-        "mob": "Fat",
+        "mob": "Bird",
         "moblevel": 1,
-        "time": 120000,
+        "time": 110000,
         "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Bear",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
+        "count": 2
       },
       {
         "mob": "Tongue",
         "moblevel": 1,
-        "time": 100000,
+        "time": 120000,
         "interval": 5000,
         "count": 2
       }
@@ -124,7 +117,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 120000,
+    "timelimit": 150000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -134,32 +127,26 @@
     },
     "enemies": [
       {
-        "mob": "Fat",
+        "mob": "Green",
         "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Bear",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Tongue",
-        "moblevel": 1,
-        "time": 100000,
+        "time": 150000,
         "interval": 5000,
         "count": 2
+      },
+
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 140000,
+        "interval": 30000,
+        "count": 1
       }
     ]
   },
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 120000,
+    "timelimit": 180000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -171,22 +158,29 @@
     "enemies": [
       {
         "mob": "Fat",
-        "moblevel": 1,
-        "time": 120000,
+        "moblevel": 2,
+        "time": 155000,
         "interval": 30000,
         "count": 1
       },
       {
         "mob": "Bear",
-        "moblevel": 1,
-        "time": 120000,
+        "moblevel": 2,
+        "time": 155000,
         "interval": 30000,
         "count": 1
       },
       {
         "mob": "Tongue",
-        "moblevel": 1,
-        "time": 100000,
+        "moblevel": 2,
+        "time": 180000,
+        "interval": 5000,
+        "count": 3
+      },
+      {
+        "mob": "Bird",
+        "moblevel": 2,
+        "time": 165000,
         "interval": 5000,
         "count": 2
       }
@@ -195,7 +189,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 120000,
+    "timelimit": 180000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -206,24 +200,31 @@
     },
     "enemies": [
       {
-        "mob": "Fat",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Bear",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
         "mob": "Tongue",
-        "moblevel": 1,
-        "time": 100000,
+        "moblevel": 2,
+        "time": 180000,
         "interval": 5000,
+        "count": 2
+      },
+      {
+        "mob": "Green",
+        "moblevel": 2,
+        "time": 170000,
+        "interval": 5000,
+        "count": 2
+      },
+      {
+        "mob": "Bird",
+        "moblevel": 2,
+        "time": 170000,
+        "interval": 30000,
+        "count": 1
+      },
+      {
+        "mob": "StarBurst",
+        "moblevel": 1,
+        "time": 160000,
+        "interval": 30000,
         "count": 2
       }
     ]
@@ -231,7 +232,7 @@
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 120000,
+    "timelimit": 180000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -242,32 +243,25 @@
     },
     "enemies": [
       {
-        "mob": "Fat",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Bear",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
         "mob": "Tongue",
-        "moblevel": 1,
-        "time": 100000,
+        "moblevel": 2,
+        "time": 180000,
         "interval": 5000,
-        "count": 2
+        "count": 3
+      },
+      {
+        "mob": "RA",
+        "moblevel": 1,
+        "time": 165000,
+        "interval": 30000,
+        "count": 1
       }
     ]
   },
   {
     "title": "Tutorial",
     "description": "This is a tutorial level.",
-    "timelimit": 120000,
+    "timelimit": 180000,
     "background": "road",
     "music": "bgm1",
     "vocab": {
@@ -279,25 +273,18 @@
     },
     "enemies": [
       {
-        "mob": "Fat",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Bear",
-        "moblevel": 1,
-        "time": 120000,
-        "interval": 30000,
-        "count": 1
-      },
-      {
-        "mob": "Tongue",
-        "moblevel": 1,
-        "time": 100000,
-        "interval": 5000,
+        "mob": "StarBurst",
+        "moblevel": 2,
+        "time": 180000,
+        "interval": 15000,
         "count": 2
+      },
+      {
+        "mob": "RA",
+        "moblevel": 2,
+        "time": 150000,
+        "interval": 30000,
+        "count": 1
       }
     ]
   },

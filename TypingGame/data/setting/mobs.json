@@ -1,23 +1,23 @@
 [
   {
     "name": "StarBurst",
-    "HP": 100,
+    "HP": 150,
     "attack": {
-      "damage": 10,
+      "damage": 30,
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.08
+    "velocity": 0.3
   },
   {
     "name": "Bird",
-    "HP": 100,
+    "HP": 50,
     "attack": {
       "damage": 10,
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.05,
+    "velocity": 0.4,
     "pictures": {
       "idle": [
         {
@@ -67,14 +67,14 @@
   },
   {
     "name": "RA",
-    "HP": 100,
+    "HP": 200,
     "attack": {
-      "damage": 10,
+      "damage": 50,
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.04,
-    "scale": 0.24,
+    "velocity": 0.3,
+    "scale": 0.13,
     "pictures": {
       "idle": [
         {
@@ -166,14 +166,14 @@
   },
   {
     "name": "Fat",
-    "HP": 100,
+    "HP": 120,
     "attack": {
       "damage": 10,
       "distance": 100,
       "duration": 5000
     },
     "velocity": 0.12,
-    "scale": 0.2,
+    "scale": 0.3,
     "pictures": {
       "idle": [
         {
@@ -247,14 +247,14 @@
   },
   {
     "name": "Green",
-    "HP": 100,
+    "HP": 50,
     "attack": {
       "damage": 10,
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.18,
-    "scale": 0.12,
+    "velocity": 0.30,
+    "scale": 0.16,
     "pictures": {
       "idle": [
         {
@@ -328,14 +328,14 @@
   },
   {
     "name": "Bear",
-    "HP": 100,
+    "HP": 80,
     "attack": {
       "damage": 10,
       "distance": 100,
       "duration": 5000
     },
     "velocity": 0.20,
-    "scale": 0.12,
+    "scale": 0.2,
     "pictures": {
       "idle": [
         {
@@ -421,14 +421,14 @@
   },
   {
     "name": "Tongue",
-    "HP": 100,
+    "HP": 30,
     "attack": {
       "damage": 10,
       "distance": 100,
       "duration": 5000
     },
-    "velocity": 0.15,
-    "scale": 0.12,
+    "velocity": 0.25,
+    "scale": 0.14,
     "pictures": {
       "idle": [
         {
