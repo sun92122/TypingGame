@@ -38,3 +38,6 @@ HW*.zip
 temp/
 
 processing-*/
+
+# saves
+TypingGame/data/saves/*
