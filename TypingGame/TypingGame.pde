@@ -19,7 +19,7 @@ void settings() {
 }
 
 void setup() {
-  // try {
+  try {
     surface.setTitle("Typing Game");
     surface.setIcon(loadImage("images/icon/icon.png"));
     surface.setResizable(false);
@@ -31,10 +31,10 @@ void setup() {
     dataManager.load();
 
     game = new Game();
-  // } catch(Exception e) {
-  //   println("Error: " + e);
-  //   exit();
-  // }
+  } catch(Exception e) {
+    println("Error: " + e);
+    exit();
+  }
 }
 
 void draw() {

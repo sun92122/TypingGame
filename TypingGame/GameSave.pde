@@ -36,9 +36,8 @@ class DataManager {
   void load() {
     // file -> json
     JSONObject playerJson;
-    try {
-      playerJson = loadJSONObject(path + "player.json");
-    } catch(Exception e) {
+    playerJson = loadJSONObject(path + "player.json");
+    if(playerJson == null) {
       playerJson = new JSONObject();
     }
     
